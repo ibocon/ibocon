@@ -1,6 +1,6 @@
 <!-- 1. Header Banner -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2E90FA,100:512BD4&height=180&section=header&text=Yegun%20Kim&fontSize=48&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20.NET%20%26%20Distributed%20Systems&descAlignY=60&descAlign=50" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2E90FA,100:512BD4&height=180&section=header&text=Yegun%20Kim&fontSize=48&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20.NET%20and%20Distributed%20Systems&descAlignY=60&descAlign=50" width="100%"/>
 </div>
 
 <!-- 2. Typing Intro -->
