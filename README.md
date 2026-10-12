@@ -1,12 +1,12 @@
 <!-- 1. Header Banner -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Yegun%20Kim&fontSize=52&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20.NET%20%26%20Distributed%20Systems&descAlignY=58&descAlign=50" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2E90FA,100:512BD4&height=180&section=header&text=Yegun%20Kim&fontSize=48&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20.NET%20%26%20Distributed%20Systems&descAlignY=60&descAlign=50" width="100%"/>
 </div>
 
 <!-- 2. Typing Intro -->
 <div align="center">
   <a href="https://readme-typing-svg.demolab.com">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=2E90FA&center=true&vCenter=true&width=650&lines=Building+Robust+%26+Scalable+.NET+Systems;Clean+Architecture+%7C+Rich+Domain+Model;Continuous+Learning%2C+10k%2B+Annual+Contributions;Tech+Blogger+at+ibocon.tistory.com" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&duration=3000&pause=1000&color=2E90FA&center=true&vCenter=true&width=700&lines=Building+Robust+%26+Scalable+.NET+Systems;Clean+Architecture+%7C+Rich+Domain+Model;Continuous+Learning%2C+10k%2B+Contributions;Tech+Blogger+at+ibocon.tistory.com" alt="Typing SVG" />
   </a>
 </div>
 
