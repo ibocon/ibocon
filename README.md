@@ -55,6 +55,11 @@
 
 ## 📝 Recent Blog Posts
 <!-- BLOG-POST-LIST:START -->
+- [[.NET] 레퍼런스 프로젝트 리스트](https://ibocon.tistory.com/278)
+- [건축주를 위한 건축 토막 상식 - 현장에서 콘크리트의 품질을 확인하는 방법](https://ibocon.tistory.com/273)
+- [건축주를 위한 건축 토막 상식 - 신재생에너지 설비](https://ibocon.tistory.com/272)
+- [[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축](https://ibocon.tistory.com/271)
+- [[Blazor] Sass 를 적용하는 방법](https://ibocon.tistory.com/270)
 <!-- BLOG-POST-LIST:END -->
 
 ---
