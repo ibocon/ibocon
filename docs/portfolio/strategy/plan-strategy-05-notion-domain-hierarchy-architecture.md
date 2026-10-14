@@ -50,35 +50,40 @@ graph TD
 
     D1[01 .NET 백엔드 및 분산 아키텍처]
     D2[02 DevOps 및 클라우드 인프라]
-    D3[03 Windows 데스크톱 및 시스템 프로그래밍]
-    D4[04 모바일 및 웹 프론트엔드 엔지니어링]
+    D3[03 개발자 경험 및 웹 디자인 시스템]
+    D4[04 Windows 데스크톱 및 시스템 프로그래밍]
+    D5[05 모바일 및 BLE 디바이스 연동]
 
     Root --> D1
     Root --> D2
     Root --> D3
     Root --> D4
+    Root --> D5
 
     subgraph 도메인 1 백엔드 상세
-        D1 --> P1_1[전사 통합 모듈 모노레포 Monolith]
-        D1 --> P1_2[이벤트 주도 CQRS 가계부 마이크로서비스 Peony]
-        D1 --> P1_3[비동기 잡 큐 AI 마이크로서비스 NemonicStudy]
+        D1 --> P1_1[전사 백엔드 모듈 모노레포 Monolith]
+        D1 --> P1_2[분산 메시징 Outbox 가계부 Peony]
+        D1 --> P1_3[AI 파이프라인 OCR 마이크로서비스 NemonicStudy]
     end
 
-    subgraph 도메인 2 인프라 및 DevEx 상세
-        D2 --> P2_1[온프레미스 듀얼 사이트 K8s DR Argon]
-        D2 --> P2_2[하이브리드 K8s 및 100TB Ceph 스토리지 Garden.Cluster]
-        D2 --> P2_3[AI 에이전트 하네스 및 빌드 70퍼센트 가속 Garden.Harness]
+    subgraph 도메인 2 인프라 상세
+        D2 --> P2_1[K8s GitOps 온프레미스 듀얼 사이트 DR Argon]
+        D2 --> P2_2[분산 스토리지 100TB Rook Ceph Garden.Cluster]
     end
 
-    subgraph 도메인 3 데스크톱 상세
-        D3 --> P3_1[Windows 스마트 메모 프린터 nemonic Desktop]
-        D3 --> P3_2[OS 독립형 USB Bluetooth 저수준 통신 SDK]
+    subgraph 도메인 3 DevEx 및 디자인 시스템 상세
+        D3 --> P3_1[디자인 시스템 Penpot 토큰 동기화 Garden.Razor]
+        D3 --> P3_2[엔지니어링 거버넌스 빌드 70퍼센트 단축 및 AI 하네스]
     end
 
-    subgraph 도메인 4 모바일 및 프론트엔드 상세
-        D4 --> P4_1[NET MAUI 가계부 앱 Peony Mobile]
-        D4 --> P4_2[FINECUBE 컬러 라벨 모바일 앱 및 BLE Lithium]
-        D4 --> P4_3[Penpot 토큰 기반 웹 디자인 시스템 Garden.Razor]
+    subgraph 도메인 4 데스크톱 상세
+        D4 --> P4_1[데스크톱 클라이언트 50만 대 제어 nemonic]
+        D4 --> P4_2[디바이스 드라이버 USB Bluetooth 통신 SDK Mango]
+    end
+
+    subgraph 도메인 5 모바일 상세
+        D5 --> P5_1[모바일 클라이언트 NET MAUI 가계부 앱 Peony Mobile]
+        D5 --> P5_2[하드웨어 연동 앱 FINECUBE 라벨 앱 및 BLE Lithium]
     end
 ```
 
@@ -87,54 +92,85 @@ graph TD
 ## 3. 최상위 도메인 중심 노션 폴더 구조 및 최종 채택안
 
 > **공식 채택 결정**:  
-> 사람인, 점핏, 잡플래닛, 원티드 등 국내 주요 테크 채용 플랫폼의 실제 C# .NET 백엔드, DevOps/SRE, Windows 데스크톱, BLE IoT 모바일 채용 공고(JD) 전수 조사 결과([`recruitment-jd-benchmarking-references.md`](./recruitment-jd-benchmarking-references.md))를 바탕으로, HR 리크루터 및 테크 리드의 1차 서류 통과율과 직무 적합도를 극대화하는 **[조합 4: 4대 채용 공고(JD) 직무 직결 모델]을 최종 표준안으로 공식 채택**합니다.
+> 사람인, 점핏, 잡플래닛, 원티드 등 국내 주요 테크 채용 플랫폼의 실제 채용 공고(JD) 분석 결과([`recruitment-jd-benchmarking-references.md`](./recruitment-jd-benchmarking-references.md))를 바탕으로, 4대 핵심 직무(백엔드, 인프라, 데스크톱, 모바일)의 전문성을 유지하면서도 **`개발자 경험(DevEx) & 웹 디자인 시스템`을 독립 플랫폼 도메인(03)으로 격상**시킨 **[개선 조합 B: 5대 직무 전문성 분리형]을 최종 표준안으로 공식 채택**합니다.
 
 ---
 
-### [최종 확정 채택안] 4대 채용 공고(JD) 직무 직결 모델 (조합 4) — ⭐ **최종 확정**
-> **특징**: 국내외 테크 기업의 4대 채용 포지션(백엔드, DevOps/인프라, Windows 데스크톱, 모바일/프론트엔드)에 100% 대응하며, DevEx와 디자인 시스템을 각 기술 영역에 알맞게 내재화하여 서류 검토자가 체크리스트를 확인하듯 즉각적으로 직무 적합성을 판정할 수 있는 구조.
+### [최종 확정 채택안] 5대 직무 전문성 분리형 (DevEx & 디자인 시스템 플랫폼 격상) — ⭐ **최종 확정**
+> **특징**: JD 분석에서 드러난 `모바일(BLE IoT)`과 `웹 디자인 시스템/DevEx`의 직무 성격 불일치를 해결하고, 테크 리드급 차별화 역량인 `Penpot/Garden.Razor` 디자인 시스템과 `Garden.Harness` AI 거버넌스를 독립된 상위 도메인으로 격상한 구조.
 
 ```text
-├── 📁 01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, DDD, CQRS)
-│   ├── 📄 [전사 백엔드] 대규모 트랜잭션 처리 및 전사 통합 모듈 모노레포 (.NET 9 / Monolith)
-│   ├── 📄 [분산 메시징] RabbitMQ & Outbox 패턴 기반 이벤트 주도 마이크로서비스 (Peony Backend)
-│   └── 📄 [AI 파이프라인] 비동기 잡 큐 기반 AI/OCR 마이크로서비스 (NemonicStudy)
+├── 📁 01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, CQRS)
+│   ├── 📄 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)
+│   ├── 📄 [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony Backend)
+│   └── 📄 [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy)
 │
-├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph, DevEx)
-│   ├── 📄 [K8s GitOps & DR] 온프레미스 듀얼 사이트 K8s 구축 & 재해복구 체계 (Argon / Garden.Cluster)
-│   ├── 📄 [분산 스토리지] 100TB급 Ceph 분산 스토리지 및 무중단 리밸런싱 운영
-│   └── 📄 [DevEx & CI/CD] 4대 AI 에이전트 하네스(Garden.Harness) & 빌드 70% 가속 파이프라인
+├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph)
+│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
+│   └── 📄 [분산 스토리지] 하이브리드 K8s & 100TB Rook-Ceph 스토리지 (Garden.Cluster)
 │
-├── 📁 03. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)
-│   ├── 📄 [데스크톱 클라이언트] 50만 대 누적 기기 제어 및 레거시 .NET 9 현대화 (nemonic Desktop)
-│   └── 📄 [디바이스 드라이버] OS 독립형 USB / Bluetooth LE 저수준 통신 프로토콜 설계
+├── 📁 03. 개발자 경험(DevEx) & 웹 디자인 시스템 (Penpot, Harness, CI/CD)
+│   ├── 📄 [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)
+│   └── 📄 [엔지니어링 거버넌스] 전사 빌드 70% 단축 & AI 에이전트 하네스 (Garden.Harness)
 │
-└── 📁 04. 모바일 & 웹 프론트엔드 엔지니어링 (Android, iOS, Blazor, Penpot)
-    ├── 📄 [모바일 클라이언트] .NET MAUI 크로스플랫폼 가계부 앱 (Peony Mobile)
-    ├── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 무손실 패킷 스트리밍 (Lithium)
-    └── 📄 [디자인 시스템] Penpot 토큰 동기화 Blazor/Razor 웹 컴포넌트 라이브러리 (Garden.Razor)
+├── 📁 04. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)
+│   ├── 📄 [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)
+│   └── 📄 [디바이스 드라이버] 저수준 USB/Bluetooth 통신 프로토콜 SDK (Mango)
+│
+└── 📁 05. 모바일 & BLE 디바이스 연동 (Android, iOS, .NET MAUI, BLE)
+    ├── 📄 [모바일 클라이언트] .NET MAUI Blazor Hybrid 가계부 앱 (Peony Mobile)
+    └── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)
 ```
 
 ---
 
-### [베리에이션 5] 3대 엔터프라이즈 시스템 계층 모델 (Core / Platform / Edge)
-> **특징**: 시스템의 기능 위계(코어 비즈니스 백엔드 → 전사 공통 플랫폼/인프라/디자인시스템 → 엣지 엔드포인트 디바이스) 3대 레이어를 최상위 도메인 폴더로 구성한 아키텍처 중심 모델.
+### [대안 A] JD 키워드 4대 직무 정밀 압축형 (4영역 슬림 모델)
+> **특징**: 4개 대분류 틀을 유지하되 실제 JD의 핵심 필수/우대 키워드를 앞단 15자 이내로 전진 배치하고 말줄임을 방어한 모델.
 
 ```text
-├── 📁 01. 백엔드 & 분산 시스템 (Core Business Services)
-│   ├── 📄 [전사 백엔드] 전사 통합 .NET 9 백엔드 모노레포 (14개 서비스 통합 / Monolith)
-│   ├── 📄 [분산 메시징] 이벤트 주도 CQRS 분산 백엔드 & Outbox 패턴 (Peony Backend)
-│   └── 📄 [AI 파이프라인] 비동기 OCR/요약 잡 큐 마이크로서비스 (NemonicStudy)
+├── 📁 01. .NET 백엔드 & 분산 아키텍처 (.NET 9, Clean Arch, CQRS)
+│   ├── 📄 [전사 백엔드] .NET 9 모듈 모노레포 & API GW (Monolith)
+│   ├── 📄 [분산 메시징] RabbitMQ & Outbox CQRS 가계부 (Peony Backend)
+│   └── 📄 [AI 파이프라인] 비동기 잡 큐 & OCR 마이크로서비스 (NemonicStudy)
 │
-├── 📁 02. 플랫폼, 인프라 & 디자인 시스템 (Foundations & Platforms)
-│   ├── 📄 [K8s 인프라] 온프레미스 듀얼 사이트 K8s & GitOps 자동화 (Argon / Garden.Cluster)
-│   ├── 📄 [디자인 시스템] Penpot 토큰 동기화 웹 디자인 시스템 & 컴포넌트 갤러리 (Garden.Razor)
-│   └── 📄 [DevEx 거버넌스] AI 코딩 에이전트 하네스 & 빌드 가속 파이프라인 (Garden.Harness)
+├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, Ceph, DevEx)
+│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 DR 오케스트레이션 (Argon)
+│   ├── 📄 [분산 스토리지] 100TB급 Rook-Ceph 고가용성 운영 (Garden.Cluster)
+│   └── 📄 [DevEx 거버넌스] 전사 빌드 70% 단축 & 4대 AI 에이전트 하네스 (Garden.Harness)
 │
-└── 📁 03. 하드웨어 연동 디바이스 & 엣지 앱 (Endpoint Products)
-    ├── 📄 [데스크톱 엔진] Windows 스마트 메모 프린터 클라이언트 — 8년 라이프사이클 (nemonic Desktop)
-    ├── 📄 [모바일 앱] .NET MAUI 가계부 앱(Peony) & BLE 컬러 라벨 앱(Lithium)
-    └── 📄 [디바이스 SDK] USB / Bluetooth 저수준 하드웨어 프로토콜 라이브러리
+├── 📁 03. Windows 데스크톱 & 시스템 제어 (C#, WPF, Win32, USB)
+│   ├── 📄 [데스크톱 클라이언트] 50만 대 기기 제어 & .NET 9 현대화 (nemonic)
+│   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통신 SDK (Mango)
+│
+└── 📁 04. 모바일 & 웹 프론트엔드 (BLE IoT, MAUI, Penpot 디자인)
+    ├── 📄 [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)
+    ├── 📄 [하드웨어 연동 앱] BLE 무손실 스트리밍 라벨 앱 (Lithium)
+    └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Razor 컴포넌트 (Garden.Razor)
+```
+
+---
+
+### [대안 C] 4대 시스템 토폴로지형 (서버사이드 2축 vs 엣지 디바이스 2축)
+> **특징**: 백엔드와 인프라/플랫폼(서버사이드) 2개 폴더와 데스크톱/디바이스와 모바일(엔드포인트 엣지) 2개 폴더로 물리적 레이어를 2:2 대칭으로 맞춘 모델.
+
+```text
+├── 📁 01. 백엔드 서비스 & 분산 시스템 (Core Application Services)
+│   ├── 📄 [전사 백엔드] 대규모 트랜잭션 처리 .NET 9 모듈 모노레포 (Monolith)
+│   ├── 📄 [분산 메시징] 이벤트 주도 CQRS 가계부 마이크로서비스 (Peony Backend)
+│   └── 📄 [AI 파이프라인] 비동기 OCR/요약 분산 처리 파이프라인 (NemonicStudy)
+│
+├── 📁 02. 클라우드 플랫폼 & 엔지니어링 거버넌스 (Infra, Storage, DevEx)
+│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & 100TB Ceph 스토리지 (Argon/Cluster)
+│   ├── 📄 [엔지니어링 거버넌스] AI 코딩 에이전트 하네스 & 빌드 70% 가속 (Garden.Harness)
+│   └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Blazor 컴포넌트 라이브러리 (Garden.Razor)
+│
+├── 📁 03. 데스크톱 & 하드웨어 제어 시스템 (Desktop & Device Systems)
+│   ├── 📄 [데스크톱 클라이언트] 50만 대 기기 제어 Windows 엔진 — 8년 수명주기 (nemonic)
+│   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통합 드라이버 SDK (Mango)
+│
+└── 📁 04. 모바일 & 무선 IoT 애플리케이션 (Mobile & Wireless IoT)
+    ├── 📄 [모바일 클라이언트] .NET MAUI Blazor Hybrid 크로스플랫폼 앱 (Peony Mobile)
+    └── 📄 [하드웨어 연동 앱] BLE 실시간 무손실 패킷 스트리밍 라벨 앱 (Lithium)
 ```
 
 ---
@@ -154,24 +190,23 @@ graph TD
 
 ---
 
-## 5. 41개 Git 저장소 + Garden/Peony 생태계 종합 수렴 매핑표
+## 5. 41개 Git 저장소 + Garden/Peony 생태계 종합 수렴 매핑표 (5대 직무 전문성 분리형 기준)
 
 | 도메인 계층 | 포괄 저장소 / 프로젝트 목록 | 대표 상세 페이지 (TO-BE) |
 | :--- | :--- | :--- |
-| **01. 백엔드 서비스 플랫폼** | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi` | 1. [전사 백엔드] 대규모 트랜잭션 및 모듈 모노레포 (Monolith)<br>2. [분산 메시징] 이벤트 주도 CQRS 가계부 마이크로서비스 (Peony Backend)<br>3. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy) |
-| **02. 클러스터 인프라 플랫폼** | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `History`, `Garden.Cluster`, `Rook-Ceph Cluster` | 1. [K8s GitOps] 온프레미스 듀얼 사이트 K8s (Argon)<br>2. [분산 스토리지] 하이브리드 K8s & Rook-Ceph 100TB 운영 (Garden.Cluster) |
-| **03. 디자인 시스템 & 웹 프론트엔드** | `Garden.Razor`, `Garden.Razor.Gallery`, `Penpot Design System (Tokens)` | 1. [디자인 시스템] Penpot 토큰 동기화 웹 디자인 시스템 (Garden.Razor)<br>2. [컴포넌트 갤러리] Blazor WASM 인터랙티브 UI 갤러리 |
-| **04. 개발자 경험 & AI 거버넌스** | `Mangoslab.Pipeline`, `Garden.Harness` | 1. [CI/CD 가속] GitHub Actions 러너 최적화 — 빌드 70% 단축<br>2. [AI 하네스] 4대 AI 코딩 에이전트 통합 거버넌스 (Garden.Harness) |
-| **05. 하드웨어 연동 데스크톱 제품** | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test` | 1. [데스크톱 클라이언트] Windows 스마트 메모 프린터 엔진 (nemonic Desktop)<br>2. [디바이스 드라이버] 저수준 USB/Bluetooth 통합 SDK |
-| **06. 모바일 & 무선 디바이스 앱** | `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `Peony Mobile (.NET MAUI)`, `NemonicBasicAndroid`, `NemonicBasiciOS` | 1. [모바일 클라이언트] .NET MAUI 크로스플랫폼 가계부 앱 (Peony Mobile)<br>2. [무선 통신 앱] FINECUBE 컬러 라벨 모바일 앱 & BLE 스트리밍 (Lithium) |
+| **01. .NET 백엔드 & 분산 아키텍처** | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Peony Backend`, `Mangoslab.Infrastructure`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi` | 1. [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)<br>2. [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony Backend)<br>3. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy) |
+| **02. DevOps & 클라우드 인프라** | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `History`, `Garden.Cluster`, `Rook-Ceph Cluster` | 1. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)<br>2. [분산 스토리지] 하이브리드 K8s & 100TB Rook-Ceph 스토리지 (Garden.Cluster) |
+| **03. 개발자 경험(DevEx) & 웹 디자인 시스템** | `Garden.Razor`, `Garden.Razor.Gallery`, `Penpot Design System (Tokens)`, `Mangoslab.Pipeline`, `Garden.Harness`, `Garden.Share`, `Garden.Analyzers` | 1. [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)<br>2. [엔지니어링 거버넌스] 전사 빌드 70% 단축 & AI 에이전트 하네스 (Garden.Harness) |
+| **04. Windows 데스크톱 & 시스템 프로그래밍** | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test`, `Garden.Usb`, `Garden.Bluetooth` | 1. [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)<br>2. [디바이스 드라이버] 저수준 USB/Bluetooth 통신 프로토콜 SDK (Mango) |
+| **05. 모바일 & BLE 디바이스 연동** | `Peony Mobile (.NET MAUI)`, `Garden.Maui`, `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `NemonicBasicAndroid`, `NemonicBasiciOS` | 1. [모바일 클라이언트] .NET MAUI Blazor Hybrid 가계부 앱 (Peony Mobile)<br>2. [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium) |
 
 ---
 
 ## 6. 기대 효과 및 채용 경쟁력
 
-1. **채용 담당자 인지 장벽 완전 제거 (Domain-First)**:
-   - 노션 사이드바를 열었을 때 생소한 프로젝트 코드명 대신 **`01. 백엔드`, `02. 인프라`, `03. 디자인시스템`, `04. DevEx`, `05. 데스크톱`, `06. 모바일`**로 직무 전문성이 즉각 전달되어 1차 서류 스캔 시간 10초 내에 직무 적합성 증명 완료.
-2. **Peony 및 Garden 생태계의 온전한 가치 전달**:
+1. **채용 담당자 인지 장벽 완전 제거 및 사이드바 말줄임 방어**:
+   - 노션 사이드바를 열었을 때 생소한 프로젝트 코드명 대신 **`01. .NET 백엔드`, `02. DevOps 인프라`, `03. DevEx & 디자인시스템`, `04. Windows 데스크톱`, `05. 모바일 & BLE`**로 직무 전문성이 즉각 전달되며, 하위 페이지 역시 앞 15자 이내에 핵심 역량이 배치되어 말줄임(`...`)이 발생해도 완벽히 식별됨.
+2. **모바일(BLE IoT)과 웹 디자인 시스템/DevEx의 명확한 정체성 분리**:
+   - 모바일 폴더는 순수하게 `.NET MAUI`와 `BLE 하드웨어 스트리밍(Lithium)`에 집중하고, `Garden.Razor & Penpot` 디자인 시스템은 `Garden.Harness`와 함께 독립된 **플랫폼/생산성 도메인(03)**으로 격상되어 시니어/테크 리드급 차별화 포인트를 극대화함.
+3. **Peony 및 Garden 생태계의 온전한 가치 전달**:
    - Peony의 백엔드와 모바일 앱, Garden의 인프라·디자인시스템·DevEx가 각 도메인의 '독립 프로젝트 단위'로 분리되어, 복합적인 풀스택 플랫폼 구축 역량이 선명하게 드러남.
-3. **디자인 시스템 & Penpot 구축 역량 공식화**:
-   - 오픈소스 디자인 도구 Penpot과 C# Blazor/Razor를 연결한 디자인 토큰 동기화 파이프라인을 단독 도메인/프로젝트로 조명하여, 프론트엔드 및 디자인 협업 생산성 개선 역량 입증.
