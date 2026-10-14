@@ -5,7 +5,7 @@
 ## 1. 개요 및 수집 목적
 
 * **문서명**: 국내 개발자 채용 직무(JD) 레퍼런스 벤치마킹 분석서
-* **관리 위치**: `resume/recruitment-jd-benchmarking-references.md` (Local SoT)
+* **관리 위치**: `docs/portfolio/strategy/recruitment-jd-benchmarking-references.md` (Local SoT)
 * **수집 플랫폼**: 사람인(Saramin), 점핏(Jumpit), 잡플래닛(Jobplanet), 원티드(Wanted), 랠릿(Rallit)
 * **수집 목적**:
   1. 국내 IT/테크 기업 채용 공고의 실제 자격 요건과 우대 사항을 전수 조사하여, 김예건 님의 9년 차 엔지니어링 이력(41개 Git 저장소)이 가장 매력적으로 보일 수 있는 **직무 직결형 노션 정보 구조([조합 4])의 실증적 근거**를 수립.
