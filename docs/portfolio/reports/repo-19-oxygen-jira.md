@@ -69,7 +69,7 @@
 ## 6. 노션 이력서(Resume) 반영 문안
 
 ### 💡 한 줄 요약 (Elevator Pitch)
-> **Oxygen.Jira**: Atlassian Jira 이슈 인쇄 앱 요구사항 분석 및 연동 인터페이스 설계로서 Atlassian Connect 기술을 바탕으로 저장소 내 담당 작업을 수행함.
+> **Oxygen.Jira**: Atlassian Jira 연동 인쇄 앱 공증 배포 요건 검토 이슈 등록으로서 Atlassian Connect 기술을 바탕으로 저장소 내 담당 작업을 수행함.
 
 ### 📌 이력서용 핵심 성과 불릿 포인트
 * **[아키텍처 및 구현]** Atlassian Connect, REST API, Webhooks 환경에서 Oxygen.Jira 저장소의 담당 작업을 수행함.

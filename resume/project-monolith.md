@@ -1,7 +1,7 @@
-# 🧱 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)
+# 🧱 [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🧱 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
+> **동기화 Notion URL**: [🧱 [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
 > **최종 동기화 일시**: 2026-10-14
 
 ---

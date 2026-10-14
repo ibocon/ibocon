@@ -2,7 +2,7 @@
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
 > **동기화 Notion URL**: [📄 이력서 — 김예건](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d)  
-> **최종 동기화 일시**: 2026-10-13
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 
@@ -39,7 +39,7 @@
 
 ---
 ## 🏛️ 5대 직무 전문성 도메인 요약 (Core Engineering Domains)
-도메인 사전 지식 없이도 전체 엔지니어링 역량을 한눈에 파악하실 수 있도록, 9년간 설계·구축한 41개 저장소와 플랫폼을 **5대 핵심 직무 도메인**으로 분류하여 소개합니다.
+도메인 사전 지식 없이도 전체 엔지니어링 역량을 한눈에 파악하실 수 있도록, 9년간 설계·구축한 프로덕트와 플랫폼을 **5대 핵심 직무 도메인**으로 분류하여 소개합니다.
 <table fit-page-width="true" header-row="true">
 <tr>
 <td>직무 도메인 (Domain)</td>
@@ -48,28 +48,28 @@
 </tr>
 <tr>
 <td>**01. .NET 백엔드 & 분산 아키텍처**</td>
-<td>• [전사 백엔드] .NET 9 모듈 모노레포 (Monolith)<br>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
-<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·RabbitMQ·Clean Architecture 기반 비동기 분산 처리 및 외부 알림 실패율 0% 달성</td>
+<td>• [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)<br>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
+<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·RabbitMQ·Clean Architecture 기반 비동기 분산 처리 및 외부 알림 큐 격리</td>
 </tr>
 <tr>
 <td>**02. DevOps & 클라우드 인프라**</td>
-<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [분산 스토리지] 100TB Rook-Ceph (Garden.Cluster)</td>
-<td>Proxmox 베어메탈 및 AKS 하이브리드 K8s 클러스터, Active/Fenced Standby 무중단 DR, OpenBao 기반 Git 내 평문 시크릿 100% 제거</td>
+<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 구성 (Garden.Cluster)</td>
+<td>Proxmox 베어메탈 및 AKS 하이브리드 K8s 클러스터, Active/Fenced Standby 무중단 DR, OpenBao 기반 평문 Secret 16개 ExternalSecret 전량 치환</td>
 </tr>
 <tr>
 <td>**03. 개발자 경험(DevEx) & 웹 디자인 시스템**</td>
-<td>• [디자인 시스템] Penpot 토큰 동기화 (Garden.Razor)<br>• [엔지니어링 거버넌스] 빌드 가속 & AI 하네스 (Garden.Harness)</td>
-<td>Material 3 자체 Blazor 컴포넌트 44종 및 Penpot 토큰 동기화, 4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개) 및 전사 빌드 시간 70% 단축</td>
+<td>• [디자인 시스템] Penpot 토큰 동기화 (Garden.Razor)<br>• [엔지니어링 거버넌스] Roslyn 애널라이저 & AI 하네스 (Garden.Harness)</td>
+<td>Material 3 자체 Blazor 컴포넌트 44종 및 Penpot 토큰 동기화, 4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개) 및 Roslyn 정적 애널라이저 7종</td>
 </tr>
 <tr>
 <td>**04. Windows 데스크톱 & 시스템 프로그래밍**</td>
-<td>• [데스크톱 클라이언트] 글로벌 50만 대 제어 (nemonic)<br>• [디바이스 드라이버] 저수준 USB/BLE SDK (Mango)</td>
-<td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 현대화, GDI 핸들 누수 0건 달성, WinUSB·BLE 5계층 크로스플랫폼 드라이버 추상화</td>
+<td>• [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)<br>• [디바이스 드라이버] 저수준 USB/BLE SDK (Mango)</td>
+<td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 현대화, GDI 프린터 DC 핸들 누수 해결, WinUSB·BLE 5계층 크로스플랫폼 드라이버 추상화</td>
 </tr>
 <tr>
 <td>**05. 모바일 & BLE 디바이스 연동**</td>
-<td>• [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)<br>• [하드웨어 연동 앱] FINECUBE 라벨 앱 & BLE (Lithium)</td>
-<td>BLE GATT 실시간 상태 폴링·스트리밍 경합(Race Condition) 해소, Android targetSdk 34 상향, 앱·웹 단일 Razor UI 코드베이스 구축</td>
+<td>• [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)<br>• [하드웨어 연동 앱] FINECUBE 라벨 앱 & BLE 통신 경합 해소 (Lithium)</td>
+<td>BLE GATT 실시간 상태 폴링·데이터 전송 경합(Race Condition) 해소, Android targetSdk 34 상향, 앱·웹 단일 Razor UI 코드베이스 구축</td>
 </tr>
 </table>
 ---
@@ -131,41 +131,4 @@
 	
 	
 		**불곡고등학교** · 졸업
-	
-
----
-## 🐙 GitHub 기여 저장소 총괄 대시보드 (41개 저장소 + 자체 플랫폼)
-망고슬래브(MANGOSLABCoLtd) 9년간의 제품 수명주기 전반에 걸쳐 직접 기여한 **41개 Git 저장소**와 자체 오픈소스/플랫폼 생태계(**Peony & Garden**)의 5대 직무 도메인별 연계 현황입니다.
-<table fit-page-width="true" header-row="true">
-<tr>
-<td>직무 도메인 (5대 전문 영역)</td>
-<td>포괄 저장소 및 프로젝트</td>
-<td>매칭 Notion 도메인 허브 & 상세 페이지</td>
-</tr>
-<tr>
-<td>**01. .NET 백엔드 & 분산 아키텍처**</td>
-<td>Monolith, Oxygen.Hub, Teams, Slack, Zapier, Web, Amplitude, Jira, SettingsApp, Radium, Mangoslab, Peony Backend, Mangoslab.Infrastructure, NemonicStudy (App, BFF, Summary, OCR), NemonicAi</td>
-<td><mention-page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758105801dea0310df86f5"/><br>• <mention-page url="https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758102876fdb77b3103c37"/></td>
-</tr>
-<tr>
-<td>**02. DevOps & 클라우드 인프라**</td>
-<td>argon, kc5, kc6, Mangoslab.IaC, History, Garden.Cluster (Hanul On-Premise & AKS, Rook-Ceph)</td>
-<td><mention-page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433"/><br>• <mention-page url="https://app.notion.com/p/3f947521867581d88fbff700c1586f6f"/></td>
-</tr>
-<tr>
-<td>**03. 개발자 경험(DevEx) & 웹 디자인 시스템**</td>
-<td>Garden.Razor, Garden.Razor.Gallery, Penpot Design Tokens, Garden.Harness, Garden.Share, Garden.Analyzers, Mangoslab.Pipeline</td>
-<td><mention-page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758163bc48d05902fd5b95"/><br>• <mention-page url="https://app.notion.com/p/3f947521867581fbaa5def020f156512"/></td>
-</tr>
-<tr>
-<td>**04. Windows 데스크톱 & 시스템 프로그래밍**</td>
-<td>NemonicBasicWindows, NemonicLabelWindows, Nemonic.Ampv, MemoView, Mangoslab.Usb, Mangoslab.Nemonic, Mangoslab.Bluetooth, Firmware, Firmware.TestUtility, MIP-301-Centerm-FW-Test, Garden.Usb, Garden.Bluetooth</td>
-<td><mention-page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758193b0abcf62be42f644"/></td>
-</tr>
-<tr>
-<td>**05. 모바일 & BLE 디바이스 연동**</td>
-<td>Peony Mobile (.NET MAUI), Garden.Maui, Lithium (FINECUBE), Sulfur (Aesty), Mangoslab.Drawing, NemonicBasicAndroid, NemonicBasiciOS</td>
-<td><mention-page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9"/><br>• <mention-page url="https://app.notion.com/p/3f9475218675816481e0e0938b9380f1"/><br>• <mention-page url="https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a"/></td>
-</tr>
-</table>
 

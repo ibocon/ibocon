@@ -1,7 +1,7 @@
-# 🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)
+# 🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
+> **동기화 Notion URL**: [🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
 > **최종 동기화 일시**: 2026-10-14
 
 ---

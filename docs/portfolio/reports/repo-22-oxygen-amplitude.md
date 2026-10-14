@@ -73,7 +73,7 @@
 ## 6. 노션 이력서(Resume) 반영 문안
 
 ### 💡 한 줄 요약 (Elevator Pitch)
-> **Oxygen.Amplitude**: 클라우드 인쇄 서비스 전 제품군 사용자 퍼널(Funnel) 및 이벤트 트래킹 설계로서 C# 기술을 바탕으로 저장소 내 담당 작업을 수행함.
+> **Oxygen.Amplitude**: Amplitude 클라이언트 인터페이스 추상화(테스트 모킹 지원) 및 의존성·리소스 구성 정리로서 C# 기술을 바탕으로 저장소 내 담당 작업을 수행함.
 
 ### 📌 이력서용 핵심 성과 불릿 포인트
 * **[아키텍처 및 구현]** C#, Amplitude HTTP API v2, Event Taxonomy, Funnel Analytics 환경에서 Oxygen.Amplitude 저장소의 담당 작업을 수행함.
