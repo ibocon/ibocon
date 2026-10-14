@@ -9,129 +9,139 @@
 * **관리 위치**: `resume/Plan_Strategy_05_Notion_Domain_Hierarchy_Architecture.md` (Local SoT)
 * **목표 Notion 메인**: [📄 이력서 — 김예건](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d)
 * **배경 및 문제의식 (AS-IS)**:
-  1. **고유 프로젝트 코드명 중심의 1단계 나열**: `Monolith`, `Argon`, `Lithium` 등 외부 채용 담당자가 알 수 없는 사내 코드명이 최상위에 노출되어 직무 적합성 파악에 인지적 장벽 형성.
-  2. **모바일 및 좌측 사이드바 말줄임(Truncation)**: 좌측 네비게이션에서 `Monolith — 회사 통합 .NET 모...` 형태로 뒷부분의 핵심 기술 설명이 잘려 프로젝트명만 노출됨.
-  3. **41개 저장소 포괄의 구조적 한계**: 9년간 41개 Git 저장소의 방대한 엔지니어링 실적이 5개 플랫 프로젝트 페이지에 무리하게 압축되어 특정 도메인(백엔드, 인프라, 클라이언트)별 전문성 부각이 제한됨.
+  1. **사내 프로젝트 코드명 중심 나열의 인지 장벽**: `Monolith`, `Argon`, `Lithium` 등 외부 채용 담당자가 알 수 없는 프로젝트명이 최상위에 노출되어 직무 적합성 파악에 방해가 됨.
+  2. **모바일 및 좌측 사이드바 말줄임(Truncation)**: 좌측 네비게이션에서 뒷부분 설명이 잘려 `Monolith — 회사 통합 .NET 모...`처럼 코드명만 남음.
+  3. **41개 저장소 포괄의 구조적 한계**: 9년간 41개 Git 저장소의 방대한 실적이 5개 플랫 프로젝트 페이지에 무리하게 압축되어 특정 도메인별 전문성 부각이 제한됨.
 * **설계 목표 (TO-BE)**:
-  1. **개발 영역(Domain) 기반 상위 허브 체계 수립**: 채용 담당자가 채용 포지션(백엔드, 인프라/DevOps, 클라이언트, 모바일)에 맞춰 즉시 접근할 수 있도록 4대 도메인 폴더로 계층화.
+  1. **개발 영역(Domain) 기반 상위 허브 체계 수립**: 채용 담당자가 채용 포지션(백엔드, 인프라/DevOps, 클라이언트, 모바일)에 맞춰 즉시 접근할 수 있도록 도메인 폴더로 계층화.
   2. **허브 앤 스포크(Hub & Spoke) 구조 도입**: 각 도메인 허브 페이지에서 해당 영역의 핵심 기술 철학, 해결한 문제, 정량 성과를 총괄하고, 하위 페이지에서 단위 프로젝트 상세를 심층 기술.
 
 ---
 
-## 2. 핵심 설계 원칙 (Design Principles)
+## 2. 사용자 피드백 및 설계 방향 반영 이력
 
 ```text
-[ 채용 담당자 중심 3대 정보 설계 원칙 ]
-1. Role-First Visibility  : 사내 코드명 대신 직무 도메인(백엔드, K8s 인프라 등)을 1차 인덱스로 제시
-2. Hub & Spoke Navigation : 상위 도메인 허브(총괄 요약) -> 하위 프로젝트(심층 기술서) 2단계 계층화
-3. 41-Repo Traceability   : 41개 전 Git 저장소의 커밋/PR 이력을 4대 도메인 산하에 1:1 누락 없이 배치
+[ 주요 피드백 반영 사항 ]
+1. 언어 스타일: 한글을 중심으로 하되, SW 업계에서 통용되는 전문 용어(.NET, Clean Architecture, CQRS, DevOps, K8s, GitOps, DevEx 등)는 자연스럽게 병기.
+2. 영역 분리 선호:
+   - '개발자 경험 & 엔지니어링 거버넌스(DevEx & Harness)'의 독립적 가치 인정.
+   - 채용 공고(JD)의 4대 핵심 직무(백엔드, DevOps, Windows 데스크톱, 모바일) 직결성 중시.
+3. 기술 범위 조정: Flutter 관련 내용은 전략적으로 완전 제외하고, 모바일 영역은 Lithium 중심의 BLE 하드웨어 연동 및 통신 최적화에 집중.
+4. 청킹(Chunking) 원칙: 한 영역당 1~2개의 핵심 프로젝트로 압축하여 채용 담당자의 인지 부하 최소화 및 시각적 대칭감 확보.
 ```
 
 ```mermaid
 graph TD
     Root[이력서 김예건 메인]
 
-    D1[01 백엔드 및 분산 시스템]
-    D2[02 클라우드 인프라 및 GitOps]
-    D3[03 데스크톱 및 디바이스 연동]
-    D4[04 모바일 및 크로스플랫폼 앱]
+    D1[01 백엔드 서비스 플랫폼]
+    D2[02 클러스터 인프라 플랫폼]
+    D3[03 개발자 경험 및 엔지니어링 거버넌스]
+    D4[04 데스크톱 및 하드웨어 연동 제품]
+    D5[05 모바일 및 무선 디바이스 앱]
 
     Root --> D1
     Root --> D2
     Root --> D3
     Root --> D4
+    Root --> D5
 
     subgraph 도메인 1 백엔드 상세
         D1 --> P1_1[Monolith 전사 통합 백엔드 플랫폼]
         D1 --> P1_2[NemonicStudy 마이크로서비스 백엔드]
-        D1 --> P1_3[Peony 이벤트 주도 CQRS 백엔드]
     end
 
     subgraph 도메인 2 인프라 상세
         D2 --> P2_1[Argon 듀얼 사이트 K8s GitOps]
-        D2 --> P2_2[Ceph 및 Rook 100TB급 분산 스토리지]
-        D2 --> P2_3[전사 CI CD 가속 및 관측성 파이프라인]
+        D2 --> P2_2[Ceph 및 Rook 100TB 분산 스토리지]
     end
 
-    subgraph 도메인 3 데스크톱 상세
-        D3 --> P3_1[nemonic Desktop 윈도우 통합 클라이언트]
-        D3 --> P3_2[Device SDK 저수준 USB BLE 프로토콜]
-        D3 --> P3_3[양산 펌웨어 검증 테스트 자동화 도구]
+    subgraph 도메인 3 DevEx 거버넌스 상세
+        D3 --> P3_1[GitHub Actions 전사 빌드 70퍼센트 가속]
+        D3 --> P3_2[Garden Harness AI 에이전트 거버넌스]
     end
 
-    subgraph 도메인 4 모바일 상세
-        D4 --> P4_1[Lithium 라벨 프린터 모바일 앱 및 BLE]
-        D4 --> P4_2[Flutter 크로스플랫폼 이미지 렌더링 SDK]
+    subgraph 도메인 4 데스크톱 상세
+        D4 --> P4_1[nemonic Desktop 윈도우 통합 엔진]
+        D4 --> P4_2[Device SDK 저수준 USB BLE 프로토콜]
+    end
+
+    subgraph 도메인 5 모바일 상세
+        D5 --> P5_1[Lithium 컬러 라벨 모바일 앱 및 BLE]
     end
 ```
 
 ---
 
-## 3. 노션 페이지 계층 구조 (폴더 트리 모델 상세 정의)
+## 3. 노션 페이지 계층 구조 3대 고도화 베리에이션
+
+### [베리에이션 1] 5대 플랫폼 & 프로덕트 축 (DevEx & AI 에이전트 하네스 독립형)
+> **특징**: `개발자 경험 & 엔지니어링 거버넌스(DevEx & Harness)`를 당당히 독립 영역으로 격상하여 테크 리드/아키텍트급 역량을 부각하고, 모바일은 Flutter를 배제하고 Lithium의 BLE 하드웨어 연동으로 집중한 완성형 모델.
 
 ```text
-📄 이력서 — 김예건 (Master Root Hub)
-│  ├─ 1. Core Profile & Contact (포지션: .NET 백엔드 & 분산 시스템 엔지니어)
-│  ├─ 2. Key Contributions Summary (10,000+ Contributions, 연간 개발 밀도)
-│  ├─ 3. Career Timeline (망고슬래브 9년 총괄 타임라인 & 역할 진화)
-│  └─ 4. Domain Navigation Hub (아래 4대 도메인 영역 허브 링크)
+├── 📁 01. 백엔드 서비스 플랫폼 (.NET 9, Clean Architecture, CQRS)
+│   ├── 📄 [Monolith] 전사 통합 .NET 9 백엔드 모노레포 & API Gateway
+│   └── 📄 [NemonicStudy/Peony] 비동기 잡 큐 & 이벤트 주도 CQRS 분산 백엔드
 │
-├── 📁 01. 백엔드 & 분산 시스템 (.NET Core & Distributed Systems)
-│   │   ├─ [Hub Overview] Clean Architecture, CQRS, 이벤트 기반 비동기 메시징, 전사 API Gateway
-│   │   ├─ [Key Metrics] 초당 트랜잭션 처리, API 응답 속도 최적화, SaaS 연동 안정성 99.9%
-│   │   └─ [Tech Stack] C#, .NET 9, ASP.NET Core, PostgreSQL, Redis, RabbitMQ, EF Core
-│   │
-│   ├── 📄 [Monolith] 전사 통합 백엔드 플랫폼 (.NET 9 모노레포)
-│   │     ├─ 포괄: Monolith, Oxygen.Hub, Teams, Slack, Zapier, Web, Amplitude, Radium (14개 레포)
-│   │     └─ 내용: VSA 기반 모듈 모노레포 구축, SaaS 양방향 웹훅 파이프라인, 전사 공통 SDK
-│   ├── 📄 [NemonicStudy] AI 스터디 서비스 마이크로서비스 백엔드
-│   │     ├─ 포괄: NemonicStudy, BFF API, OCR Service, AI Summary Service, NemonicAi (6개 레포)
-│   │     └─ 내용: 비동기 OCR/요약 잡 큐, LLM 기반 문제 분석 파이프라인, BFF 최적화
-│   └── 📄 [Peony] 이벤트 주도 가계부 CQRS 분산 백엔드 (개인 프로젝트)
-│         ├─ 포괄: Peony, Garden.Cluster, Mangoslab.Infrastructure (공용 기반)
-│         └─ 내용: RabbitMQ 비동기 이벤트 버스, Outbox 패턴, Rich Domain Model 불변식 보호
+├── 📁 02. 클러스터 인프라 플랫폼 (K8s, GitOps, On-Premise, Ceph)
+│   ├── 📄 [Argon] 베어메탈 K8s 클러스터 구축 & Dual-Site 재해복구(DR) GitOps
+│   └── 📄 [Ceph & Rook] 100TB급 고가용성 분산 블록/오브젝트 스토리지
 │
-├── 📁 02. 클라우드 인프라 & GitOps (Cloud Infrastructure & DevOps)
-│   │   ├─ [Hub Overview] On-Premise 베어메탈 K8s, Dual-Site 재해복구(DR), Ceph 스토리지, Flux GitOps
-│   │   ├─ [Key Metrics] 온프레미스 인프라 비용 연 4,000만원 절감, DR 복구 RTO 5분 이내
-│   │   └─ [Tech Stack] Kubernetes, Flux CD, Rook-Ceph, Keycloak, GitHub Actions, Docker
-│   │
-│   ├── 📄 [Argon] On-Premise 듀얼 사이트 K8s 클러스터 구축 & DR GitOps
-│   │     ├─ 포괄: argon, kc5, kc6, Mangoslab.IaC (4개 레포)
-│   │     └─ 내용: Active/Fenced Standby 구조, BGP Anycast 기반 트래픽 페일오버, Flux v2 GitOps
-│   ├── 📄 [Ceph & Rook] 100TB급 분산 블록/파일 스토리지 고가용성 운영
-│   │     ├─ 포괄: Rook-Ceph Cluster, CSI Block/CephFS, NVMe 분산 풀
-│   │     └─ 내용: 스토리지 노드 장애 자동 복구, OSD 리밸런싱 무중단 튜닝, 백업 자동화
-│   └── 📄 [CI/CD & Observability] 전사 빌드 가속 & 관측성 파이프라인
-│         ├─ 포괄: Mangoslab.Pipeline, GitHub Actions Self-Hosted Runners, Seq, Prometheus
-│         └─ 내용: 빌드 소요 시간 70% 단축(캐시 최적화), 분산 트레이싱 및 중앙 로그 수집
+├── 📁 03. 개발자 경험 & 엔지니어링 거버넌스 (DevEx, CI/CD, Agent Harness)
+│   ├── 📄 [CI/CD 가속] GitHub Actions 러너 최적화 (전사 빌드 70% 단축)
+│   └── 📄 [Garden.Harness] AI 코딩 에이전트 거버넌스 & Single Source of Truth 체계
 │
-├── 📁 03. 데스크톱 & 하드웨어 디바이스 연동 (Desktop & Hardware Control)
-│   │   ├─ [Hub Overview] Windows C# 데스크톱 엔진, GDI+ 그래픽 가속, USB/BLE 통신 프로토콜, 펌웨어 제어
-│   │   ├─ [Key Metrics] 8년간 글로벌 50만 대 누적 기기 제어, GDI 핸들 누수 0건 달성
-│   │   └─ [Tech Stack] C#, .NET 9, WPF, WinForms, GDI+, P/Invoke, WinUSB, Bluetooth LE
-│   │
-│   ├── 📄 [nemonic Desktop] Windows 스마트 메모 프린터 통합 클라이언트
-│   │     ├─ 포괄: NemonicBasicWindows, NemonicLabelWindows, Nemonic.Ampv, MemoView (4개 레포)
-│   │     └─ 내용: 8년 롱텀 수명주기 관리, 비동기 인쇄 렌더링 큐, 레거시 .NET 9 현대화
-│   ├── 📄 [Device SDK & Protocols] USB/Bluetooth 통합 드라이버 라이브러리
-│   │     ├─ 포괄: Mangoslab.Usb, Mangoslab.Bluetooth, Mangoslab.Nemonic (3개 레포)
-│   │     └─ 내용: OS 독립형 패킷 프로토콜 추상화, 저수준 버퍼 제어, 기기 상태머신 가상화
-│   └── 📄 [Manufacturing & QA] 펌웨어 검증 및 양산 라인 테스트 자동화 유틸리티
-│         ├─ 포괄: Firmware, Firmware.TestUtility, MIP-301-Centerm-FW-Test (3개 레포)
-│         └─ 내용: 제조 공장 양산 지그(Jig) 연동 펌웨어 플래싱, 센서/모터 자동화 품질 검증
+├── 📁 04. 하드웨어 연동 데스크톱 제품 (Windows, WPF, Win32, 하드웨어 제어)
+│   ├── 📄 [nemonic Desktop] Windows 스마트 메모 프린터 클라이언트 (8년 라이프사이클)
+│   └── 📄 [Device SDK] 저수준 USB/Bluetooth 통합 프로토콜 드라이버 라이브러리
 │
-└── 📁 04. 모바일 & 크로스플랫폼 앱 (Mobile & Cross-Platform Apps)
-    │   ├─ [Hub Overview] BLE 실시간 데이터 스트리밍, Flutter/Xamarin 크로스플랫폼, 모바일 하드웨어 연동
-    │   ├─ [Key Metrics] BLE 전송 패킷 유실률 0.01% 미만, 크로스플랫폼 렌더링 엔진 통일
-    │   └─ [Tech Stack] Dart, Flutter, Android (Kotlin/Java), iOS (Swift), CoreBluetooth, BLE GATT
-    │
-    ├── 📄 [Lithium] FINECUBE 컬러 라벨 모바일 앱 마이그레이션 & BLE 최적화
-    │     ├─ 포괄: Lithium, Sulfur, Mangoslab.Drawing (3개 레포)
-    │     └─ 내용: 실시간 캔버스 드로잉 엔진, Android TargetSdk 34 마이그레이션, BLE 동기화 경합 해소
-    └── 📄 [Flutter & SDK] 스마트 프린터 크로스플랫폼 이미지 렌더링 SDK
-          ├─ 포괄: Nemonic.Sdk.Image.Flutter, 1세대 모바일 드라이버 (NemonicBasicAndroid/iOS)
-          └─ 내용: Flutter 네이티브 브릿지, 2색/3색 디더링(Floyd-Steinberg) 모바일 고속 변환
+└── 📁 05. 모바일 & 무선 디바이스 앱 (Android, iOS, BLE)
+    └── 📄 [Lithium] FINECUBE 컬러 라벨 모바일 앱 & BLE 실시간 스트리밍
+```
+
+---
+
+### [베리에이션 2] 4대 채용 직무(JD) 1:1 직결형 (2-2-2-1 클래식 직무 모델)
+> **특징**: 국내외 테크 기업의 4대 채용 공고 포지션(백엔드, DevOps/인프라, Windows 데스크톱, 모바일)에 1:1로 정확하게 일치시켜 리크루터와 헤드헌터의 검색 최적화에 맞춘 모델.
+
+```text
+├── 📁 01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, DDD, CQRS)
+│   ├── 📄 [전사 백엔드] 대규모 트랜잭션 처리 및 전사 통합 모듈 모노레포 (.NET 9)
+│   └── 📄 [분산 메시징] RabbitMQ & Outbox 패턴 기반 이벤트 주도 마이크로서비스
+│
+├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph)
+│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s 구축 & 재해복구(DR) 체계 (Argon)
+│   └── 📄 [인프라 & CI/CD] 100TB급 Ceph 분산 스토리지 & 전사 빌드 가속화(70% 단축)
+│
+├── 📁 03. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)
+│   ├── 📄 [데스크톱 클라이언트] 50만 대 누적 기기 제어 및 레거시 .NET 9 현대화
+│   └── 📄 [디바이스 드라이버] OS 독립형 USB / Bluetooth LE 통신 프로토콜 설계
+│
+└── 📁 04. 모바일 & BLE 디바이스 연동 (Android, iOS, BLE)
+    └── 📄 [하드웨어 연동 모바일 앱] FINECUBE 컬러 라벨 앱 & BLE 무손실 패킷 스트리밍 (Lithium)
+```
+
+---
+
+### [베리에이션 3] 4대 플랫폼 & 프로덕트 축 (DevEx 독립 + 클라이언트/디바이스 단일화 / 2-2-2-2 완벽 대칭)
+> **특징**: 데스크톱과 모바일을 `클라이언트 & 하드웨어 연동 제품`으로 묶어, `DevEx & 거버넌스`를 독립 영역으로 유지하면서도 4개 폴더 구조의 완벽한 2-2-2-2 균형을 달성한 구조.
+
+```text
+├── 📁 01. 백엔드 서비스 플랫폼 (.NET 9, Clean Architecture, CQRS)
+│   ├── 📄 [전사 백엔드] 전사 통합 .NET 9 백엔드 모노레포 & API Gateway (Monolith)
+│   └── 📄 [분산 메시징] 비동기 잡 큐 & 이벤트 주도 CQRS 분산 백엔드 (NemonicStudy/Peony)
+│
+├── 📁 02. 클러스터 인프라 플랫폼 (K8s, GitOps, On-Premise, Ceph)
+│   ├── 📄 [K8s GitOps] 베어메탈 K8s 듀얼 사이트 구축 & 재해복구(DR) (Argon)
+│   └── 📄 [분산 스토리지] 100TB급 고가용성 Ceph 스토리지 & 무중단 리밸런싱
+│
+├── 📁 03. 개발자 경험 & 엔지니어링 거버넌스 (DevEx, CI/CD, Agent Harness)
+│   ├── 📄 [CI/CD 가속] GitHub Actions 러너 최적화 (전사 빌드 70% 단축)
+│   └── 📄 [Garden.Harness] AI 코딩 에이전트 거버넌스 & Single Source of Truth 체계
+│
+└── 📁 04. 클라이언트 & 하드웨어 연동 제품 (Windows, Mobile, USB/BLE)
+    ├── 📄 [데스크톱 클라이언트] Windows 스마트 메모 프린터 엔진 (nemonic Desktop / .NET 9)
+    └── 📄 [디바이스 연동 앱] 저수준 USB/Bluetooth 통합 SDK & 컬러 라벨 모바일 앱 (Lithium)
 ```
 
 ---
@@ -151,23 +161,23 @@ graph TD
 
 ---
 
-## 5. 41개 Git 저장소의 4대 도메인 1:1 수렴 매핑표
+## 5. 41개 Git 저장소의 4대/5대 도메인 1:1 수렴 매핑표
 
 | 도메인 계층 | 포괄 저장소 목록 (총 41개) | 대표 상위 프로젝트 (TO-BE) |
 | :--- | :--- | :--- |
-| **01. 백엔드 & 분산 시스템** (17개) | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi`, `Peony` | 1. 전사 통합 백엔드 플랫폼 (Monolith)<br>2. AI 스터디 마이크로서비스 (NemonicStudy)<br>3. 이벤트 주도 CQRS 백엔드 (Peony) |
-| **02. 클라우드 인프라 & GitOps** (7개) | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `Mangoslab.Pipeline`, `History`, `Garden.Cluster` | 1. 듀얼 사이트 K8s GitOps (Argon)<br>2. Rook-Ceph 분산 고가용 스토리지<br>3. 전사 CI/CD 및 관측성 파이프라인 |
-| **03. 데스크톱 & 디바이스 연동** (11개) | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test`, `Mangoslab.Infrastructure` | 1. nemonic Desktop 통합 클라이언트<br>2. Device SDK 및 저수준 통신 프로토콜<br>3. 양산 펌웨어 검증 테스트 자동화 도구 |
-| **04. 모바일 & 크로스플랫폼 앱** (6개) | `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `Nemonic.Sdk.Image.Flutter`, `NemonicBasicAndroid`, `NemonicBasiciOS` | 1. FINECUBE 컬러 라벨 모바일 앱 (Lithium)<br>2. 크로스플랫폼 이미지 렌더링 SDK (Flutter) |
+| **01. 백엔드 서비스 플랫폼** (17개) | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi`, `Peony` | 1. 전사 통합 백엔드 플랫폼 (Monolith)<br>2. 비동기 잡 큐 & 이벤트 주도 CQRS 분산 백엔드 (NemonicStudy/Peony) |
+| **02. 클러스터 인프라 플랫폼** (6개) | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `History`, `Garden.Cluster` | 1. 듀얼 사이트 K8s GitOps (Argon)<br>2. Rook-Ceph 분산 고가용 스토리지 |
+| **03. 개발자 경험 & 거버넌스** (2개) | `Mangoslab.Pipeline`, `Garden.Harness` | 1. GitHub Actions 러너 최적화 (빌드 70% 가속)<br>2. AI 코딩 에이전트 하네스 & SoT 체계 |
+| **04. 데스크톱 & 디바이스 연동** (12개) | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test`, `Mangoslab.Infrastructure`, `Nemonic.Sdk.Image.Flutter` (공용 이미지 코어) | 1. nemonic Desktop 통합 클라이언트<br>2. Device SDK 및 저수준 통신 프로토콜 라이브러리 |
+| **05. 모바일 & 무선 디바이스 앱** (4개) | `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `NemonicBasicAndroid`, `NemonicBasiciOS` (1세대 모바일 이력) | 1. FINECUBE 컬러 라벨 모바일 앱 & BLE 실시간 스트리밍 (Lithium) |
 
 ---
 
 ## 6. 기대 효과 및 채용 경쟁력
 
 1. **채용 담당자 스캔 경험 혁신**:
-   - 노션 사이드바를 열었을 때 복잡한 코드명 대신 **`01. 백엔드`, `02. 인프라`, `03. 데스크톱`, `04. 모바일`**로 정돈되어, 지원자의 전문 역량이 한눈에 들어옴.
-2. **풀스택 & 플랫폼 아키텍트로서의 입체감 부여**:
-   - 백엔드 지원 시에는 `01. 백엔드`와 `02. 인프라`의 연계를 통해 "인프라까지 이해하는 백엔드 리드"로 포지셔닝 가능.
-   - 플랫폼/인프라 지원 시에는 `02. 인프라`와 `03. 데스크톱/디바이스`를 통해 "하드웨어부터 분산 클라우드까지 연결하는 아키텍트"로 소구력 확보.
+   - 노션 사이드바를 열었을 때 복잡한 코드명 대신 **`01. 백엔드`, `02. 인프라`, `03. DevEx`, `04. 데스크톱`, `05. 모바일`**로 정돈되어, 지원자의 전문 역량이 한눈에 들어옴.
+2. **시니어 & 테크 리드급 차별화**:
+   - 단순 구현에 머무르지 않고 전사 빌드 70% 단축 및 AI 코딩 에이전트 하네스를 구축한 `DevEx & 엔지니어링 거버넌스`가 독립 영역으로 조명받아 리드급 엔지니어의 면모 부각.
 3. **SoT 문서 거버넌스 유지**:
-   - 본 설계서를 로컬 Git(`resume/`)에 버전 관리하고, 향후 노션 페이지 레이아웃 개편 시 단방향 배포 기준으로 활용.
+   - 본 설계서를 로컬 Git(`resume/`)에 영구 버전 관리하고, 향후 노션 페이지 레이아웃 개편 시 단방향 배포 기준으로 활용.
