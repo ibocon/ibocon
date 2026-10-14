@@ -10,9 +10,9 @@
 
 ## 적용 범위
 
-- **기본 적용**: `resume/**/*.md` 내 모든 이력서, 포트폴리오, 프로젝트 기술서 및 전략 문서.
+- **기본 적용**: `resume/**/*.md` 및 `docs/portfolio/**/*.md` 내 모든 이력서, 포트폴리오, 프로젝트 기술서 및 전략 문서.
 - **연동 대상**: Notion 배포 뷰어([📄 이력서 — 김예건](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d)) 상위 폴더 및 하위 상세 페이지.
-- **예외**: 서드파티 벤치마킹 분석 원문 자료 사본(`resume/notion-resume-references.md`).
+- **예외**: 서드파티 벤치마킹 분석 원문 자료 사본(`docs/portfolio/strategy/notion-resume-references.md`).
 
 ## 규칙
 

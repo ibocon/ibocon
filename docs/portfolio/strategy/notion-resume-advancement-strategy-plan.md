@@ -211,11 +211,11 @@ TO-BE:
 ## 📑 41개 저장소별 기술 이력 계획서 목록 (시간순)
 | 번호 | 저장소명 | 활동 기간 | 커밋/PR | 매칭 Notion 상세 페이지 | 개별 계획서 링크 |
 | :---: | --- | :---: | :---: | --- | :---: |
-| 01 | NemonicBasicWindows | 2017-10 ~ 2022-08 | C: 107 / PR: 1 | 🖨️ nemonic Desktop | [바로가기](./repo-01-nemonic-basic-windows.md) |
-| 07 | Lithium | 2021-11 ~ 2025-07 | C: 10 / PR: 7 | 🏷️ Lithium | [바로가기](./repo-07-lithium.md) |
-| 16 | Mangoslab.IaC | 2022-06 ~ 2025-01 | C: 100 / PR: 66 | ☸️ Argon | [바로가기](./repo-16-mangoslab-iac.md) |
-| 33 | Monolith | 2026-01 ~ 현재 | C: 132 / PR: 70 | 🧱 Monolith | [바로가기](./repo-33-monolith.md) |
-| 38 | argon | 2026-05 ~ 2026-07 | C: 107 / PR: 17 | ☸️ Argon | [바로가기](./repo-38-argon.md) |
+| 01 | NemonicBasicWindows | 2017-10 ~ 2022-08 | C: 107 / PR: 1 | 🖨️ nemonic Desktop | [바로가기](../reports/repo-01-nemonic-basic-windows.md) |
+| 07 | Lithium | 2021-11 ~ 2025-07 | C: 10 / PR: 7 | 🏷️ Lithium | [바로가기](../reports/repo-07-lithium.md) |
+| 16 | Mangoslab.IaC | 2022-06 ~ 2025-01 | C: 100 / PR: 66 | ☸️ Argon | [바로가기](../reports/repo-16-mangoslab-iac.md) |
+| 33 | Monolith | 2026-01 ~ 현재 | C: 132 / PR: 70 | 🧱 Monolith | [바로가기](../reports/repo-33-monolith.md) |
+| 38 | argon | 2026-05 ~ 2026-07 | C: 107 / PR: 17 | ☸️ Argon | [바로가기](../reports/repo-38-argon.md) |
 ```
 
 ---
