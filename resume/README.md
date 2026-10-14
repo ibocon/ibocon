@@ -33,7 +33,8 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | **노션 이력서 10대 레퍼런스 심층 분석 기반 고도화 계획** | [`notion-resume-advancement-strategy-plan.md`](./notion-resume-advancement-strategy-plan.md) | 조은, 김용찬, 이지호 등 10대 레퍼런스 분석 및 AS-IS/TO-BE 구체화 계획서 | **완료 (`✅`)** |
 | **개발자 노션(Notion) 이력서 레퍼런스 10선 및 벤치마킹 분석서** | [`notion-resume-references.md`](./notion-resume-references.md) | 10인의 실제 공개 Notion 이력서 링크 및 벤치마킹 분석 데이터베이스 | **완료 (`✅`)** |
 | **GitHub 프로필(@ibocon) 고도화 및 이력 관리 체계 계획** | [`github-profile-plan.md`](./github-profile-plan.md) | `ibocon/ibocon` 프로필 README 배포 및 1만 커밋 시각화 파이프라인 계획서 | **완료 (`✅`)** |
-| **채용 담당자 최적화 및 세부 전략 시리즈 (5종)** | `Plan_Strategy_*.md` | 국내 리쿠르터 시선 고정, 비공개 저장소 증명, Pinned Gist 등 전략 보고서 | **완료 (`✅`)** |
+| **채용 담당자 최적화 및 세부 전략 시리즈 (6종)** | `Plan_Strategy_*.md` | 국내 리쿠르터 시선 고정, 비공개 저장소 증명, Pinned Gist, 도메인 계층 구조(폴더 트리) 등 전략 보고서 | **완료 (`✅`)** |
+| **전략 5 — 노션 이력서 도메인별 계층 구조 (폴더 트리 모델) 설계서** | [`Plan_Strategy_05_Notion_Domain_Hierarchy_Architecture.md`](./Plan_Strategy_05_Notion_Domain_Hierarchy_Architecture.md) | 사내 프로젝트명 중심 구조를 4대 직무 도메인(백엔드/인프라/데스크톱/모바일) 폴더 트리로 개편하는 아키텍처 설계서 | **완료 (`✅`)** |
 
 ---
 
