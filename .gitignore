@@ -1,0 +1,30 @@
+# #region GardenHarness/gitignore
+# This region is managed by Garden.Harness.
+# Source of truth: lib/Garden.Harness/src/git/gitignore/shared.gitignore
+# Edits inside this region are overwritten on sync. Add repo-specific
+# patterns OUTSIDE the markers.
+
+# 26.02.26 [예건] Opencode
+.sisyphus/
+
+# 26.02.28 [예건] js 디버깅 파일 제거
+*.js.map
+*.css.map
+
+# 26.03.05 [Codex] JetBrains IDE 설정 폴더 제외
+.idea/
+
+# 26.05.11 [Claude] Playwright MCP runtime artifacts (page snapshots, traces, videos)
+.playwright-mcp/
+
+# 26.05.16 [Claude] C# Dev Kit Language Server cache (auto-generated next to .csproj)
+*.csproj.lscache
+
+# Repository-local workflow and verification artifacts
+.artifacts/
+
+# Local dotenv secrets and generated backup copies
+.env
+.env.*
+!.env.example
+# #endregion GardenHarness/gitignore

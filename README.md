@@ -47,21 +47,27 @@
 
 ## 🚀 주요 엔지니어링 프로젝트 (Key Projects)
 
-| 프로젝트 | 시스템 역할 및 성격 | 핵심 아키텍처 및 기술적 기여 |
-| :--- | :--- | :--- |
-| **Monolith** | 핵심 데스크톱 및 백엔드 통합 솔루션 플랫폼 | Clean Architecture 수립, 빌드 가속 최적화, xUnit 기반 TDD |
-| **Peony** | 이벤트 기반 백엔드 및 도메인 모델 고도화 | CQRS 구조 적용, RabbitMQ 비동기 메시징, 도메인 행위 집중화 |
-| **Garden.Cluster** | 사내 GitOps 및 쿠버네티스 오케스트레이션 | Flux 기반 GitOps 파이프라인 구축 및 컨테이너 관측성 확보 |
+| 프로젝트 | 세부 기술서 | 시스템 역할 및 성격 | 핵심 아키텍처 및 기술적 기여 |
+| :--- | :---: | :--- | :--- |
+| **Monolith** | [상세 기술서](./resume/Project_Monolith.md) | 핵심 데스크톱 및 백엔드 통합 솔루션 플랫폼 | Clean Architecture 수립, 빌드 가속 최적화, xUnit 기반 TDD |
+| **Peony** | [상세 기술서](./resume/Project_Personal_Peony.md) | 이벤트 기반 백엔드 및 도메인 모델 고도화 | CQRS 구조 적용, RabbitMQ 비동기 메시징, 도메인 행위 집중화 |
+| **Argon** | [상세 기술서](./resume/Project_Argon.md) | On-Premise K8s 이중 사이트 GitOps | 4대 플랫폼 평면, Rook-Ceph, Keycloak DR, Flux GitOps |
+| **nemonic Desktop** | [상세 기술서](./resume/Project_Nemonic_Desktop.md) | Windows 스마트 메모 프린터 클라이언트 | 8년 라이프사이클 관리, GDI 누수 진단 및 .NET 9 현대화 |
+| **Lithium** | [상세 기술서](./resume/Project_Lithium.md) | FINECUBE 컬러 라벨 모바일 앱 | BLE 동기화 경합 해소, targetSdk 34 마이그레이션 |
+
+> 📄 **전체 이력서 원본 (SoT)**: [김예건 마스터 이력서 (Resume_김예건.md)](./resume/Resume_김예건.md)  
+> 🗂️ **41개 저장소별 기술 보고서**: [41개 레포지토리 종합 색인 (resume/README.md)](./resume/README.md)  
+> 🌐 **공식 Notion 배포 뷰어**: [Notion 이력서 웹 링크](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d)
 
 ---
 
 ## 📝 최근 기술 블로그 포스트 (Recent Blog Posts)
 <!-- BLOG-POST-LIST:START -->
 - [[.NET] 레퍼런스 프로젝트 리스트](https://ibocon.tistory.com/278)
-- [건축주를 위한 건축 토막 상식 - 현장에서 콘크리트의 품질을 확인하는 방법](https://ibocon.tistory.com/273)
-- [건축주를 위한 건축 토막 상식 - 신재생에너지 설비](https://ibocon.tistory.com/272)
 - [[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축](https://ibocon.tistory.com/271)
 - [[Blazor] Sass 를 적용하는 방법](https://ibocon.tistory.com/270)
+- [[FE] webpack 에서 Source Map 이 동작하는 원리](https://ibocon.tistory.com/269)
+- [[FE] Web API - WebSocket API](https://ibocon.tistory.com/268)
 <!-- BLOG-POST-LIST:END -->
 
 ---

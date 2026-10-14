@@ -6,15 +6,62 @@ on:
 
 jobs:
   update-readme-with-blog:
-    name: Update this repo's README with latest blog posts
+    name: Update this repo's README with latest tech blog posts
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Pull in posts
-        uses: gautamkrishnar/blog-post-workflow@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          feed_list: "https://ibocon.tistory.com/rss"
-          max_post_count: 5
-          user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-          accept_header: "text/xml, application/xml, */*"
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Update Blog Posts
+        run: |
+          python -c "
+          import feedparser, re
+
+          feed = feedparser.parse('https://ibocon.tistory.com/rss')
+          tech_posts = []
+          exclude_keywords = ['건축', '단독주택', '콘크리트', '신재생에너지']
+
+          for entry in feed.entries:
+              title = entry.title
+              categories = [tag.term for tag in getattr(entry, 'tags', [])]
+              combined_text = title + ' ' + ' '.join(categories)
+
+              if any(k in combined_text for k in exclude_keywords):
+                  continue
+
+              tech_posts.append(f'- [{title}]({entry.link})')
+              if len(tech_posts) == 5:
+                  break
+
+          new_content = '\n'.join(tech_posts)
+
+          with open('README.md', 'r', encoding='utf-8') as f:
+              readme = f.read()
+
+          pattern = r'(<!-- BLOG-POST-LIST:START -->)[\s\S]*?(<!-- BLOG-POST-LIST:END -->)'
+          replacement = f'\g<1>\n{new_content}\n\g<2>'
+          updated_readme = re.sub(pattern, replacement, readme)
+
+          with open('README.md', 'w', encoding='utf-8') as f:
+              f.write(updated_readme)
+          "
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          if ! git diff --staged --quiet; then
+            git commit -m 'docs: update latest tech blog posts (filtered non-tech)'
+            git push
+          fi
