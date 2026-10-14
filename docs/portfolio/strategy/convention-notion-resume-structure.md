@@ -1,6 +1,6 @@
 # 노션 이력서 정보 구조 및 작성 규약
 
-> 본 문서의 **MUST / MUST NOT / SHOULD / SHOULD NOT / MAY** 키워드는 [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174)를 따른다. 작성 규약은 [`lib/Garden.Harness/src/convention/core/convention-authoring.md`](../lib/Garden.Harness/src/convention/core/convention-authoring.md)를 참조한다.
+> 본 문서의 **MUST / MUST NOT / SHOULD / SHOULD NOT / MAY** 키워드는 [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174)를 따른다. 작성 규약은 [`lib/Garden.Harness/src/convention/core/convention-authoring.md`](../../../lib/Garden.Harness/src/convention/core/convention-authoring.md)를 참조한다.
 
 ## 목적
 
@@ -87,6 +87,6 @@
 
 ## 참고 자료
 
-- [하네스 컨벤션 문서 작성 가이드](../../lib/Garden.Harness/src/convention/core/convention-authoring.md)
+- [하네스 컨벤션 문서 작성 가이드](../../../lib/Garden.Harness/src/convention/core/convention-authoring.md)
 - [노션 도메인별 계층 구조 설계서 (전략 5)](./plan-strategy-05-notion-domain-hierarchy-architecture.md)
 - [국내 채용 담당자 관점 최적화 계획](./plan-domestic-recruiter-optimization.md)
