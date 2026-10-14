@@ -155,9 +155,9 @@ TO-BE:
 - **엔지니어링 접근**:
   - Vertical Slice Architecture 및 Result 패턴 도입으로 비즈니스 로직 격리
   - 도메인별 공용 로직을 10개 독립 패키지(Garden.*)로 모듈화하여 재사용성 확보
-- **측정 가능한 성과**:
-  - 도메인 모듈 간 결합도 60% 감소 및 빌드·배포 파이프라인 속도 45% 단축
-  - 패키지 재사용을 통해 신규 서비스 셋업 기간을 3주에서 3일로 단축
+- **구조적 성과 (사실 기반)**:
+  - 9개 도메인 마이크로서비스와 BFF 게이트웨이를 단일 코드베이스에서 독립 배포 가능하도록 분리
+  - 사내 Monolith 프로젝트에 공용 패키지(Garden.Share, Garden.Razor, Garden.Harness 등)를 이식하여 재사용 검증
 
 ▶ [토글 펼치기] Garden 공용 패키지 세부 내역 (Usb, Bluetooth, Maui, Aspire, Razor, Analyzers 등)
 ```

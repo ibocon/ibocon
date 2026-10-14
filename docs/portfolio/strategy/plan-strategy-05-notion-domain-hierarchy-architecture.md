@@ -25,7 +25,7 @@
 2. 하위 페이지 명명 규약 (Role-First Title Rule)
    - 하위 페이지 역시 프로젝트명 단독 표기(예: 'Monolith')를 금지.
    - 반드시 '[직무/기술 역할] — 핵심 성과 및 스택 (프로젝트명)' 형식으로 작성.
-   - 예: '[전사 백엔드] 대규모 트랜잭션 및 전사 통합 모듈 모노레포 (.NET 9 / Monolith)'
+   - 예: '[전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)'
 3. Peony와 Garden 생태계의 도메인별 프로젝트 단위 분산
    - Peony는 단순 백엔드가 아니라 백엔드 마이크로서비스 9종, .NET MAUI 모바일 앱, K8s 인프라, 디자인 시스템, AI 하네스가 망라된 복합 생태계임.
    - Peony를 백엔드 단일 페이지로 축소하지 않고, 각 도메인 레이어에서 '독립 프로젝트 단위'로 분리 서술.
@@ -33,6 +33,9 @@
    - 오픈소스 디자인 도구 Penpot과 C# Blazor/Razor 컴포넌트 라이브러리(Garden.Razor), 컴포넌트 갤러리를 연동한 디자인 시스템 구축 실적을 독립 도메인/프로젝트로 명시.
 5. 비선호 기술(Flutter) 완전 제외
    - 모바일은 Lithium 중심의 무선 하드웨어 연동 및 BLE 패킷 최적화에 집중.
+6. 과장 표현 배제 및 실증적 근거 중심 서술 (Fact-Only)
+   - 근거가 확인되지 않은 정량 수치(예: '글로벌 50만 대 제어', 실측 근거 없는 용량·트래픽 수식어 등)는 이력서 전체의 신뢰성을 급격히 하락시키므로 엄격히 배제.
+   - 코드, 커밋, 아키텍처 설계서로 즉시 검증 가능한 사실(예: 'WYSIWYG 인쇄 엔진 & .NET 9 현대화', '8년 수명주기 관리')만 기재.
 ```
 
 ### 2.1 절대 금지 안티패턴(Anti-Pattern) 및 폐기 사유 기록 (재발 방지)
@@ -43,6 +46,7 @@
 | :--- | :--- | :--- |
 | **⛔ 안티패턴 A**<br>`5대 프로젝트 단위 최상위 폴더 모델` | 최상위 폴더를 `[Monolith]`, `[Argon]`, `[Peony]` 등 사내 프로젝트 단위로 구성하고 하위에 도메인 기술 | **1. 채용 담당자의 인지 장벽 극대화**: 외부 리크루터나 테크 리드는 지원자의 사내 코드명에 대한 배경지식이 전무하여 암호처럼 느껴짐.<br>**2. 10초 스캔 실패**: 채용 담당자가 찾는 것은 "백엔드 개발자인가? 인프라 엔지니어인가?"이지 프로젝트명이 아님.<br>**3. JD 매칭 불가능**: 채용 공고의 자격 요건 키워드와 최상위 폴더가 매칭되지 않아 1차 서류 탈락 위험 초래. |
 | **⛔ 안티패턴 B**<br>`회사 vs 자체 플랫폼 2대 축 분리형` | 최상위 폴더를 `01. 엔터프라이즈(MANGOSLAB)`와 `02. 자체 플랫폼(BotanicSoft)`으로 양분 | **1. 지원자 중심의 편의적 분류**: 공급 주체(회사/개인)를 가르는 것은 지원자 개인의 관점일 뿐, 채용 담당자의 관심사가 아님.<br>**2. 기술 전문성 파편화**: 동일한 백엔드/인프라 역량이 회사 폴더와 자체 플랫폼 폴더로 양분되어 역량의 총량이 분산되어 보임. |
+| **⛔ 안티패턴 C**<br>`근거 없는 수치 부풀리기 및 과장형 제목` | 확인된 근거 없이 `[데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)`, `전사 빌드 70% 단축`, `400개 테이블`처럼 제어 대수·성능 개선율·규모를 부풀려 표기 | **1. 이력서 전체 신뢰성 급락**: 과장된 표현이 단 하나라도 발견되면 지원자가 실제로 달성한 다른 모든 엔지니어링 성과까지 신뢰를 잃게 됨.<br>**2. 기술 면접 역검증 리스크**: 면접관이 수치 산출 근거와 실측 데이터를 질문했을 때 입증하지 못하면 치명적 결격 사유로 작용함.<br>**3. 사실 기반 원칙 위배**: 근거가 없으면 부풀리지 않고 `WYSIWYG 인쇄 엔진 & .NET 9 현대화`, `Roslyn 애널라이저 & AI 에이전트 하네스`처럼 코드와 커밋으로 검증된 사실만 기술해야 함. |
 
 ```mermaid
 graph TD
@@ -68,16 +72,16 @@ graph TD
 
     subgraph 도메인 2 인프라 상세
         D2 --> P2_1[K8s GitOps 온프레미스 듀얼 사이트 DR Argon]
-        D2 --> P2_2[분산 스토리지 100TB Rook Ceph Garden.Cluster]
+        D2 --> P2_2[분산 스토리지 하이브리드 K8s 및 Rook Ceph Garden.Cluster]
     end
 
     subgraph 도메인 3 DevEx 및 디자인 시스템 상세
         D3 --> P3_1[디자인 시스템 Penpot 토큰 동기화 Garden.Razor]
-        D3 --> P3_2[엔지니어링 거버넌스 빌드 70퍼센트 단축 및 AI 하네스]
+        D3 --> P3_2[엔지니어링 거버넌스 Roslyn 애널라이저 및 AI 하네스]
     end
 
     subgraph 도메인 4 데스크톱 상세
-        D4 --> P4_1[데스크톱 클라이언트 50만 대 제어 nemonic]
+        D4 --> P4_1[데스크톱 클라이언트 WYSIWYG 인쇄 엔진 및 NET 9 현대화 nemonic]
         D4 --> P4_2[디바이스 드라이버 USB Bluetooth 통신 SDK Mango]
     end
 
@@ -101,25 +105,25 @@ graph TD
 
 ```text
 ├── 📁 01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, CQRS)
-│   ├── 📄 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)
+│   ├── 📄 [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)
 │   ├── 📄 [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony Backend)
 │   └── 📄 [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy)
 │
 ├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph)
 │   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
-│   └── 📄 [분산 스토리지] 하이브리드 K8s & 100TB Rook-Ceph 스토리지 (Garden.Cluster)
+│   └── 📄 [분산 스토리지] 하이브리드 K8s & Rook-Ceph 스토리지 (Garden.Cluster)
 │
 ├── 📁 03. 개발자 경험(DevEx) & 웹 디자인 시스템 (Penpot, Harness, CI/CD)
 │   ├── 📄 [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)
-│   └── 📄 [엔지니어링 거버넌스] 전사 빌드 70% 단축 & AI 에이전트 하네스 (Garden.Harness)
+│   └── 📄 [엔지니어링 거버넌스] Roslyn 정적 애널라이저 & AI 에이전트 하네스 (Garden.Harness)
 │
 ├── 📁 04. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)
-│   ├── 📄 [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)
+│   ├── 📄 [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
 │   └── 📄 [디바이스 드라이버] 저수준 USB/Bluetooth 통신 프로토콜 SDK (Mango)
 │
 └── 📁 05. 모바일 & BLE 디바이스 연동 (Android, iOS, .NET MAUI, BLE)
     ├── 📄 [모바일 클라이언트] .NET MAUI Blazor Hybrid 가계부 앱 (Peony Mobile)
-    └── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)
+    └── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)
 ```
 
 ---
@@ -135,16 +139,16 @@ graph TD
 │
 ├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, Ceph, DevEx)
 │   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 DR 오케스트레이션 (Argon)
-│   ├── 📄 [분산 스토리지] 100TB급 Rook-Ceph 고가용성 운영 (Garden.Cluster)
-│   └── 📄 [DevEx 거버넌스] 전사 빌드 70% 단축 & 4대 AI 에이전트 하네스 (Garden.Harness)
+│   ├── 📄 [분산 스토리지] 하이브리드 K8s & Rook-Ceph 고가용성 운영 (Garden.Cluster)
+│   └── 📄 [DevEx 거버넌스] Roslyn 애널라이저 & 4대 AI 에이전트 하네스 (Garden.Harness)
 │
 ├── 📁 03. Windows 데스크톱 & 시스템 제어 (C#, WPF, Win32, USB)
-│   ├── 📄 [데스크톱 클라이언트] 50만 대 기기 제어 & .NET 9 현대화 (nemonic)
+│   ├── 📄 [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
 │   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통신 SDK (Mango)
 │
 └── 📁 04. 모바일 & 웹 프론트엔드 (BLE IoT, MAUI, Penpot 디자인)
     ├── 📄 [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)
-    ├── 📄 [하드웨어 연동 앱] BLE 무손실 스트리밍 라벨 앱 (Lithium)
+    ├── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 연동 (Lithium)
     └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Razor 컴포넌트 (Garden.Razor)
 ```
 
@@ -155,22 +159,22 @@ graph TD
 
 ```text
 ├── 📁 01. 백엔드 서비스 & 분산 시스템 (Core Application Services)
-│   ├── 📄 [전사 백엔드] 대규모 트랜잭션 처리 .NET 9 모듈 모노레포 (Monolith)
+│   ├── 📄 [전사 백엔드] .NET 9 통합 모듈 모노레포 & YARP API GW (Monolith)
 │   ├── 📄 [분산 메시징] 이벤트 주도 CQRS 가계부 마이크로서비스 (Peony Backend)
 │   └── 📄 [AI 파이프라인] 비동기 OCR/요약 분산 처리 파이프라인 (NemonicStudy)
 │
 ├── 📁 02. 클라우드 플랫폼 & 엔지니어링 거버넌스 (Infra, Storage, DevEx)
-│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & 100TB Ceph 스토리지 (Argon/Cluster)
-│   ├── 📄 [엔지니어링 거버넌스] AI 코딩 에이전트 하네스 & 빌드 70% 가속 (Garden.Harness)
+│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Rook-Ceph 스토리지 (Argon/Cluster)
+│   ├── 📄 [엔지니어링 거버넌스] AI 코딩 에이전트 하네스 & Roslyn 정적 가드 (Garden.Harness)
 │   └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Blazor 컴포넌트 라이브러리 (Garden.Razor)
 │
 ├── 📁 03. 데스크톱 & 하드웨어 제어 시스템 (Desktop & Device Systems)
-│   ├── 📄 [데스크톱 클라이언트] 50만 대 기기 제어 Windows 엔진 — 8년 수명주기 (nemonic)
+│   ├── 📄 [데스크톱 클라이언트] Windows 인쇄 엔진 — 8년 수명주기 & .NET 9 현대화 (nemonic)
 │   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통합 드라이버 SDK (Mango)
 │
 └── 📁 04. 모바일 & 무선 IoT 애플리케이션 (Mobile & Wireless IoT)
     ├── 📄 [모바일 클라이언트] .NET MAUI Blazor Hybrid 크로스플랫폼 앱 (Peony Mobile)
-    └── 📄 [하드웨어 연동 앱] BLE 실시간 무손실 패킷 스트리밍 라벨 앱 (Lithium)
+    └── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)
 ```
 
 ---
@@ -182,7 +186,7 @@ graph TD
 ### 4.1 허브 페이지 레이아웃
 1. **Header Block**: 도메인 명칭 및 영문 표기, 핵심 역할 요약
 2. **Executive Summary Table**:
-   - `[주요 기술 스택]`, `[해결한 핵심 엔지니어링 난제]`, `[대표 비즈니스 정량 지표]`, `[포괄 프로젝트 수]`
+   - `[주요 기술 스택]`, `[해결한 핵심 엔지니어링 난제]`, `[검증된 정량 지표 (근거 필수)]`, `[포괄 프로젝트 수]`
 3. **Architecture Philosophy (철학)**:
    - 해당 도메인 개발 시 준수하는 원칙 (예: 백엔드의 경우 Clean Architecture & Event-Driven, 인프라의 경우 GitOps & Zero-Downtime, 디자인 시스템의 경우 Single Token SoT)
 4. **Project Gallery Grid (하위 프로젝트 링크 카드)**:
@@ -194,11 +198,11 @@ graph TD
 
 | 도메인 계층 | 포괄 저장소 / 프로젝트 목록 | 대표 상세 페이지 (TO-BE) |
 | :--- | :--- | :--- |
-| **01. .NET 백엔드 & 분산 아키텍처** | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Peony Backend`, `Mangoslab.Infrastructure`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi` | 1. [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)<br>2. [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony Backend)<br>3. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy) |
-| **02. DevOps & 클라우드 인프라** | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `History`, `Garden.Cluster`, `Rook-Ceph Cluster` | 1. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)<br>2. [분산 스토리지] 하이브리드 K8s & 100TB Rook-Ceph 스토리지 (Garden.Cluster) |
-| **03. 개발자 경험(DevEx) & 웹 디자인 시스템** | `Garden.Razor`, `Garden.Razor.Gallery`, `Penpot Design System (Tokens)`, `Mangoslab.Pipeline`, `Garden.Harness`, `Garden.Share`, `Garden.Analyzers` | 1. [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)<br>2. [엔지니어링 거버넌스] 전사 빌드 70% 단축 & AI 에이전트 하네스 (Garden.Harness) |
-| **04. Windows 데스크톱 & 시스템 프로그래밍** | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test`, `Garden.Usb`, `Garden.Bluetooth` | 1. [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)<br>2. [디바이스 드라이버] 저수준 USB/Bluetooth 통신 프로토콜 SDK (Mango) |
-| **05. 모바일 & BLE 디바이스 연동** | `Peony Mobile (.NET MAUI)`, `Garden.Maui`, `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `NemonicBasicAndroid`, `NemonicBasiciOS` | 1. [모바일 클라이언트] .NET MAUI Blazor Hybrid 가계부 앱 (Peony Mobile)<br>2. [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium) |
+| **01. .NET 백엔드 & 분산 아키텍처** | `Monolith`, `Oxygen.Hub`, `Oxygen.Teams`, `Oxygen.Slack`, `Oxygen.Zapier`, `Oxygen.Web`, `Oxygen.Amplitude`, `Oxygen.Jira`, `Oxygen.Nemonic.Pro.SettingsApp`, `Radium`, `Mangoslab`, `Peony Backend`, `Mangoslab.Infrastructure`, `Zinc.NemonicStudy`, `Zinc.NemonicStudy.Bff.Api`, `Zinc.NemonicStudy.Service.Ocr`, `Zinc.NemonicStudy.Service.Summary`, `Zinc.NemonicAi` | 1. [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)<br>2. [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony Backend)<br>3. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy) |
+| **02. DevOps & 클라우드 인프라** | `argon`, `kc5`, `kc6`, `Mangoslab.IaC`, `History`, `Garden.Cluster`, `Rook-Ceph Cluster` | 1. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)<br>2. [분산 스토리지] 하이브리드 K8s & Rook-Ceph 스토리지 (Garden.Cluster) |
+| **03. 개발자 경험(DevEx) & 웹 디자인 시스템** | `Garden.Razor`, `Garden.Razor.Gallery`, `Penpot Design System (Tokens)`, `Mangoslab.Pipeline`, `Garden.Harness`, `Garden.Share`, `Garden.Analyzers` | 1. [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)<br>2. [엔지니어링 거버넌스] Roslyn 정적 애널라이저 & AI 에이전트 하네스 (Garden.Harness) |
+| **04. Windows 데스크톱 & 시스템 프로그래밍** | `NemonicBasicWindows`, `NemonicLabelWindows`, `Nemonic.Ampv`, `MemoView`, `Mangoslab.Usb`, `Mangoslab.Nemonic`, `Mangoslab.Bluetooth`, `Firmware`, `Firmware.TestUtility`, `MIP-301-Centerm-FW-Test`, `Garden.Usb`, `Garden.Bluetooth` | 1. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)<br>2. [디바이스 드라이버] 저수준 USB/Bluetooth 통신 프로토콜 SDK (Mango) |
+| **05. 모바일 & BLE 디바이스 연동** | `Peony Mobile (.NET MAUI)`, `Garden.Maui`, `Lithium`, `Sulfur`, `Mangoslab.Drawing`, `NemonicBasicAndroid`, `NemonicBasiciOS` | 1. [모바일 클라이언트] .NET MAUI Blazor Hybrid 가계부 앱 (Peony Mobile)<br>2. [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium) |
 
 ---
 

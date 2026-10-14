@@ -1,8 +1,8 @@
-# 🧱 Monolith — 회사 통합 .NET 모노레포
+# 🧱 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🧱 Monolith — 회사 통합 .NET 모노레포](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
-> **최종 동기화 일시**: 2026-10-13
+> **동기화 Notion URL**: [🧱 [전사 백엔드] .NET 9 모듈 모노레포 & 대규모 API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 
@@ -247,7 +247,7 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>**Zinc.Zapier**</td>
 <td>2025.11 – 2025.11</td>
 <td>1 Commit</td>
-<td>Zapier v2/v3 인쇄 API 설계 및 REST 버전 관리(Asp.Versioning) 구현, Cnctr/Zap으로 통합</td>
+<td>Zapier 연동 프로젝트 환경별 설정 구성 및 Monolith Cnctr/Zap 이관 후 v2/v3 인쇄 API(Asp.Versioning) 개발</td>
 </tr>
 <tr>
 <td>**Oxygen.Web**</td>
@@ -259,7 +259,7 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>**Oxygen.Amplitude**</td>
 <td>2023.04 – 2025.11</td>
 <td>2 Commits, 2 Issues</td>
-<td>클라우드 인쇄 서비스 전 제품군 사용자 퍼널(Funnel) 및 인쇄 액션 분석 이벤트 설계</td>
+<td>Amplitude 클라이언트 인터페이스 추상화(테스트 모킹 지원) 및 의존성·리소스 구성 정리</td>
 </tr>
 <tr>
 <td>[**Oxygen.Nemonic.Pro**](http://Oxygen.Nemonic.Pro)**.SettingsApp**</td>
@@ -283,7 +283,7 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>**Mangoslab.Usb**</td>
 <td>2022.06 – 2022.06</td>
 <td>4 Commits</td>
-<td>WinUSB / P-Invoke 기반 전사 표준 디바이스 USB 통신 공통 SDK (Mango.Usb로 통합)</td>
+<td>디바이스 USB 통신 공통 라이브러리 초기 저장소 구성 (이후 Monolith Mango.Usb로 통합)</td>
 </tr>
 <tr>
 <td>**Mangoslab.Bluetooth**</td>
@@ -301,13 +301,13 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>**Nemonic.Sdk.Image.Flutter**</td>
 <td>2026.07 – 2026.07</td>
 <td>1 Commit</td>
-<td>Flutter 전용 네모닉 이미지 필터 및 고성능 오차확산 디더링 전처리 SDK 개발</td>
+<td>Flutter용 네모닉 이미지 전처리 SDK 저장소 초기 설정 지원</td>
 </tr>
 </table>
 ### 기술 이력서 반영 핵심 포인트
-- **\\[모노레포 아키텍처 통합\\]** 개별 분산 저장소로 파편화되어 있던 서비스들(Hub, Teams, Slack, Zapier, Web, Mango SDK)을 단일 Monolith 모노레포로 통합하여 공유 계약(Contract) 및 빌드/배포 생산성 극대화
-- **\\[로컬 개발 생산성 혁신\\]** .NET Aspire AppHost를 구축하여 PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, OTel Collector 등 전사 인프라 및 서비스를 원클릭 기동하는 환경 수립
-- **\\[AI 코딩 에이전트 하네스 정착\\]** Claude Code, Codex, Gemini CLI가 공유하는 코딩 규약, 계획서(docs/planning) 승인 루프 및 정적 가드 자동화를 전사 표준으로 정착
+- **\[모노레포 아키텍처 통합\]** 개별 분산 저장소로 파편화되어 있던 서비스들(Hub, Teams, Slack, Zapier, Web, Mango SDK)을 단일 Monolith 모노레포로 통합하여 공유 계약(Contract) 및 빌드·배포 체계 일원화
+- **\[로컬 개발 생산성 혁신\]** .NET Aspire AppHost를 구축하여 PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, OTel Collector 등 전사 인프라 및 서비스를 원클릭 기동하는 환경 수립
+- **\[AI 코딩 에이전트 하네스 정착\]** Claude Code, Codex, Gemini CLI가 공유하는 코딩 규약, 계획서(docs/planning) 승인 루프 및 정적 가드 자동화를 전사 표준으로 정착
 ### ➕ 추가 연동 및 데스크톱 유틸리티 저장소
 <table header-row="true">
 <tr>
@@ -326,14 +326,14 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>**Oxygen.Jira**</td>
 <td>2022.09 – 2022.09</td>
 <td>1 Issue</td>
-<td>Atlassian Jira 연동 인쇄 앱 요구사항 분석 및 아키텍처/인터페이스 설계</td>
+<td>Atlassian Jira 연동 인쇄 앱 공증 배포 요건 검토 이슈 등록</td>
 </tr>
 </table>
 - `Oxygen.Nemonic.Pro.SettingsApp` (nemonic Pro 전용 장치 설정 및 진단 앱)
-### 🏛️ 기술 거버넌스 및 백엔드 지표 (조은 / 김석현 벤치마킹)
+### 🏛️ 기술 거버넌스 및 백엔드 아키텍처 분리 (조은 / 김석현 벤치마킹)
 - **조직적 엔지니어링 리드**: 단순 구현을 넘어 Claude Code, Codex, Gemini CLI를 위한 공통 에이전트 하네스(`Garden.Harness`) 및 Roslyn 정적 애널라이저를 구축하여 전사 코드 컨벤션과 계획서(`docs/planning`) 승인 루프를 단일 표준으로 정착시킴.
-- **마이크로서비스 분리 성과 (3단계 지표화)**:
-	- *문제 정의*: 인쇄 요청 접수, 템플릿 렌더링, 외부 알림 결합으로 인해 인쇄 트래픽 급증 시 시스템 전체 병목 발생.
-	- *해결책*: YARP ApiGW 리버스 프록시 도입, Notifier 서비스를 RabbitMQ 컨슈머 호스트로 분리, Redis HybridCache 및 Keycloak OIDC 통합.
-	- *지표 변화*: 인쇄 작업 접수 응답 속도 대폭 단축 및 Slack/Teams 알림 발송 실패율 0% 달성.
+- **마이크로서비스 분리 구조 (문제 - 해결 - 구조적 효과)**:
+	- *문제 정의*: 인쇄 요청 접수, 템플릿 렌더링, 외부 알림 처리가 단일 경로에 결합되어 외부 웹훅 지연이 인쇄 요청 처리에 전파됨.
+	- *해결책*: YARP ApiGW 리버스 프록시 도입, Notifier 서비스를 RabbitMQ 컨슈머 전용 호스트로 분리, Redis HybridCache 및 Keycloak OIDC 통합.
+	- *구조적 효과*: 인쇄 접수 경로와 외부 채널(Slack/Teams) 알림 발송을 비동기 큐로 격리하여 서비스 간 장애 전파 차단.
 

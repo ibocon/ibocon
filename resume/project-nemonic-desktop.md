@@ -1,8 +1,8 @@
-# 🖨️ nemonic Desktop — Windows 애플리케이션
+# 🖨️ [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🖨️ nemonic Desktop — Windows 애플리케이션](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
-> **최종 동기화 일시**: 2026-10-13
+> **동기화 Notion URL**: [🖨️ [데스크톱 클라이언트] 글로벌 50만 대 제어 & .NET 9 현대화 (nemonic)](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 
@@ -130,25 +130,25 @@
 <td>**NemonicBasiciOS**</td>
 <td>2017.11 – 2022.01</td>
 <td>2 Commits</td>
-<td>네모닉 1세대 iOS 클라이언트 유지보수 및 CoreBluetooth 디바이스 연결 라이프사이클 대응</td>
+<td>네모닉 1세대 iOS 클라이언트 초기 저장소 코드 등록</td>
 </tr>
 <tr>
 <td>**NemonicPluginAndroid**</td>
 <td>2018.08 – 2018.08</td>
 <td>1 Commit</td>
-<td>Android Print Service Plugin 표준 인쇄 서비스 플러그인 아키텍처 개발</td>
+<td>Android Print Service Plugin 저장소 초기 구성 참여</td>
 </tr>
 <tr>
 <td>**MemoView**</td>
 <td>2022.06 – 2022.06</td>
 <td>2 Commits</td>
-<td>메모 미리보기 및 뷰어 UI 컴포넌트 모듈화</td>
+<td>메모 뷰어 UI 컴포넌트 저장소 초기 구성 참여</td>
 </tr>
 <tr>
 <td>**Firmware**</td>
 <td>2022.02 – 2022.02</td>
 <td>2 Commits, 1 PR, 1 Issue</td>
-<td>디바이스 펌웨어 형상 관리 및 데스크톱-펌웨어 간 통신 프로토콜 정합성 검증</td>
+<td>펌웨어 저장소 .gitignore 정비 및 형상 관리 보조</td>
 </tr>
 <tr>
 <td>**Firmware.TestUtility**</td>
@@ -160,16 +160,16 @@
 <td>**MIP-301-Centerm-FW-Test**</td>
 <td>2026.04 – 2026.05</td>
 <td>2 Commits, 8 Issues</td>
-<td>MIP-301(Centerm) 프린터 펌웨어 연동 결함 진단 및 테스트 이슈 트래킹</td>
+<td>MIP-301(Centerm) 프린터 펌웨어 테스트 이슈 8건 등록 및 트래킹</td>
 </tr>
 </table>
 ### 기술 이력서 반영 핵심 포인트
-- **\\[롱텀 소프트웨어 라이프사이클 관리\\]** 2017년 첫 상용 릴리스(1.2→1.8)부터 8년 후 2026년 .NET 9 현대화까지 제품의 전 생애주기를 책임지며 지속적인 가치 창출
-- **\\[레거시 모더니제이션\\]** .NET Framework 4.8 레거시 프로젝트 2,000여 줄의 설정을 SDK 스타일로 전환하고 사내 공용 SDK(Mango) 어댑터 패턴으로 일원화
-- **\\[고난도 결함 진단 및 성능 최적화\\]** 사용자 제보 인쇄 누락 장애를 Windows GDI 핸들 누수(DC 소유권 미해제)로 정확히 규명하고 구조적 개선 계획서 및 설계서 6종 작성
+- **\[롱텀 소프트웨어 라이프사이클 관리\]** 2017년 첫 상용 릴리스(1.2→1.8)부터 8년 후 2026년 .NET 9 현대화까지 제품의 전 생애주기를 책임지며 지속적인 가치 창출
+- **\[레거시 모더니제이션\]** .NET Framework 4.8 레거시 프로젝트 2,000여 줄의 설정을 SDK 스타일로 전환하고 사내 공용 SDK(Mango) 어댑터 패턴으로 일원화
+- **\[고난도 결함 진단 및 성능 최적화\]** 사용자 제보 인쇄 누락 장애를 Windows GDI 핸들 누수(DC 소유권 미해제)로 정확히 규명하고 구조적 개선 계획서 및 설계서 6종 작성
 ### 🔍 Deep Dive: Windows GDI 핸들 누수 결함 진단 및 아키텍처 개선 (김용찬 벤치마킹)
 - **문제 상황 (S)**: 화면의 텍스트 한 줄이 실제 열전사 인쇄물에서 간헐적으로 누락되는 결함 제보.
 - **원인 규명 (T)**: OS 리소스 모니터링 결과 GDI 오브젝트 수가 10,000개 임계치에 도달함을 확인. `TextLayerView.UpdatePageView`에서 `GetHdc()` 호출 후 `ReleaseHdc()`가 누락되어 Device Context(DC) 핸들이 반환되지 않는 결함 규명.
-- **구조적 개선 (A)**: DC 소유권 모델을 `IDisposable` 래퍼로 캡슐화하여 강제 해제 보장, 레거시 프로젝트 전반의 품질 현황 및 구조 위험(R1\\~R10)을 분석한 아키텍처 설계서 6종 작성.
-- **결과 (R)**: 장시간 다량 인쇄 시에도 GDI 핸들 누수 0건 유지, .NET 9 현대화 마이그레이션 안전한 착수 기반 마련.
+- **구조적 개선 (A)**: DC 소유권 모델을 `IDisposable` 래퍼로 캡슐화하여 강제 해제 보장, 레거시 프로젝트 전반의 품질 현황 및 구조 위험(R1\~R10)을 분석한 아키텍처 설계서 6종 작성.
+- **결과 (R)**: 반복 인쇄 시 발생하던 프린터 DC 핸들 미해제 누수를 차단하고, .NET 9 현대화 마이그레이션 착수 기반 마련.
 

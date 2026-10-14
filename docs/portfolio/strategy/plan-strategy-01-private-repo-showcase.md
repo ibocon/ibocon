@@ -32,8 +32,8 @@
 
 | 프로젝트 | 시스템 성격 및 규모 | 핵심 아키텍처 & 기술적 기여 | 주요 엔지니어링 성과 |
 | :--- | :--- | :--- | :--- |
-| **Monolith** | 핵심 데스크톱 앱 및 분산 백엔드 통합 플랫폼 (C# / .NET 9) | • Clean Architecture & Result 패턴 전면 도입<br>• MSBuild Server 가속 기반 FastBuild 루프 구축 (~6s)<br>• WPF / Blazor 하이브리드 수명주기 및 메모리 최적화 | • 빌드/CI 사이클 70% 단축<br>• 크로스 플랫폼 클라이언트 안정성 확보<br>• 70개+ PR 주도 리팩토링 |
-| **Peony** | 대규모 트랜잭션 및 금융 가계부 백엔드 (CQRS / .NET 9) | • Milan Jovanović 원칙 기반 Rich Domain Model 리팩토링<br>• RabbitMQ 비동기 이벤트 버스 및 Outbox 패턴 구현<br>• PostgreSQL 기반 고성능 장부 파이프라인 | • 도메인 행위 집중화로 빈혈 모델 해소<br>• 분산 환경 데이터 정합성 보장<br>• 멀티 디바이스 동기화 레이턴시 개선 |
+| **Monolith** | 핵심 데스크톱 앱 및 분산 백엔드 통합 플랫폼 (C# / .NET 9) | • Clean Architecture & Result 패턴 전면 도입<br>• .NET Aspire AppHost 기반 로컬 인프라·서비스 원클릭 기동<br>• WPF / Blazor 하이브리드 수명주기 및 메모리 최적화 | • 5개 분산 하위 시스템 모노레포 통합 (커밋 비중 75%)<br>• 크로스 플랫폼 클라이언트 안정성 확보<br>• 70개+ PR 주도 리팩토링 |
+| **Peony** | 이벤트 기반 가계부 마이크로서비스 백엔드 (CQRS / .NET 9) | • Milan Jovanović 원칙 기반 Rich Domain Model 리팩토링<br>• RabbitMQ 비동기 이벤트 버스 및 Outbox 패턴 구현<br>• PostgreSQL 기반 장부 파이프라인 | • 도메인 행위 집중화로 빈혈 모델 해소<br>• 분산 환경 데이터 정합성 보장<br>• 멀티 디바이스 동기화 구조 수립 |
 | **Garden.Cluster** | 온프레미스 & 클라우드 쿠버네티스 오케스트레이션 (GitOps) | • Flux v2 기반 선언적 GitOps 파이프라인<br>• OpenBao(Vault) 기반 자동화 시크릿 프로비저닝<br>• Seq & OpenTelemetry 기반 통합 관측성 확보 | • 서비스 배포 자동화 및 무중단 롤아웃<br>• 시크릿 유출 제로 거버넌스 수립<br>• 클러스터 장애 조기 탐지 체계 구축 |
 ```
 

@@ -94,25 +94,25 @@ graph TD
 | **1** | **NemonicBasicWindows** | 2017-10 ~ 2022-08 | Commits: 107+<br/>PR: 1 | 🖨️ nemonic Desktop | **[메인 실적]** WYSIWYG 편집 엔진 구축, WinForms MVVM 구조 전환, USB 통신, 2026년 .NET 9 및 Mango SDK 현대화 이관 |
 | **2** | **NemonicBasicAndroid** | 2017-11 ~ 2018-06 | Commits: 28 | 🖨️ nemonic Desktop | **[초기 클라이언트]** 네모닉 1세대 Android 프린터 클라이언트 초기 개발 및 하드웨어 통신 연동 |
 | **3** | **NemonicAndroidIntern** | 2017-11 ~ 2018-06 | Commits: 28 | 🖨️ nemonic Desktop | **[R&D / 프로토타입]** 초기 네모닉 모바일 기능 실험 및 인쇄 프로토타입 검증 |
-| **4** | **NemonicBasiciOS** | 2017-11 ~ 2022-01 | Commits: 2 | 🖨️ nemonic Desktop | **[다중 플랫폼 지원]** 네모닉 iOS 앱 유지보수 및 기기 연결 라이프사이클 대응 |
-| **5** | **NemonicPluginAndroid** | 2018-08 ~ 2018-08 | Commits: 1 | 🖨️ nemonic Desktop | **[인쇄 서비스 연동]** Android Print Service Plugin 아키텍처 개발 |
+| **4** | **NemonicBasiciOS** | 2017-11 ~ 2022-01 | Commits: 2 | 🖨️ nemonic Desktop | **[초기 코드 등록]** 네모닉 1세대 iOS 앱 초기 저장소 코드 등록 |
+| **5** | **NemonicPluginAndroid** | 2018-08 ~ 2018-08 | Commits: 1 | 🖨️ nemonic Desktop | **[인쇄 플러그인]** Android Print Service Plugin 저장소 초기 구성 참여 |
 | **6** | **NemonicLabelWindows** | 2020-07 ~ 2020-07 | Commits: 48 | 🖨️ nemonic Desktop | **[데스크톱 제품군 확장]** 라벨 전용 네모닉 Windows 에디터 및 인쇄 드라이버 개발 |
 | **7** | **Lithium** | 2021-11 ~ 2025-07 | Commits: 10<br/>PR: 7, Issue: 8 | 🏷️ Lithium | **[메인 실적]** FINECUBE 모바일 앱 유지보수, BLE 동기화 경합 해결, targetSdk 33→34 마이그레이션 및 Monolith 이관 |
 | **8** | **Mangoslab.Drawing** | 2021-12 ~ 2025-06 | Commits: 71<br/>PR: 26, Issue: 29 | 🧱 Monolith / 🏷️ Lithium | **[공통 컴포넌트]** SkiaSharp 기반 캔버스 그리기 및 레이어 편집기 코어 라이브러리 (Monolith Mango로 흡수) |
 | **9** | **Sulfur** | 2022-01 ~ 2022-01 | Commits: 8<br/>PR: 1 | 🏷️ Lithium | **[하드웨어 BLE 제어]** Aesty 무선 헤어 스트레이트너 디바이스 관리 모바일 앱 초기 아키텍처 구성 |
-| **10** | **Firmware** | 2022-02 ~ 2022-02 | Commits: 2<br/>PR: 1, Issue: 1 | 🖨️ nemonic Desktop | **[HW/FW 협업]** 네모닉/하드웨어 펌웨어 버전 관리 및 데스크톱-펌웨어 간 통신 프로토콜 일치화 |
+| **10** | **Firmware** | 2022-02 ~ 2022-02 | Commits: 2<br/>PR: 1, Issue: 1 | 🖨️ nemonic Desktop | **[형상 관리 보조]** 펌웨어 저장소 .gitignore 정비 및 형상 관리 보조 |
 | **11** | **Mangoslab.Infrastructure** | 2022-06 ~ 2026-05 | Commits: 129+<br/>PR: 23, Issue: 85 | 🧱 Monolith / 🌸 개인 프로젝트 | **[아키텍처 프레임워크]** 사내 백엔드 공통 인프라, 자체 Mediator/도메인 이벤트 디스패치 기반 구축 |
-| **12** | **MemoView** | 2022-06 ~ 2022-06 | Commits: 2 | 🖨️ nemonic Desktop | **[UI 렌더러]** 메모 뷰어 및 디스플레이 컴포넌트 모듈화 |
-| **13** | **Mangoslab.Usb** | 2022-06 ~ 2022-06 | Commits: 4 | 🧱 Monolith / 🖨️ nemonic Desktop | **[디바이스 통신]** USB 통신 공통 SDK (`Mango.Usb`로 통합 이관) |
+| **12** | **MemoView** | 2022-06 ~ 2022-06 | Commits: 2 | 🖨️ nemonic Desktop | **[UI 렌더러]** 메모 뷰어 UI 컴포넌트 저장소 초기 구성 참여 |
+| **13** | **Mangoslab.Usb** | 2022-06 ~ 2022-06 | Commits: 4 | 🧱 Monolith / 🖨️ nemonic Desktop | **[디바이스 통신]** 디바이스 USB 통신 공통 라이브러리 초기 저장소 구성 (`Mango.Usb`로 통합 이관) |
 | **14** | **Mangoslab.Nemonic** | 2022-06 ~ 2025-06 | Commits: 77<br/>PR: 41, Issue: 22 | 🧱 Monolith (Mango) | **[디바이스 도메인]** 네모닉 프린터 제어 핵심 도메인 로직 및 서비스 라이브러리 |
 | **15** | **Mangoslab.Bluetooth** | 2022-06 ~ 2023-07 | Commits: 47<br/>PR: 25, Issue: 10 | 🧱 Monolith / 🏷️ Lithium | **[무선 연결]** BLE 스캔 및 연결 예외 처리 표준화 라이브러리 |
 | **16** | **Mangoslab.IaC** | 2022-06 ~ 2025-01 | Commits: 870+<br/>PR: 66, Issue: 46 | ☸️ Argon | **[인프라 코드화 전신]** Azure Bicep/Terraform 기반 클라우드 리소스 코드화 (커밋 870+ 건의 주도적 구축) |
 | **17** | **Oxygen.Nemonic.Pro.SettingsApp** | 2022-09 ~ 2023-08 | Commits: 4<br/>PR: 3, Issue: 3 | 🧱 Monolith (`Oxy.Desktop`) | **[데스크톱 앱]** nemonic Pro 장치 설정 앱 개발 (이후 Nemonic Connect Desktop으로 발전) |
 | **18** | **Oxygen.Teams** | 2022-09 ~ 2025-12 | Commits: 101+<br/>PR: 2 | 🧱 Monolith (`Cnctr/Teams`) | **[외부 플랫폼 연동]** Microsoft Teams 봇(NemonicAgent) 개발, Graph API 연동, 모노레포 이관 |
-| **19** | **Oxygen.Jira** | 2022-09 ~ 2022-09 | Issue: 1 | 🧱 Monolith | **[업무 도구 연동]** Jira 이슈 인쇄 앱 요구사항 분석 및 아키텍처 기획 |
+| **19** | **Oxygen.Jira** | 2022-09 ~ 2022-09 | Issue: 1 | 🧱 Monolith | **[업무 도구 연동]** Jira 이슈 인쇄 앱 공증 배포 요건 검토 이슈 등록 |
 | **20** | **Oxygen.Hub** | 2023-01 ~ 2026-01 | Commits: 37<br/>Issue: 6 | 🧱 Monolith (`Svc/ApiGW`) | **[백엔드 통합]** 분산된 인쇄 서비스를 중계하던 Hub 서버 (이후 Monolith 마이크로서비스/게이트웨이로 흡수) |
 | **21** | **Oxygen.Slack** | 2023-02 ~ 2025-12 | Commits: 43<br/>PR: 1, Issue: 9 | 🧱 Monolith (`Cnctr/Slack`) | **[외부 플랫폼 연동]** Slack Block Kit 기반 커넥터, 홈 탭 대시보드 및 슬래시 커맨드 인쇄 구현 |
-| **22** | **Oxygen.Amplitude** | 2023-04 ~ 2025-11 | Commits: 2<br/>Issue: 2 | 🧱 Monolith | **[데이터 분석]** Oxygen 전 제품군 사용자 퍼널(Funnel) 및 인쇄 액션 분석 이벤트 설계 |
+| **22** | **Oxygen.Amplitude** | 2023-04 ~ 2025-11 | Commits: 2<br/>Issue: 2 | 🧱 Monolith | **[데이터 분석]** Amplitude 클라이언트 인터페이스 추상화 및 의존성·리소스 구성 정리 |
 | **23** | **Mangoslab.Pipeline** | 2023-05 ~ 2024-04 | Commits: 21<br/>PR: 18, Issue: 7 | ☸️ Argon / 🧱 Monolith | **[CI/CD 자동화]** GitHub Actions 워크플로 템플릿, 패키지 배포 및 이미지 빌드 파이프라인 |
 | **24** | **History** | 2023-06 ~ 2023-12 | Commits: 5<br/>PR: 22, Issue: 1 | 🧱 Monolith / ☸️ Argon | **[문서 거버넌스]** RFC, 계획서(planning) 및 작업 아카이브(history) 문서 체계 구축 |
 | **25** | **Nemonic.Ampv** | 2023-06 ~ 2023-11 | Commits: 12<br/>PR: 3 | 🖨️ nemonic Desktop | **[운영 관측성]** nemonic AMPV(프린터 사용정보 백그라운드 수집 프로세스) 설계 및 S3/HTTPS 연동 |
@@ -122,16 +122,16 @@ graph TD
 | **29** | **kc6** | 2025-06 ~ 2025-11 | Commits: 100+ | ☸️ Argon | **[클라이언트/디바이스]** 온프레미스 클러스터 연계 특수 단말 클라이언트 개발 |
 | **30** | **Mangoslab** | 2025-06 ~ 2026-01 | Commits: 65 | 🧱 Monolith | **[통합 선행 연구]** 개별 저장소 분산 구조를 단일 레포로 통합하기 위한 초기 PoC |
 | **31** | **Oxygen.Web** | 2025-09 ~ 2025-09 | Commits: 19 | 🧱 Monolith (`Svc/Web`) | **[웹 프론트엔드]** Blazor 기반 웹 인쇄 BFF 및 사용자 웹 포털 개발 |
-| **32** | **Zinc.Zapier** | 2025-11 ~ 2025-11 | Commits: 1 | 🧱 Monolith (`Cnctr/Zap`) | **[SaaS 연동]** Zapier v2/v3 인쇄 API 설계 및 버전 관리(Asp.Versioning) 적용 |
+| **32** | **Zinc.Zapier** | 2025-11 ~ 2025-11 | Commits: 1 | 🧱 Monolith (`Cnctr/Zap`) | **[SaaS 연동]** Zapier 연동 환경별 설정 구성 및 Monolith `Cnctr/Zap` 이관 후 인쇄 API 개발 |
 | **33** | **Monolith** | 2026-01 ~ 2026-10 (현재) | Commits: 132+<br/>PR: 70, Issue: 84 | 🧱 Monolith | **[현재 핵심 주도 프로젝트]** 전체 커밋의 75%, Oxygen 12개 서비스, .NET Aspire, YARP, AI 하네스 도입 |
 | **34** | **Radium** | 2026-03 ~ 2026-03 | Commits: 52 | 🧱 Monolith (신규 R&D) | **[차세대 서비스 PoC]** 현대화된 .NET 9 기반 프로토타입 개발 |
-| **35** | **MIP-301-Centerm-FW-Test** | 2026-04 ~ 2026-05 | Commits: 2<br/>Issue: 8 | 🖨️ nemonic Desktop / 🧱 Monolith | **[품질 관리]** MIP-301 프린터 펌웨어 연동 결함 분석 및 테스트 이슈 트래킹 |
+| **35** | **MIP-301-Centerm-FW-Test** | 2026-04 ~ 2026-05 | Commits: 2<br/>Issue: 8 | 🖨️ nemonic Desktop / 🧱 Monolith | **[품질 관리]** MIP-301 프린터 펌웨어 테스트 이슈 8건 등록 및 트래킹 |
 | **36** | **Zinc.NemonicStudy.Service.Summary** | 2026-05 ~ 2026-06 | Commits: 31<br/>PR: 1 | ☸️ Argon (`NemonicStudy`) | **[AI 마이크로서비스]** Gemini 2.5 Flash 기반 AI 요약 생성 서비스, 멀티 슬롯 API 키 로테이션, K8s 배포 |
 | **37** | **Firmware.TestUtility** | 2026-05 ~ 2026-05 | Commits: 5<br/>PR: 1 | 🖨️ nemonic Desktop | **[테스트 자동화]** 펌웨어 생산/검증용 유틸리티 리팩토링 |
 | **38** | **argon** | 2026-05 ~ 2026-07 | Commits: 107+<br/>PR: 17 | ☸️ Argon | **[인프라 핵심 주도 프로젝트]** pameus·kc5 이중 사이트 Active/Fenced Standby 설계, OpenBao, Rook-Ceph, Keycloak DR |
 | **39** | **Zinc.NemonicStudy.Bff.Api** | 2026-06 ~ 2026-06 | Commits: 23<br/>PR: 4 | ☸️ Argon (`NemonicStudy`) | **[BFF 백엔드]** AI 스터디 앱 전용 BFF API 개발, 비동기 요약/OCR 큐 처리, K8s 배포 파이프라인 구축 |
 | **40** | **Zinc.NemonicStudy.Service.Ocr** | 2026-06 ~ 2026-07 | Commits: 48 | ☸️ Argon (`NemonicStudy`) | **[AI 파이프라인]** 비동기 문제 크롭/인식 OCR 서비스 구축 및 Argon 클러스터 배포 |
-| **41** | **Nemonic.Sdk.Image.Flutter** | 2026-07 ~ 2026-07 | Commits: 1 | 🧱 Monolith (Mango) | **[멀티플랫폼 SDK]** Flutter 크로스 플랫폼 네모닉 이미지 필터 및 전처리 SDK 개발 |
+| **41** | **Nemonic.Sdk.Image.Flutter** | 2026-07 ~ 2026-07 | Commits: 1 | 🧱 Monolith (Mango) | **[멀티플랫폼 SDK]** Flutter용 네모닉 이미지 전처리 SDK 저장소 초기 설정 지원 |
 
 ---
 

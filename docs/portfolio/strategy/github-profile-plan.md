@@ -8,7 +8,7 @@
 * **대상 계정**: [https://github.com/ibocon](https://github.com/ibocon) (Yegun Kim)
 * **소속 및 활동 기반**: MANGOSLAB, BotanicSoft (Monolith, Peony, Garden.Cluster 등 27개+ 리포지토리 기여)
 * **목적**:
-  1. 최근 1년 **10,159 Contributions**에 달하는 압도적인 개발 생산성과 성실성을 효과적인 비주얼로 증명.
+  1. 최근 1년 **10,159 Contributions**의 지속적인 개발 활동과 성실성을 시각적으로 전달.
   2. 분산된 활동 내역을 `.NET/C# 시스템 백엔드 및 분산 시스템 엔지니어`라는 명확한 브랜딩으로 응결.
   3. 채용 담당자(Recruiter)와 테크 리더의 기술 인터뷰 및 이력서(Resume/CV) 연계에 최적화된 포트폴리오 대시보드 구축.
 
@@ -63,7 +63,7 @@
 ```mermaid
 graph TD
     subgraph Profile Strategy for Career Management
-        A[Value Proposition: .NET 백엔드 & 분산 시스템 전문성] --> B[10k+ Contributions 시각화: 압도적 생산성 증명]
+        A[Value Proposition: .NET 백엔드 & 분산 시스템 전문성] --> B[10k+ Contributions 시각화: 지속적 개발 밀도 증명]
         A --> C[Pinned Repositories 재편: 아키텍처 & 클린 코드 증명]
         A --> D[Tistory 기술 블로그 자동 연동: 문제 해결 과정 증명]
         B --> E[채용 담당자 / 테크 리더 신뢰도 확보 및 합격률 증대]

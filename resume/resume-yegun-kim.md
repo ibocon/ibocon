@@ -38,104 +38,48 @@
 	
 
 ---
-## 🏛️ 엔지니어링 3대 핵심 축 (Core Engineering Pillars)
-도메인 사전 지식 없이도 전체 시스템 구조를 한눈에 파악할 수 있도록, 9년간 설계·구축한 41개 저장소와 시스템을 3대 비즈니스 기둥(Pillar)으로 집약하여 소개합니다.
-<table header-row="true">
+## 🏛️ 5대 직무 전문성 도메인 요약 (Core Engineering Domains)
+도메인 사전 지식 없이도 전체 엔지니어링 역량을 한눈에 파악하실 수 있도록, 9년간 설계·구축한 41개 저장소와 플랫폼을 **5대 핵심 직무 도메인**으로 분류하여 소개합니다.
+<table fit-page-width="true" header-row="true">
 <tr>
-<td>기둥 (Pillar)</td>
-<td>포괄 프로젝트</td>
+<td>직무 도메인 (Domain)</td>
+<td>핵심 하위 프로젝트</td>
 <td>해결 과제 및 비즈니스·기술 임팩트</td>
 </tr>
 <tr>
-<td>**Pillar 1. 스마트 프린터 디바이스 & 하드웨어 연동 플랫폼**</td>
-<td>Monolith · nemonic Desktop · Lithium</td>
-<td>3대 OS(Windows/iOS/Android) 통합 BLE/USB 프린팅 파이프라인 구축 및 레거시 400개 테이블 모노레포 통합</td>
+<td>**01. .NET 백엔드 & 분산 아키텍처**</td>
+<td>• [전사 백엔드] .NET 9 모듈 모노레포 (Monolith)<br>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
+<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·RabbitMQ·Clean Architecture 기반 비동기 분산 처리 및 외부 알림 실패율 0% 달성</td>
 </tr>
 <tr>
-<td>**Pillar 2. 모듈러 아키텍처 & 공용 생태계**</td>
-<td>Peony (가계부 서비스) · Garden.\\* 10개 라이브러리</td>
-<td>Vertical Slice Architecture(VSA) 적용 및 전사 재사용 컴포넌트 생태계 구축 (도메인 결합도 60% 감소)</td>
+<td>**02. DevOps & 클라우드 인프라**</td>
+<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [분산 스토리지] 100TB Rook-Ceph (Garden.Cluster)</td>
+<td>Proxmox 베어메탈 및 AKS 하이브리드 K8s 클러스터, Active/Fenced Standby 무중단 DR, OpenBao 기반 Git 내 평문 시크릿 100% 제거</td>
 </tr>
 <tr>
-<td>**Pillar 3. 온프레미스 인프라 & GitOps**</td>
-<td>Argon K8s (pameus · kc5) · Garden.Cluster</td>
-<td>MetalLB, Ceph, Flux GitOps 기반 온프레미스 이중화 클러스터 및 암호화 시크릿/관측성 제어면 무중단 운영</td>
+<td>**03. 개발자 경험(DevEx) & 웹 디자인 시스템**</td>
+<td>• [디자인 시스템] Penpot 토큰 동기화 (Garden.Razor)<br>• [엔지니어링 거버넌스] 빌드 가속 & AI 하네스 (Garden.Harness)</td>
+<td>Material 3 자체 Blazor 컴포넌트 44종 및 Penpot 토큰 동기화, 4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개) 및 전사 빌드 시간 70% 단축</td>
+</tr>
+<tr>
+<td>**04. Windows 데스크톱 & 시스템 프로그래밍**</td>
+<td>• [데스크톱 클라이언트] 글로벌 50만 대 제어 (nemonic)<br>• [디바이스 드라이버] 저수준 USB/BLE SDK (Mango)</td>
+<td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 현대화, GDI 핸들 누수 0건 달성, WinUSB·BLE 5계층 크로스플랫폼 드라이버 추상화</td>
+</tr>
+<tr>
+<td>**05. 모바일 & BLE 디바이스 연동**</td>
+<td>• [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)<br>• [하드웨어 연동 앱] FINECUBE 라벨 앱 & BLE (Lithium)</td>
+<td>BLE GATT 실시간 상태 폴링·스트리밍 경합(Race Condition) 해소, Android targetSdk 34 상향, 앱·웹 단일 Razor UI 코드베이스 구축</td>
 </tr>
 </table>
 ---
-## 프로젝트 (3대 기둥별 핵심 프로덕트)
-<span color="gray">각 프로젝트의 상세 내용은 하위 페이지 및 세부 기술서에서 확인하실 수 있습니다.</span>
-
-	
-		**2025.08 – 현재**
-		<span color="gray">망고슬래브</span>
-		<span color="gray">커밋 비중 약 75%</span>
-	
-	
-		### \\[Pillar 1\\] Monolith
-		<span color="gray">회사 통합 .NET 모노레포 (스마트 프린터 서비스 플랫폼)</span>
-		nemonic 서비스·앱·펌웨어·클러스터 정의를 한 저장소로 통합한 모노레포입니다.
-		- 하위 시스템 5개를 하나의 빌드·코딩 규약·계획 문서 체계로 통합
-		- AI 코딩 에이전트 하네스를 도입해 AI 보조 개발을 팀 표준으로 정착
-		`.NET Aspire` `RabbitMQ` `YARP` `EF Core` `Keycloak` `MAUI` `Blazor`
-		<page url="https://app.notion.com/p/3dd4752186758105801dea0310df86f5">Monolith — 회사 통합 .NET 모노레포</page>
-	
-
-	
-		**2025.05 – 현재**
-		<span color="gray">망고슬래브</span>
-		<span color="gray">kc5 커밋 비중 약 48%</span>
-	
-	
-		### \\[Pillar 3\\] Argon
-		<span color="gray">On-Premise Kubernetes 이중 사이트 GitOps (클라우드 인프라)</span>
-		회사 서비스를 운영하는 On-Premise Kubernetes 클러스터 두 곳(pameus·kc5)을 Flux GitOps로 구성·운영합니다. kc5 단일 클러스터 저장소로 시작해 Monolith의 Argon 하위 시스템으로 이관했습니다.
-		- 네트워크·인증·데이터·GPU 인프라 계층 구성, NemonicStudy·Braillience·Oxygen 워크로드 배포
-		- 이미지 digest 기반 릴리스 기록, 헬스체크와 Google Chat 장애·복구 알림 체계 구축
-		`Flux` `Keycloak` `CloudNativePG` `Rook-Ceph` `Harbor` `NVIDIA GPU Operator`
-		<page url="https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433">Argon — On-Premise Kubernetes 이중 사이트 GitOps</page>
-	
-
-	
-		**2017.07 – 현재**
-		<span color="gray">망고슬래브</span>
-	
-	
-		### \\[Pillar 1\\] nemonic Desktop
-		<span color="gray">Windows 애플리케이션 (디바이스 인쇄 플랫폼)</span>
-		스마트 메모 프린터 nemonic의 Windows 클라이언트와 메모 동기화 서버를 개발·유지보수합니다.
-		- USB 통신 DLL 연동, 프린터 모델 지원 확장
-		- MSI/EXE 배포와 코드 서명, 장기 운영을 위한 절차·아키텍처 문서화
-		`.NET Framework 4.8` `WPF` `MVVM` `Visual Studio Installer Projects` `Jenkins`
-		<page url="https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25">nemonic Desktop — Windows 애플리케이션</page>
-	
-
-	
-		**2022.01 – 2025.07**
-		<span color="gray">망고슬래브</span>
-	
-	
-		### \\[Pillar 1\\] Lithium
-		<span color="gray">FINECUBE 모바일 앱 (하드웨어 연동 앱)</span>
-		라벨 프린터 FINECUBE의 Android·iOS 앱을 유지보수하고 릴리스했습니다.
-		- 프린터 연결 예외 처리
-		- Android targetSdk 33→34 상향과 Google Play 배포
-		`Xamarin.Forms` `MvvmCross` `SkiaSharp` `EF Core` `SQLite`
-		<page url="https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a">Lithium — FINECUBE 모바일 앱</page>
-	
-
-	
-		**2021.06 – 현재**
-		<span color="gray">개인 프로젝트 · 1인 개발</span>
-	
-	
-		### \\[Pillar 2\\] Peony & Garden 생태계
-		<span color="gray">가계부 모바일 서비스 및 전사 10개 공용 도메인 패키지군</span>
-		가계부 서비스 본체(Peony)와 전사 재사용 컴포넌트 생태계(Garden.\\* 10개 패키지 및 AI 에이전트 하네스)를 단독으로 설계·구현·운영합니다.
-		- Vertical Slice Architecture 및 Result 패턴 기반의 모듈러 백엔드와 Blazor MAUI 앱
-		- 10개 독립 도메인 패키지(Usb, Bluetooth, Maui, Aspire, Razor, Analyzers 등)로 분리해 전사 재사용
-		`.NET MAUI` `.NET Aspire` `PostgreSQL` `RabbitMQ` `Kubernetes` `Flux` `OpenBao` `OpenTelemetry`
-		<page url="https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f">개인 프로젝트 — 가계부 모바일 서비스</page>
+## 📂 5대 직무 도메인별 상세 포트폴리오 (Domain Hub)
+<span color="gray">각 도메인 폴더를 클릭하시면 해당 직무 영역의 아키텍처 철학과 하위 프로젝트별 상세 기술서를 확인하실 수 있습니다.</span>
+<page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, CQRS)</page>
+<page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph)</page>
+<page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">03. 개발자 경험(DevEx) & 웹 디자인 시스템 (Penpot, Harness, CI/CD)</page>
+<page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7">04. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)</page>
+<page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9">05. 모바일 & BLE 디바이스 연동 (Android, iOS, .NET MAUI, BLE)</page>
 	
 
 ---
@@ -190,38 +134,38 @@
 	
 
 ---
-## 🐙 GitHub 기여 저장소 총괄 대시보드 (41개 저장소)
-망고슬래브(MANGOSLABCoLtd) 9년간의 제품 수명주기 전반에 걸쳐 직접 기여한 **41개 Git 저장소**의 도메인별 연계 현황입니다. 각 저장소별 세부 기여 내역은 위 5대 상세 프로젝트 페이지에 반영되어 있습니다.
-<table header-row="true">
+## 🐙 GitHub 기여 저장소 총괄 대시보드 (41개 저장소 + 자체 플랫폼)
+망고슬래브(MANGOSLABCoLtd) 9년간의 제품 수명주기 전반에 걸쳐 직접 기여한 **41개 Git 저장소**와 자체 오픈소스/플랫폼 생태계(**Peony & Garden**)의 5대 직무 도메인별 연계 현황입니다.
+<table fit-page-width="true" header-row="true">
 <tr>
-<td>도메인 / 분류</td>
-<td>포괄 저장소 (총 41개)</td>
-<td>매칭 Notion 상세 페이지</td>
+<td>직무 도메인 (5대 전문 영역)</td>
+<td>포괄 저장소 및 프로젝트</td>
+<td>매칭 Notion 도메인 허브 & 상세 페이지</td>
 </tr>
 <tr>
-<td>**통합 모노레포 & 백엔드**</td>
-<td>Monolith, Oxygen.Hub, Teams, Slack, Zapier, Web, Amplitude, SettingsApp, Mango SDK (Nemonic, Drawing, Usb, Bluetooth), Radium, Nemonic.Sdk.Image.Flutter (14개)</td>
-<td>[🧱 Monolith](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)</td>
+<td>**01. .NET 백엔드 & 분산 아키텍처**</td>
+<td>Monolith, Oxygen.Hub, Teams, Slack, Zapier, Web, Amplitude, Jira, SettingsApp, Radium, Mangoslab, Peony Backend, Mangoslab.Infrastructure, NemonicStudy (App, BFF, Summary, OCR), NemonicAi</td>
+<td><mention-page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758105801dea0310df86f5"/><br>• <mention-page url="https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758102876fdb77b3103c37"/></td>
 </tr>
 <tr>
-<td>**K8s 클러스터 & GitOps**</td>
-<td>argon, kc5, kc6, Mangoslab.IaC, Pipeline, NemonicStudy (App, BFF, Summary, OCR), NemonicAi (10개)</td>
-<td>[☸️ Argon](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+<td>**02. DevOps & 클라우드 인프라**</td>
+<td>argon, kc5, kc6, Mangoslab.IaC, History, Garden.Cluster (Hanul On-Premise & AKS, Rook-Ceph)</td>
+<td><mention-page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433"/><br>• <mention-page url="https://app.notion.com/p/3f947521867581d88fbff700c1586f6f"/></td>
 </tr>
 <tr>
-<td>**데스크톱 & 디바이스**</td>
-<td>NemonicBasicWindows, Label, AMPV, 1세대 모바일(Android/iOS/Plugin), MemoView, Firmware, TestUtility, Centerm FW Test (11개)</td>
-<td>[🖨️ nemonic Desktop](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)</td>
+<td>**03. 개발자 경험(DevEx) & 웹 디자인 시스템**</td>
+<td>Garden.Razor, Garden.Razor.Gallery, Penpot Design Tokens, Garden.Harness, Garden.Share, Garden.Analyzers, Mangoslab.Pipeline</td>
+<td><mention-page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758163bc48d05902fd5b95"/><br>• <mention-page url="https://app.notion.com/p/3f947521867581fbaa5def020f156512"/></td>
 </tr>
 <tr>
-<td>**라벨 & 하드웨어 앱**</td>
-<td>Lithium (FINECUBE), Sulfur (Aesty), Mangoslab.Drawing (3개)</td>
-<td>[🏷️ Lithium](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)</td>
+<td>**04. Windows 데스크톱 & 시스템 프로그래밍**</td>
+<td>NemonicBasicWindows, NemonicLabelWindows, Nemonic.Ampv, MemoView, Mangoslab.Usb, Mangoslab.Nemonic, Mangoslab.Bluetooth, Firmware, Firmware.TestUtility, MIP-301-Centerm-FW-Test, Garden.Usb, Garden.Bluetooth</td>
+<td><mention-page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7"/><br>• <mention-page url="https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25"/><br>• <mention-page url="https://app.notion.com/p/3f94752186758193b0abcf62be42f644"/></td>
 </tr>
 <tr>
-<td>**공용 기반 & 거버넌스**</td>
-<td>History (문서 거버넌스), Mangoslab.Infrastructure (프레임워크 원류), Peony, Garden.Cluster (4개)</td>
-<td>[🌸 개인 프로젝트](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f)</td>
+<td>**05. 모바일 & BLE 디바이스 연동**</td>
+<td>Peony Mobile (.NET MAUI), Garden.Maui, Lithium (FINECUBE), Sulfur (Aesty), Mangoslab.Drawing, NemonicBasicAndroid, NemonicBasiciOS</td>
+<td><mention-page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9"/><br>• <mention-page url="https://app.notion.com/p/3f9475218675816481e0e0938b9380f1"/><br>• <mention-page url="https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a"/></td>
 </tr>
 </table>
 

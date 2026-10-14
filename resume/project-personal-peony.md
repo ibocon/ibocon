@@ -1,8 +1,8 @@
-# 🌸 개인 프로젝트 — 가계부 모바일 서비스
+# 🌸 [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🌸 개인 프로젝트 — 가계부 모바일 서비스](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f)  
-> **최종 동기화 일시**: 2026-10-13
+> **동기화 Notion URL**: [🌸 [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony)](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f)  
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 

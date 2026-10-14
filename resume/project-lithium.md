@@ -1,8 +1,8 @@
-# 🏷️ Lithium — FINECUBE 모바일 앱
+# 🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🏷️ Lithium — FINECUBE 모바일 앱](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
-> **최종 동기화 일시**: 2026-10-13
+> **동기화 Notion URL**: [🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 스트리밍 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 
@@ -97,7 +97,7 @@
 </tr>
 </table>
 ### 기술 이력서 반영 핵심 포인트
-- **\\[모바일 앱 라이프사이클 관리\\]** Xamarin.Forms + MvvmCross 기반 FINECUBE 앱의 장기 운영 및 Google Play 정책 변경(targetSdk 34) 대응 AAB 배포 완료
-- **\\[하드웨어 통신 안정화\\]** Bluetooth LE 연결 시 배터리/잉크 상태 조회 작업 간 경합 상태(Race Condition)를 해결하고 비동기 재시도 파이프라인 구축
-- **\\[그래픽스 코어 모듈화\\]** SkiaSharp 기반 고성능 2D 캔버스 렌더러를 공통 모듈화하여 다중 모바일 프로젝트 간 재사용성 극대화
+- **\[모바일 앱 라이프사이클 관리\]** Xamarin.Forms + MvvmCross 기반 FINECUBE 앱의 장기 운영 및 Google Play 정책 변경(targetSdk 34) 대응 AAB 배포 완료
+- **\[하드웨어 통신 안정화\]** Bluetooth LE 연결 시 배터리/잉크 상태 조회 작업 간 경합 상태(Race Condition)를 해결하고 비동기 재시도 파이프라인 구축
+- **\[그래픽스 코어 모듈화\]** SkiaSharp 기반 2D 캔버스 렌더러를 공통 모듈화하여 다중 모바일 프로젝트 간 재사용성 확보
 

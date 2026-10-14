@@ -1,8 +1,8 @@
-# ☸️ Argon — On-Premise Kubernetes 이중 사이트 GitOps
+# ☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [☸️ Argon — On-Premise Kubernetes 이중 사이트 GitOps](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
-> **최종 동기화 일시**: 2026-10-13
+> **동기화 Notion URL**: [☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
+> **최종 동기화 일시**: 2026-10-14
 
 ---
 
@@ -207,9 +207,9 @@ Argon이 배포하는 워크로드입니다.
 </tr>
 </table>
 ### 기술 이력서 반영 핵심 포인트
-- **\\[온프레미스 K8s 고가용성 DR 설계\\]** pameus와 kc5 이중 사이트 간 Active / Fenced Standby 구조를 수립하여 단일 writer 보장, epoch 기반 fencing, Keycloak 무중단 failover 체계 완성
-- **\\[엔터프라이즈 시크릿 거버넌스\\]** OpenBao HA Raft + External Secrets Operator(ESO) 연동으로 Git 내 평문 시크릿을 100% 제거하고 Kubernetes Native 인증으로 통합
-- **\\[AI 마이크로서비스 배포 자동화\\]** NemonicStudy 백엔드 군(BFF, Summary, OCR)을 컨테이너화하고 Harbor + Flux ImageUpdateAutomation 파이프라인으로 연결하여 무중단 지속 배포 실현
+- **\[온프레미스 K8s 고가용성 DR 설계\]** pameus와 kc5 이중 사이트 간 Active / Fenced Standby 구조를 수립하여 단일 writer 보장, epoch 기반 fencing, Keycloak 무중단 failover 체계 완성
+- **\[엔터프라이즈 시크릿 거버넌스\]** OpenBao HA Raft + External Secrets Operator(ESO) 연동으로 Git 내 평문 Secret 16개를 ExternalSecret으로 전량 치환하고 Kubernetes Native 인증으로 통합
+- **\[AI 마이크로서비스 배포 자동화\]** NemonicStudy 백엔드 군(BFF, Summary, OCR)을 컨테이너화하고 Harbor + Flux ImageUpdateAutomation 파이프라인으로 연결하여 무중단 지속 배포 실현
 ### ☸️ On-Premise K8s 4대 플랫폼 평면 및 DR 펜싱 (이지호 / 이정재 벤치마킹)
 <table header-row="true">
 <tr>
@@ -220,7 +220,7 @@ Argon이 배포하는 워크로드입니다.
 <tr>
 <td>**1. 시크릿 & 인증**</td>
 <td>OpenBao HA Raft, External Secrets Operator, Keycloak Operator</td>
-<td>Git 내 평문 시크릿 100% 제거, K8s Native 서비스 계정 인증 일원화</td>
+<td>Git 내 평문 Secret을 ExternalSecret으로 치환, K8s Native 서비스 계정 인증 일원화</td>
 </tr>
 <tr>
 <td>**2. 공통 인프라**</td>
