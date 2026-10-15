@@ -17,7 +17,7 @@
 | --- | --- |
 | 최초 계획 | [✅ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
 | 직접 출처 | 없음 |
-| 직접 후속 | 없음 |
+| 직접 후속 | [⬜ 블로그 Cloudflare Pages 배포 시크릿 및 AdSense·GA4·Amplitude 바인딩 자동화 계획](<../../../../planning/261015_feat_configure-blog-cloudflare-and-analytics-bindings.md>) `ibocon:261015_feat_configure-blog-cloudflare-and-analytics-bindings` |
 | 계보 경로 | [✅ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
 | 착수 조건 | 가능 |
 <!-- plan-relations-summary:end -->

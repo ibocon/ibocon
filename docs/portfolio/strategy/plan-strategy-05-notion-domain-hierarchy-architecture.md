@@ -125,8 +125,8 @@ graph TD
 
 ---
 
-### [최종 확정 채택안] 9대 단일 책임(SRP) 도메인 분리형 — ⭐ **최종 확정**
-> **특징**: 각 최상위 폴더가 오직 하나의 직무/기술 영역만 담당하도록 9개 원자적 도메인으로 분리하고, BLE 하드웨어 통신을 시스템 프로그래밍 도메인으로 응집시킨 구조.
+### [최종 확정 채택안] 10대 단일 책임(SRP) 도메인 분리형 (Top-Down 아키텍처 위계) — ⭐ **최종 확정**
+> **특징**: 각 최상위 폴더가 오직 하나의 직무/기술 영역만 담당하도록 10개 원자적 도메인으로 분리하고, 추상적인 아키텍처(`01`)와 백엔드(`02`)에서 시작해 인프라(`03`) → DevOps(`04`) → 개발자 경험(`05`) → 하네스 엔지니어링(`06`) → 웹 디자인 시스템(`07`) → 모바일(`08`) → 데스크톱(`09`) → 저수준 시스템 프로그래밍(`10`)으로 이어지는 Top-Down 위계 구조.
 
 ```text
 ├── 📁 01. 소프트웨어 아키텍처 (Clean Architecture, DDD, CQRS, TDD)
@@ -142,32 +142,34 @@ graph TD
 │   ├── 📄 04. [서비스 오케스트레이션] .NET Aspire 커스텀 호스팅 리소스 & ServiceDefaults (Garden.Aspire)
 │   └── 📄 05. [웹 호스트 미들웨어] ASP.NET Core ProblemDetails · ETag · Bootstrap 공통 계층 (Garden.AspNetCore)
 │
-├── 📁 03. DevOps 엔지니어링 (Flux GitOps, CI/CD, Container)
-│   └── 📄 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
-│
-├── 📁 04. 클라우드 및 온프레미스 인프라 (Kubernetes, Proxmox, Rook-Ceph)
+├── 📁 03. 클라우드 및 온프레미스 인프라 (Kubernetes, Proxmox, Rook-Ceph)
 │   └── 📄 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 클러스터 구성 (Garden.Cluster)
 │
-├── 📁 05. 개발자 경험 (DevEx, AI Agent Harness, Roslyn)
-│   ├── 📄 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)
-│   └── 📄 02. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)
+├── 📁 04. DevOps 엔지니어링 (Flux GitOps, CI/CD, Container)
+│   └── 📄 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
 │
-├── 📁 06. 웹 디자인 시스템 (Penpot, Blazor, Material 3)
+├── 📁 05. 개발자 경험 (DevEx, Roslyn Analyzer, NuGet)
+│   └── 📄 01. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)
+│
+├── 📁 06. 하네스 엔지니어링 (AI Agent Harness, MCP, Static Guards)
+│   └── 📄 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)
+│
+├── 📁 07. 웹 디자인 시스템 (Penpot, Blazor, Material 3)
 │   ├── 📄 01. [디자인 시스템] Penpot 토큰 동기화 & Material 3 자체 Blazor 컴포넌트 44종 (Garden.Razor)
 │   └── 📄 02. [컴포넌트 갤러리] Blazor WebAssembly 인터랙티브 UI 갤러리 (Garden.Razor.Gallery)
 │
-├── 📁 07. Windows 데스크톱 애플리케이션 (.NET 9, WinForms, WPF)
+├── 📁 08. 모바일 애플리케이션 (.NET MAUI, Xamarin.Forms, Android, iOS)
+│   ├── 📄 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)
+│   ├── 📄 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
+│   └── 📄 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui)
+│
+├── 📁 09. Windows 데스크톱 애플리케이션 (.NET 9, WinForms, WPF)
 │   └── 📄 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
 │
-├── 📁 08. 시스템 프로그래밍 (Win32, GDI+, USB, BLE 디바이스 연동)
-│   ├── 📄 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)
-│   ├── 📄 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)
-│   └── 📄 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb)
-│
-└── 📁 09. 모바일 애플리케이션 (.NET MAUI, Xamarin.Forms, Android, iOS)
-    ├── 📄 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)
-    ├── 📄 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
-    └── 📄 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui)
+└── 📁 10. 시스템 프로그래밍 (Win32, GDI+, USB, BLE 디바이스 연동)
+    ├── 📄 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)
+    ├── 📄 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)
+    └── 📄 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb)
 ```
 
 ---
@@ -187,19 +189,20 @@ graph TD
 
 ---
 
-## 5. 9대 단일 책임 도메인별 프로젝트 매핑표
+## 5. 10대 단일 책임 도메인별 프로젝트 매핑표
 
-| 도메인 계층 (9대 단일 책임 도메인) | 대표 상세 페이지 (TO-BE) |
+| 도메인 계층 (10대 단일 책임 도메인) | 대표 상세 페이지 (TO-BE) |
 | :--- | :--- |
 | **01. 소프트웨어 아키텍처** | 1. 01. [계층 분리 · 모듈화] Clean Architecture & Vertical Slice Architecture (Monolith · Peony · nemonic)<br>2. 02. [도메인 모델링] Rich Domain Model · 불변식 보호 · Result 패턴 (Garden.Share)<br>3. 03. [비동기 분산 설계] CQRS · 자체 Mediator · RabbitMQ Outbox 패턴 (Peony · Monolith)<br>4. 04. [테스트 설계] Four-Phase Test · NetArchTest · Testcontainers 통합 검증 (Monolith · Peony · Garden) |
 | **02. .NET 백엔드 엔지니어링** | 1. 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>2. 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)<br>3. 03. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy)<br>4. 04. [서비스 오케스트레이션] .NET Aspire 커스텀 호스팅 리소스 & ServiceDefaults (Garden.Aspire)<br>5. 05. [웹 호스트 미들웨어] ASP.NET Core ProblemDetails · ETag · Bootstrap 공통 계층 (Garden.AspNetCore) |
-| **03. DevOps 엔지니어링** | 1. 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon) |
-| **04. 클라우드 및 온프레미스 인프라** | 1. 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 클러스터 구성 (Garden.Cluster) |
-| **05. 개발자 경험 (DevEx)** | 1. 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)<br>2. 02. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers) |
-| **06. 웹 디자인 시스템** | 1. 01. [디자인 시스템] Penpot 토큰 동기화 & Material 3 자체 Blazor 컴포넌트 44종 (Garden.Razor)<br>2. 02. [컴포넌트 갤러리] Blazor WebAssembly 인터랙티브 UI 갤러리 (Garden.Razor.Gallery) |
-| **07. Windows 데스크톱 애플리케이션** | 1. 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic) |
-| **08. 시스템 프로그래밍** | 1. 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)<br>2. 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)<br>3. 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb) |
-| **09. 모바일 애플리케이션** | 1. 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)<br>2. 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)<br>3. 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui) |
+| **03. 클라우드 및 온프레미스 인프라** | 1. 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 클러스터 구성 (Garden.Cluster) |
+| **04. DevOps 엔지니어링** | 1. 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon) |
+| **05. 개발자 경험 (DevEx)** | 1. 01. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers) |
+| **06. 하네스 엔지니어링** | 1. 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness) |
+| **07. 웹 디자인 시스템** | 1. 01. [디자인 시스템] Penpot 토큰 동기화 & Material 3 자체 Blazor 컴포넌트 44종 (Garden.Razor)<br>2. 02. [컴포넌트 갤러리] Blazor WebAssembly 인터랙티브 UI 갤러리 (Garden.Razor.Gallery) |
+| **08. 모바일 애플리케이션** | 1. 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)<br>2. 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)<br>3. 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui) |
+| **09. Windows 데스크톱 애플리케이션** | 1. 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic) |
+| **10. 시스템 프로그래밍** | 1. 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)<br>2. 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)<br>3. 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb) |
 
 ---
 
