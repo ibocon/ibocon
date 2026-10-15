@@ -15,11 +15,11 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | 구분 | 파일 링크 (Local SoT) | 대응 Notion 페이지 (9대 단일 책임 도메인 산하) | 페이지 ID / 링크 |
 |:---:|---|---|---|
 | **메인 이력서** | [`resume-yegun-kim.md`](./resume-yegun-kim.md) | **📄 이력서 — 김예건** (루트 메인 · 9대 도메인 허브) | [`3dd47521...`](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d) |
-| **상세 프로젝트 1** | [`project-monolith.md`](./project-monolith.md) | **🧱 [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)** | [`3dd4752186758105...`](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
-| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
-| **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
-| **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
-| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
+| **상세 프로젝트 1** | [`project-monolith.md`](./project-monolith.md) | **🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)** | [`3dd4752186758105...`](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
+| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
+| **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
+| **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
+| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
 
 ---
 

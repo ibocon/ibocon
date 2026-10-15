@@ -1,7 +1,7 @@
-# 🌸 [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)
+# 🌸 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🌸 [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f)  
+> **동기화 Notion URL**: [🌸 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f)  
 > **최종 동기화 일시**: 2026-10-15
 
 ---

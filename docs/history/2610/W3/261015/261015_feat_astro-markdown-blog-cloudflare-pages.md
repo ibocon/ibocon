@@ -1,4 +1,4 @@
-# ⬜ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획
+# ✅ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획
 
 ## 계획 관계
 
@@ -15,25 +15,24 @@
 
 | 구분 | 계획·조건 |
 | --- | --- |
-| 최초 계획 | [⬜ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
+| 최초 계획 | [✅ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
 | 직접 출처 | 없음 |
 | 직접 후속 | 없음 |
-| 계보 경로 | [⬜ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
+| 계보 경로 | [✅ Astro 및 Cloudflare Pages 기반 마크다운 기술 블로그 구축 계획](<261015_feat_astro-markdown-blog-cloudflare-pages.md>) `ibocon:261015_feat_astro-markdown-blog-cloudflare-pages` |
 | 착수 조건 | 가능 |
 <!-- plan-relations-summary:end -->
 
 ## 결정이 필요한 사항
 
-1. **`botanicsoft.com` 도메인 주소 형태** — `blog.botanicsoft.com` 서브도메인 사용 + 루트 `botanicsoft.com/ads.txt` 리다이렉트 구성 (권장)
-- 근거: `BotanicSoft`는 조직·제품 브랜드(`Monolith`, `Peony`, `Argon` 등)의 상위 네임스페이스이므로 루트 도메인(`botanicsoft.com`)은 향후 회사·제품 대표 랜딩 또는 포트폴리오 허브용으로 보존하고, 기술 블로그는 `blog.botanicsoft.com`으로 분리하는 것이 DNS 격리(`CNAME`)와 서비스 확장성 면에서 가장 깔끔하다. 또한 `.botanicsoft.com` 상위 쿠키 도메인을 공유하므로 GA4·Amplitude 크로스 도메인 세션 추적이 기본 동작하며, Google AdSense는 루트 도메인(`botanicsoft.com`) 1회 승인 후 하위 도메인(`blog.botanicsoft.com`)에 별도 심사 없이 즉시 광고를 게재할 수 있다.
-- 대안:
-  - `botanicsoft.com` (루트/Apex 도메인 직접 바인딩): URL이 가장 짧고 AdSense `ads.txt`가 루트에서 직접 서빙되나, 루트 도메인 전체가 블로그 프로젝트에 독점 바인딩되어 추후 별도 제품 랜딩 페이지를 루트에 배포할 때 라우팅 분리가 필요하다.
-  - `botanicsoft.com/blog` (서브패스 라우팅): 도메인 권위(SEO)가 루트에 집중되지만, Astro `base: '/blog'` 에셋 프리픽스 관리 및 루트 사이트와의 Cloudflare Workers 리버스 프록시 구성 복잡도가 추가된다.
-  - `ibocon.botanicsoft.com` (개인 핸들 서브도메인): GitHub 핸들(`ibocon`)과 일치하나 브랜드 도메인 아래에 개인 ID가 중복 배치되어 `blog.botanicsoft.com`보다 직관성이 떨어진다.
+1. ~~**`botanicsoft.com` 도메인 주소 형태** — `blog.botanicsoft.com` 서브도메인 사용 + 루트 `botanicsoft.com/ads.txt` 리다이렉트 구성 (권장)~~
+- ~~근거: `BotanicSoft`는 조직·제품 브랜드(`Monolith`, `Peony`, `Argon` 등)의 상위 네임스페이스이므로 루트 도메인(`botanicsoft.com`)은 향후 회사·제품 대표 랜딩 또는 포트폴리오 허브용으로 보존하고, 기술 블로그는 `blog.botanicsoft.com`으로 분리하는 것이 DNS 격리(`CNAME`)와 서비스 확장성 면에서 가장 깔끔하다. 또한 `.botanicsoft.com` 상위 쿠키 도메인을 공유하므로 GA4·Amplitude 크로스 도메인 세션 추적이 기본 동작하며, Google AdSense는 루트 도메인(`botanicsoft.com`) 1회 승인 후 하위 도메인(`blog.botanicsoft.com`)에 별도 심사 없이 즉시 광고를 게재할 수 있다.~~
+- ~~대안: `botanicsoft.com` (루트/Apex 도메인 직접 바인딩), `botanicsoft.com/blog` (서브패스 라우팅), `ibocon.botanicsoft.com` (개인 핸들 서브도메인).~~
+- ~~결정: `blog.botanicsoft.com` 서브도메인 방식으로 확정 및 반영 완료.~~
 
-2. **저장소 내 디렉터리 분리 구조** — 마크다운 원고는 루트 `blog/` 폴더에 순수 `.md`로 보관하고, Astro 빌드 엔진은 `site/` 폴더로 격리 (권장)
-- 근거: 기존 `resume/`(마스터 이력서 및 41개 프로젝트 기술서) 및 `docs/`(기획·전략 문서)와 동등한 최상위 위계로 `blog/` 폴더를 두어 글 작성 시 프레임워크 설정 파일 노출 없이 오직 `blog/{category}/{slug}.md` 작성에만 집중할 수 있다. Astro 5 Content Layer API의 `glob({ pattern: "**/*.{md,mdx}", base: "../blog" })` 로더를 사용하면 빌드 엔진(`site/`)과 원고(`blog/`)를 물리적으로 완전히 분리할 수 있다.
-- 대안: 루트 디렉터리에 Astro 프로젝트(`package.json`, `astro.config.mjs`, `src/`)를 직접 풀기. 루트가 Node.js 설정 파일로 오염되어 GitHub 프로필 리포지토리(`ibocon/ibocon`)의 가독성을 해친다.
+2. ~~**저장소 내 디렉터리 분리 구조** — 마크다운 원고는 루트 `blog/` 폴더에 순수 `.md`로 보관하고, Astro 빌드 엔진은 `site/` 폴더로 격리 (권장)~~
+- ~~근거: 기존 `resume/`(마스터 이력서 및 41개 프로젝트 기술서) 및 `docs/`(기획·전략 문서)와 동등한 최상위 위계로 `blog/` 폴더를 두어 글 작성 시 프레임워크 설정 파일 노출 없이 오직 `blog/{category}/{slug}.md` 작성에만 집중할 수 있다. Astro 5 Content Layer API의 `glob({ pattern: "**/*.{md,mdx}", base: "../blog" })` 로더를 사용하면 빌드 엔진(`site/`)과 원고(`blog/`)를 물리적으로 완전히 분리할 수 있다.~~
+- ~~대안: 루트 디렉터리에 Astro 프로젝트(`package.json`, `astro.config.mjs`, `src/`)를 직접 풀기.~~
+- ~~결정: `blog/`(마크다운 원고 SoT)와 `site/`(Astro 빌드 엔진) 분리 구조로 확정 및 반영 완료.~~
 
 ## 배경
 
@@ -134,12 +133,16 @@ graph TD
 | 레이어 | 파일 | 변경 내용 |
 | --- | --- | --- |
 | Content SoT | `blog/dotnet/2026-10-15-clean-architecture-rich-domain.md` | `blog/` 폴더 하위 첫 기술 블로그 마크다운 포스트 및 Frontmatter 표준 규격 정의 |
+| Blog Engine | `site/.gitignore` | `node_modules/`, `dist/`, `.astro/` 빌드 아티팩트 Git 추적 제외 |
 | Blog Engine | `site/package.json` | Astro 5, `@astrojs/rss`, `@astrojs/sitemap`, `@amplitude/analytics-browser`, `vitest` 의존성 선언 |
+| Blog Engine | `site/tsconfig.json` | Astro strict TypeScript 설정 구성 |
 | Blog Engine | `site/astro.config.mjs` | `site: 'https://blog.botanicsoft.com'`, Shiki 코드 하이라이팅, Sitemap 연동 설정 |
 | Blog Engine | `site/src/content.config.ts` | Astro Content Layer `glob({ pattern: "**/*.{md,mdx}", base: "../blog" })` 로더로 루트 `blog/` 폴더 연결 |
 | Monetization | `site/public/ads.txt` | Google AdSense 크롤러 인증을 위한 `ads.txt` 정적 파일 배치 |
 | Monetization | `site/src/components/AdSenseSlot.astro` | Google AdSense 스크립트 로드 및 반응형 광고 슬롯(`ins.adsbygoogle`) 컴포넌트 구현 |
 | Analytics | `site/src/components/Analytics.astro` | Google Analytics 4(`gtag.js`) 및 Amplitude Browser SDK 초기화·페이지뷰·스크롤 이벤트 수집 컴포넌트 구현 |
+| Pages & RSS | `site/src/pages/index.astro` | `blog/` 컬렉션 포스트 목록, `Analytics`, `AdSenseSlot`을 렌더링하는 메인 페이지 |
+| Pages & RSS | `site/src/pages/[...slug].astro` | `blog/` 마크다운 상세 본문, `Analytics`, `AdSenseSlot`을 렌더링하는 동적 라우트 페이지 |
 | Pages & RSS | `site/src/pages/rss.xml.ts` | `blog/` 컬렉션 기반 표준 RSS 2.0 피드(`https://blog.botanicsoft.com/rss.xml`) 생성 엔드포인트 |
 | CI/CD | `.github/workflows/blog-deploy.yml` | `blog/**` 또는 `site/**` 변경 시 Astro 정적 빌드·테스트 검증 및 Cloudflare Pages 배포 수행 |
 | CI/CD | `.github/workflows/blog-posts.yml` | 블로그 RSS 수집 소스를 `https://blog.botanicsoft.com/rss.xml` (티스토리 폴백 지원)로 갱신 |
@@ -149,7 +152,7 @@ graph TD
 
 ## 단계별 수정 계획
 
-### ⬜ 1단계. 루트 `blog/` 디렉터리 생성 및 마크다운 Frontmatter 표준 수립
+### ✅ 1단계. 루트 `blog/` 디렉터리 생성 및 마크다운 Frontmatter 표준 수립
 
 **파일**: `blog/dotnet/2026-10-15-clean-architecture-rich-domain.md`
 
@@ -176,7 +179,26 @@ draft: false
 비즈니스 규칙이 Application 레이어의 서비스나 핸들러에 흩어지는 빈혈 도메인 모델은 시스템 규모가 커질수록 불변식 검증 누락을 유발합니다.
 ```
 
-### ⬜ 2단계. Astro 빌드 엔진(`site/`) 및 루트 `blog/` Content Loader 구성
+### ✅ 2단계. Astro 빌드 엔진(`site/`) 및 루트 `blog/` Content Loader 구성
+
+**파일**: `site/.gitignore`
+
+AS-IS:
+
+```text
+# 신규 파일 ❌
+```
+
+TO-BE:
+
+```text
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+```
 
 **파일**: `site/package.json`
 
@@ -209,6 +231,22 @@ TO-BE:
   "devDependencies": {
     "vitest": "^2.1.8"
   }
+}
+```
+
+**파일**: `site/tsconfig.json`
+
+AS-IS:
+
+```json
+// 신규 파일 ❌
+```
+
+TO-BE:
+
+```json
+{
+  "extends": "astro/tsconfigs/strict"
 }
 ```
 
@@ -271,7 +309,7 @@ const blog = defineCollection({
 export const collections = { blog };
 ```
 
-### ⬜ 3단계. Google AdSense 연동 (`ads.txt` 및 반응형 광고 슬롯 컴포넌트)
+### ✅ 3단계. Google AdSense 연동 (`ads.txt` 및 반응형 광고 슬롯 컴포넌트)
 
 **파일**: `site/public/ads.txt`
 
@@ -334,7 +372,7 @@ const clientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
 )}
 ```
 
-### ⬜ 4단계. Google Analytics 4 (GA4) 및 Amplitude 통합 분석 컴포넌트 구현
+### ✅ 4단계. Google Analytics 4 (GA4) 및 Amplitude 통합 분석 컴포넌트 구현
 
 **파일**: `site/src/components/Analytics.astro`
 
@@ -394,7 +432,100 @@ const amplitudeApiKey = import.meta.env.PUBLIC_AMPLITUDE_API_KEY;
 )}
 ```
 
-### ⬜ 5단계. RSS 2.0 피드 생성 및 Cloudflare Pages 자동 배포·README 연동 워크플로 구성
+### ✅ 5단계. 블로그 페이지·RSS 2.0 피드 생성 및 Cloudflare Pages 자동 배포·README 연동 워크플로 구성
+
+**파일**: `site/src/pages/index.astro`
+
+AS-IS:
+
+```astro
+---
+// 신규 파일 ❌
+---
+```
+
+TO-BE:
+
+```astro
+---
+import { getCollection } from 'astro:content';
+import Analytics from '../components/Analytics.astro';
+import AdSenseSlot from '../components/AdSenseSlot.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yegun Kim Tech Blog | BotanicSoft</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <Analytics />
+  </head>
+  <body>
+    <main>
+      <ul>
+        {posts.map((post) => (
+          <li><a href={`/${post.id}/`}>{post.data.title}</a></li>
+        ))}
+      </ul>
+      <AdSenseSlot slotId="blog-home-bottom" />
+    </main>
+  </body>
+</html>
+```
+
+**파일**: `site/src/pages/[...slug].astro`
+
+AS-IS:
+
+```astro
+---
+// 신규 파일 ❌
+---
+```
+
+TO-BE:
+
+```astro
+---
+import { getCollection, render } from 'astro:content';
+import Analytics from '../components/Analytics.astro';
+import AdSenseSlot from '../components/AdSenseSlot.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} | Yegun Kim Tech Blog</title>
+    <Analytics />
+  </head>
+  <body>
+    <article>
+      <h1>{post.data.title}</h1>
+      <Content />
+      <AdSenseSlot slotId="blog-post-bottom" />
+    </article>
+  </body>
+</html>
+```
 
 **파일**: `site/src/pages/rss.xml.ts`
 
@@ -579,7 +710,7 @@ sequenceDiagram
 > 프레임워크: Vitest
 > 패턴: Given/When/Then (Four-Phase Test)
 
-### ⬜ 테스트용 Stub 정의
+### ✅ 테스트용 Stub 정의
 
 **파일**: `site/tests/fixtures/sample-post.md`
 
@@ -598,7 +729,7 @@ draft: false
 Sample body content for automated test verification.
 ```
 
-### ⬜ 테스트: `blog-build.test.ts`
+### ✅ 테스트: `blog-build.test.ts`
 
 **파일**: `site/tests/blog-build.test.ts`
 
@@ -638,10 +769,10 @@ describe('Astro Blog Static Build Verification', () => {
 
 | 범위 | 실행 명령 | 총 테스트 | 통과 | 실패 | 결과 |
 | --- | --- | ---: | ---: | ---: | :---: |
-| 변경 범위 | `npm --prefix site test` | — | — | — | ⬜ |
-| 전체 | `npm --prefix site run build && npm --prefix site test` | — | — | — | ⬜ |
+| 변경 범위 | `npm --prefix site test` | 1 | 1 | 0 | ✅ |
+| 전체 | `npm --prefix site run build && npm --prefix site test` | 1 | 1 | 0 | ✅ |
 
-**실행 일시**: —
+**실행 일시**: 2026-10-15 15:14
 
 ## 계획 평가
 

@@ -1,7 +1,7 @@
-# 🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
+# 🏷️ 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
+> **동기화 Notion URL**: [🏷️ 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
 > **최종 동기화 일시**: 2026-10-15
 
 ---

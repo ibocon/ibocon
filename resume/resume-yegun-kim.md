@@ -37,60 +37,60 @@
 <table fit-page-width="true" header-row="true">
 <tr>
 <td>직무 도메인 (Domain)</td>
-<td>핵심 하위 프로젝트</td>
+<td>핵심 하위 항목</td>
 <td>주요 작업 및 내용</td>
 </tr>
 <tr>
-<td>**01. .NET 백엔드 엔지니어링**</td>
-<td>• [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>• [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
+<td>**01. 소프트웨어 아키텍처**</td>
+<td>• 01. [계층 분리 · 모듈화] Clean Architecture & VSA<br>• 02. [도메인 모델링] Rich Domain Model · Result 패턴<br>• 03. [비동기 분산 설계] CQRS · 자체 Mediator · Outbox<br>• 04. [테스트 설계] Four-Phase Test · NetArchTest · Testcontainers</td>
+<td>비즈니스 불변식을 엔티티 내부에 캡슐화하고 명시적 Result 패턴·자체 Mediator·도메인 이벤트 디스패처·NetArchTest·Testcontainers로 프로젝트 전반의 설계 및 테스트 일관성 유지</td>
+</tr>
+<tr>
+<td>**02. .NET 백엔드 엔지니어링**</td>
+<td>• 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>• 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 (Peony)<br>• 03. [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
 <td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), .NET Aspire 기반 마이크로서비스 오케스트레이션, YARP API GW 및 외부 채널 커넥터 구축</td>
 </tr>
 <tr>
-<td>**02. 소프트웨어 아키텍처**</td>
-<td>• [계층 분리 · 모듈화] Clean Architecture & Vertical Slice Architecture<br>• [도메인 모델링] Rich Domain Model · 불변식 보호 · Result 패턴<br>• [비동기 분산 설계] CQRS · 자체 Mediator · RabbitMQ Outbox 패턴</td>
-<td>비즈니스 불변식을 엔티티 내부에 캡슐화하고 명시적 Result 패턴·자체 Mediator·도메인 이벤트 디스패처·NetArchTest로 프로젝트 전반의 설계 일관성 유지</td>
-</tr>
-<tr>
 <td>**03. DevOps 엔지니어링**</td>
-<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [CI/CD 파이프라인] GitHub Actions 컨테이너 배포</td>
+<td>• 01. [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [CI/CD 파이프라인] GitHub Actions 컨테이너 배포</td>
 <td>Flux v2 멀티 클러스터 선언적 배포, Active/Fenced Standby 사이트 전환 계약 및 Pester 정적 가드 118개 운영</td>
 </tr>
 <tr>
 <td>**04. 클라우드 및 온프레미스 인프라**</td>
-<td>• [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 구성 (Garden.Cluster)</td>
+<td>• 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 구성 (Garden.Cluster)</td>
 <td>Proxmox VE 베어메탈 및 Azure AKS 클러스터 프로비저닝, Rook-Ceph 스토리지·CloudNativePG·OpenBao 시크릿 제어면 운영</td>
 </tr>
 <tr>
 <td>**05. 개발자 경험 (DevEx)**</td>
-<td>• [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)<br>• [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)</td>
+<td>• 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)<br>• 02. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)</td>
 <td>4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개), Fast Pre-Commit 가드(`Garden.Harness`) 및 Roslyn 커스텀 애널라이저 7종(`Garden.Analyzers`) 구축</td>
 </tr>
 <tr>
 <td>**06. 웹 디자인 시스템**</td>
-<td>• [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)</td>
+<td>• 01. [디자인 시스템] Penpot 토큰 동기화 & Blazor 컴포넌트 44종 (Garden.Razor)<br>• 02. [컴포넌트 갤러리] Blazor WASM 인터랙티브 갤러리 (Garden.Razor.Gallery)</td>
 <td>Material 3 기반 자체 Blazor 컴포넌트 44종, 3계층 SCSS 디자인 토큰, Penpot 토큰 동기화 도구 및 Blazor WASM 갤러리 배포</td>
 </tr>
 <tr>
 <td>**07. Windows 데스크톱 애플리케이션**</td>
-<td>• [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)</td>
+<td>• 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)</td>
 <td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 전환, WinForms/WPF MVVM 리팩토링 및 다국어 MSI/EXE 설치 패키지 배포</td>
 </tr>
 <tr>
 <td>**08. 시스템 프로그래밍**</td>
-<td>• [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)</td>
+<td>• 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 통합 SDK (Mango & Garden)<br>• 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 라이브러리 (Garden.Bluetooth)<br>• 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 (Garden.Usb)</td>
 <td>WinUSB/P-Invoke·IOKit/libusb·WebUSB 및 5계층 BLE 추상화 SDK 설계, BLE 상태 폴링 경합 해소, Win32 GDI 프린터 DC 핸들 누수 해결</td>
 </tr>
 <tr>
 <td>**09. 모바일 애플리케이션**</td>
-<td>• [모바일 가계부 앱] .NET MAUI Blazor Hybrid 클라이언트 (Peony Mobile)<br>• [모바일 라벨러 앱] FINECUBE Android · iOS 앱 (Lithium)</td>
+<td>• 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 클라이언트 (Peony Mobile)<br>• 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 (Lithium)<br>• 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 계층 (Garden.Maui)</td>
 <td>.NET MAUI Blazor Hybrid 기반 앱·웹 단일 UI 코드베이스 구축, SkiaSharp 터치 캔버스 편집기 모듈화, Android targetSdk 34 상향</td>
 </tr>
 </table>
 ---
 ## 📂 9대 직무 도메인별 상세 포트폴리오 (Domain Hub)
 <span color="gray">각 도메인 폴더를 클릭하시면 해당 기술 영역의 상세 작업 내역을 확인하실 수 있습니다.</span>
-<page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">01. .NET 백엔드 엔지니어링 (C#, YARP, PostgreSQL)</page>
-<page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">02. 소프트웨어 아키텍처 (Clean Architecture, DDD, CQRS)</page>
+<page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">01. 소프트웨어 아키텍처 (Clean Architecture, DDD, CQRS, TDD)</page>
+<page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">02. .NET 백엔드 엔지니어링 (C#, YARP, PostgreSQL)</page>
 <page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">03. DevOps 엔지니어링 (Flux GitOps, CI/CD, Container)</page>
 <page url="https://app.notion.com/p/3fa475218675819995bfeab3391da08b">04. 클라우드 및 온프레미스 인프라 (Kubernetes, Proxmox, Rook-Ceph)</page>
 <page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">05. 개발자 경험 (DevEx, AI Agent Harness, Roslyn)</page>

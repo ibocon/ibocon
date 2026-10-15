@@ -1,0 +1,43 @@
+---
+// ✅ GA4(gtag.js) 및 Amplitude Browser SDK 통합 초기화 컴포넌트
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const amplitudeApiKey = import.meta.env.PUBLIC_AMPLITUDE_API_KEY;
+---
+
+{gaMeasurementId && (
+  <>
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+    ></script>
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaMeasurementId, {
+        cookie_domain: 'botanicsoft.com',
+         send_page_view: true,
+      });
+    </script>
+  </>
+)}
+
+{amplitudeApiKey && (
+  <script>
+    import * as amplitude from '@amplitude/analytics-browser';
+
+    const apiKey = import.meta.env.PUBLIC_AMPLITUDE_API_KEY;
+    if (apiKey) {
+      amplitude.init(apiKey, undefined, {
+        defaultTracking: {
+          pageViews: true,
+          sessions: true,
+          formInteractions: true,
+          fileDownloads: true,
+        },
+        serverZone: 'US',
+      });
+    }
+  </script>
+)}

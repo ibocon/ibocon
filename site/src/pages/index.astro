@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Analytics from '../components/Analytics.astro';
+import AdSenseSlot from '../components/AdSenseSlot.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yegun Kim Tech Blog | BotanicSoft</title>
+    <meta
+      name="description"
+      content=".NET, Clean Architecture, Kubernetes & Distributed Systems Engineering"
+    />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <Analytics />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Yegun Kim Tech Blog</h1>
+        <p>.NET, Clean Architecture, Kubernetes &amp; Distributed Systems Engineering</p>
+      </header>
+      <section>
+        <ul>
+          {posts.map((post) => (
+            <li>
+              <a href={`/${post.id}/`}>{post.data.title}</a>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toISOString().slice(0, 10)}
+              </time>
+              <p>{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <AdSenseSlot slotId="blog-home-bottom" />
+    </main>
+  </body>
+</html>

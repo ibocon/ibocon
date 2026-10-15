@@ -27,7 +27,9 @@ jobs:
           python -c "
           import feedparser, re
 
-          feed = feedparser.parse('https://ibocon.tistory.com/rss')
+          feed = feedparser.parse('https://blog.botanicsoft.com/rss.xml')
+          if not getattr(feed, 'entries', None):
+              feed = feedparser.parse('https://ibocon.tistory.com/rss')
           tech_posts = []
           exclude_keywords = ['건축', '단독주택', '콘크리트', '신재생에너지']
 

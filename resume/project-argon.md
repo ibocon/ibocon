@@ -1,8 +1,8 @@
-# ☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
+# ☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
-> **최종 동기화 일시**: 2026-10-14
+> **동기화 Notion URL**: [☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
+> **최종 동기화 일시**: 2026-10-15
 
 ---
 

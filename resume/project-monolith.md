@@ -1,8 +1,8 @@
-# 🧱 [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)
+# 🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🧱 [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
-> **최종 동기화 일시**: 2026-10-14
+> **동기화 Notion URL**: [🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
+> **최종 동기화 일시**: 2026-10-15
 
 ---
 

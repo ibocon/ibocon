@@ -1,8 +1,8 @@
-# 🖨️ [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
+# 🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🖨️ [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
-> **최종 동기화 일시**: 2026-10-14
+> **동기화 Notion URL**: [🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
+> **최종 동기화 일시**: 2026-10-15
 
 ---
 
