@@ -42,13 +42,13 @@
 </tr>
 <tr>
 <td>**01. .NET 백엔드 엔지니어링**</td>
-<td>• [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
-<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·Slack/Teams/Zapier 커넥터·비동기 OCR/요약 마이크로서비스 구축</td>
+<td>• [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>• [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
+<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), .NET Aspire 기반 마이크로서비스 오케스트레이션, YARP API GW 및 외부 채널 커넥터 구축</td>
 </tr>
 <tr>
 <td>**02. 소프트웨어 아키텍처**</td>
-<td>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [공통 아키텍처] 자체 Mediator · Result 패턴 (Garden.Share)</td>
-<td>Clean Architecture·Vertical Slice Architecture(VSA)·CQRS·도메인 이벤트 디스패처 설계 및 아키텍처 테스트로 계층 의존 규칙 고정</td>
+<td>• [계층 분리 · 모듈화] Clean Architecture & Vertical Slice Architecture<br>• [도메인 모델링] Rich Domain Model · 불변식 보호 · Result 패턴<br>• [비동기 분산 설계] CQRS · 자체 Mediator · RabbitMQ Outbox 패턴</td>
+<td>비즈니스 불변식을 엔티티 내부에 캡슐화하고 명시적 Result 패턴·자체 Mediator·도메인 이벤트 디스패처·NetArchTest로 프로젝트 전반의 설계 일관성 유지</td>
 </tr>
 <tr>
 <td>**03. DevOps 엔지니어링**</td>

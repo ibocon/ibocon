@@ -19,7 +19,7 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
 | **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
 | **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
-| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 [분산 메시징] RabbitMQ & Outbox 패턴 가계부 서비스 (Peony)** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
+| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
 
 ---
 
