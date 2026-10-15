@@ -62,8 +62,8 @@
 </tr>
 <tr>
 <td>**05. 개발자 경험 (DevEx)**</td>
-<td>• [개발 도구 · 하네스] Roslyn 애널라이저 & AI 에이전트 하네스 (Garden.Harness)</td>
-<td>4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개), Fast Pre-Commit 가드 및 Roslyn 커스텀 애널라이저 7종 구축</td>
+<td>• [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)<br>• [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)</td>
+<td>4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개), Fast Pre-Commit 가드(`Garden.Harness`) 및 Roslyn 커스텀 애널라이저 7종(`Garden.Analyzers`) 구축</td>
 </tr>
 <tr>
 <td>**06. 웹 디자인 시스템**</td>
