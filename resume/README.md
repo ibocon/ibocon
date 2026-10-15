@@ -35,7 +35,7 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | **GitHub 프로필(@ibocon) 고도화 및 이력 관리 체계 계획** | [`github-profile-plan.md`](../docs/portfolio/strategy/github-profile-plan.md) | `ibocon/ibocon` 프로필 README 배포 및 1만 커밋 시각화 파이프라인 계획서 | **완료 (`✅`)** |
 | **채용 담당자 최적화 및 세부 전략 시리즈 (6종)** | `plan-strategy-*.md` | 국내 리쿠르터 시선 고정, 비공개 저장소 증명, Pinned Gist, 도메인 계층 구조(폴더 트리) 등 전략 보고서 | **완료 (`✅`)** |
 | **전략 5 — 노션 이력서 도메인별 계층 구조 (폴더 트리 모델) 설계서** | [`plan-strategy-05-notion-domain-hierarchy-architecture.md`](../docs/portfolio/strategy/plan-strategy-05-notion-domain-hierarchy-architecture.md) | 복합 도메인을 9대 단일 책임 도메인(백엔드/아키텍처/DevOps/인프라/DevEx/디자인시스템/데스크톱/시스템프로그래밍·BLE/모바일)으로 세분화한 아키텍처 설계서 | **완료 (`✅`)** |
-| **국내 개발자 채용 직무(JD) 레퍼런스 벤치마킹 분석서** | [`recruitment-jd-benchmarking-references.md`](../docs/portfolio/strategy/recruitment-jd-benchmarking-references.md) | 사람인, 점핏, 잡플래닛, 원티드의 핵심 직무 공고 수집 및 [개선 조합 B: 5대 직무 전문성 분리형] 채택 실증 분석서 | **완료 (`✅`)** |
+| **국내 개발자 채용 직무(JD) 레퍼런스 벤치마킹 분석서** | [`recruitment-jd-benchmarking-references.md`](../docs/portfolio/strategy/recruitment-jd-benchmarking-references.md) | 사람인, 점핏, 잡플래닛, 원티드의 핵심 직무 공고 수집 및 9대 단일 책임(SRP) 도메인 분리 실증 분석서 | **완료 (`✅`)** |
 | **노션 이력서 정보 구조 및 작성 규약 (컨벤션)** | [`convention-notion-resume-structure.md`](../docs/portfolio/strategy/convention-notion-resume-structure.md) | Domain-First 원칙, 사내 프로젝트명 최상위 배치 금지, 과장 표현 금지(실증 근거 필수), RFC 8174 규범 표기 기반 공식 이력서 작성 규약 | **완료 (`✅`)** |
 
 ---

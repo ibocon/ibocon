@@ -47,8 +47,9 @@ graph TD
   - OS별 디바이스 드라이버 통신 추상화 및 렌더링 성능 최적화
 
 ### Pillar 2: 모듈러 모노리스 & 공용 도메인 생태계 (Peony & Garden)
-- **포괄 프로젝트**: `Peony` (가계부 서비스 백엔드 & Blazor MAUI 앱), `Garden.*` 공용 패키지군 10종
-  - *공용 패키지군: Garden.Usb, Garden.Bluetooth, Garden.Maui, Garden.Aspire, Garden.Razor, Garden.Razor.Gallery, Garden.AspNetCore, Garden.Analyzers, Garden.Share, Garden.Harness*
+- **포괄 프로젝트**: `Peony` (가계부 서비스 백엔드 & Blazor MAUI 앱), `Garden.*` 공용 패키지군 9종 및 `Garden.Harness` (에이전트 하네스)
+  - *Garden 공용 패키지 9종: Garden.Usb, Garden.Bluetooth, Garden.Maui, Garden.Aspire, Garden.Razor, Garden.Razor.Gallery, Garden.AspNetCore, Garden.Analyzers, Garden.Share*
+  - *AI 에이전트 하네스: Garden.Harness (별도 저장소)*
 - **비즈니스 정의**: 개인 자산 관리와 금융 트랜잭션 흐름을 다루는 풀스택 모바일/웹 서비스 및 전사 도메인 공용 프레임워크
 - **엔지니어링 핵심**:
   - Vertical Slice Architecture (VSA) 및 CQRS, Result 패턴 기반의 모듈 경계 수립

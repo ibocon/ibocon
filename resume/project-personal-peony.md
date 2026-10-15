@@ -131,7 +131,7 @@
 <td>WinUSB·IOKit/libusb·WebUSB를 단일 인터페이스로 묶은 USB 라이브러리</td>
 </tr>
 <tr>
-<td><mention-page url="https://app.notion.com/p/3dd475218675819688c5e9a90d41afbe">Garden.Analyzers — Roslyn 규약 애널라이저·코드픽스</mention-page></td>
+<td><mention-page url="https://app.notion.com/p/3dd475218675819688c5e9a90d41afbe">[정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)</mention-page></td>
 <td>네임스페이스·DI 명명·ConfigureAwait·메서드 체인 래핑 등 7종 애널라이저와 코드픽스</td>
 </tr>
 </table>
@@ -190,7 +190,7 @@
 <page url="https://app.notion.com/p/3dd475218675818d8ea8d1638af0b561">Garden.Maui — MAUI 플랫폼 서비스 추상화</page>
 <page url="https://app.notion.com/p/3dd47521867581999c6cc23c2973cb2b">Garden.Bluetooth — BLE 추상화 라이브러리</page>
 <page url="https://app.notion.com/p/3dd475218675810db019cbce2658c31f">Garden.Usb — 크로스플랫폼 USB 라이브러리</page>
-<page url="https://app.notion.com/p/3dd475218675819688c5e9a90d41afbe">Garden.Analyzers — Roslyn 규약 애널라이저·코드픽스</page>
+<mention-page url="https://app.notion.com/p/3dd475218675819688c5e9a90d41afbe">[정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)</mention-page>
 ---
 ## 📂 사내 플랫폼 기술 전파 및 연계 저장소
 <table header-row="true">

@@ -167,57 +167,6 @@ graph TD
 
 ---
 
-### [대안 A] JD 키워드 4대 직무 정밀 압축형 (4영역 슬림 모델)
-> **특징**: 4개 대분류 틀을 유지하되 실제 JD의 핵심 필수/우대 키워드를 앞단 15자 이내로 전진 배치하고 말줄임을 방어한 모델.
-
-```text
-├── 📁 01. .NET 백엔드 & 분산 아키텍처 (.NET 9, Clean Arch, CQRS)
-│   ├── 📄 [전사 백엔드] .NET 9 모듈 모노레포 & API GW (Monolith)
-│   ├── 📄 [분산 메시징] RabbitMQ & Outbox CQRS 가계부 (Peony Backend)
-│   └── 📄 [AI 파이프라인] 비동기 잡 큐 & OCR 마이크로서비스 (NemonicStudy)
-│
-├── 📁 02. DevOps & 클라우드 인프라 (K8s, GitOps, Ceph, DevEx)
-│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 DR 오케스트레이션 (Argon)
-│   ├── 📄 [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 운영 (Garden.Cluster)
-│   └── 📄 [DevEx 거버넌스] Roslyn 애널라이저 & 4대 AI 에이전트 하네스 (Garden.Harness)
-│
-├── 📁 03. Windows 데스크톱 & 시스템 제어 (C#, WPF, Win32, USB)
-│   ├── 📄 [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
-│   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통신 SDK (Mango)
-│
-└── 📁 04. 모바일 & 웹 프론트엔드 (BLE IoT, MAUI, Penpot 디자인)
-    ├── 📄 [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)
-    ├── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 연동 (Lithium)
-    └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Razor 컴포넌트 (Garden.Razor)
-```
-
----
-
-### [대안 C] 4대 시스템 토폴로지형 (서버사이드 2축 vs 엣지 디바이스 2축)
-> **특징**: 백엔드와 인프라/플랫폼(서버사이드) 2개 폴더와 데스크톱/디바이스와 모바일(엔드포인트 엣지) 2개 폴더로 물리적 레이어를 2:2 대칭으로 맞춘 모델.
-
-```text
-├── 📁 01. 백엔드 서비스 & 분산 시스템 (Core Application Services)
-│   ├── 📄 [전사 백엔드] .NET 9 통합 모듈 모노레포 & YARP API GW (Monolith)
-│   ├── 📄 [분산 메시징] 이벤트 주도 CQRS 가계부 마이크로서비스 (Peony Backend)
-│   └── 📄 [AI 파이프라인] 비동기 OCR/요약 분산 처리 파이프라인 (NemonicStudy)
-│
-├── 📁 02. 클라우드 플랫폼 & 엔지니어링 거버넌스 (Infra, Storage, DevEx)
-│   ├── 📄 [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Rook-Ceph 스토리지 (Argon/Cluster)
-│   ├── 📄 [엔지니어링 거버넌스] AI 코딩 에이전트 하네스 & Roslyn 정적 가드 (Garden.Harness)
-│   └── 📄 [웹 디자인 시스템] Penpot 토큰 동기화 Blazor 컴포넌트 라이브러리 (Garden.Razor)
-│
-├── 📁 03. 데스크톱 & 하드웨어 제어 시스템 (Desktop & Device Systems)
-│   ├── 📄 [데스크톱 클라이언트] Windows 인쇄 엔진 — 8년 수명주기 & .NET 9 현대화 (nemonic)
-│   └── 📄 [디바이스 드라이버] OS 독립형 USB/Bluetooth 통합 드라이버 SDK (Mango)
-│
-└── 📁 04. 모바일 & 무선 IoT 애플리케이션 (Mobile & Wireless IoT)
-    ├── 📄 [모바일 클라이언트] .NET MAUI Blazor Hybrid 크로스플랫폼 앱 (Peony Mobile)
-    └── 📄 [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)
-```
-
----
-
 ## 4. 도메인 허브 페이지(상위 폴더) 표준 템플릿 명세
 
 각 도메인 상위 페이지는 채용 담당자에게 **전문 분야의 스케일과 비즈니스 가치**를 30초 내에 전달할 수 있도록 아래 표준 템플릿으로 구성합니다.
