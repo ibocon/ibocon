@@ -6,15 +6,9 @@
 
 ---
 
-> ⚡ **엔지니어링 가치 제안 (Value Proposition)**
-> **"디바이스·데스크톱·모바일·웹 클라이언트부터 마이크로서비스 백엔드와 온프레미스 GitOps 인프라까지 전 계층을 코드로 선언하고 자동화하는 .NET 풀스택 엔지니어"**
-> 9년간 망고슬래브에서 네모닉 1세대 하드웨어 연동 제품부터 분산 클라우드/마이크로서비스 백엔드, On-Premise K8s 이중화 클러스터, 전사 모노레포 통합 및 AI 코딩 에이전트 하네스까지 제품 전 생애주기를 직접 설계하고 운영했습니다. 연간 10,000+ Contributions을 유지하며 변경에 유연하고 테스트 가능한 시스템을 구축합니다.
-
-	
-		
 > 💡 
 > **.NET 풀스택 소프트웨어 엔지니어**
-> 2017년부터 망고슬래브에서 Windows 데스크톱 앱, 모바일 앱, 웹 서비스, On-Premise Kubernetes 인프라까지 제품 전 계층을 다뤄 왔습니다. 개인 프로젝트에서는 .NET MAUI 모바일 앱과 마이크로서비스, GitOps 클러스터, AI 코딩 에이전트 하네스(작업 규약·검증 도구 모음)를 단독으로 설계·운영하고 있습니다.
+> 2017년부터 망고슬래브에서 Windows 데스크톱 앱, 모바일 앱, 웹 서비스, On-Premise Kubernetes 클러스터까지 제품에 필요한 영역을 개발·운영해 왔습니다. 개인 프로젝트에서는 .NET MAUI 모바일 앱과 마이크로서비스, GitOps 클러스터, Blazor 컴포넌트 라이브러리, AI 코딩 에이전트 하네스(작업 규약·검증 도구 모음)를 설계·운영하고 있습니다.
 
 	
 	
@@ -38,48 +32,72 @@
 	
 
 ---
-## 🏛️ 5대 직무 전문성 도메인 요약 (Core Engineering Domains)
-도메인 사전 지식 없이도 전체 엔지니어링 역량을 한눈에 파악하실 수 있도록, 9년간 설계·구축한 프로덕트와 플랫폼을 **5대 핵심 직무 도메인**으로 분류하여 소개합니다.
+## 주요 기술 영역
+담당해 온 업무와 개인 프로젝트를 단일 책임 기준의 9개 기술 영역으로 분류한 요약입니다.
 <table fit-page-width="true" header-row="true">
 <tr>
 <td>직무 도메인 (Domain)</td>
 <td>핵심 하위 프로젝트</td>
-<td>해결 과제 및 비즈니스·기술 임팩트</td>
+<td>주요 작업 및 내용</td>
 </tr>
 <tr>
-<td>**01. .NET 백엔드 & 분산 아키텍처**</td>
-<td>• [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)<br>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
-<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·RabbitMQ·Clean Architecture 기반 비동기 분산 처리 및 외부 알림 큐 격리</td>
+<td>**01. .NET 백엔드 엔지니어링**</td>
+<td>• [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>• [AI 파이프라인] 비동기 OCR/요약 (NemonicStudy)</td>
+<td>14개 분산 서비스 모노레포 통합(커밋 75% 기여), YARP API GW·Slack/Teams/Zapier 커넥터·비동기 OCR/요약 마이크로서비스 구축</td>
 </tr>
 <tr>
-<td>**02. DevOps & 클라우드 인프라**</td>
-<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 구성 (Garden.Cluster)</td>
-<td>Proxmox 베어메탈 및 AKS 하이브리드 K8s 클러스터, Active/Fenced Standby 무중단 DR, OpenBao 기반 평문 Secret 16개 ExternalSecret 전량 치환</td>
+<td>**02. 소프트웨어 아키텍처**</td>
+<td>• [분산 메시징] RabbitMQ & Outbox 가계부 (Peony)<br>• [공통 아키텍처] 자체 Mediator · Result 패턴 (Garden.Share)</td>
+<td>Clean Architecture·Vertical Slice Architecture(VSA)·CQRS·도메인 이벤트 디스패처 설계 및 아키텍처 테스트로 계층 의존 규칙 고정</td>
 </tr>
 <tr>
-<td>**03. 개발자 경험(DevEx) & 웹 디자인 시스템**</td>
-<td>• [디자인 시스템] Penpot 토큰 동기화 (Garden.Razor)<br>• [엔지니어링 거버넌스] Roslyn 애널라이저 & AI 하네스 (Garden.Harness)</td>
-<td>Material 3 자체 Blazor 컴포넌트 44종 및 Penpot 토큰 동기화, 4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개) 및 Roslyn 정적 애널라이저 7종</td>
+<td>**03. DevOps 엔지니어링**</td>
+<td>• [K8s GitOps] 온프레미스 듀얼 사이트 DR (Argon)<br>• [CI/CD 파이프라인] GitHub Actions 컨테이너 배포</td>
+<td>Flux v2 멀티 클러스터 선언적 배포, Active/Fenced Standby 사이트 전환 계약 및 Pester 정적 가드 118개 운영</td>
 </tr>
 <tr>
-<td>**04. Windows 데스크톱 & 시스템 프로그래밍**</td>
-<td>• [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)<br>• [디바이스 드라이버] 저수준 USB/BLE SDK (Mango)</td>
-<td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 현대화, GDI 프린터 DC 핸들 누수 해결, WinUSB·BLE 5계층 크로스플랫폼 드라이버 추상화</td>
+<td>**04. 클라우드 및 온프레미스 인프라**</td>
+<td>• [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 구성 (Garden.Cluster)</td>
+<td>Proxmox VE 베어메탈 및 Azure AKS 클러스터 프로비저닝, Rook-Ceph 스토리지·CloudNativePG·OpenBao 시크릿 제어면 운영</td>
 </tr>
 <tr>
-<td>**05. 모바일 & BLE 디바이스 연동**</td>
-<td>• [모바일 클라이언트] .NET MAUI 가계부 앱 (Peony Mobile)<br>• [하드웨어 연동 앱] FINECUBE 라벨 앱 & BLE 통신 경합 해소 (Lithium)</td>
-<td>BLE GATT 실시간 상태 폴링·데이터 전송 경합(Race Condition) 해소, Android targetSdk 34 상향, 앱·웹 단일 Razor UI 코드베이스 구축</td>
+<td>**05. 개발자 경험 (DevEx)**</td>
+<td>• [개발 도구 · 하네스] Roslyn 애널라이저 & AI 에이전트 하네스 (Garden.Harness)</td>
+<td>4대 AI 에이전트 단일 하네스(스킬 42종·Pester 255개), Fast Pre-Commit 가드 및 Roslyn 커스텀 애널라이저 7종 구축</td>
+</tr>
+<tr>
+<td>**06. 웹 디자인 시스템**</td>
+<td>• [디자인 시스템] Penpot 토큰 동기화 Razor 웹 컴포넌트 (Garden.Razor)</td>
+<td>Material 3 기반 자체 Blazor 컴포넌트 44종, 3계층 SCSS 디자인 토큰, Penpot 토큰 동기화 도구 및 Blazor WASM 갤러리 배포</td>
+</tr>
+<tr>
+<td>**07. Windows 데스크톱 애플리케이션**</td>
+<td>• [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)</td>
+<td>8년 수명주기 레거시(.NET Framework 4.8)의 .NET 9 전환, WinForms/WPF MVVM 리팩토링 및 다국어 MSI/EXE 설치 패키지 배포</td>
+</tr>
+<tr>
+<td>**08. 시스템 프로그래밍**</td>
+<td>• [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)</td>
+<td>WinUSB/P-Invoke·IOKit/libusb·WebUSB 및 5계층 BLE 추상화 SDK 설계, BLE 상태 폴링 경합 해소, Win32 GDI 프린터 DC 핸들 누수 해결</td>
+</tr>
+<tr>
+<td>**09. 모바일 애플리케이션**</td>
+<td>• [모바일 가계부 앱] .NET MAUI Blazor Hybrid 클라이언트 (Peony Mobile)<br>• [모바일 라벨러 앱] FINECUBE Android · iOS 앱 (Lithium)</td>
+<td>.NET MAUI Blazor Hybrid 기반 앱·웹 단일 UI 코드베이스 구축, SkiaSharp 터치 캔버스 편집기 모듈화, Android targetSdk 34 상향</td>
 </tr>
 </table>
 ---
-## 📂 5대 직무 도메인별 상세 포트폴리오 (Domain Hub)
-<span color="gray">각 도메인 폴더를 클릭하시면 해당 직무 영역의 아키텍처 철학과 하위 프로젝트별 상세 기술서를 확인하실 수 있습니다.</span>
-<page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">01. .NET 백엔드 & 분산 아키텍처 (C#, Clean Architecture, CQRS)</page>
-<page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">02. DevOps & 클라우드 인프라 (K8s, GitOps, On-Premise, Ceph)</page>
-<page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">03. 개발자 경험(DevEx) & 웹 디자인 시스템 (Penpot, Harness, CI/CD)</page>
-<page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7">04. Windows 데스크톱 & 시스템 프로그래밍 (WPF, Win32, 하드웨어 제어)</page>
-<page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9">05. 모바일 & BLE 디바이스 연동 (Android, iOS, .NET MAUI, BLE)</page>
+## 📂 9대 직무 도메인별 상세 포트폴리오 (Domain Hub)
+<span color="gray">각 도메인 폴더를 클릭하시면 해당 기술 영역의 상세 작업 내역을 확인하실 수 있습니다.</span>
+<page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">01. .NET 백엔드 엔지니어링 (C#, YARP, PostgreSQL)</page>
+<page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">02. 소프트웨어 아키텍처 (Clean Architecture, DDD, CQRS)</page>
+<page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">03. DevOps 엔지니어링 (Flux GitOps, CI/CD, Container)</page>
+<page url="https://app.notion.com/p/3fa475218675819995bfeab3391da08b">04. 클라우드 및 온프레미스 인프라 (Kubernetes, Proxmox, Rook-Ceph)</page>
+<page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">05. 개발자 경험 (DevEx, AI Agent Harness, Roslyn)</page>
+<page url="https://app.notion.com/p/3fa47521867581be8577cd764904163d">06. 웹 디자인 시스템 (Penpot, Blazor, Material 3)</page>
+<page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7">07. Windows 데스크톱 애플리케이션 (.NET 9, WinForms, WPF)</page>
+<page url="https://app.notion.com/p/3fa47521867581968228f136738abaca">08. 시스템 프로그래밍 (Win32, GDI+, USB, BLE 디바이스 연동)</page>
+<page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9">09. 모바일 애플리케이션 (.NET MAUI, Xamarin.Forms, Android, iOS)</page>
 	
 
 ---

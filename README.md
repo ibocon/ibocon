@@ -16,7 +16,7 @@
 
 | 구분 | 주요 내용 및 엔지니어링 지향점 |
 | :---: | :--- |
-| **🏢 현재 소속** | **MANGOSLAB** — 디바이스 연동 및 고가용성 소프트웨어 플랫폼 개발 |
+| **🏢 현재 소속** | **MANGOSLAB** — 스마트 프린터 디바이스 연동 클라이언트 및 클라우드 백엔드 개발 |
 | **🧱 아키텍처 철학** | **Clean Architecture**, **CQRS**, **도메인 주도 설계(DDD)** 기반으로 변경에 유연하고 테스트 가능한 시스템 구축 |
 | **⚡ 실적 및 생산성** | 최근 1년간 **10,000+ Contributions** 달성 — 매일 지속적인 코드 개선과 TDD 기반 검증 사이클 유지 |
 | **✍️ 지식 공유** | 기술적 시행착오와 시스템 아키텍처 설계 고민을 [티스토리 블로그](https://ibocon.tistory.com)에 기록하고 공유 |
@@ -49,7 +49,7 @@
 
 | 프로젝트 | 세부 기술서 | 시스템 역할 및 성격 | 핵심 아키텍처 및 기술적 기여 |
 | :--- | :---: | :--- | :--- |
-| **Monolith** | [상세 기술서](./resume/project-monolith.md) | 핵심 데스크톱 및 백엔드 통합 솔루션 플랫폼 | Clean Architecture 수립, 빌드 가속 최적화, xUnit 기반 TDD |
+| **Monolith** | [상세 기술서](./resume/project-monolith.md) | 사내 서비스·클라이언트 통합 .NET 모노레포 | 하위 시스템 5종 통합, YARP 게이트웨이·마이크로서비스 분리 |
 | **Peony** | [상세 기술서](./resume/project-personal-peony.md) | 이벤트 기반 백엔드 및 도메인 모델 고도화 | CQRS 구조 적용, RabbitMQ 비동기 메시징, 도메인 행위 집중화 |
 | **Argon** | [상세 기술서](./resume/project-argon.md) | On-Premise K8s 이중 사이트 GitOps | 4대 플랫폼 평면, Rook-Ceph, Keycloak DR, Flux GitOps |
 | **nemonic Desktop** | [상세 기술서](./resume/project-nemonic-desktop.md) | Windows 스마트 메모 프린터 클라이언트 | 8년 라이프사이클 관리, GDI 누수 진단 및 .NET 9 현대화 |

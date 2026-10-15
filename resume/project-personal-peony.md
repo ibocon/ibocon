@@ -204,7 +204,7 @@
 <td>**History**</td>
 <td>2023.06 – 2023.12</td>
 <td>5 Commits, 22 PRs, 1 Issue</td>
-<td>전사 계획서(Planning) 및 아키텍처 결정(ADR) 아카이브 거버넌스 체계 구축</td>
+<td>문서 아카이브 저장소 초기 구성 및 PR 워크플로 테스트</td>
 </tr>
 <tr>
 <td>**Mangoslab.Infrastructure**</td>
@@ -225,7 +225,7 @@
 <td>On-Premise Kubernetes GitOps 클러스터 설계 원류 (Argon 이중 사이트 클러스터 설계로 기술 전파)</td>
 </tr>
 </table>
-### 기술 이력서 반영 핵심 포인트
-- **\\[사내 기술 이전(Technology Transfer)\\]** 개인 프로젝트에서 선제적으로 검증한 Clean Architecture, Mediator, Roslyn 애널라이저, AI 코딩 에이전트 하네스를 전사 통합 모노레포(Monolith)의 공식 표준으로 성공적으로 확산
-- **\\[풀스택 & 플랫폼 엔지니어링\\]** 단독으로 모바일 클라이언트, 분산 마이크로서비스 백엔드, On-Premise GitOps 인프라 전 계층을 설계하고 운영하는 실증적 엔지니어링 역량 입증
+### 요약 포인트
+- **\[공용 모듈 사내 적용\]** 개인 프로젝트에서 작성한 공용 라이브러리(Garden.Share, Garden.Razor 등)와 에이전트 하네스(Garden.Harness)를 사내 모노레포(Monolith)에 적용
+- **\[전체 계층 직접 구성\]** 모바일 앱(.NET MAUI), 백엔드 서비스, On-Premise K8s 클러스터를 직접 구성·운영하며 실험 및 검증 환경으로 활용
 

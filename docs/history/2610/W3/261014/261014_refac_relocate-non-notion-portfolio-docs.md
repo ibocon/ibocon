@@ -17,7 +17,7 @@
 | --- | --- |
 | 최초 계획 | [✅ 노션 비배포 포트폴리오 문서 및 저장소 보고서 분리 이전 계획](<261014_refac_relocate-non-notion-portfolio-docs.md>) `ibocon:261014_refac_relocate-non-notion-portfolio-docs` |
 | 직접 출처 | 없음 |
-| 직접 후속 | 없음 |
+| 직접 후속 | [✅ 노션 이력서 9대 단일 책임 도메인(SRP) 원자적 분할 리팩토링](<261014_refac_split-notion-domains-srp.md>) `ibocon:261014_refac_split-notion-domains-srp`<br/>[✅ 이력서 및 포트폴리오 과장·미사여구 제거 및 담백한 서술 리팩토링](<261014_refac_tone-down-resume-expressions.md>) `ibocon:261014_refac_tone-down-resume-expressions` |
 | 계보 경로 | [✅ 노션 비배포 포트폴리오 문서 및 저장소 보고서 분리 이전 계획](<261014_refac_relocate-non-notion-portfolio-docs.md>) `ibocon:261014_refac_relocate-non-notion-portfolio-docs` |
 | 착수 조건 | 가능 |
 <!-- plan-relations-summary:end -->

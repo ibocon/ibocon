@@ -155,7 +155,7 @@ Argon이 배포하는 워크로드입니다.
 <td>**kc5**</td>
 <td>2025.05 – 2026.07</td>
 <td>100+ Commits</td>
-<td>Argon의 전신인 On-Premise Kubernetes 단일 클러스터 GitOps 환경 구축 및 fail-closed 무중단 이관 계약 수립</td>
+<td>Argon의 전신인 On-Premise Kubernetes 단일 클러스터 GitOps 환경 구축 및 fail-closed 이관 계약 수립</td>
 </tr>
 <tr>
 <td>**kc6**</td>
@@ -167,13 +167,13 @@ Argon이 배포하는 워크로드입니다.
 <td>**Mangoslab.IaC**</td>
 <td>2022.06 – 2025.01</td>
 <td>870+ Commits, 66 PRs, 46 Issues</td>
-<td>전사 클라우드(Azure Bicep / Terraform) 리소스 코드화(IaC) 주도 및 클라우드-온프레미스 하이브리드 연계 기반 구축</td>
+<td>클라우드(Azure Bicep / Terraform) 리소스 코드화(IaC) 작업 및 클라우드-온프레미스 하이브리드 연계 기반 구축</td>
 </tr>
 <tr>
 <td>**Mangoslab.Pipeline**</td>
 <td>2023.05 – 2024.04</td>
 <td>21 Commits, 18 PRs, 7 Issues</td>
-<td>전사 GitHub Actions CI/CD 파이프라인 템플릿, 패키지 배포 및 이미지 자동화 워크플로 구축</td>
+<td>GitHub Actions CI/CD 파이프라인 템플릿, 패키지 배포 및 이미지 자동화 워크플로 구축</td>
 </tr>
 <tr>
 <td>**Zinc.NemonicStudy**</td>
@@ -206,11 +206,11 @@ Argon이 배포하는 워크로드입니다.
 <td>Nemonic AI 모바일 클라이언트 개발 및 Argon 클러스터 GPU(NVIDIA GPU Operator) 워크로드 배포</td>
 </tr>
 </table>
-### 기술 이력서 반영 핵심 포인트
-- **\[온프레미스 K8s 고가용성 DR 설계\]** pameus와 kc5 이중 사이트 간 Active / Fenced Standby 구조를 수립하여 단일 writer 보장, epoch 기반 fencing, Keycloak 무중단 failover 체계 완성
-- **\[엔터프라이즈 시크릿 거버넌스\]** OpenBao HA Raft + External Secrets Operator(ESO) 연동으로 Git 내 평문 Secret 16개를 ExternalSecret으로 전량 치환하고 Kubernetes Native 인증으로 통합
-- **\[AI 마이크로서비스 배포 자동화\]** NemonicStudy 백엔드 군(BFF, Summary, OCR)을 컨테이너화하고 Harbor + Flux ImageUpdateAutomation 파이프라인으로 연결하여 무중단 지속 배포 실현
-### ☸️ On-Premise K8s 4대 플랫폼 평면 및 DR 펜싱 (이지호 / 이정재 벤치마킹)
+### 요약 포인트
+- **\[온프레미스 K8s 이중 사이트 구성\]** pameus와 kc5 이중 사이트 간 Active / Fenced Standby 구조를 수립하여 단일 writer 보장, epoch 기반 fencing, Keycloak 사이트 전환(Failover) 절차 수립
+- **\[시크릿 관리 체계 전환\]** OpenBao HA Raft + External Secrets Operator(ESO) 연동으로 Git 내 평문 Secret 16개를 ExternalSecret으로 전량 치환하고 Kubernetes Native 인증으로 통합
+- **\[AI 마이크로서비스 배포 자동화\]** NemonicStudy 백엔드 군(BFF, Summary, OCR)을 컨테이너화하고 Harbor + Flux ImageUpdateAutomation 파이프라인으로 연결하여 자동 배포 파이프라인 구성
+### On-Premise K8s 4대 플랫폼 평면 구성
 <table header-row="true">
 <tr>
 <td>플랫폼 평면</td>
@@ -235,8 +235,8 @@ Argon이 배포하는 워크로드입니다.
 <tr>
 <td>**4. 워크로드**</td>
 <td>Oxygen 12개 마이크로서비스, NemonicStudy AI, Zinc GPU 파이프라인</td>
-<td>Flux ImageUpdateAutomation 기반 staging 무중단 자동 릴리스</td>
+<td>Flux ImageUpdateAutomation 기반 staging 이미지 자동 반영</td>
 </tr>
 </table>
-- **Keycloak 무중단 Failover 설계 의도 (ADR)**: 두 독립 온프레미스 사이트 간 L2 연동 없이 Azure Blob 기반 CNPG WAL 복구를 유지하며, credential fingerprint parity가 검증된 상태에서만 환경 CNAME 전환을 허용하여 데이터 불일치 위험을 원천 차단함.
+- **Keycloak 사이트 전환(Failover) 설계 의도**: 두 독립 온프레미스 사이트 간 L2 연동 없이 Azure Blob 기반 CNPG WAL 복구를 유지하며, credential fingerprint parity가 검증된 상태에서만 환경 CNAME 전환을 허용하여 검증 전 전환으로 인한 데이터 불일치를 방지함.
 

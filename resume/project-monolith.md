@@ -1,7 +1,7 @@
-# 🧱 [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)
+# 🧱 [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🧱 [전사 백엔드] .NET 9 모듈 모노레포 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
+> **동기화 Notion URL**: [🧱 [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
 > **최종 동기화 일시**: 2026-10-14
 
 ---
@@ -304,10 +304,10 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 <td>Flutter용 네모닉 이미지 전처리 SDK 저장소 초기 설정 지원</td>
 </tr>
 </table>
-### 기술 이력서 반영 핵심 포인트
+### 요약 포인트
 - **\[모노레포 아키텍처 통합\]** 개별 분산 저장소로 파편화되어 있던 서비스들(Hub, Teams, Slack, Zapier, Web, Mango SDK)을 단일 Monolith 모노레포로 통합하여 공유 계약(Contract) 및 빌드·배포 체계 일원화
-- **\[로컬 개발 생산성 혁신\]** .NET Aspire AppHost를 구축하여 PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, OTel Collector 등 전사 인프라 및 서비스를 원클릭 기동하는 환경 수립
-- **\[AI 코딩 에이전트 하네스 정착\]** Claude Code, Codex, Gemini CLI가 공유하는 코딩 규약, 계획서(docs/planning) 승인 루프 및 정적 가드 자동화를 전사 표준으로 정착
+- **\[로컬 개발 환경 구성\]** .NET Aspire AppHost로 PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, OTel Collector와 서비스를 함께 기동하는 개발 환경 구성
+- **\[AI 코딩 에이전트 하네스 적용\]** Claude Code, Codex, Gemini CLI가 공유하는 코딩 규약, 계획서(docs/planning) 워크플로 및 정적 가드 적용
 ### ➕ 추가 연동 및 데스크톱 유틸리티 저장소
 <table header-row="true">
 <tr>
@@ -330,9 +330,8 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 </tr>
 </table>
 - `Oxygen.Nemonic.Pro.SettingsApp` (nemonic Pro 전용 장치 설정 및 진단 앱)
-### 🏛️ 기술 거버넌스 및 백엔드 아키텍처 분리 (조은 / 김석현 벤치마킹)
-- **조직적 엔지니어링 리드**: 단순 구현을 넘어 Claude Code, Codex, Gemini CLI를 위한 공통 에이전트 하네스(`Garden.Harness`) 및 Roslyn 정적 애널라이저를 구축하여 전사 코드 컨벤션과 계획서(`docs/planning`) 승인 루프를 단일 표준으로 정착시킴.
-- **마이크로서비스 분리 구조 (문제 - 해결 - 구조적 효과)**:
+### 백엔드 서비스 분리 구조
+- **마이크로서비스 분리 (문제 - 해결 - 구조적 효과)**:
 	- *문제 정의*: 인쇄 요청 접수, 템플릿 렌더링, 외부 알림 처리가 단일 경로에 결합되어 외부 웹훅 지연이 인쇄 요청 처리에 전파됨.
 	- *해결책*: YARP ApiGW 리버스 프록시 도입, Notifier 서비스를 RabbitMQ 컨슈머 전용 호스트로 분리, Redis HybridCache 및 Keycloak OIDC 통합.
 	- *구조적 효과*: 인쇄 접수 경로와 외부 채널(Slack/Teams) 알림 발송을 비동기 큐로 격리하여 서비스 간 장애 전파 차단.

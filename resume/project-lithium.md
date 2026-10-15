@@ -1,8 +1,8 @@
-# 🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)
+# 🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🏷️ [하드웨어 연동 앱] FINECUBE 컬러 라벨 앱 & BLE 통신 경합 해소 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
-> **최종 동기화 일시**: 2026-10-14
+> **동기화 Notion URL**: [🏷️ [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)  
+> **최종 동기화 일시**: 2026-10-15
 
 ---
 
@@ -96,7 +96,7 @@
 <td>SkiaSharp 기반 모바일 캔버스 레이어 편집기(텍스트·바코드·클립아트, Undo/Redo, 터치 핀치/드래그) 코어 라이브러리 개발</td>
 </tr>
 </table>
-### 기술 이력서 반영 핵심 포인트
+### 요약 포인트
 - **\[모바일 앱 라이프사이클 관리\]** Xamarin.Forms + MvvmCross 기반 FINECUBE 앱의 장기 운영 및 Google Play 정책 변경(targetSdk 34) 대응 AAB 배포 완료
 - **\[하드웨어 통신 안정화\]** Bluetooth LE 연결 시 배터리/잉크 상태 조회 작업 간 경합 상태(Race Condition)를 해결하고 비동기 재시도 파이프라인 구축
 - **\[그래픽스 코어 모듈화\]** SkiaSharp 기반 2D 캔버스 렌더러를 공통 모듈화하여 다중 모바일 프로젝트 간 재사용성 확보
