@@ -12,14 +12,14 @@
 
 Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운 원본 파일 목록입니다. 향후 이력서 수정 및 버전 관리는 이 파일들을 기준으로 수행합니다.
 
-| 구분 | 파일 링크 (Local SoT) | 대응 Notion 페이지 (10대 단일 책임 도메인 산하) | 페이지 ID / 링크 |
+| 구분 | 파일 링크 (Local SoT) | 대응 Notion 페이지 (10대 단일 책임 도메인 · 22개 하위 페이지) | 페이지 ID / 링크 |
 |:---:|---|---|---|
-| **메인 이력서** | [`resume-yegun-kim.md`](./resume-yegun-kim.md) | **📄 이력서 — 김예건** (루트 메인 · 10대 도메인 허브) | [`3dd47521...`](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d) |
-| **상세 프로젝트 1** | [`project-monolith.md`](./project-monolith.md) | **🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)** | [`3dd4752186758105...`](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
-| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
-| **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
-| **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
-| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
+| **메인 이력서** | [`resume-yegun-kim.md`](./resume-yegun-kim.md) | **📄 이력서 — 김예건** (루트 메인 · 10대 도메인 허브 5-Block 아키텍처 포함) | [`3dd47521...`](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d) |
+| **상세 프로젝트 1** | [`project-monolith.md`](./project-monolith.md) | **🧱 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이** | [`3dd4752186758105...`](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
+| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
+| **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
+| **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ 08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
+| **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 02.02. 가계부 마이크로서비스 백엔드 및 BFF** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
 
 ---
 
@@ -36,7 +36,7 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | **채용 담당자 최적화 및 세부 전략 시리즈 (6종)** | `plan-strategy-*.md` | 국내 리쿠르터 시선 고정, 비공개 저장소 증명, Pinned Gist, 도메인 계층 구조(폴더 트리) 등 전략 보고서 | **완료 (`✅`)** |
 | **전략 5 — 노션 이력서 도메인별 계층 구조 (폴더 트리 모델) 설계서** | [`plan-strategy-05-notion-domain-hierarchy-architecture.md`](../docs/portfolio/strategy/plan-strategy-05-notion-domain-hierarchy-architecture.md) | 복합 도메인을 10대 단일 책임 도메인(아키텍처/백엔드/인프라/DevOps/DevEx/하네스/디자인시스템/모바일/데스크톱/시스템프로그래밍)으로 세분화한 아키텍처 설계서 | **완료 (`✅`)** |
 | **국내 개발자 채용 직무(JD) 레퍼런스 벤치마킹 분석서** | [`recruitment-jd-benchmarking-references.md`](../docs/portfolio/strategy/recruitment-jd-benchmarking-references.md) | 사람인, 점핏, 잡플래닛, 원티드의 핵심 직무 공고 수집 및 9대 단일 책임(SRP) 도메인 분리 실증 분석서 | **완료 (`✅`)** |
-| **노션 이력서 정보 구조 및 작성 규약 (컨벤션)** | [`convention-notion-resume-structure.md`](../docs/portfolio/strategy/convention-notion-resume-structure.md) | Domain-First 원칙, 사내 프로젝트명 최상위 배치 금지, 과장 표현 금지(실증 근거 필수), RFC 8174 규범 표기 기반 공식 이력서 작성 규약 | **완료 (`✅`)** |
+| **노션 이력서 정보 구조 및 작성 규약 (컨벤션)** | [`convention-notion-resume-structure.md`](../docs/portfolio/strategy/convention-notion-resume-structure.md) | Domain-First 원칙, 5-Block 본문 완결성 규약(Mermaid·매트릭스·STAR 필수), 사내 프로젝트명 선행 금지, 과장 표현 금지(실증 근거 필수), RFC 8174 규범 표기 기반 공식 이력서 작성 규약 | **완료 (`✅`)** |
 
 ---
 

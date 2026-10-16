@@ -129,80 +129,90 @@ graph TD
 > **특징**: 각 최상위 폴더가 오직 하나의 직무/기술 영역만 담당하도록 10개 원자적 도메인으로 분리하고, 추상적인 아키텍처(`01`)와 백엔드(`02`)에서 시작해 인프라(`03`) → DevOps(`04`) → 개발자 경험(`05`) → 하네스 엔지니어링(`06`) → 웹 디자인 시스템(`07`) → 모바일(`08`) → 데스크톱(`09`) → 저수준 시스템 프로그래밍(`10`)으로 이어지는 Top-Down 위계 구조.
 
 ```text
-├── 📁 01. 소프트웨어 아키텍처 (Clean Architecture, DDD, CQRS, TDD)
-│   ├── 📄 01. [계층 분리 · 모듈화] Clean Architecture & Vertical Slice Architecture (Monolith · Peony · nemonic)
-│   ├── 📄 02. [도메인 모델링] Rich Domain Model · 불변식 보호 · Result 패턴 (Garden.Share)
-│   ├── 📄 03. [비동기 분산 설계] CQRS · 자체 Mediator · RabbitMQ Outbox 패턴 (Peony · Monolith)
-│   └── 📄 04. [테스트 설계] Four-Phase Test · NetArchTest · Testcontainers 통합 검증 (Monolith · Peony · Garden)
+├── 📁 01. 소프트웨어 아키텍처
+│   ├── 📄 01.01. 계층 분리와 모듈화 설계
+│   ├── 📄 01.02. 도메인 모델링과 불변식 보호
+│   ├── 📄 01.03. 비동기 이벤트 기반 분산 설계
+│   └── 📄 01.04. 다층 테스트 아키텍처와 통합 검증
 │
-├── 📁 02. .NET 백엔드 엔지니어링 (C#, YARP, PostgreSQL)
-│   ├── 📄 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)
-│   ├── 📄 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)
-│   ├── 📄 03. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy)
-│   ├── 📄 04. [서비스 오케스트레이션] .NET Aspire 커스텀 호스팅 리소스 & ServiceDefaults (Garden.Aspire)
-│   └── 📄 05. [웹 호스트 미들웨어] ASP.NET Core ProblemDetails · ETag · Bootstrap 공통 계층 (Garden.AspNetCore)
+├── 📁 02. .NET 백엔드 엔지니어링
+│   ├── 📄 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이
+│   ├── 📄 02.02. 가계부 마이크로서비스 백엔드 및 BFF
+│   ├── 📄 02.03. 비동기 OCR 및 AI 요약 파이프라인 백엔드
+│   ├── 📄 02.04. 분산 애플리케이션 호스팅 및 관측성 표준화
+│   └── 📄 02.05. 웹 API 공통 미들웨어 및 부트스트랩 계층
 │
-├── 📁 03. 클라우드 및 온프레미스 인프라 (Kubernetes, Proxmox, Rook-Ceph)
-│   └── 📄 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 클러스터 구성 (Garden.Cluster)
+├── 📁 03. 클라우드 및 온프레미스 인프라
+│   └── 📄 03.01. 하이브리드 Kubernetes 클러스터 구축 및 운영
 │
-├── 📁 04. DevOps 엔지니어링 (Flux GitOps, CI/CD, Container)
-│   └── 📄 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
+├── 📁 04. DevOps 엔지니어링
+│   └── 📄 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화
 │
-├── 📁 05. 개발자 경험 (DevEx, Roslyn Analyzer, NuGet)
-│   └── 📄 01. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers)
+├── 📁 05. 개발자 경험 (DevEx)
+│   └── 📄 05.01. Roslyn 커스텀 정적 분석기 및 코드픽스
 │
-├── 📁 06. 하네스 엔지니어링 (AI Agent Harness, MCP, Static Guards)
-│   └── 📄 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness)
+├── 📁 06. 하네스 엔지니어링
+│   └── 📄 06.01. 멀티 코딩 에이전트 공통 규약 및 정적 가드
 │
-├── 📁 07. 웹 디자인 시스템 (Penpot, Blazor, Material 3)
-│   ├── 📄 01. [디자인 시스템] Penpot 토큰 동기화 & Material 3 자체 Blazor 컴포넌트 44종 (Garden.Razor)
-│   └── 📄 02. [컴포넌트 갤러리] Blazor WebAssembly 인터랙티브 UI 갤러리 (Garden.Razor.Gallery)
+├── 📁 07. 웹 디자인 시스템
+│   ├── 📄 07.01. 디자인 토큰 동기화 및 자체 Blazor 컴포넌트
+│   └── 📄 07.02. 인터랙티브 웹 컴포넌트 갤러리
 │
-├── 📁 08. 모바일 애플리케이션 (.NET MAUI, Xamarin.Forms, Android, iOS)
-│   ├── 📄 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)
-│   ├── 📄 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)
-│   └── 📄 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui)
+├── 📁 08. 모바일 애플리케이션
+│   ├── 📄 08.01. Blazor Hybrid 크로스플랫폼 가계부 모바일 앱
+│   ├── 📄 08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화
+│   └── 📄 08.03. 모바일 네이티브 인증·네비게이션·화면 인셋 추상화
 │
-├── 📁 09. Windows 데스크톱 애플리케이션 (.NET 9, WinForms, WPF)
-│   └── 📄 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
+├── 📁 09. Windows 데스크톱 애플리케이션
+│   └── 📄 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화
 │
-└── 📁 10. 시스템 프로그래밍 (Win32, GDI+, USB, BLE 디바이스 연동)
-    ├── 📄 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)
-    ├── 📄 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)
-    └── 📄 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb)
+└── 📁 10. 시스템 프로그래밍
+    ├── 📄 10.01. 크로스플랫폼 프린터 하드웨어 제어 통합 SDK
+    ├── 📄 10.02. 5계층 크로스플랫폼 BLE 프로토콜 스택
+    └── 📄 10.03. 멀티 플랫폼 USB 드라이버 추상화 라이브러리
 ```
 
 ---
 
-## 4. 도메인 허브 페이지(상위 폴더) 표준 템플릿 명세
+## 4. 도메인 허브 및 하위 상세 페이지 5-Block 표준 템플릿 명세 (레퍼런스 30선 벤치마킹)
 
-각 도메인 상위 페이지는 채용 담당자에게 **전문 분야의 스케일과 비즈니스 가치**를 30초 내에 전달할 수 있도록 아래 표준 템플릿으로 구성합니다.
+채용 담당자가 어느 도메인 허브나 하위 페이지를 열더라도 빈약함 없이 즉시 아키텍처 깊이와 문제 해결 역량을 파악할 수 있도록 아래 **5-Block 표준 레이아웃**을 강제합니다.
 
-### 4.1 허브 페이지 레이아웃
-1. **Header Block**: 도메인 명칭 및 영문 표기, 핵심 역할 요약
-2. **Executive Summary Table**:
-   - `[주요 기술 스택]`, `[해결한 핵심 엔지니어링 난제]`, `[검증된 정량 지표 (근거 필수)]`, `[포괄 프로젝트 수]`
-3. **Architecture Philosophy (철학)**:
-   - 해당 도메인 개발 시 준수하는 원칙 (예: 백엔드의 경우 Clean Architecture & Event-Driven, 인프라의 경우 GitOps & Zero-Downtime, 디자인 시스템의 경우 Single Token SoT)
-4. **Project Gallery Grid (하위 프로젝트 링크 카드)**:
-   - 각 하위 상세 페이지로 연결되는 링크 카드 (배경 이미지, 프로젝트 명, 핵심 기술, 기간 포함)
+### 4.1 도메인 허브 페이지(`01` ~ `10`) 5-Block 레이아웃
+1. **Block 1 — Executive Summary Table (`<table fit-page-width="true" header-column="true">`)**:
+   - `핵심 역할`, `주요 기술 스택`, `적용 시스템 및 규모`, `검증 및 품질 지표` 4개 행으로 도메인 스펙트럼 정의.
+2. **Block 2 — 벡터 SVG 아키텍처 다이어그램 이미지 (`![...](notion-file-block://...)`)**:
+   - 노션에서 원시 코드가 노출되는 `mermaid` 코드 블록이나 글자가 세로로 쪼개지는 좁은 `<columns>` 대신, `960x220` 고정 비율 벡터 SVG 이미지를 첨부하여 코드 노출과 줄바꿈 깨짐 없이 아키텍처 흐름을 시각화.
+3. **Block 3 — 핵심 아키텍처 & 컴포넌트 매트릭스 (`<table fit-page-width="true" header-row="true">`)**:
+   - 도메인을 구성하는 하위 모듈/패키지/패턴별 `영역`, `핵심 기술·패턴`, `설계 책임 및 구현 내용`, `적용 프로덕트`를 비교 표로 정리 (이지호·장형원 레퍼런스 반영).
+4. **Block 4 — 대표 엔지니어링 과제 및 해결 사례 (`Problem → Action → Result`)**:
+   - 해당 도메인에서 직접 해결한 기술적 난제 2~3건을 `[문제 상황] → [설계 및 해결] → [검증 결과]` 구조로 구체적으로 서술 (안지우·김용찬·김석현 레퍼런스 반영).
+5. **Block 5 — 하위 상세 기술서 (`<page>`)**:
+   - 번호가 부여된 하위 상세 페이지 블록 배치.
+
+### 4.2 하위 상세 페이지(이론 4종 & 프로젝트/모듈 18종) 5-Block 레이아웃
+1. **Block 1 — 메타데이터 테이블**: `기간 / 소속·역할 / 기술 스택 / 규모·테스트` 명시.
+2. **Block 2 — 도입 배경 및 해결 과제**: 사전 지식 없는 면접관을 위한 시스템 맥락 설명 (권태윤 레퍼런스 반영).
+3. **Block 3 — 벡터 SVG 아키텍처 다이어그램 이미지 (`![...](notion-file-block://...)`) 및 세부 모듈 명세 표**: 내부 클래스/계층/프로토콜 구조를 `960x200` 벡터 SVG 이미지로 시각화하고 컴포넌트별 책임 정의 (`mermaid` 코드 블록 및 3~4단 좁은 `<columns>` 사용 금지).
+4. **Block 4 — 핵심 구현 및 트러블슈팅 Deep Dive (STAR)**: 실제 겪은 병목·결함 원인과 코드/인프라 수준 해결 방식 기술.
+5. **Block 5 — 연계 도메인 및 관련 페이지 참조 (`<mention-page>`)**: 유기적으로 연결된 타 도메인 페이지 링크.
 
 ---
 
 ## 5. 10대 단일 책임 도메인별 프로젝트 매핑표
 
-| 도메인 계층 (10대 단일 책임 도메인) | 대표 상세 페이지 (TO-BE) |
-| :--- | :--- |
-| **01. 소프트웨어 아키텍처** | 1. 01. [계층 분리 · 모듈화] Clean Architecture & Vertical Slice Architecture (Monolith · Peony · nemonic)<br>2. 02. [도메인 모델링] Rich Domain Model · 불변식 보호 · Result 패턴 (Garden.Share)<br>3. 03. [비동기 분산 설계] CQRS · 자체 Mediator · RabbitMQ Outbox 패턴 (Peony · Monolith)<br>4. 04. [테스트 설계] Four-Phase Test · NetArchTest · Testcontainers 통합 검증 (Monolith · Peony · Garden) |
-| **02. .NET 백엔드 엔지니어링** | 1. 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)<br>2. 02. [마이크로서비스 백엔드] .NET Aspire 기반 가계부 9개 서비스 & BFF (Peony)<br>3. 03. [AI 파이프라인] 비동기 잡 큐 & OCR/요약 마이크로서비스 (NemonicStudy)<br>4. 04. [서비스 오케스트레이션] .NET Aspire 커스텀 호스팅 리소스 & ServiceDefaults (Garden.Aspire)<br>5. 05. [웹 호스트 미들웨어] ASP.NET Core ProblemDetails · ETag · Bootstrap 공통 계층 (Garden.AspNetCore) |
-| **03. 클라우드 및 온프레미스 인프라** | 1. 01. [클러스터 GitOps] 하이브리드 K8s(Proxmox·AKS) 클러스터 구성 (Garden.Cluster) |
-| **04. DevOps 엔지니어링** | 1. 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon) |
-| **05. 개발자 경험 (DevEx)** | 1. 01. [정적 분석기] Roslyn 커스텀 애널라이저 7종 & 코드픽스 (Garden.Analyzers) |
-| **06. 하네스 엔지니어링** | 1. 01. [AI 에이전트 하네스] 4대 코딩 에이전트 공통 규약 & 정적 가드 (Garden.Harness) |
-| **07. 웹 디자인 시스템** | 1. 01. [디자인 시스템] Penpot 토큰 동기화 & Material 3 자체 Blazor 컴포넌트 44종 (Garden.Razor)<br>2. 02. [컴포넌트 갤러리] Blazor WebAssembly 인터랙티브 UI 갤러리 (Garden.Razor.Gallery) |
-| **08. 모바일 애플리케이션** | 1. 01. [모바일 가계부 앱] .NET MAUI Blazor Hybrid 크로스플랫폼 클라이언트 (Peony Mobile)<br>2. 02. [모바일 라벨러 앱] FINECUBE Android · iOS 앱 유지보수 및 targetSdk 34 상향 (Lithium)<br>3. 03. [모바일 플랫폼 추상화] .NET MAUI 인증 · 네비게이션 · 인셋 서비스 계층 (Garden.Maui) |
-| **09. Windows 데스크톱 애플리케이션** | 1. 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic) |
-| **10. 시스템 프로그래밍** | 1. 01. [USB · BLE 드라이버] WinUSB · WebUSB · 5계층 BLE 프로토콜 추상화 SDK (Mango & Garden)<br>2. 02. [BLE 프로토콜 추상화] GAP · GATT · L2CAP 5계층 크로스플랫폼 BLE 라이브러리 (Garden.Bluetooth)<br>3. 03. [USB 드라이버 추상화] WinUSB · libusb · WebUSB 단일 인터페이스 라이브러리 (Garden.Usb) |
+| 도메인 계층 (10대 단일 책임 도메인) | 대표 상세 페이지 (TO-BE 1줄 제목) | 본문 상단 표 명시 프로젝트 및 핵심 키워드 |
+| :--- | :--- | :--- |
+| **01. 소프트웨어 아키텍처** | 1. 01.01. 계층 분리와 모듈화 설계<br>2. 01.02. 도메인 모델링과 불변식 보호<br>3. 01.03. 비동기 이벤트 기반 분산 설계<br>4. 01.04. 다층 테스트 아키텍처와 통합 검증 | `Monolith` · `Peony` · `nemonic` · `Garden.Share` (`Clean Architecture`, `VSA`, `Rich Domain`, `Result<T>`, `CQRS`, `Outbox`, `NetArchTest`, `Testcontainers`) |
+| **02. .NET 백엔드 엔지니어링** | 1. 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이<br>2. 02.02. 가계부 마이크로서비스 백엔드 및 BFF<br>3. 02.03. 비동기 OCR 및 AI 요약 파이프라인 백엔드<br>4. 02.04. 분산 애플리케이션 호스팅 및 관측성 표준화<br>5. 02.05. 웹 API 공통 미들웨어 및 부트스트랩 계층 | `Monolith` · `Peony` · `NemonicStudy` · `Garden.Aspire` · `Garden.AspNetCore` (`.NET 9`, `YARP`, `PostgreSQL`, `RabbitMQ`, `Redis`, `FastAPI`, `Celery`, `ProblemDetails`) |
+| **03. 클라우드 및 온프레미스 인프라** | 1. 03.01. 하이브리드 Kubernetes 클러스터 구축 및 운영 | `Garden.Cluster` · `pameus` · `kc5` · `hanul` · `eastus2` (`Kubernetes 1.34`, `Proxmox VE`, `Azure AKS`, `Rook-Ceph`, `CloudNativePG`, `OpenBao`) |
+| **04. DevOps 엔지니어링** | 1. 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화 | `Argon` · `Monolith` (`Flux v2`, `Kustomize`, `Active/Fenced Standby DR`, `GitHub Actions ARC`, `Harbor`, `Pester`) |
+| **05. 개발자 경험 (DevEx)** | 1. 05.01. Roslyn 커스텀 정적 분석기 및 코드픽스 | `Garden.Analyzers` · `BaGetter` (`Roslyn DiagnosticAnalyzer`, `CodeFixProvider`, `NuGet SemVer 2.0.0`, `Directory.Build.props`) |
+| **06. 하네스 엔지니어링** | 1. 06.01. 멀티 코딩 에이전트 공통 규약 및 정적 가드 | `Garden.Harness` (`Claude Code`, `Codex`, `Gemini CLI`, `OpenCode`, `MCP`, `PowerShell Guards`) |
+| **07. 웹 디자인 시스템** | 1. 07.01. 디자인 토큰 동기화 및 자체 Blazor 컴포넌트<br>2. 07.02. 인터랙티브 웹 컴포넌트 갤러리 | `Garden.Razor` · `Garden.Razor.Gallery` (`Penpot Design Tokens`, `Material 3`, `Blazor`, `CSS Variables --g-*`, `bUnit`, `Playwright`) |
+| **08. 모바일 애플리케이션** | 1. 08.01. Blazor Hybrid 크로스플랫폼 가계부 모바일 앱<br>2. 08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화<br>3. 08.03. 모바일 네이티브 인증·네비게이션·화면 인셋 추상화 | `Peony Mobile` · `Lithium (FINECUBE)` · `Garden.Maui` (`.NET MAUI Blazor Hybrid`, `Xamarin.Forms`, `SkiaSharp`, `Android targetSdk 34`, `iOS`) |
+| **09. Windows 데스크톱 애플리케이션** | 1. 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화 | `nemonic Desktop` · `Nemonic.AMPV` (`.NET 9`, `WinForms`, `WPF`, `GDI+`, `SkiaSharp`, `Sierra Dithering`, `Mango SDK`) |
+| **10. 시스템 프로그래밍** | 1. 10.01. 크로스플랫폼 프린터 하드웨어 제어 통합 SDK<br>2. 10.02. 5계층 크로스플랫폼 BLE 프로토콜 스택<br>3. 10.03. 멀티 플랫폼 USB 드라이버 추상화 라이브러리 | `Mango` · `Garden.Bluetooth` · `Garden.Usb` (`Win32 SetupAPI/WinUSB`, `libusb`, `WebUSB`, `BLE GAP/GATT/L2CAP`, `SafeHandle`) |
 
 ---
 

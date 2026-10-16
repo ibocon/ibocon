@@ -1,12 +1,20 @@
-# ☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)
+# ☸️ 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [☸️ 01. [K8s GitOps] 온프레미스 듀얼 사이트 K8s & Active-Standby DR (Argon)](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
-> **최종 동기화 일시**: 2026-10-15
+> **동기화 Notion URL**: [☸️ 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)  
+> **최종 동기화 일시**: 2026-10-16
 
 ---
 
 <table fit-page-width="true" header-column="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
+<tr>
+<td>관련 프로젝트</td>
+<td>`Argon` (`Monolith/src/Argon` 듀얼 사이트 GitOps · `pameus` 및 `kc5` 클러스터 · `Mangoslab.IaC`)</td>
+</tr>
 <tr>
 <td>기간</td>
 <td>2026.06 – 현재 (전신인 kc5 단일 클러스터 GitOps 저장소는 2025.05부터 운영)</td>

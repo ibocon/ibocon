@@ -1,12 +1,20 @@
-# 🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)
+# 🧱 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🧱 01. [백엔드 · 모노레포] .NET 9 서비스 통합 & YARP API GW (Monolith)](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
-> **최종 동기화 일시**: 2026-10-15
+> **동기화 Notion URL**: [🧱 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)  
+> **최종 동기화 일시**: 2026-10-16
 
 ---
 
 <table fit-page-width="true" header-column="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
+<tr>
+<td>관련 프로젝트</td>
+<td>`Monolith` (`Oxygen` 12개 마이크로서비스 · `Mango` SDK · `Lithium` · `Argon` · `Firmware` 5개 하위 시스템 통합)</td>
+</tr>
 <tr>
 <td>기간</td>
 <td>2025.08 – 현재</td>

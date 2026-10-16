@@ -1,12 +1,20 @@
-# 🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)
+# 🖨️ 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화
 
 > **Single Source of Truth (SoT)**: Local Markdown Master  
-> **동기화 Notion URL**: [🖨️ 01. [데스크톱 클라이언트] WYSIWYG 인쇄 엔진 & .NET 9 현대화 (nemonic)](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
-> **최종 동기화 일시**: 2026-10-15
+> **동기화 Notion URL**: [🖨️ 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)  
+> **최종 동기화 일시**: 2026-10-16
 
 ---
 
 <table fit-page-width="true" header-column="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
+<tr>
+<td>관련 프로젝트</td>
+<td>`nemonic Desktop` (`NemonicBasicWindows` · `NemonicLabelWindows` · `Nemonic.AMPV` · `Mango SDK` 어댑터 통합)</td>
+</tr>
 <tr>
 <td>기간</td>
 <td>2017.07 – 현재 (초기 개발 2017.07–2018.05 · 현대화 2026.09–)</td>
