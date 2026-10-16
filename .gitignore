@@ -28,4 +28,7 @@
 .env
 .env.*
 !.env.example
+
+# 26.10.16 [Claude] 형제 Garden.Harness checkout junction 마운트 경로
+/lib/Garden.Harness
 # #endregion GardenHarness/gitignore
