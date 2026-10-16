@@ -43,6 +43,8 @@ describe('Astro Blog Static Build Verification', () => {
     const wranglerConfig = JSON.parse(readFileSync(wranglerPath, 'utf-8'));
 
     // Then
+    expect(workflowContent).toContain('workflow_dispatch:');
+    expect(workflowContent).not.toContain('push:');
     expect(workflowContent).toContain('secrets.CLOUDFLARE_CI_WORKERS_TOKEN');
     expect(workflowContent).toContain('command: deploy');
     expect(wranglerConfig.name).toBe('botanicsoft-blog');

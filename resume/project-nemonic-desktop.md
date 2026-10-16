@@ -40,6 +40,10 @@
 스마트 메모 프린터 nemonic의 Windows 데스크톱 앱과 메모 동기화 서버를 개발한 프로젝트입니다. 입사 직후 첫 상용 버전(1.2)부터 1.8까지 기능·구조·배포 체계를 세웠고, 8년 뒤 재참여해 .NET Framework 4.8 레거시를 .NET 9와 사내 공용 SDK(Mango) 기반으로 이관하며 코드 수준 구조 설계서를 정리했습니다.
 ## 기술 스택
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
 <tr>
 <td>영역</td>
 <td>구성</td>
@@ -97,7 +101,13 @@
 - 설계서: `docs/architecture/yegunkim/README.md`
 ---
 ## 📂 세부 기여 저장소 및 기술 이력 상세 (11개 저장소 연계)
-<table header-row="true">
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150">
+<col width="120">
+<col width="120">
+<col width="310">
+</colgroup>
 <tr>
 <td>저장소</td>
 <td>활동 기간</td>

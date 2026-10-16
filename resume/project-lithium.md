@@ -47,6 +47,11 @@
 ---
 ## 2. 기술 스택 및 구성 요소 매트릭스
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="160">
+<col width="220">
+<col width="320">
+</colgroup>
 <tr>
 <td>영역</td>
 <td>핵심 기술 구성</td>
@@ -86,6 +91,12 @@
 ---
 ## 4. 세부 기여 저장소 및 기술 이력 상세
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="130">
+<col width="130">
+<col width="300">
+</colgroup>
 <tr>
 <td>저장소</td>
 <td>활동 기간</td>

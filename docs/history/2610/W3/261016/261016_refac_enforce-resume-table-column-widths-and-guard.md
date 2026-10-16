@@ -1,4 +1,4 @@
-# ⬜ 이력서 마크다운(Local SoT) 전체 테이블 열 너비(colgroup) 명시 및 PowerShell 정합성 가드 구축
+# ✅ 이력서 마크다운(Local SoT) 전체 테이블 열 너비(colgroup) 명시 및 PowerShell 정합성 가드 구축
 
 ## 계획 관계
 
@@ -16,11 +16,11 @@
 
 | 구분 | 계획·조건 |
 | --- | --- |
-| 최초 계획 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<../history/2610/W3/261015/261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` |
-| 직접 출처 | [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<../history/2610/W3/261016/261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` |
+| 최초 계획 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<../261015/261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` |
+| 직접 출처 | [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` |
 | 직접 후속 | 없음 |
-| 계보 경로 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<../history/2610/W3/261015/261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` → [✅ 노션 이력서 10대 도메인 허브 및 하위 상세 페이지 본문 심층 보강 리팩토링](<../history/2610/W3/261015/261015_refac_enrich-notion-domain-hubs-and-detail-pages.md>) `ibocon:261015_refac_enrich-notion-domain-hubs-and-detail-pages` → [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<../history/2610/W3/261016/261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` → [⬜ 이력서 마크다운(Local SoT) 전체 테이블 열 너비(colgroup) 명시 및 PowerShell 정합성 가드 구축](<261016_refac_enforce-resume-table-column-widths-and-guard.md>) `ibocon:261016_refac_enforce-resume-table-column-widths-and-guard` |
-| 후속 | [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<../history/2610/W3/261016/261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` — 해당 없음 |
+| 계보 경로 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<../261015/261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` → [✅ 노션 이력서 10대 도메인 허브 및 하위 상세 페이지 본문 심층 보강 리팩토링](<../261015/261015_refac_enrich-notion-domain-hubs-and-detail-pages.md>) `ibocon:261015_refac_enrich-notion-domain-hubs-and-detail-pages` → [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` → [✅ 이력서 마크다운(Local SoT) 전체 테이블 열 너비(colgroup) 명시 및 PowerShell 정합성 가드 구축](<261016_refac_enforce-resume-table-column-widths-and-guard.md>) `ibocon:261016_refac_enforce-resume-table-column-widths-and-guard` |
+| 후속 | [✅ 노션 이력서 도메인 허브 및 하위 페이지 제목 단순화와 본문 내 키워드·프로젝트 메타데이터 명시 리팩토링](<261016_refac_simplify-notion-page-titles-and-relocate-metadata.md>) `ibocon:261016_refac_simplify-notion-page-titles-and-relocate-metadata` — 해당 없음 |
 | 착수 조건 | 가능 |
 <!-- plan-relations-summary:end -->
 
@@ -82,15 +82,13 @@ graph TD
 
 ## 단계별 수정 계획
 
-### ⬜ Step 1: 컨벤션 문서(`convention-notion-resume-structure.md`)에 열 개수별 `<colgroup>` 표준 너비(합계 700px) 규칙 명시
+### ✅ Step 1: 컨벤션 문서(`convention-notion-resume-structure.md`)에 열 개수별 `<colgroup>` 표준 너비(합계 700px) 규칙 명시
 
 **파일**: `docs/portfolio/strategy/convention-notion-resume-structure.md`
 
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: docs/portfolio/strategy/convention-notion-resume-structure.md
 - ✅ **MUST** 각 도메인 허브 페이지는 ① 도메인 요약 테이블(`역할·스택·적용 시스템·검증 지표`, 2열 테이블은 `<colgroup><col width="140"><col width="560"></colgroup>`으로 본문 전체 폭 700px 확보), ② 벡터 SVG 아키텍처 다이어그램 이미지(`![...](notion-file-block://...)`), ③ 핵심 컴포넌트/패턴 책임 매트릭스(`table`), ④ 주요 엔지니어링 과제 및 해결 사례(`문제 배경 → 설계/해결 → 검증 결과`), ⑤ 하위 상세 페이지 목록(`<page>`)의 5개 블록을 모두 포함한다.
 - ✅ **MUST** 각 하위 상세 페이지는 ① 메타데이터 요약 테이블(2열 테이블은 `<colgroup><col width="140"><col width="560"></colgroup>` 지정 필수), ② 개요 및 도입 배경, ③ 벡터 SVG 아키텍처 다이어그램 이미지 및 계층별 상세 설계 테이블, ④ 핵심 구현 및 트러블슈팅 사례(Problem-Action-Result), ⑤ 관련 페이지 참조 링크를 포함한다.
 ```
@@ -103,15 +101,13 @@ TO-BE:
 - ✅ **MUST** 로컬 마크다운(`resume/*.md`)과 노션 페이지의 **모든 `<table>` 블록**은 `fit-page-width="true"` 속성과 함께 열 개수(`<td>` 수)와 정확히 일치하는 `<colgroup>`을 포함해야 하며, `<col width="N">`의 합계는 노션 본문 전체 폭인 **`700`px**(예: 2열 `140 + 560`, 3열 `160 + 220 + 320`, 4열 `150 + 180 + 220 + 150` 또는 `140 + 130 + 130 + 300`)이어야 한다. 이는 `scripts/Test-NotionTableColumnWidthGuard.ps1`로 검증한다.
 ```
 
-### ⬜ Step 2: `resume/resume-yegun-kim.md` 및 `resume/project-personal-peony.md`, `resume/project-lithium.md` 내 모든 테이블에 `<colgroup>` 기록
+### ✅ Step 2: `resume/resume-yegun-kim.md` 및 `resume/project-personal-peony.md`, `resume/project-lithium.md` 내 모든 테이블에 `<colgroup>` 기록
 
 **파일**: `resume/resume-yegun-kim.md`
 
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/resume-yegun-kim.md
 <table fit-page-width="true" header-row="true">
 <tr>
 <td>직무 도메인 (Domain)</td>
@@ -141,8 +137,6 @@ TO-BE:
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/project-personal-peony.md
 ## 2. 9개 도메인 마이크로서비스 및 호스트 책임 매트릭스
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -177,8 +171,6 @@ TO-BE:
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/project-lithium.md
 ## 2. 기술 스택 및 구성 요소 매트릭스
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -205,15 +197,13 @@ TO-BE:
 </tr>
 ```
 
-### ⬜ Step 3: `resume/project-monolith.md`, `resume/project-argon.md`, `resume/project-nemonic-desktop.md` 내 모든 하위 테이블에 `fit-page-width="true"` 및 `<colgroup>` 기록
+### ✅ Step 3: `resume/project-monolith.md`, `resume/project-argon.md`, `resume/project-nemonic-desktop.md` 내 모든 하위 테이블에 `fit-page-width="true"` 및 `<colgroup>` 기록
 
 **파일**: `resume/project-monolith.md`
 
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/project-monolith.md
 ## 구성 요소 (모노레포)
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -242,8 +232,6 @@ TO-BE:
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/project-argon.md
 ## 기술 스택
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -272,8 +260,6 @@ TO-BE:
 AS-IS:
 
 ```markdown
-# source-snapshot: true
-# path: resume/project-nemonic-desktop.md
 ## 기술 스택
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -297,7 +283,7 @@ TO-BE:
 </tr>
 ```
 
-### ⬜ Step 4: 테이블 열 너비 정합성 검증 PowerShell 가드(`scripts/Test-NotionTableColumnWidthGuard.ps1`) 신설
+### ✅ Step 4: 테이블 열 너비 정합성 검증 PowerShell 가드(`scripts/Test-NotionTableColumnWidthGuard.ps1`) 신설
 
 **파일**: `scripts/Test-NotionTableColumnWidthGuard.ps1`
 
@@ -392,7 +378,7 @@ exit 0
 > 프레임워크: PowerShell Guard (`Test-NotionTableColumnWidthGuard.ps1`)
 > 패턴: Given/When/Then 정적 테이블 스키마·열 너비 검증
 
-### ⬜ 테스트용 Stub 정의
+### ✅ 테스트용 Stub 정의
 
 `scripts/Test-NotionTableColumnWidthGuard.ps1`
 
@@ -400,7 +386,7 @@ exit 0
 # 테이블의 fit-page-width="true", <colgroup>, <col> 개수 = <td> 개수, 폭 합계 = 700px 검증
 ```
 
-### ⬜ 테스트: `resume/resume-yegun-kim.md`
+### ✅ 테스트: `resume/resume-yegun-kim.md`
 
 `resume/project-monolith.md`
 `resume/project-argon.md`
@@ -414,25 +400,25 @@ exit 0
 # When: 테이블 열 너비 정합성 가드 및 마크다운 컨벤션 가드 실행
 pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/Test-NotionTableColumnWidthGuard.ps1 -Path resume
 pwsh -NoProfile -ExecutionPolicy Bypass -File lib/Garden.Harness/src/markdown/guards/Test-MarkdownDocumentConventionGuard.ps1 -Path resume
-# Then: 16개 테이블 전체 통과 및 위반 0건(EXIT 0) 반환
+# Then: 21개 테이블 전체 통과 및 위반 0건(EXIT 0) 반환
 ```
 
 ### 테스트 요약
 
 | 테스트 클래스 | 검증 대상 | 테스트 수 |
 | --- | --- | ---: |
-| `Test-NotionTableColumnWidthGuard.ps1` | `resume/*.md` 내 16개 `<table>` 블록의 `fit-page-width`, `<colgroup>`, 열 개수, 너비 총합(`700px`) | 16 |
+| `Test-NotionTableColumnWidthGuard.ps1` | `resume/*.md` 내 21개 `<table>` 블록의 `fit-page-width`, `<colgroup>`, 열 개수, 너비 총합(`700px`) | 21 |
 | `Test-MarkdownDocumentConventionGuard.ps1` | `resume/` 및 `docs/portfolio/` 마크다운 컨벤션 | 2 |
-| **합계** | | **18** |
+| **합계** | | **23** |
 
 ### 테스트 결과
 
 | 범위 | 실행 명령 | 총 테스트 | 통과 | 실패 | 결과 |
 | --- | --- | ---: | ---: | ---: | :---: |
-| 변경 범위 | `pwsh -NoProfile -File scripts/Test-NotionTableColumnWidthGuard.ps1 -Path resume` | — | — | — | ⬜ |
-| 전체 | `pwsh -NoProfile -File lib/Garden.Harness/src/markdown/guards/Test-MarkdownDocumentConventionGuard.ps1 -Path resume` | — | — | — | ⬜ |
+| 변경 범위 | `pwsh -NoProfile -File scripts/Test-NotionTableColumnWidthGuard.ps1 -Path resume` | 21 | 21 | 0 | ✅ |
+| 전체 | `pwsh -NoProfile -File lib/Garden.Harness/src/markdown/guards/Test-MarkdownDocumentConventionGuard.ps1 -Path resume` | 7 | 7 | 0 | ✅ |
 
-**실행 일시**: —
+**실행 일시**: 2026-10-16 18:45 KST
 
 ## 계획 평가
 

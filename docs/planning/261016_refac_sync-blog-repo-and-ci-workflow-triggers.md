@@ -26,29 +26,29 @@
 
 ## 결정이 필요한 사항
 
-1. **블로그 배포 완료 후 GitHub 프로필(`README.md`) 최신 글 갱신 타이밍** — 기존 일일 스케줄(`cron: '0 0 * * *'`)에 더해 `blog-deploy.yml` 워크플로 성공 직후 자동으로 `blog-posts.yml`이 연쇄 실행(`workflow_run`)되도록 구성 (권장)
-- 근거: `blog/` 폴더에 새 마크다운 글을 작성해 `git push`하면 Cloudflare Workers 배포가 끝나는 즉시 `README.md`의 `<!-- BLOG-POST-LIST -->`도 새 글 링크(`https://blog.botanicsoft.com/...`)로 즉시 갱신되어 자정까지 기다릴 필요가 없다.
-- 대안: 자정 Cron 단독 유지. 새 글 배포 후 최대 24시간 동안 GitHub 프로필 `README.md`에 반영되지 않는다.
+1. **블로그 배포 실행 트리거 및 GitHub 프로필(`README.md`) 최신 글 갱신 방식** — `blog-deploy.yml`은 `push` 자동 실행 없이 사용자가 명시적으로 지시할 때만 수동 실행(`workflow_dispatch`)되도록 고정하고, 수동 배포가 완료되면 `blog-posts.yml`이 연쇄 실행(`workflow_run`)되어 `README.md`를 갱신하도록 구성 (권장)
+- 근거: `blog/` 폴더에 초안이나 수정 중인 `.md` 파일을 커밋·푸시할 때마다 의도치 않게 프로덕션 배포가 일어나는 것을 방지하고, 사용자가 배포를 지시했을 때만 Cloudflare Workers 배포와 `README.md` 최신 글 목록 갱신이 함께 수행되도록 제어권을 보장한다.
+- 대안: `push` 트리거 유지. 초안 커밋 시에도 무조건 배포가 실행된다.
 
 ## 배경
 
 - **현재 문제점**:
-  1. `.github/workflows/blog-deploy.yml`의 상단 `name:`과 `jobs.build-and-deploy.name`이 아직 `Build and Deploy Blog to Cloudflare Pages`로 남아 있어 실제 배포 대상인 `Cloudflare Workers Static Assets`와 명칭이 어긋난다.
-  2. `.github/workflows/blog-posts.yml`이 매일 00:00 UTC 스케줄과 수동 실행만 지원하여, 블로그 글 배포 직후 `README.md`가 즉시 동기화되지 않는다.
+  1. `.github/workflows/blog-deploy.yml`의 상단 `name:`이 아직 `Build and Deploy Blog to Cloudflare Pages`로 남아 있어 실제 배포 대상인 `Cloudflare Workers Static Assets`와 명칭이 어긋난다.
+  2. `.github/workflows/blog-posts.yml`이 매일 00:00 UTC 스케줄과 수동 실행만 지원하여, 사용자가 수동 배포(`blog-deploy.yml`)를 지시해 완료된 직후 `README.md`가 즉시 동기화되지 않는다.
 - **리팩토링 방향**:
-  1. `.github/workflows/blog-deploy.yml`의 워크플로 및 Job 이름을 `Build and Deploy Blog to Cloudflare Workers`로 정렬한다.
-  2. `.github/workflows/blog-posts.yml`에 `workflow_run` 트리거(`workflows: ["Build and Deploy Blog to Cloudflare Workers"]`, `types: [completed]`)를 추가하여 배포 성공 직후 `README.md`가 자동 업데이트되게 한다.
-  3. `site/tests/workflow-sync.test.ts`로 두 워크플로 간 `workflow_run` 이름 일치 계약을 검증한다.
+  1. `.github/workflows/blog-deploy.yml`의 트리거를 `workflow_dispatch` 단독(사용자 지시 기반 실행)으로 유지하고 워크플로 이름을 `Build and Deploy Blog to Cloudflare Workers`로 정렬한다.
+  2. `.github/workflows/blog-posts.yml`에 `workflow_run` 트리거(`workflows: ["Build and Deploy Blog to Cloudflare Workers"]`, `types: [completed]`)를 추가하여 수동 배포 성공 직후 `README.md`가 자동 업데이트되게 한다.
+  3. `site/tests/workflow-sync.test.ts`로 수동 배포 트리거(`workflow_dispatch` 단독)와 두 워크플로 간 `workflow_run` 이름 일치 계약을 검증한다.
 
 ## 변경 범위
 
 ```mermaid
 graph LR
     subgraph 변경 전
-        A["blog-deploy.yml과 blog-posts.yml 분리 실행 ❌"] --> B["배포 후 자정까지 README 미갱신 ⚠️"]
+        A["push 시 무인 자동 배포 및 README 분리 ❌"] --> B["배포 후 자정까지 README 미갱신 ⚠️"]
     end
     subgraph 변경 후
-        C["blog push 시 blog-deploy.yml 즉시 배포 ✅"] --> D["workflow_run 트리거로 blog-posts.yml 연쇄 실행 ✅"]
+        C["사용자 지시 시 workflow_dispatch로 배포 실행 ✅"] --> D["workflow_run 트리거로 blog-posts.yml 연쇄 실행 ✅"]
         D --> E["README.md 최신 글 목록 즉시 커밋 동기화 ✅"]
     end
     style A fill:#c92a2a,stroke:#a51111,color:#fff
@@ -60,13 +60,13 @@ graph LR
 
 | 레이어 | 파일 | 변경 내용 |
 | --- | --- | --- |
-| CI/CD | `.github/workflows/blog-deploy.yml` | 워크플로 및 Job 이름을 `Build and Deploy Blog to Cloudflare Workers`로 정렬 |
-| CI/CD | `.github/workflows/blog-posts.yml` | `workflow_run` 트리거를 추가해 블로그 배포 완료 직후 `README.md` 최신 포스트 목록 자동 갱신 |
-| Test | `site/tests/workflow-sync.test.ts` | `blog-deploy.yml`의 워크플로 이름과 `blog-posts.yml`의 `workflow_run` 대상 이름이 정확히 일치하는지 검증 |
+| CI/CD | `.github/workflows/blog-deploy.yml` | `workflow_dispatch` 단독 트리거 유지 및 워크플로 이름을 `Build and Deploy Blog to Cloudflare Workers`로 정렬 |
+| CI/CD | `.github/workflows/blog-posts.yml` | `workflow_run` 트리거를 추가해 블로그 수동 배포 완료 직후 `README.md` 최신 포스트 목록 자동 갱신 |
+| Test | `site/tests/workflow-sync.test.ts` | `blog-deploy.yml`의 `workflow_dispatch` 단독 설정 및 `blog-posts.yml`과의 `workflow_run` 이름 일치 검증 |
 
 ## 단계별 수정 계획
 
-### ⬜ Step 1: `.github/workflows/blog-deploy.yml` 워크플로 명칭 정렬
+### ⬜ Step 1: `.github/workflows/blog-deploy.yml` 워크플로 명칭 정렬 (`workflow_dispatch` 전용)
 
 **파일**: `.github/workflows/blog-deploy.yml`
 
@@ -78,18 +78,11 @@ AS-IS:
 name: Build and Deploy Blog to Cloudflare Pages
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'blog/**'
-      - 'site/**'
-      - '.github/workflows/blog-deploy.yml'
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
-    name: Build Astro Blog and Deploy to Cloudflare Pages
+    name: Build Astro Blog and Deploy to Cloudflare Workers
 ```
 
 TO-BE:
@@ -98,13 +91,6 @@ TO-BE:
 name: Build and Deploy Blog to Cloudflare Workers
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'blog/**'
-      - 'site/**'
-      - '.github/workflows/blog-deploy.yml'
   workflow_dispatch:
 
 jobs:

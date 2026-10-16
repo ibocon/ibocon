@@ -43,6 +43,12 @@
 ---
 ## 2. 9개 도메인 마이크로서비스 및 호스트 책임 매트릭스
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150">
+<col width="180">
+<col width="220">
+<col width="150">
+</colgroup>
 <tr>
 <td>서비스 / 호스트</td>
 <td>도메인 경계 (Bounded Context)</td>

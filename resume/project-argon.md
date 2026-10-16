@@ -42,6 +42,10 @@ Argon은 Monolith 모노레포의 `src/Argon`에 있는 GitOps 하위 시스템�
 전신은 kc5 단일 클러스터를 별도 저장소로 운영한 GitOps 구성이며, Argon이 이를 실패 시 차단(fail-closed) 전환 계약으로 이관해 `clusters/kc5/legacy` snapshot 경계로 보존합니다.
 ## 기술 스택
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
 <tr>
 <td>영역</td>
 <td>구성</td>
@@ -82,6 +86,10 @@ Argon은 Monolith 모노레포의 `src/Argon`에 있는 GitOps 하위 시스템�
 ## Argon 구조
 Argon은 Garden.Cluster의 `apps`·`infra`·`clusters` 축을 따르며, 각 평면을 별도 Flux Kustomization이 reconcile합니다.
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="160">
+<col width="540">
+</colgroup>
 <tr>
 <td>경로</td>
 <td>역할</td>
@@ -146,7 +154,13 @@ Argon이 배포하는 워크로드입니다.
 - 상위 모노레포: <mention-page url="https://app.notion.com/p/3dd4752186758105801dea0310df86f5"/>
 ---
 ## 📂 세부 기여 저장소 및 기술 이력 상세 (10개 저장소 연계)
-<table header-row="true">
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150">
+<col width="120">
+<col width="130">
+<col width="300">
+</colgroup>
 <tr>
 <td>저장소</td>
 <td>활동 기간</td>
@@ -219,7 +233,12 @@ Argon이 배포하는 워크로드입니다.
 - **\[시크릿 관리 체계 전환\]** OpenBao HA Raft + External Secrets Operator(ESO) 연동으로 Git 내 평문 Secret 16개를 ExternalSecret으로 전량 치환하고 Kubernetes Native 인증으로 통합
 - **\[AI 마이크로서비스 배포 자동화\]** NemonicStudy 백엔드 군(BFF, Summary, OCR)을 컨테이너화하고 Harbor + Flux ImageUpdateAutomation 파이프라인으로 연결하여 자동 배포 파이프라인 구성
 ### On-Premise K8s 4대 플랫폼 평면 구성
-<table header-row="true">
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="220">
+<col width="340">
+</colgroup>
 <tr>
 <td>플랫폼 평면</td>
 <td>구성 컴포넌트</td>

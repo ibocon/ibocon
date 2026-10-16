@@ -1,13 +1,6 @@
 name: Build and Deploy Blog to Cloudflare Pages
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'blog/**'
-      - 'site/**'
-      - '.github/workflows/blog-deploy.yml'
   workflow_dispatch:
 
 jobs:

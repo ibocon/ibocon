@@ -44,6 +44,10 @@
 nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소로 통합한 모노레포입니다. 그중 **Oxygen**은 nemonic 프린터를 클라우드에서 연결·인쇄·관리하는 핵심 제품군으로, 마이크로서비스 백엔드와 API 게이트웨이, Slack·Teams·Zapier 커넥터, Blazor 웹·관리 콘솔, Windows 데스크톱(Nemonic Connect)·모바일 앱까지를 하나의 빌드·컨벤션·계획서 체계 안에서 개발합니다.
 ## 구성 요소 (모노레포)
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="560">
+</colgroup>
 <tr>
 <td>하위 시스템</td>
 <td>역할</td>
@@ -72,6 +76,11 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 ## Oxygen 아키텍처
 ### 백엔드 서비스 (`src/Oxygen/Svc`)
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="120">
+<col width="320">
+<col width="260">
+</colgroup>
 <tr>
 <td>서비스</td>
 <td>책임</td>
@@ -140,6 +149,10 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 </table>
 ### 클라이언트·관리
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="160">
+<col width="540">
+</colgroup>
 <tr>
 <td>구성</td>
 <td>내용</td>
@@ -163,6 +176,10 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 </table>
 ## 기술 스택
 <table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="160">
+<col width="540">
+</colgroup>
 <tr>
 <td>영역</td>
 <td>구성</td>
@@ -220,7 +237,13 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 - 하네스·라이브러리 원류: <mention-page url="https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f"/>
 ---
 ## 📂 세부 기여 저장소 및 기술 이력 상세 (14개 저장소 연계)
-<table header-row="true">
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150">
+<col width="120">
+<col width="130">
+<col width="300">
+</colgroup>
 <tr>
 <td>저장소</td>
 <td>활동 기간</td>
@@ -317,7 +340,13 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 - **\[로컬 개발 환경 구성\]** .NET Aspire AppHost로 PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, OTel Collector와 서비스를 함께 기동하는 개발 환경 구성
 - **\[AI 코딩 에이전트 하네스 적용\]** Claude Code, Codex, Gemini CLI가 공유하는 코딩 규약, 계획서(docs/planning) 워크플로 및 정적 가드 적용
 ### ➕ 추가 연동 및 데스크톱 유틸리티 저장소
-<table header-row="true">
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150">
+<col width="120">
+<col width="130">
+<col width="300">
+</colgroup>
 <tr>
 <td>저장소</td>
 <td>활동 기간</td>
