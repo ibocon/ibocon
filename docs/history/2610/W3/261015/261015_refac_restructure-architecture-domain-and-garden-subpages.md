@@ -4,7 +4,7 @@
 
 > **관계 스키마**: `1`
 > **계획 ID**: `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages`
-> **출처 판정**: `독립`
+> **출처 판정**: `최초`
 > **출처 판정 근거**: Peony 페이지 하위에 잔류한 8개 Garden 패키지 하위 페이지를 각 도메인으로 분산 재배치하고 소프트웨어 아키텍처 도메인을 설계 철학·이론 중심 하위 구조로 재편하는 리팩토링
 
 | 관계 | 대상 계획 ID | 조건 | 근거·인수 범위 |
@@ -15,11 +15,10 @@
 
 | 구분 | 계획·조건 |
 | --- | --- |
-| 최초 계획 | [✅ 노션 비배포 포트폴리오 문서 및 저장소 보고서 분리 이전 계획](<../261014/261014_refac_relocate-non-notion-portfolio-docs.md>) `ibocon:261014_refac_relocate-non-notion-portfolio-docs` |
-| 직접 출처 | [✅ 노션 이력서 9대 단일 책임 도메인(SRP) 원자적 분할 리팩토링](<../261014/261014_refac_split-notion-domains-srp.md>) `ibocon:261014_refac_split-notion-domains-srp` |
+| 최초 계획 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` |
+| 직접 출처 | 없음 |
 | 직접 후속 | [✅ 노션 이력서 10대 도메인 허브 및 하위 상세 페이지 본문 심층 보강 리팩토링](<261015_refac_enrich-notion-domain-hubs-and-detail-pages.md>) `ibocon:261015_refac_enrich-notion-domain-hubs-and-detail-pages` |
-| 계보 경로 | [✅ 노션 비배포 포트폴리오 문서 및 저장소 보고서 분리 이전 계획](<../261014/261014_refac_relocate-non-notion-portfolio-docs.md>) `ibocon:261014_refac_relocate-non-notion-portfolio-docs` → [✅ 노션 이력서 9대 단일 책임 도메인(SRP) 원자적 분할 리팩토링](<../261014/261014_refac_split-notion-domains-srp.md>) `ibocon:261014_refac_split-notion-domains-srp` → [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` |
-| 후속 | [✅ 노션 이력서 9대 단일 책임 도메인(SRP) 원자적 분할 리팩토링](<../261014/261014_refac_split-notion-domains-srp.md>) `ibocon:261014_refac_split-notion-domains-srp` — 해당 없음 |
+| 계보 경로 | [✅ 소프트웨어 아키텍처 도메인의 설계 이론 중심 재편 및 Garden 하위 페이지 도메인별 재배치](<261015_refac_restructure-architecture-domain-and-garden-subpages.md>) `ibocon:261015_refac_restructure-architecture-domain-and-garden-subpages` |
 | 착수 조건 | 가능 |
 <!-- plan-relations-summary:end -->
 
