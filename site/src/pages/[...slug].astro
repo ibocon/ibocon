@@ -30,18 +30,18 @@ const { Content, headings } = await render(post);
   <body>
     <Header />
     <main class="container post-layout">
-    <article class="prose">
-      <header>
-        <span class="badge">{post.data.category}</span>
-        <h1>{post.data.title}</h1>
-        <time datetime={post.data.pubDate.toISOString()}>
-          {post.data.pubDate.toISOString().slice(0, 10)}
-        </time>
-      </header>
-      <Content />
-      <AdSenseSlot slotId="blog-post-bottom" />
-    </article>
-    {headings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{headings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
+      <article class="prose" aria-labelledby="post-title">
+        <header class="post-header">
+          <span class="badge">{post.data.category}</span>
+          <h1 id="post-title">{post.data.title}</h1>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toISOString().slice(0, 10)}
+          </time>
+        </header>
+        <Content />
+        <AdSenseSlot slotId="blog-post-bottom" />
+      </article>
+      {headings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{headings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
     </main>
     <script>
       const mermaidBlocks = document.querySelectorAll('pre:has(code.language-mermaid)');

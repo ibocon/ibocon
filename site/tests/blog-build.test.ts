@@ -3,6 +3,23 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 describe('Astro Blog Static Build Verification', () => {
+  it('Given_BuiltPost_When_Inspected_Then_ReferencesReadableDesignCss', () => {
+    // Given
+    const distDir = resolve(process.cwd(), 'dist');
+    const postHtmlPath = resolve(distDir, 'dotnet', '2026-10-15-clean-architecture-rich-domain', 'index.html');
+    const postHtml = readFileSync(postHtmlPath, 'utf-8');
+
+    // When
+    const stylesheetHref = postHtml.match(/<link rel="stylesheet" href="([^"]+\.css)">/)?.[1];
+
+    // Then
+    expect(stylesheetHref).toBeDefined();
+    const stylesheetPath = resolve(distDir, stylesheetHref!.replace(/^\//, ''));
+    const stylesheet = readFileSync(stylesheetPath, 'utf-8');
+    expect(stylesheet).toMatch(/--prose-measure:\s*46rem/);
+    expect(postHtml).toContain('class="container post-layout"');
+  });
+
   it('Given_BlogMarkdownAndPublicAssets_When_Built_Then_GeneratesAdsTxtRssAndAnalyticsHtml', () => {
     // Given
     const distDir = resolve(process.cwd(), 'dist');

@@ -5,6 +5,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://blog.botanicsoft.com',
   output: 'static',
+  build: {
+    inlineStylesheets: 'never',
+  },
   integrations: [sitemap()],
   markdown: {
     shikiConfig: {
