@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import Analytics from '../components/Analytics.astro';
 import AdSenseSlot from '../components/AdSenseSlot.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
@@ -12,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <!doctype html>
@@ -26,8 +28,11 @@ const { Content } = await render(post);
     <Analytics />
   </head>
   <body>
-    <article>
+    <Header />
+    <main class="container post-layout">
+    <article class="prose">
       <header>
+        <span class="badge">{post.data.category}</span>
         <h1>{post.data.title}</h1>
         <time datetime={post.data.pubDate.toISOString()}>
           {post.data.pubDate.toISOString().slice(0, 10)}
@@ -36,5 +41,15 @@ const { Content } = await render(post);
       <Content />
       <AdSenseSlot slotId="blog-post-bottom" />
     </article>
+    {headings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{headings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
+    </main>
+    <script>
+      const mermaidBlocks = document.querySelectorAll('pre:has(code.language-mermaid)');
+      if (mermaidBlocks.length > 0) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+        mermaid.initialize({ startOnLoad: false, theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default' });
+        await mermaid.run({ nodes: mermaidBlocks });
+      }
+    </script>
   </body>
 </html>

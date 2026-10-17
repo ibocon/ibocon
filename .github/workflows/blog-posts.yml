@@ -3,9 +3,15 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Build and Deploy Blog to Cloudflare Workers'
+    types:
+      - completed
 
 jobs:
   update-readme-with-blog:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     name: Update this repo's README with latest tech blog posts
     runs-on: ubuntu-latest
     permissions:

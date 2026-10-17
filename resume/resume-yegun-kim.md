@@ -8,32 +8,35 @@
 
 > 💡 
 > **.NET 풀스택 소프트웨어 엔지니어**
-> 2017년부터 망고슬래브에서 Windows 데스크톱 앱, 모바일 앱, 웹 서비스, On-Premise Kubernetes 클러스터까지 제품에 필요한 영역을 개발·운영해 왔습니다. 개인 프로젝트에서는 .NET MAUI 모바일 앱과 마이크로서비스, GitOps 클러스터, Blazor 컴포넌트 라이브러리, AI 코딩 에이전트 하네스(작업 규약·검증 도구 모음)를 설계·운영하고 있습니다.
+> Windows 데스크톱·모바일·웹 서비스와 On-Premise Kubernetes 환경을 제품 단위로 개발·운영해 왔습니다.
+> 개인 프로젝트에서는 .NET MAUI, 마이크로서비스, GitOps, 웹 디자인 시스템, AI 코딩 에이전트 하네스를 설계·운영합니다.
 
-	
-	
-		📞 010-7503-5266
-		✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com)
-		🐙 [github.com/ibocon](https://github.com/ibocon)
-		✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
-	
+`.NET` · `C#` · `MAUI` · `ASP.NET Core` · `Kubernetes` · `GitOps`
+
+📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
+
+---
+## 대표 역량
+
+1. **제품 엔지니어링** — Windows, 모바일, 웹 서비스의 기능 개발과 유지보수
+2. **플랫폼·인프라** — .NET 서비스와 On-Premise Kubernetes·GitOps 운영
+3. **개발 생산성** — 디자인 시스템, 공용 라이브러리, AI 코딩 에이전트 하네스
 
 ---
 ## 경력
 
-	
-		**2017.07 – 현재**
-		<span color="gray">9년 차</span>
-	
-	
-		### 망고슬래브 주식회사
-		<span color="gray">SW개발팀 · 소프트웨어 엔지니어</span>
-		스마트 메모 프린터 **nemonic**의 Windows 클라이언트에서 출발해, FINECUBE 라벨 프린터 모바일 앱, 회사 서비스 전반을 담는 .NET 모노레포(Monolith), On-Premise Kubernetes 클러스터(Argon) 구축·운영까지 담당 범위를 넓혀 왔습니다.
-	
+### 망고슬래브 주식회사 · SW개발팀 · 소프트웨어 엔지니어
+
+**2017.07 – 현재 · 9년 차**
+
+- **nemonic** Windows 클라이언트와 FINECUBE 라벨 프린터 모바일 앱 개발·유지보수
+- 회사 서비스의 .NET 모노레포와 관련 서비스 개발
+- On-Premise Kubernetes 클러스터의 구축·운영과 배포 자동화
 
 ---
-## 주요 기술 영역 (Top-Down 10대 엔지니어링 도메인)
-추상적인 소프트웨어 아키텍처(`01`)와 백엔드(`02`)에서 시작하여 인프라(`03`)·DevOps(`04`)·개발자 경험(`05`)·하네스 엔지니어링(`06`), 그리고 웹 디자인 시스템(`07`)·모바일(`08`)·데스크톱(`09`)을 거쳐 최하단 시스템 프로그래밍(`10`)까지 이어지는 10대 단일 책임 영역 요약입니다.
+## 전체 도메인 지도
+
+10대 단일 책임 엔지니어링 도메인과 상세 포트폴리오의 진입점입니다.
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="160">
@@ -97,7 +100,7 @@
 </tr>
 </table>
 ---
-## 📂 10대 직무 도메인별 상세 포트폴리오 (Domain Hub)
+## 📂 상세 포트폴리오 (Domain Hub)
 <span color="gray">각 도메인 폴더를 클릭하시면 해당 기술 영역의 상세 작업 내역을 확인하실 수 있습니다.</span>
 <page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">01. 소프트웨어 아키텍처</page>
 <page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">02. .NET 백엔드 엔지니어링</page>

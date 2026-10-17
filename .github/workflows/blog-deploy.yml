@@ -1,4 +1,4 @@
-name: Build and Deploy Blog to Cloudflare Pages
+name: Build and Deploy Blog to Cloudflare Workers
 
 on:
   workflow_dispatch:

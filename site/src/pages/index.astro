@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Analytics from '../components/Analytics.astro';
 import AdSenseSlot from '../components/AdSenseSlot.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -22,25 +24,40 @@ const posts = (await getCollection('blog'))
     <Analytics />
   </head>
   <body>
-    <main>
-      <header>
+    <Header />
+    <main class="container">
+      <header class="hero">
         <h1>Yegun Kim Tech Blog</h1>
         <p>.NET, Clean Architecture, Kubernetes &amp; Distributed Systems Engineering</p>
       </header>
       <section>
-        <ul>
-          {posts.map((post) => (
-            <li>
-              <a href={`/${post.id}/`}>{post.data.title}</a>
-              <time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toISOString().slice(0, 10)}
-              </time>
-              <p>{post.data.description}</p>
-            </li>
-          ))}
+        <ul class="filter-list" aria-label="Post categories">
+          <li><button class="filter-chip" type="button" data-category="all">All</button></li>
+          {[...new Set(posts.map((post) => post.data.category))].map((category) => <li><button class="filter-chip" type="button" data-category={category}>{category}</button></li>)}
         </ul>
+        <div class="post-list">
+          {posts.map((post) => (
+            <a class="post-card" data-category={post.data.category} href={`/${post.id}/`}>
+              <div class="post-meta"><span class="badge">{post.data.category}</span><time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toISOString().slice(0, 10)}
+              </time></div>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+            </a>
+          ))}
+        </div>
       </section>
       <AdSenseSlot slotId="blog-home-bottom" />
     </main>
+    <script>
+      document.querySelectorAll<HTMLButtonElement>('[data-category]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const category = button.dataset.category;
+          document.querySelectorAll<HTMLElement>('.post-card').forEach((card) => {
+            card.hidden = category !== 'all' && card.dataset.category !== category;
+          });
+        });
+      });
+    </script>
   </body>
 </html>
