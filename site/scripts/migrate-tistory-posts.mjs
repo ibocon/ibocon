@@ -17,6 +17,21 @@ const decodeHtml = (value = '') => value
 
 const stripTags = (value = '') => decodeHtml(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
+const getAttribute = (html, name) => decodeHtml(
+  html.match(new RegExp(`(?:^|\\s)${name}="([^"]*)"`, 'i'))?.[1] ?? '',
+);
+
+function convertTistoryFigureToMarkdown(figure) {
+  const image = figure.match(/<img\b[^>]*>/i)?.[0] ?? '';
+  const source = getAttribute(image, 'src');
+  if (!source) return '';
+
+  const alt = getAttribute(image, 'alt') || getAttribute(figure, 'data-alt') || getAttribute(figure, 'alt');
+  const caption = stripTags(figure.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i)?.[1] ?? '');
+  const captionMarkdown = caption && caption !== alt ? `\n\n${caption}` : '';
+  return `\n\n![${alt}](${source})${captionMarkdown}\n`;
+}
+
 function extractBalancedDiv(html, start) {
   const openingEnd = html.indexOf('>', start);
   if (openingEnd < 0) return '';
@@ -46,7 +61,7 @@ export function mapTistoryCategory(rawCategory) {
 
 export function convertTistoryHtmlToMarkdown(html) {
   return decodeHtml(html)
-    .replace(/<figure[^>]*\balt="([^"]*)"[^>]*>[\s\S]*?<img[^>]*\bsrc="([^"]+)"[^>]*>[\s\S]*?<\/figure>/gi, (_, alt, src) => `\n\n![${stripTags(alt)}](${src})\n`)
+    .replace(/<figure\b[\s\S]*?<\/figure>/gi, (figure) => convertTistoryFigureToMarkdown(figure))
     .replace(/<img[^>]*\balt="([^"]*)"[^>]*\bsrc="([^"]+)"[^>]*>/gi, (_, alt, src) => `![${stripTags(alt)}](${src})`)
     .replace(/<img[^>]*\bsrc="([^"]+)"[^>]*\balt="([^"]*)"[^>]*>/gi, (_, src, alt) => `![${stripTags(alt)}](${src})`)
     .replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, (_, code) => `\n\n\`\`\`\n${decodeHtml(code).trim()}\n\`\`\`\n`)
@@ -54,7 +69,10 @@ export function convertTistoryHtmlToMarkdown(html) {
     .replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, (_, content) => `\n\n> ${stripTags(content)}\n`)
     .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_, level, content) => `\n\n${'#'.repeat(Number(level))} ${stripTags(content)}\n`)
     .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, content) => `\n- ${stripTags(content)}`)
-    .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, content) => `\n\n${stripTags(content)}\n`)
+    .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, content) => {
+      const normalized = content.trim();
+      return normalized.includes('![') ? `\n\n${normalized}\n` : `\n\n${stripTags(content)}\n`;
+    })
     .replace(/<br\s*\/?>/gi, '\n')
     .replace(/<[^>]*>/g, '')
     .replace(/\n{3,}/g, '\n\n')

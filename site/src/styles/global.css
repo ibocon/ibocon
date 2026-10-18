@@ -55,7 +55,7 @@ a { color: var(--accent-color); }
 .post-header .badge { margin-bottom: 12px; }
 .prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
-.prose img { max-width: 100%; height: auto; }
+.prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .prose th, .prose td { border: 1px solid var(--border-color); padding: 8px 12px; }
 .toc { align-self: start; position: sticky; top: 88px; border-left: 2px solid var(--border-color); font-size: .9rem; padding-left: 16px; }

@@ -28,4 +28,13 @@ describe('Tistory tech post migration', () => {
     expect(markdown).toContain('> 인용문');
     expect(markdown).toContain('## 후속 제목');
   });
+
+  it('converts nested Tistory figure captions without leaving duplicate inline text', () => {
+    const html = '<p><figure class="imageblock" alt="SOLID 원칙"><span data-alt="SOLID Principles"><img src="https://example.test/image.png" alt="SOLID 원칙"></span><figcaption>SOLID Principles</figcaption></figure></p>';
+
+    const markdown = convertTistoryHtmlToMarkdown(html);
+
+    expect(markdown).toBe('![SOLID 원칙](https://example.test/image.png)\n\nSOLID Principles');
+    expect(markdown).not.toContain('![SOLID 원칙](https://example.test/image.png) SOLID Principles');
+  });
 });
