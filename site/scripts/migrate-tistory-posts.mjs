@@ -17,6 +17,25 @@ const decodeHtml = (value = '') => value
 
 const stripTags = (value = '') => decodeHtml(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
+function extractBalancedDiv(html, start) {
+  const openingEnd = html.indexOf('>', start);
+  if (openingEnd < 0) return '';
+
+  const tags = /<\/?div\b[^>]*>/gi;
+  tags.lastIndex = openingEnd + 1;
+  let depth = 1;
+  for (let tag = tags.exec(html); tag; tag = tags.exec(html)) {
+    depth += tag[0].startsWith('</') ? -1 : 1;
+    if (depth === 0) return html.slice(openingEnd + 1, tag.index);
+  }
+  return '';
+}
+
+export function extractContentsStyle(html) {
+  const start = html.search(/<div\b[^>]*\bcontents_style\b[^>]*>/i);
+  return start < 0 ? '' : extractBalancedDiv(html, start);
+}
+
 export function mapTistoryCategory(rawCategory) {
   const normalized = (rawCategory ?? '').trim();
   for (const [name, folder] of CATEGORY_MAP) {
@@ -27,7 +46,12 @@ export function mapTistoryCategory(rawCategory) {
 
 export function convertTistoryHtmlToMarkdown(html) {
   return decodeHtml(html)
+    .replace(/<figure[^>]*\balt="([^"]*)"[^>]*>[\s\S]*?<img[^>]*\bsrc="([^"]+)"[^>]*>[\s\S]*?<\/figure>/gi, (_, alt, src) => `\n\n![${stripTags(alt)}](${src})\n`)
+    .replace(/<img[^>]*\balt="([^"]*)"[^>]*\bsrc="([^"]+)"[^>]*>/gi, (_, alt, src) => `![${stripTags(alt)}](${src})`)
+    .replace(/<img[^>]*\bsrc="([^"]+)"[^>]*\balt="([^"]*)"[^>]*>/gi, (_, src, alt) => `![${stripTags(alt)}](${src})`)
     .replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, (_, code) => `\n\n\`\`\`\n${decodeHtml(code).trim()}\n\`\`\`\n`)
+    .replace(/<a[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_, href, content) => `[${stripTags(content)}](${href})`)
+    .replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, (_, content) => `\n\n> ${stripTags(content)}\n`)
     .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_, level, content) => `\n\n${'#'.repeat(Number(level))} ${stripTags(content)}\n`)
     .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, content) => `\n- ${stripTags(content)}`)
     .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, content) => `\n\n${stripTags(content)}\n`)
@@ -57,7 +81,7 @@ export function parseTistoryPage(html, url) {
   const title = match(/<meta property="og:title" content="([^"]+)"/i) || match(/<title>([\s\S]*?)<\/title>/i);
   const description = match(/<meta name="description" content="([^"]*)"/i);
   const published = match(/<meta property="article:published_time" content="([^"]+)"/i);
-  const body = match(/<div class="contents_style">([\s\S]*?)<\/div>\s*(?:<!-- System|<div class="container_postbtn)/i);
+  const body = extractContentsStyle(html);
   return { title: stripTags(title), link: url, description, pubDate: published, categories: [category], body };
 }
 
