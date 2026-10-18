@@ -53,7 +53,7 @@ a { color: var(--accent-color); }
 .prose { min-width: 0; font-size: 1.0625rem; line-height: 1.8; }
 .post-header { margin-bottom: 32px; }
 .post-header .badge { margin-bottom: 12px; }
-.prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; background: var(--code-bg); }
+.prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
 .prose img { max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }

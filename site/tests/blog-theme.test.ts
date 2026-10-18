@@ -17,6 +17,9 @@ describe('Blog theme and content rendering', () => {
     expect(hasBoundedProse).toBe(true);
     expect(styles).toContain('grid-template-columns: minmax(0, var(--prose-measure))');
     expect(styles).toContain(':focus-visible');
+    expect(styles).toContain('white-space: pre !important');
+    expect(styles).toContain('overflow-wrap: normal');
+    expect(styles).toContain('word-break: normal');
     expect(header).toContain('id="theme-toggle"');
     expect(index).toContain('class="post-card"');
     expect(index).toContain('data-category');
