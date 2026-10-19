@@ -8,19 +8,19 @@
 
 > 💡 
 > **.NET 풀스택 소프트웨어 엔지니어**
-> Windows 데스크톱·모바일·웹 서비스와 On-Premise Kubernetes 환경을 제품 단위로 개발·운영해 왔습니다.
-> 개인 프로젝트에서는 .NET MAUI, 마이크로서비스, GitOps, 웹 디자인 시스템, AI 코딩 에이전트 하네스를 설계·운영합니다.
+> 하드웨어와 연결되는 .NET MAUI Blazor Hybrid 클라이언트부터 .NET 서비스 API, Kubernetes 배포 자동화까지 직접 개발합니다.
+> 하나의 코드베이스로 여러 운영체제를 지원하고, 제품별 요구를 공통 서비스와 운영 구조로 정리합니다.
 
 `.NET` · `C#` · `MAUI` · `ASP.NET Core` · `Kubernetes` · `GitOps`
 
-📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
-
----
 ## 대표 역량
 
 1. **제품 엔지니어링** — Windows, 모바일, 웹 서비스의 기능 개발과 유지보수
 2. **플랫폼·인프라** — .NET 서비스와 On-Premise Kubernetes·GitOps 운영
 3. **개발 생산성** — 디자인 시스템, 공용 라이브러리, AI 코딩 에이전트 하네스
+
+---
+📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
 
 ---
 ## 경력
@@ -29,14 +29,52 @@
 
 **2017.07 – 현재 · 9년 차**
 
-- **nemonic** Windows 클라이언트와 FINECUBE 라벨 프린터 모바일 앱 개발·유지보수
-- 회사 서비스의 .NET 모노레포와 관련 서비스 개발
-- On-Premise Kubernetes 클러스터의 구축·운영과 배포 자동화
+- **네모닉 (nemonic Desktop)** — Windows 클라이언트의 WYSIWYG 편집·인쇄와 USB 프린터 연동, 레거시 .NET 현대화 및 배포 유지보수를 담당.
+- **파인큐브 (FINECUBE Mobile (Lithium))** — iOS·Android 라벨 편집기와 프린터 연동 기능을 유지보수하고 Android SDK 대응과 스토어 릴리스를 관리.
+- **네모닉 커넥트 (Monolith & Services)** — .NET 모노레포 기반 프린팅·연동 서비스를 개발하며 공통 SDK, API Gateway, 빌드·배포 구조를 정비.
+- **On-Prem 서버 구축 (Argon Kubernetes & GitOps)** — On-Premise Kubernetes 클러스터를 구축·운영하고 Flux GitOps 기반 서비스 배포 자동화를 설계·관리.
+
+---
+## 주요 프로젝트 바로가기
+
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="140">
+<col width="300">
+<col width="260">
+</colgroup>
+<tr>
+<td>프로젝트</td>
+<td>한 줄 역할</td>
+<td>상세 기술서</td>
+</tr>
+<tr>
+<td>네모닉</td>
+<td>Windows 메모 편집·인쇄와 USB 프린터 연동</td>
+<td>[09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)</td>
+</tr>
+<tr>
+<td>파인큐브</td>
+<td>모바일 라벨 편집기와 프린터 연동</td>
+<td>[08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)</td>
+</tr>
+<tr>
+<td>네모닉 커넥트</td>
+<td>클라우드 프린팅 모노레포와 API Gateway</td>
+<td>[02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)</td>
+</tr>
+<tr>
+<td>On-Prem 서버 구축</td>
+<td>이중 사이트 GitOps 배포와 재해복구</td>
+<td>[04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+</tr>
+</table>
 
 ---
 ## 전체 도메인 지도
 
 10대 단일 책임 엔지니어링 도메인과 상세 포트폴리오의 진입점입니다.
+전체 구조와 핵심 상세 기술서는 [00. 이력서 탐색 목차](https://app.notion.com/p/3fc47521867581faa5c7d619956da617)에서 확인할 수 있습니다.
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="160">

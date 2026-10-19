@@ -20,7 +20,14 @@ describe('Blog theme and content rendering', () => {
     expect(styles).toContain('white-space: pre !important');
     expect(styles).toContain('overflow-wrap: normal');
     expect(styles).toContain('word-break: normal');
+    expect(styles).toContain('.adsense-container { max-width: 100%; min-width: 0; overflow-x: clip; }');
+    expect(styles).toContain('.adsense-container .adsbygoogle { display: block; max-width: 100%; min-width: 0; }');
     expect(header).toContain('id="theme-toggle"');
+    expect(header).toContain('class="theme-icon"');
+    expect(header).toContain('aria-pressed');
+    expect(header).not.toContain('>Theme</button>');
+    expect(styles).toContain('.theme-toggle { inline-size: 36px; block-size: 36px;');
+    expect(styles).toContain('.theme-icon { inline-size: 18px; block-size: 18px; }');
     expect(index).toContain('class="post-card"');
     expect(index).toContain('data-category');
     expect(post).toContain('class="container post-layout"');

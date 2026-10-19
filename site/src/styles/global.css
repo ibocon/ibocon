@@ -36,7 +36,8 @@ a { color: var(--accent-color); }
 .brand-title { color: var(--text-primary); font-weight: 800; text-decoration: none; }
 .header-nav { display: flex; align-items: center; gap: 16px; font-size: .9rem; }
 .header-nav a { text-decoration: none; }
-.theme-toggle { border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; padding: 6px 12px; }
+.theme-toggle { inline-size: 36px; block-size: 36px; border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; display: inline-grid; place-items: center; padding: 0; }
+.theme-icon { inline-size: 18px; block-size: 18px; }
 .hero { padding: 32px 0 24px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
 .hero h1, .post-header h1 { margin: 0 0 8px; line-height: 1.25; letter-spacing: -.03em; }
 .hero p, .post-meta, .post-header time { color: var(--text-secondary); }
@@ -53,6 +54,8 @@ a { color: var(--accent-color); }
 .prose { min-width: 0; font-size: 1.0625rem; line-height: 1.8; }
 .post-header { margin-bottom: 32px; }
 .post-header .badge { margin-bottom: 12px; }
+.adsense-container { max-width: 100%; min-width: 0; overflow-x: clip; }
+.adsense-container .adsbygoogle { display: block; max-width: 100%; min-width: 0; }
 .prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
 .prose img { display: block; max-width: 100%; height: auto; }
