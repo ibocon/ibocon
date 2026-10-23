@@ -31,13 +31,19 @@ const posts = (await getCollection('blog'))
         <p>.NET, Clean Architecture, Kubernetes &amp; Distributed Systems Engineering</p>
       </header>
       <section>
+        <div class="search-form" role="search">
+          <label class="search-label" for="post-search">게시물 검색</label>
+          <input id="post-search" class="search-input" type="search" placeholder="제목·설명·태그로 검색" autocomplete="off" />
+        </div>
+        <p class="search-status" id="search-status" role="status"></p>
         <ul class="filter-list" aria-label="Post categories">
-          <li><button class="filter-chip" type="button" data-category="all">All</button></li>
-          {[...new Set(posts.map((post) => post.data.category))].map((category) => <li><button class="filter-chip" type="button" data-category={category}>{category}</button></li>)}
+          <li><button class="filter-chip" type="button" data-category="all" aria-pressed="true">All</button></li>
+          {[...new Set(posts.map((post) => post.data.category))].map((category) => <li><button class="filter-chip" type="button" data-category={category} aria-pressed="false">{category}</button></li>)}
         </ul>
+        <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
         <div class="post-list">
           {posts.map((post) => (
-            <a class="post-card" data-category={post.data.category} href={`/${post.id}/`}>
+            <a class="post-card" data-category={post.data.category} data-title={post.data.title} data-description={post.data.description} data-tags={post.data.tags.join(' ')} href={`/${post.id}/`}>
               <div class="post-meta"><span class="badge">{post.data.category}</span><time datetime={post.data.pubDate.toISOString()}>
                 {post.data.pubDate.toISOString().slice(0, 10)}
               </time></div>
@@ -50,14 +56,59 @@ const posts = (await getCollection('blog'))
       <AdSenseSlot slotId="blog-home-bottom" />
     </main>
     <script>
-      document.querySelectorAll<HTMLButtonElement>('[data-category]').forEach((button) => {
+      import { isPostVisible } from '../lib/blog-filter';
+      import type { PostFilterEntry } from '../lib/blog-filter';
+
+      const searchInput = document.querySelector<HTMLInputElement>('#post-search');
+      const statusRegion = document.querySelector<HTMLElement>('#search-status');
+      const emptyMessage = document.querySelector<HTMLElement>('#search-empty');
+      const cards = Array.from(document.querySelectorAll<HTMLElement>('.post-card'));
+
+      const readEntry = (card: HTMLElement): PostFilterEntry => ({
+        title: card.dataset.title ?? '',
+        description: card.dataset.description ?? '',
+        category: card.dataset.category ?? '',
+        tags: (card.dataset.tags ?? '').split(/\s+/).filter(Boolean),
+      });
+
+      const entries = new Map(cards.map((card) => [card, readEntry(card)]));
+      let activeCategory = 'all';
+
+      const applyFilters = () => {
+        const query = searchInput?.value ?? '';
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const entry = entries.get(card);
+          if (!entry) {
+            return;
+          }
+          const visible = isPostVisible(entry, query, activeCategory);
+          card.hidden = !visible;
+          if (visible) {
+            visibleCount += 1;
+          }
+        });
+        if (statusRegion) {
+          statusRegion.textContent = `게시물 ${visibleCount}건`;
+        }
+        if (emptyMessage) {
+          emptyMessage.hidden = visibleCount > 0;
+        }
+      };
+
+      const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category]'));
+      chips.forEach((button) => {
         button.addEventListener('click', () => {
-          const category = button.dataset.category;
-          document.querySelectorAll<HTMLElement>('.post-card').forEach((card) => {
-            card.hidden = category !== 'all' && card.dataset.category !== category;
+          activeCategory = button.dataset.category ?? 'all';
+          chips.forEach((chip) => {
+            chip.setAttribute('aria-pressed', String(chip === button));
           });
+          applyFilters();
         });
       });
+
+      searchInput?.addEventListener('input', applyFilters);
+      applyFilters();
     </script>
   </body>
 </html>
