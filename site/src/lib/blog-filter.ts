@@ -6,6 +6,7 @@ export interface PostFilterEntry {
 }
 
 const ALL_CATEGORY = 'all';
+const ALL_TAG = 'all';
 
 export function normalizeForSearch(value: string): string {
   return value.normalize('NFC').trim().toLowerCase();
@@ -22,7 +23,17 @@ export function matchesSearch(post: PostFilterEntry, rawQuery: string): boolean 
   return haystack.includes(query);
 }
 
-export function isPostVisible(post: PostFilterEntry, rawQuery: string, activeCategory: string): boolean {
+export function matchesTag(post: PostFilterEntry, activeTag: string): boolean {
+  return activeTag === ALL_TAG || post.tags.includes(activeTag);
+}
+
+export function isPostVisible(
+  post: PostFilterEntry,
+  rawQuery: string,
+  activeCategory: string,
+  activeTag: string = ALL_TAG,
+): boolean {
   const categoryMatches = activeCategory === ALL_CATEGORY || post.category === activeCategory;
-  return categoryMatches && matchesSearch(post, rawQuery);
+  const tagMatches = matchesTag(post, activeTag);
+  return categoryMatches && tagMatches && matchesSearch(post, rawQuery);
 }

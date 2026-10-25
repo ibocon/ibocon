@@ -34,4 +34,18 @@ describe('Blog theme and content rendering', () => {
     expect(post).toContain('aria-labelledby="post-title"');
     expect(post).toContain('aria-label="Table of Contents"');
   });
+
+  it('Given_HomePageMarkup_When_Inspected_Then_RendersTagFilterRowWithPressedState', () => {
+    // Given
+    const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
+
+    // When
+    const hasTagRow = index.includes('aria-label="Post tags"');
+
+    // Then
+    expect(hasTagRow).toBe(true);
+    expect(index).toContain('data-tag="all"');
+    expect(index).toContain('data-tag={tag}');
+    expect(index).toContain('isPostVisible(entry, query, activeCategory, activeTag)');
+  });
 });

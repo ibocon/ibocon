@@ -8,6 +8,7 @@ import '../styles/global.css';
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 ---
 
 <!doctype html>
@@ -39,6 +40,10 @@ const posts = (await getCollection('blog'))
         <ul class="filter-list" aria-label="Post categories">
           <li><button class="filter-chip" type="button" data-category="all" aria-pressed="true">All</button></li>
           {[...new Set(posts.map((post) => post.data.category))].map((category) => <li><button class="filter-chip" type="button" data-category={category} aria-pressed="false">{category}</button></li>)}
+        </ul>
+        <ul class="filter-list" aria-label="Post tags">
+          <li><button class="filter-chip" type="button" data-tag="all" aria-pressed="true">All</button></li>
+          {tags.map((tag) => <li><button class="filter-chip" type="button" data-tag={tag} aria-pressed="false">{tag}</button></li>)}
         </ul>
         <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
         <div class="post-list">
@@ -73,6 +78,7 @@ const posts = (await getCollection('blog'))
 
       const entries = new Map(cards.map((card) => [card, readEntry(card)]));
       let activeCategory = 'all';
+      let activeTag = 'all';
 
       const applyFilters = () => {
         const query = searchInput?.value ?? '';
@@ -82,7 +88,7 @@ const posts = (await getCollection('blog'))
           if (!entry) {
             return;
           }
-          const visible = isPostVisible(entry, query, activeCategory);
+          const visible = isPostVisible(entry, query, activeCategory, activeTag);
           card.hidden = !visible;
           if (visible) {
             visibleCount += 1;
@@ -96,12 +102,19 @@ const posts = (await getCollection('blog'))
         }
       };
 
-      const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category]'));
+      const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category], [data-tag]'));
       chips.forEach((button) => {
         button.addEventListener('click', () => {
-          activeCategory = button.dataset.category ?? 'all';
+          if ('category' in button.dataset) {
+            activeCategory = button.dataset.category ?? 'all';
+          } else {
+            activeTag = button.dataset.tag ?? 'all';
+          }
           chips.forEach((chip) => {
-            chip.setAttribute('aria-pressed', String(chip === button));
+            const selected = 'category' in chip.dataset
+              ? (chip.dataset.category ?? 'all') === activeCategory
+              : (chip.dataset.tag ?? 'all') === activeTag;
+            chip.setAttribute('aria-pressed', String(selected));
           });
           applyFilters();
         });

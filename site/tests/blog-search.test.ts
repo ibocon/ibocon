@@ -55,6 +55,18 @@ describe('Blog post search filter', () => {
     expect(isPostVisible(entry, 'rich domain', 'all')).toBe(true);
     expect(isPostVisible(entry, '블레이저', 'all')).toBe(false);
   });
+
+  it('Given_EntryAndTag_When_IsPostVisible_Then_AppliesCategoryTagAndQueryTogether', () => {
+    // Given
+    // When
+    // Then
+    expect(isPostVisible(entry, '', 'all', 'ddd')).toBe(true);
+    expect(isPostVisible(entry, '', 'all', 'tistory')).toBe(false);
+    expect(isPostVisible(entry, '', 'dotnet', 'ddd')).toBe(true);
+    expect(isPostVisible(entry, '', 'frontend', 'ddd')).toBe(false);
+    expect(isPostVisible(entry, 'rich domain', 'dotnet', 'ddd')).toBe(true);
+    expect(isPostVisible(entry, '블레이저', 'dotnet', 'ddd')).toBe(false);
+  });
 });
 
 describe('Blog search markup', () => {
