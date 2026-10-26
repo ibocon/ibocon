@@ -59,4 +59,16 @@ describe('Blog theme and content rendering', () => {
     // Then
     expect(hiddenRule).not.toBeNull();
   });
+
+  it('Given_Header_When_Inspected_Then_DefinesDeploymentRefreshContract', () => {
+    // Given
+    const header = readFileSync(resolve(process.cwd(), 'src/components/Header.astro'), 'utf8');
+
+    // When
+    // Then
+    expect(header).toContain('data-deployment-id');
+    expect(header).toContain("cache: 'no-store'");
+    expect(header).toContain('document.visibilityState');
+    expect(header).toContain('window.location.reload()');
+  });
 });

@@ -1,4 +1,8 @@
-<header class="site-header">
+---
+const deploymentId = import.meta.env.GITHUB_SHA ?? new Date().toISOString();
+---
+
+<header class="site-header" data-deployment-id={deploymentId}>
   <div class="header-inner">
     <a href="/" class="brand-title">Yegun Kim Tech Blog</a>
     <nav class="header-nav" aria-label="Primary Navigation">
@@ -23,6 +27,7 @@
 
 <script is:inline>
   (() => {
+    const deploymentId = document.querySelector('.site-header')?.dataset.deploymentId;
     const root = document.documentElement;
     const button = document.getElementById('theme-toggle');
     const saved = localStorage.getItem('theme');
@@ -41,5 +46,26 @@
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       applyTheme(next, true);
     });
+
+    const checkForDeploymentUpdate = async () => {
+      if (document.visibilityState !== 'visible' || !deploymentId) {
+        return;
+      }
+
+      try {
+        const response = await fetch(window.location.href, { cache: 'no-store' });
+        const html = await response.text();
+        const nextDeploymentId = html.match(/data-deployment-id="([^"]+)"/)?.[1];
+        if (nextDeploymentId && nextDeploymentId !== deploymentId) {
+          window.location.reload();
+        }
+      } catch {
+        // A transient update check failure must not interrupt the current page.
+      }
+    };
+
+    window.setInterval(() => {
+      void checkForDeploymentUpdate();
+    }, 60_000);
   })();
 </script>
