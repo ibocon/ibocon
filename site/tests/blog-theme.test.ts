@@ -48,4 +48,15 @@ describe('Blog theme and content rendering', () => {
     expect(index).toContain('data-tag={tag}');
     expect(index).toContain('isPostVisible(entry, query, activeCategory, activeTag)');
   });
+
+  it('Given_GlobalStyles_When_Inspected_Then_HiddenAttributeOverridesComponentDisplay', () => {
+    // Given
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When
+    const hiddenRule = styles.match(/\[hidden\]\s*\{[^}]*display:\s*none\s*!important/);
+
+    // Then
+    expect(hiddenRule).not.toBeNull();
+  });
 });
