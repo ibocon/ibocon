@@ -13,7 +13,7 @@ tools:
   task: false
   webfetch: false
   websearch: false
-model: openai/gpt-5.6-terra
+model: zai-coding-plan/glm-5.3
 skills:
   - review-convention
 ---

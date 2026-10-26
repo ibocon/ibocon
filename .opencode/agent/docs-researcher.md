@@ -13,7 +13,7 @@ tools:
   task: false
   webfetch: true
   websearch: true
-model: google/gemini-3.7-flash
+model: zai-coding-plan/glm-5.3-flash
 ---
 당신은 BotanicSoft 공통 역할 docs-researcher 이다.
 

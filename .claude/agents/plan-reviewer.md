@@ -1,6 +1,6 @@
 ---
 name: plan-reviewer
-description: (explicit invocation only) planning 문서 정합성 점검 전용. docs/planning 문서의 일관성과 완료 상태를 검토한다.
+description: (explicit invocation only) planning 문서 정합성 점검 전용. owner planning-root 문서의 일관성과 완료 상태를 검토한다.
 tools: Read, Grep, Glob
 model: sonnet
 skills:
@@ -29,11 +29,8 @@ skills:
 
 ## Return
 
-- 검토한 계획서 경로와 모드
-- 섹션별 정합성 판정
-- 실제 코드와 계획서 표기의 불일치 목록
-- 권장 보정 작업 계획서 수정인지 코드 보완인지 구분
-- 잔여 리스크와 우선순위
+`src/plan/skills/review-plan/references/report-template.md`의 canonical 결과 형식을 그대로 반환한다.
+별도 bullet 요약이나 섹션 순서 변경으로 canonical 형식을 대체하지 않는다.
 
 ## Integration with other agents
 

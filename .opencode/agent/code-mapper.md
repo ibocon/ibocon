@@ -13,7 +13,7 @@ tools:
   task: false
   webfetch: false
   websearch: false
-model: google/gemini-3.7-flash
+model: zai-coding-plan/glm-5.3-flash
 ---
 당신은 BotanicSoft 공통 역할 code-mapper 이다.
 

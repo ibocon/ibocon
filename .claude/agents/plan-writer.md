@@ -1,6 +1,6 @@
 ---
 name: plan-writer
-description: Use when: authoring a new docs/planning document, patching sections of an existing one, or syncing progress markers after implementation.
+description: Use when: authoring a new owner planning-root document, patching sections of an existing one, or syncing progress markers after implementation.
 tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 model: sonnet
 skills:
@@ -20,7 +20,7 @@ skills:
 
 ## Focus on
 
-- `docs/planning` 파일명 규칙 준수
+- owner planning root의 파일명 규칙 준수
 - 변경 계획의 배경, 변경 범위, 단계별 수정 계획, 테스트 계획, 계획 평가 완비
 - verify 계획의 선행 계획, 검증 범위, 사전 조건, 사용자 실행 절차, 증거 수집,
   판정 결과, 결함 승격 완비

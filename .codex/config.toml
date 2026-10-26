@@ -97,7 +97,7 @@ args = [
     "-ExecutionPolicy",
     "Bypass",
     "-File",
-    "lib/Garden.Harness/src/agents/mcp/Invoke-PlaywrightMcpServer.ps1",
+    "lib/Garden.Harness/src/playwright/scripts/Invoke-PlaywrightMcpServer.ps1",
     "-Channel",
     "edge-debug",
 ]
@@ -115,7 +115,7 @@ args = [
     "-ExecutionPolicy",
     "Bypass",
     "-File",
-    "lib/Garden.Harness/src/agents/mcp/Invoke-PlaywrightMcpServer.ps1",
+    "lib/Garden.Harness/src/playwright/scripts/Invoke-PlaywrightMcpServer.ps1",
     "-Channel",
     "webview2",
 ]
