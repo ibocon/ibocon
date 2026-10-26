@@ -1,5 +1,8 @@
 ---
-const deploymentId = import.meta.env.GITHUB_SHA ?? new Date().toISOString();
+const deploymentId = [
+  import.meta.env.GITHUB_SHA,
+  import.meta.env.GITHUB_RUN_ID,
+].filter(Boolean).join('-') || new Date().toISOString();
 ---
 
 <header class="site-header" data-deployment-id={deploymentId}>

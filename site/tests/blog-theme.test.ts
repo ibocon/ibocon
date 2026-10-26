@@ -67,6 +67,7 @@ describe('Blog theme and content rendering', () => {
     // When
     // Then
     expect(header).toContain('data-deployment-id');
+    expect(header).toContain('GITHUB_RUN_ID');
     expect(header).toContain("cache: 'no-store'");
     expect(header).toContain('document.visibilityState');
     expect(header).toContain('window.location.reload()');
