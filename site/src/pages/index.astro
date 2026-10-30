@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Analytics from '../components/Analytics.astro';
 import AdSenseSlot from '../components/AdSenseSlot.astro';
+import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
 
@@ -60,6 +61,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
       </section>
       <AdSenseSlot slotId="blog-home-bottom" />
     </main>
+    <Footer />
     <script>
       import { isPostVisible } from '../lib/blog-filter';
       import type { PostFilterEntry } from '../lib/blog-filter';

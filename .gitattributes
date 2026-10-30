@@ -1,0 +1,2 @@
+*.cs text eol=lf
+*.razor text eol=lf

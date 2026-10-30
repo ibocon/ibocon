@@ -37,6 +37,51 @@ describe('Astro Blog Static Build Verification', () => {
     expect(readFileSync(rssXmlPath, 'utf-8')).toContain('https://blog.botanicsoft.com');
   });
 
+  it('Given_DraftIncidentCaseStudy_When_Built_Then_KeepsItOutOfPublicHtmlAndRss', () => {
+    // Given
+    const distDir = resolve(process.cwd(), 'dist');
+    const draftPath = resolve(process.cwd(), '..', 'blog', 'architecture', '2026-10-27-postfix-open-relay-incident.md');
+    const postHtmlPath = resolve(distDir, 'architecture', '2026-10-27-postfix-open-relay-incident', 'index.html');
+    const rssXmlPath = resolve(distDir, 'rss.xml');
+
+    // When
+    const draft = readFileSync(draftPath, 'utf-8');
+    const rssXml = readFileSync(rssXmlPath, 'utf-8');
+
+    // Then
+    expect(draft).toContain('draft: true');
+    expect(existsSync(postHtmlPath)).toBe(false);
+    expect(rssXml).not.toContain('2026-10-27-postfix-open-relay-incident');
+  });
+
+  it('Given_DevelopmentRoute_When_InspectingDraftContract_Then_IncludesDraftsAndShowsReviewBanner', () => {
+    // Given
+    const routePath = resolve(process.cwd(), 'src', 'pages', '[...slug].astro');
+
+    // When
+    const route = readFileSync(routePath, 'utf-8');
+
+    // Then
+    expect(route).toContain('const includeDrafts = import.meta.env.DEV;');
+    expect(route).toContain('includeDrafts || !post.data.draft');
+    expect(route).toContain('로컬 검토용 초안 · 공개 전 검토 중');
+  });
+
+  it('Given_MermaidCodeBlock_When_InspectingRoute_Then_NormalizesTheDefinitionBeforeRendering', () => {
+    // Given
+    const routePath = resolve(process.cwd(), 'src', 'pages', '[...slug].astro');
+
+    // When
+    const route = readFileSync(routePath, 'utf-8');
+
+    // Then
+    expect(route).toContain("document.querySelectorAll('pre:has(code.language-mermaid)')");
+    expect(route).toContain('const definition = block.textContent?.trim();');
+    expect(route).toContain('block.textContent = definition;');
+    expect(route).toContain("block.classList.add('mermaid');");
+    expect(route).toContain('await mermaid.run({ nodes: mermaidBlocks });');
+  });
+
   it('Given_CaPubClientId_When_FormattedForAdsTxt_Then_NormalizesToPubPrefix', async () => {
     // Given
     const { formatAdsTxtLine, normalizeAdSensePublisherId } = await import('../scripts/sync-ads-txt.mjs');

@@ -46,3 +46,9 @@ jobs:
           workingDirectory: site
           wranglerVersion: '4'
           command: deploy
+
+      - name: Verify published trust pages
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
+        run: |
+          curl --fail --silent --show-error --retry 6 --retry-all-errors https://blog.botanicsoft.com/about/
+          curl --fail --silent --show-error --retry 6 --retry-all-errors https://blog.botanicsoft.com/editorial-policy/
