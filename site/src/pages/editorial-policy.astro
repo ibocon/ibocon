@@ -2,7 +2,12 @@
 import Analytics from '../components/Analytics.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { absoluteLocaleUrl } from '../lib/locale';
+import { siteCopy } from '../lib/site-copy';
 import '../styles/global.css';
+
+const locale = 'ko';
+const copy = siteCopy[locale];
 ---
 
 <!doctype html>
@@ -10,22 +15,27 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editorial policy | Yegun Kim Tech Blog</title>
-    <meta name="description" content="Yegun Kim Tech Blog의 원문 출처, 정정 및 갱신, 광고와 편집 독립 원칙" />
+    <title>{copy.editorialTitle} | {copy.brandName}</title>
+    <meta name="description" content={`${copy.brandName}의 ${copy.editorialDescription}`} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'editorial')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'editorial')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'editorial')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'editorial')} />
     <Analytics />
   </head>
   <body>
-    <Header />
+    <Header locale={locale} page="editorial" />
     <main class="container prose static-page">
       <h1>편집 원칙</h1>
+      <p>{copy.brandName}은 {copy.ownerName}이 운영하는 개인 기술 출판물입니다.</p>
       <h2>원문 출처와 이관</h2>
       <p>이전 Tistory에 공개했던 글은 각 문서의 <strong>원문 출처</strong> 링크를 보존합니다. 새 글과 보강한 글은 이 블로그에서 발행하며, 원문과 달라진 사실·링크는 문서의 갱신 정보로 알립니다.</p>
       <h2>정정과 갱신</h2>
       <p>오류를 발견하면 본문의 기술 설명과 링크를 정정하고, 갱신일을 기록합니다. 버전 차이 또는 더 이상 권장되지 않는 방법은 가능한 범위에서 문맥을 보완합니다.</p>
       <h2>광고와 편집 독립성</h2>
       <p>광고는 콘텐츠와 구분해 표시합니다. 광고주나 제휴 관계가 글의 기술적 결론과 편집 순서를 결정하지 않습니다.</p>
-      <p>운영자와 연락 경로는 <a href="/about/">About</a>에서 확인할 수 있습니다.</p>
+      <p>운영자와 연락 경로는 <a href="/about/">{copy.brandName} 소개</a>에서 확인할 수 있습니다.</p>
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

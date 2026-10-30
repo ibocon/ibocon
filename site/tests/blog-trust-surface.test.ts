@@ -6,7 +6,7 @@ const dist = resolve(process.cwd(), 'dist');
 const readBuiltPage = (...segments: string[]) => readFileSync(resolve(dist, ...segments, 'index.html'), 'utf8');
 
 describe('Blog trust surface', () => {
-  it('Given_BuiltSite_When_OpeningTrustPages_Then_PublishesOwnerAndEditorialPolicy', () => {
+  it('Given_BuiltKoreanTrustPages_When_InspectingIdentitySurface_Then_PublishesVerifiedOwnerAndEditorialPath', () => {
     // Given
     const aboutPath = resolve(dist, 'about', 'index.html');
     const editorialPath = resolve(dist, 'editorial-policy', 'index.html');
@@ -18,7 +18,12 @@ describe('Blog trust surface', () => {
     // Then
     expect(existsSync(aboutPath)).toBe(true);
     expect(existsSync(editorialPath)).toBe(true);
+    expect(aboutHtml).toContain('김예건 엔지니어링 노트');
+    expect(aboutHtml).toContain('김예건');
+    expect(aboutHtml).toContain('발행, 정정, 갱신');
+    expect(aboutHtml).toContain('/editorial-policy/');
     expect(aboutHtml).toContain('운영자와 콘텐츠 책임');
+    expect(editorialHtml).toContain('김예건 엔지니어링 노트');
     expect(editorialHtml).toContain('원문 출처와 이관');
   });
 

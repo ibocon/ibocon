@@ -1,0 +1,36 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { absoluteLocaleUrl } from '../../lib/locale';
+import { siteCopy } from '../../lib/site-copy';
+import '../../styles/global.css';
+
+const locale = 'en';
+const copy = siteCopy[locale];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.brandName} | BotanicSoft</title>
+    <meta name="description" content={copy.technicalScope} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'home')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'home')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'home')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'home')} />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="home" />
+    <main class="container prose static-page">
+      <h1>{copy.brandName}</h1>
+      <p>{copy.aboutSummary}</p>
+      <p>This English section provides the publisher and editorial trust information. Existing technical posts remain available in their original Korean unless a reviewed translation is published.</p>
+      <p><a href="/en/about/">About the publisher</a> · <a href="/en/editorial-policy/">Editorial policy</a> · <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

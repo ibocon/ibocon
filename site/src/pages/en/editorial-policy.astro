@@ -1,0 +1,41 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { absoluteLocaleUrl } from '../../lib/locale';
+import { siteCopy } from '../../lib/site-copy';
+import '../../styles/global.css';
+
+const locale = 'en';
+const copy = siteCopy[locale];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.editorialTitle} | {copy.brandName}</title>
+    <meta name="description" content={copy.editorialDescription} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'editorial')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'editorial')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'editorial')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'editorial')} />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="editorial" />
+    <main class="container prose static-page">
+      <h1>Editorial policy</h1>
+      <p>{copy.brandName} is a personal technical publication operated by Yegun Kim (김예건).</p>
+      <h2>Source attribution and migration</h2>
+      <p>Posts previously published on Tistory retain their original-source links. New and expanded posts are published here, and meaningful differences in facts or links are disclosed in update information.</p>
+      <h2>Corrections and updates</h2>
+      <p>When an error is found, the technical explanation and links are corrected and the update date is recorded. Version differences and no-longer-recommended approaches are clarified where practical.</p>
+      <h2>Advertising and editorial independence</h2>
+      <p>Advertising is clearly distinguished from content. Advertisers and affiliate relationships do not determine technical conclusions or editorial order.</p>
+      <p>Read <a href="/en/about/">about the publisher and contact path</a> for responsibility and correction proposals.</p>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

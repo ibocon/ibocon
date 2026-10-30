@@ -4,6 +4,7 @@ import Analytics from '../components/Analytics.astro';
 import AdSenseSlot from '../components/AdSenseSlot.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { koSiteCopy } from '../lib/site-copy';
 import '../styles/global.css';
 
 export async function getStaticPaths() {
@@ -24,13 +25,14 @@ const { Content, headings } = await render(post);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{post.data.title} | Yegun Kim Tech Blog</title>
+    <title>{post.data.title} | {koSiteCopy.brandName}</title>
     <meta name="description" content={post.data.description} />
+    <link rel="canonical" href={new URL(`/${post.id}/`, 'https://blog.botanicsoft.com').toString()} />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
     <Analytics />
   </head>
   <body>
-    <Header />
+    <Header locale="ko" page="home" />
     <main class="container post-layout">
       <article class="prose" aria-labelledby="post-title">
         <header class="post-header">
@@ -50,7 +52,7 @@ const { Content, headings } = await render(post);
       </article>
       {headings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{headings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
     </main>
-    <Footer />
+    <Footer locale="ko" />
     <script>
       const mermaidBlocks = document.querySelectorAll('pre:has(code.language-mermaid)');
       if (mermaidBlocks.length > 0) {

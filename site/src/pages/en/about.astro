@@ -1,0 +1,38 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { absoluteLocaleUrl } from '../../lib/locale';
+import { siteCopy } from '../../lib/site-copy';
+import '../../styles/global.css';
+
+const locale = 'en';
+const copy = siteCopy[locale];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.aboutTitle} | {copy.brandName}</title>
+    <meta name="description" content={copy.aboutDescription} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'about')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'about')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'about')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'about')} />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="about" />
+    <main class="container prose static-page">
+      <h1>About {copy.brandName}</h1>
+      <p>{copy.aboutSummary}</p>
+      <h2>Publisher and responsibility</h2>
+      <p>Yegun Kim (김예건) is the publisher and manages publication, corrections, and updates. Technical choices and interpretations are based on practical experience and public documentation; errors are corrected or updated when identified.</p>
+      <h2>Contact and correction proposals</h2>
+      <p>Questions, correction proposals, and quotation requests can be left through the <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">GitHub profile</a>. See the <a href="/en/editorial-policy/">editorial policy</a> for source and update standards.</p>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>
