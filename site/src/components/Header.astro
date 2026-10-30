@@ -17,11 +17,16 @@ const deploymentId = [
   <div class="header-inner">
     <a href={alternatePath(locale, 'home')} class="brand-title">{copy.brandName}</a>
     <nav class="header-nav" aria-label={copy.primaryNavigationLabel}>
-      <a href={alternatePath(locale, 'home')}>{copy.homeLabel}</a>
-      <a href={alternatePath(locale, 'about')}>{copy.aboutLabel}</a>
-      <a href={alternatePath(locale, 'editorial')}>{copy.editorialLabel}</a>
-      <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
-      <a href="/rss.xml">{copy.rssLabel}</a>
+      <div class="header-nav-primary">
+        <a href={alternatePath(locale, 'home')}>{copy.homeLabel}</a>
+        <a href={alternatePath(locale, 'about')}>{copy.aboutLabel}</a>
+        <a href={alternatePath(locale, 'resume')}>{copy.resumeLabel}</a>
+        <a href={alternatePath(locale, 'editorial')}>{copy.editorialLabel}</a>
+      </div>
+      <div class="header-nav-utility">
+        <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
+        <a href="/rss.xml">{copy.rssLabel}</a>
+      </div>
       <a href={alternatePath(otherLocale, page)} lang={otherLocale}>{copy.localeSwitchLabel}</a>
       <button
         class="theme-toggle"

@@ -12,6 +12,7 @@ const copy = siteCopy[locale];
     <p>© {new Date().getFullYear()} {copy.ownerName}. {copy.footerNotice}</p>
     <nav aria-label={copy.footerLabel}>
       <a href={alternatePath(locale, 'about')}>{copy.aboutLabel}</a>
+      <a href={alternatePath(locale, 'resume')}>{copy.resumeLabel}</a>
       <a href={alternatePath(locale, 'editorial')}>{copy.editorialLabel}</a>
       <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
     </nav>

@@ -1,0 +1,56 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { absoluteLocaleUrl } from '../../lib/locale';
+import { siteCopy } from '../../lib/site-copy';
+import '../../styles/global.css';
+
+const locale = 'en';
+const copy = siteCopy[locale];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.resumeTitle} | {copy.brandName}</title>
+    <meta name="description" content={copy.resumeDescription} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'resume')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'resume')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'resume')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'resume')} />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="resume" />
+    <main class="container prose static-page">
+      <h1>Yegun Kim Resume</h1>
+      <p>I am a full-stack .NET software engineer building hardware-connected clients, service APIs, and Kubernetes-based deployment automation.</p>
+
+      <h2>Experience</h2>
+      <h3>MANGOSLAB · Software Development Team · Software Engineer</h3>
+      <p>July 2017 – Present</p>
+      <p>I develop and maintain product features and printer integrations across Windows, mobile, and web services. My work also includes shared SDKs, API gateways, build and deployment systems, and On-Premise Kubernetes operations with Flux GitOps deployment automation.</p>
+
+      <h2>Core strengths</h2>
+      <ul>
+        <li>Product engineering — Windows, mobile, and web-service delivery and maintenance</li>
+        <li>Platform and infrastructure — .NET services with On-Premise Kubernetes and GitOps operations</li>
+        <li>Developer experience — design systems, shared libraries, and AI coding-agent harnesses</li>
+      </ul>
+
+      <h2>Selected projects</h2>
+      <ul>
+        <li><strong>nemonic</strong> — Windows note editing and printing, USB printer integration, .NET modernization, and release maintenance</li>
+        <li><strong>FINECUBE</strong> — iOS and Android label editing with printer integration, Android SDK support, and store releases</li>
+        <li><strong>nemonic Connect</strong> — cloud-printing monorepo, shared SDKs, and an API gateway</li>
+        <li><strong>Argon Kubernetes</strong> — On-Premise Kubernetes operations and Flux GitOps service deployment automation</li>
+      </ul>
+
+      <p>Read <a href="/en/about/">About Me</a> and the <a href="/en/editorial-policy/">Editorial Policy</a> for the publication scope and standards, or visit <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">GitHub</a> for public code and activity.</p>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

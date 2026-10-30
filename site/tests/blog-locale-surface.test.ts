@@ -10,17 +10,22 @@ describe('Blog locale surface', () => {
     // Given
     const koreanAbout = readBuiltPage('about');
     const englishAbout = readBuiltPage('en', 'about');
+    const koreanResume = readBuiltPage('resume');
+    const englishResume = readBuiltPage('en', 'resume');
     const koreanEditorial = readBuiltPage('editorial-policy');
     const englishEditorial = readBuiltPage('en', 'editorial-policy');
 
     // When
-    const englishTrustRoutes = [resolve(dist, 'en', 'index.html'), resolve(dist, 'en', 'about', 'index.html'), resolve(dist, 'en', 'editorial-policy', 'index.html')];
+    const englishTrustRoutes = [resolve(dist, 'en', 'index.html'), resolve(dist, 'en', 'about', 'index.html'), resolve(dist, 'en', 'resume', 'index.html'), resolve(dist, 'en', 'editorial-policy', 'index.html')];
 
     // Then
     englishTrustRoutes.forEach((route) => expect(existsSync(route)).toBe(true));
     expect(koreanAbout).toContain('<html lang="ko"');
     expect(englishAbout).toContain('<html lang="en"');
     expect(englishAbout).toContain('Yegun Kim (김예건)');
+    expect(koreanResume).toContain('<html lang="ko"');
+    expect(englishResume).toContain('<html lang="en"');
+    expect(englishResume).toContain('Yegun Kim Resume');
     expect(englishEditorial).toContain('Source attribution and migration');
     expect(englishEditorial).toContain('Advertising and editorial independence');
     [koreanAbout, koreanEditorial].forEach((html) => {
@@ -31,6 +36,8 @@ describe('Blog locale surface', () => {
     expect(englishAbout).toContain('https://blog.botanicsoft.com/about/');
     expect(englishEditorial).toContain('hreflang="ko"');
     expect(englishEditorial).toContain('https://blog.botanicsoft.com/editorial-policy/');
+    expect(koreanResume).toContain('https://blog.botanicsoft.com/en/resume/');
+    expect(englishResume).toContain('https://blog.botanicsoft.com/resume/');
   });
 
   it('Given_BuiltKoreanPostsAndRss_When_InspectingEnglishRoutes_Then_DoesNotClaimUntranslatedPosts', () => {

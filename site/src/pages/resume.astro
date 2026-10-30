@@ -1,0 +1,56 @@
+---
+import Analytics from '../components/Analytics.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { absoluteLocaleUrl } from '../lib/locale';
+import { siteCopy } from '../lib/site-copy';
+import '../styles/global.css';
+
+const locale = 'ko';
+const copy = siteCopy[locale];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.resumeTitle} | {copy.brandName}</title>
+    <meta name="description" content={copy.resumeDescription} />
+    <link rel="canonical" href={absoluteLocaleUrl(locale, 'resume')} />
+    <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'resume')} />
+    <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'resume')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'resume')} />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="resume" />
+    <main class="container prose static-page">
+      <h1>김예건 이력서</h1>
+      <p>.NET 풀스택 소프트웨어 엔지니어로서 하드웨어와 연결되는 클라이언트, 서비스 API, Kubernetes 기반 배포 자동화를 개발합니다.</p>
+
+      <h2>경력</h2>
+      <h3>망고슬래브 주식회사 · SW개발팀 · 소프트웨어 엔지니어</h3>
+      <p>2017.07 – 현재</p>
+      <p>Windows, 모바일, 웹 서비스의 제품 기능과 프린터 연동을 개발·유지보수하고, 공통 SDK·API Gateway·빌드와 배포 구조를 정비합니다. On-Premise Kubernetes 클러스터와 Flux GitOps 기반 배포 자동화도 설계·운영합니다.</p>
+
+      <h2>대표 역량</h2>
+      <ul>
+        <li>제품 엔지니어링 — Windows, 모바일, 웹 서비스 기능 개발과 유지보수</li>
+        <li>플랫폼·인프라 — .NET 서비스와 On-Premise Kubernetes·GitOps 운영</li>
+        <li>개발 생산성 — 디자인 시스템, 공용 라이브러리, AI 코딩 에이전트 하네스</li>
+      </ul>
+
+      <h2>대표 프로젝트</h2>
+      <ul>
+        <li><strong>네모닉</strong> — Windows 메모 편집·인쇄와 USB 프린터 연동, .NET 현대화와 배포 유지보수</li>
+        <li><strong>파인큐브</strong> — iOS·Android 라벨 편집기와 프린터 연동, Android SDK 대응과 스토어 릴리스</li>
+        <li><strong>네모닉 커넥트</strong> — 클라우드 프린팅 모노레포, 공통 SDK와 API Gateway</li>
+        <li><strong>Argon Kubernetes</strong> — On-Premise Kubernetes와 Flux GitOps 기반 서비스 배포 자동화</li>
+      </ul>
+
+      <p>기술 분야와 콘텐츠 운영 기준은 <a href="/about/">소개</a>와 <a href="/editorial-policy/">편집 원칙</a>에서, 공개 코드와 활동은 <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">GitHub</a>에서 확인할 수 있습니다.</p>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

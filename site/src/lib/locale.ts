@@ -1,9 +1,9 @@
 export type Locale = 'ko' | 'en';
-export type LocalizedPage = 'home' | 'about' | 'editorial';
+export type LocalizedPage = 'home' | 'about' | 'resume' | 'editorial';
 
 const localePaths: Record<Locale, Record<LocalizedPage, string>> = {
-  ko: { home: '/', about: '/about/', editorial: '/editorial-policy/' },
-  en: { home: '/en/', about: '/en/about/', editorial: '/en/editorial-policy/' },
+  ko: { home: '/', about: '/about/', resume: '/resume/', editorial: '/editorial-policy/' },
+  en: { home: '/en/', about: '/en/about/', resume: '/en/resume/', editorial: '/en/editorial-policy/' },
 };
 
 export const alternatePath = (locale: Locale, page: LocalizedPage): string => localePaths[locale][page];
