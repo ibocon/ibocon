@@ -42,24 +42,29 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
         <p>{copy.technicalScope}</p>
       </header>
       <section>
-        <div class="search-form" role="search">
-          <label class="search-label" for="post-search">게시물 검색</label>
-          <input id="post-search" class="search-input" type="search" placeholder="제목·설명·태그로 검색" autocomplete="off" />
-        </div>
-        <p class="search-status" id="search-status" role="status"></p>
-        <ul class="filter-list" aria-label="Post categories">
-          <li><button class="filter-chip" type="button" data-category="all" aria-pressed="true">All</button></li>
-          {[...new Set(posts.map((post) => post.data.category))].map((category) => <li><button class="filter-chip" type="button" data-category={category} aria-pressed="false">{category}</button></li>)}
-        </ul>
-        <ul class="filter-list" aria-label="Post tags">
-          <li><button class="filter-chip" type="button" data-tag="all" aria-pressed="true">All</button></li>
-          {tags.map((tag) => <li><button class="filter-chip" type="button" data-tag={tag} aria-pressed="false">{tag}</button></li>)}
-        </ul>
+        <section class="post-discovery" aria-labelledby="post-search-label">
+          <form class="search-form" role="search">
+            <label id="post-search-label" class="search-label" for="post-search">게시물 검색</label>
+            <div class="search-control">
+              <input id="post-search" class="search-input" type="search" placeholder="예: clean architecture, JPA" autocomplete="off" />
+              <button id="clear-post-search" class="clear-search" type="button" hidden>검색 지우기</button>
+            </div>
+          </form>
+          <p class="search-status" id="search-status" role="status"></p>
+          <p class="active-filters" id="active-filters" hidden></p>
+          <details class="tag-filter" id="tag-filter">
+            <summary>태그로 좁히기</summary>
+            <ul class="filter-list" aria-label="게시물 태그">
+              <li><button class="filter-chip" type="button" data-tag="all" aria-pressed="true">전체 태그</button></li>
+              {tags.map((tag) => <li><button class="filter-chip" type="button" data-tag={tag} aria-pressed="false">{tag}</button></li>)}
+            </ul>
+          </details>
+        </section>
         <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
         <div class="post-list">
           {posts.map((post) => (
-            <a class="post-card" data-category={post.data.category} data-title={post.data.title} data-description={post.data.description} data-tags={post.data.tags.join(' ')} href={`/${post.id}/`}>
-              <div class="post-meta"><span class="badge">{post.data.category}</span><time datetime={post.data.pubDate.toISOString()}>
+            <a class="post-card" data-title={post.data.title} data-description={post.data.description} data-tags={post.data.tags.join(' ')} href={`/${post.id}/`}>
+              <div class="post-meta"><span class="badge">{post.data.tags[0]}</span><time datetime={post.data.pubDate.toISOString()}>
                 {post.data.pubDate.toISOString().slice(0, 10)}
               </time></div>
               <h2>{post.data.title}</h2>
@@ -72,59 +77,84 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
     </main>
     <Footer locale={locale} />
     <script>
-      import { isPostVisible } from '../lib/blog-filter';
+      import { compareSearchRelevance, isPostVisible, normalizeForSearch } from '../lib/blog-filter';
       import type { PostFilterEntry } from '../lib/blog-filter';
 
       const searchInput = document.querySelector<HTMLInputElement>('#post-search');
+      const clearSearchButton = document.querySelector<HTMLButtonElement>('#clear-post-search');
       const statusRegion = document.querySelector<HTMLElement>('#search-status');
+      const activeFilters = document.querySelector<HTMLElement>('#active-filters');
       const emptyMessage = document.querySelector<HTMLElement>('#search-empty');
+      const postList = document.querySelector<HTMLElement>('.post-list');
       const cards = Array.from(document.querySelectorAll<HTMLElement>('.post-card'));
 
       const readEntry = (card: HTMLElement): PostFilterEntry => ({
         title: card.dataset.title ?? '',
         description: card.dataset.description ?? '',
-        category: card.dataset.category ?? '',
         tags: (card.dataset.tags ?? '').split(/\s+/).filter(Boolean),
       });
 
       const entries = new Map(cards.map((card) => [card, readEntry(card)]));
-      let activeCategory = 'all';
       let activeTag = 'all';
 
       const applyFilters = () => {
         const query = searchInput?.value ?? '';
+        const normalizedQuery = normalizeForSearch(query);
         let visibleCount = 0;
         cards.forEach((card) => {
           const entry = entries.get(card);
           if (!entry) {
             return;
           }
-          const visible = isPostVisible(entry, query, activeCategory, activeTag);
+          const visible = isPostVisible(entry, query, activeTag);
           card.hidden = !visible;
           if (visible) {
             visibleCount += 1;
           }
         });
         if (statusRegion) {
-          statusRegion.textContent = `게시물 ${visibleCount}건`;
+          statusRegion.textContent = normalizedQuery.length > 0
+            ? `“${query.trim()}” 검색 결과 ${visibleCount}건`
+            : `게시물 ${visibleCount}건`;
+        }
+        if (activeFilters) {
+          const filters = [
+            normalizedQuery.length > 0 ? `검색: ${query.trim()}` : '',
+            activeTag !== 'all' ? `태그: ${activeTag}` : '',
+          ].filter(Boolean);
+          activeFilters.textContent = filters.join(' · ');
+          activeFilters.hidden = filters.length === 0;
+        }
+        if (clearSearchButton) {
+          clearSearchButton.hidden = normalizedQuery.length === 0 && activeTag === 'all';
         }
         if (emptyMessage) {
           emptyMessage.hidden = visibleCount > 0;
         }
+
+        const orderedCards = [...cards].sort((left, right) => {
+          if (normalizedQuery.length === 0) {
+            return cards.indexOf(left) - cards.indexOf(right);
+          }
+
+          const leftEntry = entries.get(left);
+          const rightEntry = entries.get(right);
+          if (!leftEntry || !rightEntry) {
+            return 0;
+          }
+
+          return compareSearchRelevance(leftEntry, rightEntry, query)
+            || cards.indexOf(left) - cards.indexOf(right);
+        });
+        orderedCards.forEach((card) => postList?.append(card));
       };
 
-      const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category], [data-tag]'));
+      const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tag]'));
       chips.forEach((button) => {
         button.addEventListener('click', () => {
-          if ('category' in button.dataset) {
-            activeCategory = button.dataset.category ?? 'all';
-          } else {
-            activeTag = button.dataset.tag ?? 'all';
-          }
+          activeTag = button.dataset.tag ?? 'all';
           chips.forEach((chip) => {
-            const selected = 'category' in chip.dataset
-              ? (chip.dataset.category ?? 'all') === activeCategory
-              : (chip.dataset.tag ?? 'all') === activeTag;
+            const selected = (chip.dataset.tag ?? 'all') === activeTag;
             chip.setAttribute('aria-pressed', String(selected));
           });
           applyFilters();
@@ -132,6 +162,15 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
       });
 
       searchInput?.addEventListener('input', applyFilters);
+      clearSearchButton?.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+        }
+        activeTag = 'all';
+        chips.forEach((chip) => chip.setAttribute('aria-pressed', String((chip.dataset.tag ?? 'all') === activeTag)));
+        applyFilters();
+        searchInput?.focus();
+      });
       applyFilters();
     </script>
   </body>

@@ -81,7 +81,7 @@ export function convertTistoryHtmlToMarkdown(html) {
 
 export function buildMigratedMarkdown({ title, description, pubDate, category, originalUrl, bodyMarkdown }) {
   const quote = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-  return ['---', `title: "${quote(title)}"`, `description: "${quote(description)}"`, `pubDate: ${pubDate}`, `category: "${category}"`, `tags: ["${category}", "tistory"]`, `originalUrl: "${originalUrl}"`, 'draft: false', '---', '', bodyMarkdown, ''].join('\n');
+  return ['---', `title: "${quote(title)}"`, `description: "${quote(description)}"`, `pubDate: ${pubDate}`, `tags: ["${category}"]`, 'source: "tistory"', `originalUrl: "${originalUrl}"`, 'draft: false', '---', '', bodyMarkdown, ''].join('\n');
 }
 
 export function parseRssItems(xml) {

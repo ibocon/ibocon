@@ -2,6 +2,7 @@
 import Analytics from '../components/Analytics.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { resumeCompetencies, resumeDomains, resumeNavigation, resumeProfile, resumeSkillGroups } from '../data/resume';
 import { absoluteLocaleUrl } from '../lib/locale';
 import { siteCopy } from '../lib/site-copy';
 import '../styles/global.css';
@@ -26,30 +27,22 @@ const copy = siteCopy[locale];
   <body>
     <Header locale={locale} page="resume" />
     <main class="container prose static-page">
-      <h1>김예건 이력서</h1>
-      <p>.NET 풀스택 소프트웨어 엔지니어로서 하드웨어와 연결되는 클라이언트, 서비스 API, Kubernetes 기반 배포 자동화를 개발합니다.</p>
-
-      <h2>경력</h2>
-      <h3>망고슬래브 주식회사 · SW개발팀 · 소프트웨어 엔지니어</h3>
-      <p>2017.07 – 현재</p>
-      <p>Windows, 모바일, 웹 서비스의 제품 기능과 프린터 연동을 개발·유지보수하고, 공통 SDK·API Gateway·빌드와 배포 구조를 정비합니다. On-Premise Kubernetes 클러스터와 Flux GitOps 기반 배포 자동화도 설계·운영합니다.</p>
-
-      <h2>대표 역량</h2>
-      <ul>
-        <li>제품 엔지니어링 — Windows, 모바일, 웹 서비스 기능 개발과 유지보수</li>
-        <li>플랫폼·인프라 — .NET 서비스와 On-Premise Kubernetes·GitOps 운영</li>
-        <li>개발 생산성 — 디자인 시스템, 공용 라이브러리, AI 코딩 에이전트 하네스</li>
-      </ul>
-
-      <h2>대표 프로젝트</h2>
-      <ul>
-        <li><strong>네모닉</strong> — Windows 메모 편집·인쇄와 USB 프린터 연동, .NET 현대화와 배포 유지보수</li>
-        <li><strong>파인큐브</strong> — iOS·Android 라벨 편집기와 프린터 연동, Android SDK 대응과 스토어 릴리스</li>
-        <li><strong>네모닉 커넥트</strong> — 클라우드 프린팅 모노레포, 공통 SDK와 API Gateway</li>
-        <li><strong>Argon Kubernetes</strong> — On-Premise Kubernetes와 Flux GitOps 기반 서비스 배포 자동화</li>
-      </ul>
-
-      <p>기술 분야와 콘텐츠 운영 기준은 <a href="/about/">소개</a>와 <a href="/editorial-policy/">편집 원칙</a>에서, 공개 코드와 활동은 <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">GitHub</a>에서 확인할 수 있습니다.</p>
+      <nav aria-label="이력서 목차">
+        <ul>
+          {resumeNavigation.sections.map(({ id, label }) => <li><a href={`#${id}`}>{label}</a></li>)}
+          <li><a href={resumeNavigation.notionMainUrl} target="_blank" rel="noopener noreferrer">Notion에서 전체 이력서 열기</a></li>
+        </ul>
+      </nav>
+      <section id="profile"><h1>{resumeProfile.title}</h1><p>{resumeProfile.summary}</p><p>{resumeProfile.tags.join(' · ')}</p></section>
+      <section id="competencies"><h2>대표 역량</h2><ul>{resumeCompetencies.map((competency) => <li>{competency}</li>)}</ul></section>
+      <section id="career">
+        <h2>경력</h2><h3>망고슬래브 주식회사 · SW개발팀 · 소프트웨어 엔지니어</h3><p>2017.07 – 현재 · 9년 차</p>
+        <ul><li><strong>네모닉</strong> — Windows 클라이언트의 WYSIWYG 편집·인쇄와 USB 프린터 연동, 레거시 .NET 현대화 및 배포 유지보수</li><li><strong>파인큐브</strong> — iOS·Android 라벨 편집기와 프린터 연동 기능 유지보수, Android SDK 대응과 스토어 릴리스 관리</li><li><strong>네모닉 커넥트</strong> — .NET 모노레포 기반 프린팅·연동 서비스, 공통 SDK·API Gateway·빌드·배포 구조 정비</li><li><strong>On-Prem 서버 구축</strong> — Kubernetes 클러스터 운영과 Flux GitOps 기반 서비스 배포 자동화 설계·관리</li></ul>
+      </section>
+      <section id="projects"><h2>주요 프로젝트 바로가기</h2><ul>{resumeNavigation.projects.map((project) => <li><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a> — {project.summary}</li>)}</ul></section>
+      <section id="domains"><h2>전체 도메인 지도</h2><p>설계에서 구현, 운영, 클라이언트와 하드웨어 연동으로 이어지는 10대 단일 책임 영역입니다.</p><ul>{resumeNavigation.domains.map((domain, index) => <li><a href={domain.url} target="_blank" rel="noopener noreferrer">{domain.name}</a> — {resumeDomains[index][1]}</li>)}</ul></section>
+      <section id="skills"><h2>기술 스택</h2><dl>{resumeSkillGroups.map(([name, values]) => <><dt>{name}</dt><dd>{values}</dd></>)}</dl></section>
+      <section id="education"><h2>학력</h2><ul><li><strong>2020.02</strong> 국가평생교육진흥원 독학학위제 · 컴퓨터과학 · 공학사</li><li><strong>2014.01 – 2016.05</strong> University of Wisconsin–Milwaukee · Computer Science, GPA 3.95 / 4.0, Dean's Honor List 3학기</li><li><strong>2013.02</strong> 불곡고등학교 · 졸업</li></ul></section>
     </main>
     <Footer locale={locale} />
   </body>

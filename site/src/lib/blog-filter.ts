@@ -1,26 +1,38 @@
 export interface PostFilterEntry {
   title: string;
   description: string;
-  category: string;
   tags: string[];
 }
 
-const ALL_CATEGORY = 'all';
 const ALL_TAG = 'all';
 
 export function normalizeForSearch(value: string): string {
   return value.normalize('NFC').trim().toLowerCase();
 }
 
-export function matchesSearch(post: PostFilterEntry, rawQuery: string): boolean {
+export function getSearchScore(post: PostFilterEntry, rawQuery: string): number {
   const query = normalizeForSearch(rawQuery);
   if (query.length === 0) {
-    return true;
+    return 0;
   }
-  const haystack = [post.title, post.description, post.category, ...post.tags]
-    .map((value) => normalizeForSearch(value))
-    .join(' ');
-  return haystack.includes(query);
+
+  if (normalizeForSearch(post.title).includes(query)) {
+    return 3;
+  }
+
+  if (post.tags.some((tag) => normalizeForSearch(tag).includes(query))) {
+    return 2;
+  }
+
+  return normalizeForSearch(post.description).includes(query) ? 1 : -1;
+}
+
+export function compareSearchRelevance(left: PostFilterEntry, right: PostFilterEntry, query: string): number {
+  return getSearchScore(right, query) - getSearchScore(left, query);
+}
+
+export function matchesSearch(post: PostFilterEntry, rawQuery: string): boolean {
+  return getSearchScore(post, rawQuery) >= 0;
 }
 
 export function matchesTag(post: PostFilterEntry, activeTag: string): boolean {
@@ -30,10 +42,7 @@ export function matchesTag(post: PostFilterEntry, activeTag: string): boolean {
 export function isPostVisible(
   post: PostFilterEntry,
   rawQuery: string,
-  activeCategory: string,
   activeTag: string = ALL_TAG,
 ): boolean {
-  const categoryMatches = activeCategory === ALL_CATEGORY || post.category === activeCategory;
-  const tagMatches = matchesTag(post, activeTag);
-  return categoryMatches && tagMatches && matchesSearch(post, rawQuery);
+  return matchesTag(post, activeTag) && matchesSearch(post, rawQuery);
 }

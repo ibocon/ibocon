@@ -11,6 +11,9 @@ describe('Tistory tech post migration', () => {
   it('converts RSS post HTML into schema-compatible markdown', () => {
     const body = convertTistoryHtmlToMarkdown('<h2>제목</h2><p>본문</p><pre><code>const x = 1;</code></pre>');
     const markdown = buildMigratedMarkdown({ title: '제목', description: '설명', pubDate: '2026-10-16', category: 'dotnet', originalUrl: 'https://ibocon.tistory.com/278', bodyMarkdown: body });
+    expect(markdown).not.toContain('category:');
+    expect(markdown).toContain('tags: ["dotnet"]');
+    expect(markdown).toContain('source: "tistory"');
     expect(body).toContain('## 제목');
     expect(markdown).toContain('originalUrl: "https://ibocon.tistory.com/278"');
     expect(parseRssItems('<rss><item><title>글</title><link>https://ibocon.tistory.com/1</link><category>Develop/.NET 가이드</category></item></rss>')).toHaveLength(1);

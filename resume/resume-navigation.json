@@ -1,0 +1,30 @@
+{
+  "notionMainUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d",
+  "sections": [
+    { "id": "profile", "label": "프로필", "notionUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d" },
+    { "id": "competencies", "label": "대표 역량", "notionUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d" },
+    { "id": "career", "label": "경력", "notionUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d" },
+    { "id": "projects", "label": "주요 프로젝트", "notionUrl": "https://app.notion.com/p/3fc47521867581faa5c7d619956da617" },
+    { "id": "domains", "label": "전체 도메인 지도", "notionUrl": "https://app.notion.com/p/3fc47521867581faa5c7d619956da617" },
+    { "id": "skills", "label": "기술 스택", "notionUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d" },
+    { "id": "education", "label": "학력", "notionUrl": "https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d" }
+  ],
+  "projects": [
+    { "name": "네모닉", "summary": "Windows 메모 편집·인쇄와 USB 프린터 연동", "url": "https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25" },
+    { "name": "파인큐브", "summary": "모바일 라벨 편집기와 프린터 연동", "url": "https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a" },
+    { "name": "네모닉 커넥트", "summary": "클라우드 프린팅 모노레포와 API Gateway", "url": "https://app.notion.com/p/3dd4752186758105801dea0310df86f5" },
+    { "name": "On-Prem 서버 구축", "summary": "이중 사이트 GitOps 배포와 재해복구", "url": "https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433" }
+  ],
+  "domains": [
+    { "name": "01. 소프트웨어 아키텍처", "url": "https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4" },
+    { "name": "02. .NET 백엔드 엔지니어링", "url": "https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6" },
+    { "name": "03. 클라우드 및 온프레미스 인프라", "url": "https://app.notion.com/p/3fa475218675819995bfeab3391da08b" },
+    { "name": "04. DevOps 엔지니어링", "url": "https://app.notion.com/p/3f9475218675819baf65f8976281b85d" },
+    { "name": "05. 개발자 경험", "url": "https://app.notion.com/p/3f947521867581e69559d6fbaa56760f" },
+    { "name": "06. 하네스 엔지니어링", "url": "https://app.notion.com/p/3fa475218675818fbd9cea22db77bce4" },
+    { "name": "07. 웹 디자인 시스템", "url": "https://app.notion.com/p/3fa47521867581be8577cd764904163d" },
+    { "name": "08. 모바일 애플리케이션", "url": "https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9" },
+    { "name": "09. Windows 데스크톱 애플리케이션", "url": "https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7" },
+    { "name": "10. 시스템 프로그래밍", "url": "https://app.notion.com/p/3fa47521867581968228f136738abaca" }
+  ]
+}

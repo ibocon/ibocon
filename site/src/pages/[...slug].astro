@@ -37,7 +37,7 @@ const { Content, headings } = await render(post);
       <article class="prose" aria-labelledby="post-title">
         <header class="post-header">
           {post.data.draft && <p class="draft-review-banner" role="status">로컬 검토용 초안 · 공개 전 검토 중</p>}
-          <span class="badge">{post.data.category}</span>
+          <div class="post-meta">{post.data.tags.slice(0, 3).map((tag) => <span class="badge">{tag}</span>)}</div>
           <h1 id="post-title">{post.data.title}</h1>
           <time datetime={post.data.pubDate.toISOString()}>
             {post.data.pubDate.toISOString().slice(0, 10)}

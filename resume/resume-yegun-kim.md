@@ -39,9 +39,9 @@
 
 <table fit-page-width="true" header-row="true">
 <colgroup>
-<col width="140">
-<col width="300">
-<col width="260">
+<col width="140" />
+<col width="300" />
+<col width="260" />
 </colgroup>
 <tr>
 <td>프로젝트</td>
@@ -77,9 +77,9 @@
 전체 구조와 핵심 상세 기술서는 [00. 이력서 탐색 목차](https://app.notion.com/p/3fc47521867581faa5c7d619956da617)에서 확인할 수 있습니다.
 <table fit-page-width="true" header-row="true">
 <colgroup>
-<col width="160">
-<col width="220">
-<col width="320">
+<col width="160" />
+<col width="220" />
+<col width="320" />
 </colgroup>
 <tr>
 <td>직무 도메인 (Domain)</td>
@@ -141,42 +141,64 @@
 ## 📂 상세 포트폴리오 (Domain Hub)
 <span color="gray">각 도메인 폴더를 클릭하시면 해당 기술 영역의 상세 작업 내역을 확인하실 수 있습니다.</span>
 <page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">01. 소프트웨어 아키텍처</page>
+
 <page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">02. .NET 백엔드 엔지니어링</page>
+
 <page url="https://app.notion.com/p/3fa475218675819995bfeab3391da08b">03. 클라우드 및 온프레미스 인프라</page>
+
 <page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">04. DevOps 엔지니어링</page>
+
 <page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">05. 개발자 경험 (DevEx)</page>
+
 <page url="https://app.notion.com/p/3fa475218675818fbd9cea22db77bce4">06. 하네스 엔지니어링</page>
+
 <page url="https://app.notion.com/p/3fa47521867581be8577cd764904163d">07. 웹 디자인 시스템</page>
+
 <page url="https://app.notion.com/p/3f947521867581bbbc88ec8bf5a9dff9">08. 모바일 애플리케이션</page>
+
 <page url="https://app.notion.com/p/3f94752186758126a28cd2ecf057ead7">09. Windows 데스크톱 애플리케이션</page>
+
 <page url="https://app.notion.com/p/3fa47521867581968228f136738abaca">10. 시스템 프로그래밍</page>
 	
 
 ---
 ## 기술 스택
 
-	
-		**언어**
-		`C#`
-		**백엔드**
-		`ASP.NET Core` `.NET Aspire` `EF Core` `YARP` `SignalR`
-		**데이터 · 메시징**
-		`PostgreSQL` `Redis` `RabbitMQ`
-		**클라이언트**
-		`.NET MAUI` `Blazor` `WPF` `Xamarin.Forms`
-		**테스트**
-		`xUnit` `NSubstitute` `bunit` `Testcontainers` `Playwright`
-	
-	
-		**인프라**
-		`Kubernetes` `Flux` `Kustomize` `Docker` `Proxmox` `Azure AKS` `OpenTofu`
-		**클러스터 플랫폼**
-		`Keycloak` `cert-manager` `ingress-nginx` `MetalLB` `CloudNativePG` `Rook-Ceph` `Harbor` `OpenBao`
-		**관측**
-		`OpenTelemetry` `Prometheus` `Loki` `Tempo` `Seq` `Sentry` `Serilog`
-		**개발 도구**
-		`Roslyn 애널라이저` `GitHub Actions` `Jenkins`
-	
+### 언어
+
+`C#` · `Python` · `PowerShell`
+
+### 백엔드
+
+`ASP.NET Core` · `.NET 9` · `.NET Aspire` · `EF Core` · `YARP` · `SignalR`
+
+### 데이터 · 메시징
+
+`PostgreSQL` · `Redis` · `RabbitMQ` · `Elasticsearch`
+
+### 클라이언트 · 디자인 시스템
+
+`.NET MAUI Blazor Hybrid` · `Blazor` · `Garden.Razor (Material 3)` · `Penpot` · `WPF` · `WinForms` · `Xamarin.Forms`
+
+### 테스트
+
+`xUnit` · `NSubstitute` · `bUnit` · `Testcontainers` · `Pester` · `Playwright`
+
+### 인프라 · GitOps
+
+`Kubernetes` · `Flux` · `Kustomize` · `Docker` · `Proxmox VE` · `Azure AKS` · `OpenTofu` · `Ansible`
+
+### 클러스터 플랫폼
+
+`Rook-Ceph` · `CloudNativePG` · `Keycloak` · `OpenBao` · `External Secrets` · `Harbor` · `MetalLB` · `ingress-nginx`
+
+### 관측성
+
+`OpenTelemetry` · `Prometheus` · `Loki` · `Tempo` · `Seq` · `Sentry` · `Serilog`
+
+### DevEx · 하네스 엔지니어링
+
+`Garden.Harness (Claude/Codex/OpenCode/Gemini)` · `Roslyn 애널라이저` · `GitHub Actions`
 
 ---
 ## 학력
@@ -202,3 +224,5 @@
 	
 		**불곡고등학교** · 졸업
 
+
+<page url="https://app.notion.com/p/3fc47521867581faa5c7d619956da617">00. 이력서 탐색 목차</page>

@@ -29,24 +29,26 @@ describe('Blog theme and content rendering', () => {
     expect(styles).toContain('.theme-toggle { inline-size: 36px; block-size: 36px;');
     expect(styles).toContain('.theme-icon { inline-size: 18px; block-size: 18px; }');
     expect(index).toContain('class="post-card"');
-    expect(index).toContain('data-category');
+    expect(index).not.toContain('data-category');
     expect(post).toContain('class="container post-layout"');
     expect(post).toContain('aria-labelledby="post-title"');
     expect(post).toContain('aria-label="Table of Contents"');
   });
 
-  it('Given_HomePageMarkup_When_Inspected_Then_RendersTagFilterRowWithPressedState', () => {
+  it('Given_HomePageMarkup_When_Inspected_Then_RendersProgressiveTagFilterWithPressedState', () => {
     // Given
     const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
 
     // When
-    const hasTagRow = index.includes('aria-label="Post tags"');
+    const hasTagFilter = index.includes('id="tag-filter"') && index.includes('aria-label="게시물 태그"');
 
     // Then
-    expect(hasTagRow).toBe(true);
+    expect(hasTagFilter).toBe(true);
+    expect(index).toContain('태그로 좁히기');
+    expect(index).toContain('전체 태그');
     expect(index).toContain('data-tag="all"');
     expect(index).toContain('data-tag={tag}');
-    expect(index).toContain('isPostVisible(entry, query, activeCategory, activeTag)');
+    expect(index).toContain('isPostVisible(entry, query, activeTag)');
   });
 
   it('Given_GlobalStyles_When_Inspected_Then_HiddenAttributeOverridesComponentDisplay', () => {
