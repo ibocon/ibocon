@@ -2,7 +2,7 @@
 
 | 상태 | 최종 수정 | 관련 계획 | 구현 상태 |
 | --- | --- | --- | --- |
-| 초안 | 2026-10-30 | [이력서-Notion 동기화 및 탐색 개선](../../lib/Garden.Harness/plans/ibocon/planning/261030_feat_resume-notion-sync.md) | 계획됨 |
+| 구현 완료 | 2026-10-31 | [이력서-Notion 동기화 및 탐색 개선](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_resume-notion-sync.md) | 로컬 SoT·정적 parity 구현 완료 |
 
 ## 문서 목적
 
@@ -10,7 +10,7 @@
 
 ## 설계 상태
 
-목표 설계는 `resume/resume-yegun-kim.md`에서 추출한 구조화된 이력서 모델을 웹과 Notion에 각각 렌더하고, 배포 후 정규화한 섹션·링크 계약을 비교하는 것이다. 현재 웹 `site/src/pages/resume.astro`는 요약 콘텐츠만 직접 보유하고, Notion에는 10대 도메인 허브와 확장된 기술 스택이 있어 로컬 원문 및 웹과 드리프트가 존재한다. 구현은 [관련 계획](../../lib/Garden.Harness/plans/ibocon/planning/261030_feat_resume-notion-sync.md)에서 진행한다.
+`resume/resume-yegun-kim.md`에서 추출한 구조화된 이력서 모델을 웹과 Notion payload에 각각 렌더하고, 정규화한 섹션·링크 계약을 비교한다. 한국어 웹 이력서는 navigation registry를 통해 10대 도메인 허브와 상세 기술서로 연결하며, Notion 원격 read-back은 별도 검증으로 남긴다. 구현 근거는 [관련 계획](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_resume-notion-sync.md)에 있다.
 
 ## 설계 목표
 
@@ -116,4 +116,4 @@ sequenceDiagram
 - [로컬 이력서 원문](../../resume/resume-yegun-kim.md)
 - [이력서 탐색 목차](../../resume/resume-document-index.md)
 - [Notion 이력서 구조 규약](../portfolio/strategy/convention-notion-resume-structure.md)
-- [이력서-Notion 동기화 및 탐색 개선 계획](../../lib/Garden.Harness/plans/ibocon/planning/261030_feat_resume-notion-sync.md)
+- [이력서-Notion 동기화 및 탐색 개선 계획](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_resume-notion-sync.md)

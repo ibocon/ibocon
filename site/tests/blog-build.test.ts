@@ -75,7 +75,7 @@ describe('Astro Blog Static Build Verification', () => {
     const route = readFileSync(routePath, 'utf-8');
 
     // Then
-    expect(route).toContain("document.querySelectorAll('pre:has(code.language-mermaid)')");
+    expect(route).toContain('pre[data-language="mermaid"]');
     expect(route).toContain('const definition = block.textContent?.trim();');
     expect(route).toContain('block.textContent = definition;');
     expect(route).toContain("block.classList.add('mermaid');");

@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Xml.Linq;
 using Microsoft.Playwright;
 using Xunit;
 using static Microsoft.Playwright.Assertions;
@@ -10,7 +11,103 @@ namespace Blog.PlaywrightTests;
 
 public sealed class BlogSearchTests
 {
+    private static readonly string[] AllowedBlogTags =
+    [
+        "architecture", "backend", "clean-architecture", "csharp", "ddd", "dotnet",
+        "frontend", "kubernetes", "maui", "observability", "postfix", "security",
+    ];
+
     private sealed record Card(string Id, string Title, string Description, string Tags);
+
+    [Fact]
+    public async Task FlatTagRssCategories()
+    {
+        // Given
+        using var client = new HttpClient();
+
+        // When
+        using var response = await client.GetAsync("https://blog.botanicsoft.com/rss.xml");
+        var document = XDocument.Parse(await response.Content.ReadAsStringAsync());
+        var items = document.Descendants("item").ToArray();
+        var evidenceRoot = Environment.GetEnvironmentVariable("BLOG_SEARCH_EVIDENCE_ROOT")
+            ?? Path.Combine(Directory.GetCurrentDirectory(), ".artifacts", "blog-flat-tags", nameof(FlatTagRssCategories));
+        Directory.CreateDirectory(evidenceRoot);
+        await File.WriteAllTextAsync(
+            Path.Combine(evidenceRoot, "observations.json"),
+            JsonSerializer.Serialize(new
+            {
+                status = (int)response.StatusCode,
+                items = items.Select(item => new
+                {
+                    title = item.Element("title")?.Value,
+                    categories = item.Elements("category").Select(category => category.Value).ToArray(),
+                }),
+            }, new JsonSerializerOptions { WriteIndented = true }));
+
+        // Then
+        Assert.True(response.IsSuccessStatusCode, $"RSS HTTP {(int)response.StatusCode}");
+        Assert.NotEmpty(items);
+        foreach (var item in items)
+        {
+            var categories = item.Elements("category").Select(category => category.Value).ToArray();
+            Assert.NotEmpty(categories);
+            Assert.DoesNotContain(categories, category => string.Equals(category, "tistory", StringComparison.Ordinal));
+            Assert.Equal(categories.Length, categories.Distinct(StringComparer.Ordinal).Count());
+            Assert.All(categories, category => Assert.Contains(category, AllowedBlogTags, StringComparer.Ordinal));
+        }
+    }
+
+    [Fact]
+    public Task FlatTagFiltering() => RunAsync(nameof(FlatTagFiltering), async (page, cards, log) =>
+    {
+        // Given
+        var multiTaggedCard = cards.FirstOrDefault(card => Tags(card).Length >= 2);
+        Assert.NotNull(multiTaggedCard);
+
+        // When
+        var tagRows = page.Locator("[aria-label='Post tags']");
+
+        // Then
+        await Expect(page.Locator("[data-category]")).ToHaveCountAsync(0);
+        await Expect(tagRows).ToHaveCountAsync(1);
+        await page.Locator("#tag-filter").Locator("summary").ClickAsync();
+        foreach (var tag in Tags(multiTaggedCard!))
+        {
+            await page.Locator($"button[data-tag='{tag}']").ClickAsync();
+            await CheckTagAsync(page, cards, tag, log);
+        }
+    });
+
+    [Fact]
+    public Task FlatTagSearchFiltering() => RunAsync(nameof(FlatTagSearchFiltering), async (page, cards, log) =>
+    {
+        // Given
+        var multiTaggedCard = cards.FirstOrDefault(card => Tags(card).Length >= 2);
+        Assert.NotNull(multiTaggedCard);
+        var tag = Tags(multiTaggedCard!)[0];
+        var query = multiTaggedCard.Title.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
+        var input = page.GetByRole(AriaRole.Searchbox, new() { Name = "게시물 검색" });
+
+        // When
+        await page.Locator("#tag-filter").Locator("summary").ClickAsync();
+        await page.Locator($"button[data-tag='{tag}']").ClickAsync();
+        await input.FillAsync(query);
+
+        // Then
+        var expected = cards
+            .Where(card => Tags(card).Contains(tag, StringComparer.Ordinal) && Matches(card, query))
+            .Select(card => card.Id)
+            .ToArray();
+        var actual = await page.Locator(".post-card:visible")
+            .EvaluateAllAsync<string[]>("els => els.map(e => e.getAttribute('href'))");
+        Assert.Equal(expected, actual);
+        await Expect(page.GetByRole(AriaRole.Status)).ToContainTextAsync($"{expected.Length}건");
+
+        await input.FillAsync("flat-tag-no-match");
+        await Expect(page.Locator(".post-card:visible")).ToHaveCountAsync(0);
+        await Expect(page.GetByRole(AriaRole.Status)).ToContainTextAsync("0건");
+        log.Add(new { tag, query, expected, actual });
+    });
 
     [Fact]
     public Task SearchRelevanceAndClear() => RunAsync(nameof(SearchRelevanceAndClear), async (page, cards, log) =>
@@ -132,7 +229,6 @@ public sealed class BlogSearchTests
             var response = await page.GotoAsync("https://blog.botanicsoft.com/", new() { WaitUntil = WaitUntilState.NetworkIdle, Timeout = 60000 });
             Assert.True(response?.Ok, $"BLOCKED: homepage HTTP {response?.Status}");
             await Expect(page.GetByRole(AriaRole.Searchbox, new() { Name = "게시물 검색" })).ToBeVisibleAsync();
-            await page.Locator("button[data-tag='all']").ClickAsync();
             var cardJson = await page.Locator(".post-card").EvaluateAllAsync<string>("els => JSON.stringify(els.map(e => ({Id:e.getAttribute('href'),Title:e.dataset.title,Description:e.dataset.description,Tags:e.dataset.tags})))");
             var cards = JsonSerializer.Deserialize<Card[]>(cardJson)!;
             Assert.NotEmpty(cards);

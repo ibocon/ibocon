@@ -54,7 +54,7 @@ const { Content, headings } = await render(post);
     </main>
     <Footer locale="ko" />
     <script>
-      const mermaidBlocks = document.querySelectorAll('pre:has(code.language-mermaid)');
+      const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
       if (mermaidBlocks.length > 0) {
         mermaidBlocks.forEach((block) => {
           const definition = block.textContent?.trim();

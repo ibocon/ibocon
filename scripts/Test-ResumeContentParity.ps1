@@ -23,7 +23,9 @@ if (@($navigation.sections).Count -ne 7) { throw 'resume-navigation-section-coun
 if (@($navigation.projects).Count -ne 4) { throw 'resume-navigation-project-count-invalid' }
 if (@($navigation.domains).Count -ne 10) { throw 'resume-navigation-domain-count-invalid' }
 foreach ($entry in @($navigation.sections + $navigation.projects + $navigation.domains)) {
-    if ([string]::IsNullOrWhiteSpace([string] $entry.url) -and [string]::IsNullOrWhiteSpace([string] $entry.notionUrl)) { throw 'resume-navigation-notion-url-missing' }
+    $url = if ($null -ne $entry.PSObject.Properties['url']) { [string] $entry.url } else { '' }
+    $notionUrl = if ($null -ne $entry.PSObject.Properties['notionUrl']) { [string] $entry.notionUrl } else { '' }
+    if ([string]::IsNullOrWhiteSpace($url) -and [string]::IsNullOrWhiteSpace($notionUrl)) { throw 'resume-navigation-notion-url-missing' }
 }
 
 if (-not [string]::IsNullOrWhiteSpace($ReadbackPath)) {
