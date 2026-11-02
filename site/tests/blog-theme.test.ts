@@ -40,7 +40,7 @@ describe('Blog theme and content rendering', () => {
     const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
 
     // When
-    const hasTagFilter = index.includes('id="tag-filter"') && index.includes('aria-label="게시물 태그"');
+    const hasTagFilter = index.includes('id="tag-filter"') && index.includes('aria-label="Post tags"');
 
     // Then
     expect(hasTagFilter).toBe(true);

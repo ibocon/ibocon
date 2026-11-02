@@ -54,7 +54,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
           <p class="active-filters" id="active-filters" hidden></p>
           <details class="tag-filter" id="tag-filter">
             <summary>태그로 좁히기</summary>
-            <ul class="filter-list" aria-label="게시물 태그">
+            <ul class="filter-list" aria-label="Post tags">
               <li><button class="filter-chip" type="button" data-tag="all" aria-pressed="true">전체 태그</button></li>
               {tags.map((tag) => <li><button class="filter-chip" type="button" data-tag={tag} aria-pressed="false">{tag}</button></li>)}
             </ul>
