@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Analytics from '../components/Analytics.astro';
+import Favicon from '../components/Favicon.astro';
 import AdSenseSlot from '../components/AdSenseSlot.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -29,6 +30,7 @@ const { Content, headings } = await render(post);
     <meta name="description" content={post.data.description} />
     <link rel="canonical" href={new URL(`/${post.id}/`, 'https://blog.botanicsoft.com').toString()} />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <Favicon />
     <Analytics />
   </head>
   <body>

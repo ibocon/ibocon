@@ -1,5 +1,6 @@
 ---
 import Analytics from '../../components/Analytics.astro';
+import Favicon from '../../components/Favicon.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { absoluteLocaleUrl } from '../../lib/locale';
@@ -21,6 +22,7 @@ const copy = siteCopy[locale];
     <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'resume')} />
     <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'resume')} />
     <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'resume')} />
+    <Favicon />
     <Analytics />
   </head>
   <body>
