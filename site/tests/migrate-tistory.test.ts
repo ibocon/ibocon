@@ -40,4 +40,13 @@ describe('Tistory tech post migration', () => {
     expect(markdown).toBe('![SOLID 원칙](https://example.test/image.png)\n\nSOLID Principles');
     expect(markdown).not.toContain('![SOLID 원칙](https://example.test/image.png) SOLID Principles');
   });
+
+  it('Given_LanguageClassCode_When_Converted_Then_FenceKeepsLanguage', () => {
+    // Given
+    const html = '<pre><code class="language-java">int x;</code></pre>';
+    // When
+    const markdown = convertTistoryHtmlToMarkdown(html);
+    // Then
+    expect(markdown).toContain('```java\nint x;\n```');
+  });
 });

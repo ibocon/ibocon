@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 describe('Blog theme and content rendering', () => {
@@ -73,5 +73,32 @@ describe('Blog theme and content rendering', () => {
     expect(header).toContain("cache: 'no-store'");
     expect(header).toContain('document.visibilityState');
     expect(header).toContain('window.location.reload()');
+  });
+
+  it('Given_GlobalStyles_When_Inspected_Then_DefinesCascadiaCodeToken', () => {
+    // Given
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+    // When
+    const usesFontsource = styles.includes('@fontsource/cascadia-code/400.css');
+    // Then
+    expect(usesFontsource).toBe(true);
+    expect(styles).toContain('--font-code: "Cascadia Code"');
+    expect(styles).toContain('font-family: var(--font-code)');
+  });
+
+  it('Given_BlogPosts_When_FencesScanned_Then_NoOpeningFenceWithoutLanguage', () => {
+    // Given
+    const root = resolve(process.cwd(), '..', 'blog');
+    const files = readdirSync(root, { recursive: true }).map(String).filter((name) => name.endsWith('.md'));
+    const bare: string[] = [];
+    // When
+    for (const file of files) {
+      const fences = readFileSync(resolve(root, file), 'utf8').split('\n').filter((line) => line.trimEnd().startsWith('```'));
+      // 마이그레이션 원본부터 닫는 펜스가 없는 글은 코드 범위를 알 수 없어 제외한다.
+      if (fences.length % 2 !== 0) continue;
+      if (fences.some((line, index) => index % 2 === 0 && line.trimEnd() === '```')) bare.push(file);
+    }
+    // Then
+    expect(bare).toEqual([]);
   });
 });

@@ -64,7 +64,10 @@ export function convertTistoryHtmlToMarkdown(html) {
     .replace(/<figure\b[\s\S]*?<\/figure>/gi, (figure) => convertTistoryFigureToMarkdown(figure))
     .replace(/<img[^>]*\balt="([^"]*)"[^>]*\bsrc="([^"]+)"[^>]*>/gi, (_, alt, src) => `![${stripTags(alt)}](${src})`)
     .replace(/<img[^>]*\bsrc="([^"]+)"[^>]*\balt="([^"]*)"[^>]*>/gi, (_, src, alt) => `![${stripTags(alt)}](${src})`)
-    .replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, (_, code) => `\n\n\`\`\`\n${decodeHtml(code).trim()}\n\`\`\`\n`)
+    .replace(/<pre[^>]*><code([^>]*)>([\s\S]*?)<\/code><\/pre>/gi, (_, attributes, code) => {
+      const language = attributes.match(/\blanguage-([\w+#-]+)/i)?.[1] ?? '';
+      return `\n\n\`\`\`${language}\n${decodeHtml(code).trim()}\n\`\`\`\n`;
+    })
     .replace(/<a[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_, href, content) => `[${stripTags(content)}](${href})`)
     .replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, (_, content) => `\n\n> ${stripTags(content)}\n`)
     .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_, level, content) => `\n\n${'#'.repeat(Number(level))} ${stripTags(content)}\n`)

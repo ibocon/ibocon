@@ -1,4 +1,7 @@
+@import "@fontsource/cascadia-code/400.css";
+@import "@fontsource/cascadia-code/700.css";
 :root {
+  --font-code: "Cascadia Code", ui-monospace, Consolas, Pretendard, monospace;
   color-scheme: light;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
@@ -82,6 +85,7 @@ a { color: var(--accent-color); }
 .adsense-container .adsbygoogle { display: block; max-width: 100%; min-width: 0; }
 .prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
+.prose pre, .prose code, .prose .astro-code { font-family: var(--font-code); font-variant-ligatures: contextual; font-size: .9em; }
 .prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .prose th, .prose td { border: 1px solid var(--border-color); padding: 8px 12px; }
