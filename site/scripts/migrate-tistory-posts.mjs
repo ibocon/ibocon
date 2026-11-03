@@ -79,6 +79,25 @@ export function convertTistoryHtmlToMarkdown(html) {
     .trim();
 }
 
+const SIGNED_IMAGE_PATTERN = /!\[(.*?)\]\((https:\/\/blog\.kakaocdn\.net\/[^)\s]+)\)/g;
+const IMAGE_EXTENSIONS = new Map([['image/png', 'png'], ['image/jpeg', 'jpg'], ['image/gif', 'gif'], ['image/webp', 'webp'], ['image/svg+xml', 'svg']]);
+
+// ✅ Tistory 이미지 URL은 만료되는 서명 URL이므로 마이그레이션 시점에 로컬 정적 자산으로 내려받는다.
+export async function localizeImages(markdown, { identifier, imageDirectory, fetchImage = fetch }) {
+  const matches = [...markdown.matchAll(SIGNED_IMAGE_PATTERN)];
+  let result = markdown;
+  for (const [index, [whole, alt, url]] of matches.entries()) {
+    const response = await fetchImage(url);
+    if (!response.ok) throw new Error(`Tistory image request failed: ${response.status} ${url}`);
+    const extension = IMAGE_EXTENSIONS.get((response.headers.get('content-type') ?? '').split(';')[0]) ?? 'png';
+    const fileName = `${index + 1}.${extension}`;
+    await mkdir(resolve(imageDirectory, identifier), { recursive: true });
+    await writeFile(resolve(imageDirectory, identifier, fileName), Buffer.from(await response.arrayBuffer()));
+    result = result.replace(whole, `![${alt.replace(/\s*width=\s*$/, '').trim()}](/blog-images/${identifier}/${fileName})`);
+  }
+  return result;
+}
+
 export function buildMigratedMarkdown({ title, description, pubDate, category, originalUrl, bodyMarkdown }) {
   const quote = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
   return ['---', `title: "${quote(title)}"`, `description: "${quote(description)}"`, `pubDate: ${pubDate}`, `tags: ["${category}"]`, 'source: "tistory"', `originalUrl: "${originalUrl}"`, 'draft: false', '---', '', bodyMarkdown, ''].join('\n');
@@ -131,12 +150,15 @@ export async function migrateTistoryPosts({ rssUrl = 'https://ibocon.tistory.com
   }
   const posts = items.map((item) => ({ ...item, category: item.categories.map(mapTistoryCategory).find(Boolean) })).filter((item) => item.category);
   const destination = outputDirectory ?? resolve(dirname(fileURLToPath(import.meta.url)), '..', '..', 'blog');
+  const imageDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'blog-images');
   const written = [];
   for (const post of posts) {
     const date = new Date(post.pubDate).toISOString().slice(0, 10);
     const identifier = post.link.match(/\/(\d+)\/?$/)?.[1] ?? 'post';
     const path = resolve(destination, post.category, `${date}-tistory-${identifier}.md`);
-    const markdown = buildMigratedMarkdown({ title: post.title, description: stripTags(post.description).slice(0, 160) || post.title, pubDate: date, category: post.category, originalUrl: post.link, bodyMarkdown: convertTistoryHtmlToMarkdown(post.body || post.description) });
+    let bodyMarkdown = convertTistoryHtmlToMarkdown(post.body || post.description);
+    if (!dryRun) bodyMarkdown = await localizeImages(bodyMarkdown, { identifier, imageDirectory });
+    const markdown = buildMigratedMarkdown({ title: post.title, description: stripTags(post.description).slice(0, 160) || post.title, pubDate: date, category: post.category, originalUrl: post.link, bodyMarkdown });
     if (!dryRun) { await mkdir(dirname(path), { recursive: true }); await writeFile(path, markdown, 'utf8'); }
     written.push(path);
   }
