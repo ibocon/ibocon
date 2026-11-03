@@ -67,7 +67,7 @@
 - [[.NET] 레퍼런스 프로젝트 리스트](https://blog.botanicsoft.com/dotnet/2022-11-17-tistory-278/)
 - [[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축](https://blog.botanicsoft.com/frontend/2021-12-16-tistory-271/)
 - [[Blazor] Sass 를 적용하는 방법](https://blog.botanicsoft.com/frontend/2021-06-13-tistory-270/)
-- [[FE] Web API - WebSocket API](https://blog.botanicsoft.com/frontend/2021-05-30-tistory-268/)
+- [[FE] webpack 에서 Source Map 이 동작하는 원리](https://blog.botanicsoft.com/frontend/2021-05-30-tistory-269/)
 <!-- BLOG-POST-LIST:END -->
 
 ---
