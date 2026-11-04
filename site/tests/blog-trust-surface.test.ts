@@ -30,7 +30,7 @@ describe('Blog trust surface', () => {
   it('Given_BuiltHomeAndPost_When_InspectingNavigation_Then_LinksToTrustPages', () => {
     // Given
     const homeHtml = readBuiltPage();
-    const postHtml = readBuiltPage('frontend', '2021-05-30-tistory-268');
+    const postHtml = readBuiltPage('web-api-websocket');
 
     // When
     const trustLinks = ['/about/', '/editorial-policy/'];
@@ -44,7 +44,7 @@ describe('Blog trust surface', () => {
 
   it('Given_MigratedPost_When_Built_Then_KeepsPublicationMetadataWithoutSourceLabel', () => {
     // Given
-    const postHtml = readBuiltPage('frontend', '2021-05-30-tistory-268');
+    const postHtml = readBuiltPage('web-api-websocket');
 
     // When
     const sourceLabel = '원문 출처';

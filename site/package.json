@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/sync-ads-txt.mjs",
+    "prebuild": "node scripts/sync-ads-txt.mjs && node scripts/generate-blog-redirects.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

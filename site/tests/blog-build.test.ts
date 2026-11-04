@@ -6,7 +6,7 @@ describe('Astro Blog Static Build Verification', () => {
   it('Given_BuiltPost_When_Inspected_Then_ReferencesReadableDesignCss', () => {
     // Given
     const distDir = resolve(process.cwd(), 'dist');
-    const postHtmlPath = resolve(distDir, 'dotnet', '2026-10-15-clean-architecture-rich-domain', 'index.html');
+    const postHtmlPath = resolve(distDir, 'clean-architecture-rich-domain', 'index.html');
     const postHtml = readFileSync(postHtmlPath, 'utf-8');
 
     // When
@@ -40,8 +40,8 @@ describe('Astro Blog Static Build Verification', () => {
   it('Given_DraftIncidentCaseStudy_When_Built_Then_KeepsItOutOfPublicHtmlAndRss', () => {
     // Given
     const distDir = resolve(process.cwd(), 'dist');
-    const draftPath = resolve(process.cwd(), '..', 'blog', 'architecture', '2026-10-27-postfix-open-relay-incident.md');
-    const postHtmlPath = resolve(distDir, 'architecture', '2026-10-27-postfix-open-relay-incident', 'index.html');
+    const draftPath = resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md');
+    const postHtmlPath = resolve(distDir, 'kubernetes-alertmanager-postfix-open-relay', 'index.html');
     const rssXmlPath = resolve(distDir, 'rss.xml');
 
     // When
@@ -51,7 +51,7 @@ describe('Astro Blog Static Build Verification', () => {
     // Then
     expect(draft).toContain('draft: true');
     expect(existsSync(postHtmlPath)).toBe(false);
-    expect(rssXml).not.toContain('2026-10-27-postfix-open-relay-incident');
+    expect(rssXml).not.toContain('kubernetes-alertmanager-postfix-open-relay');
   });
 
   it('Given_DevelopmentRoute_When_InspectingDraftContract_Then_IncludesDraftsAndShowsReviewBanner', () => {

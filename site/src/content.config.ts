@@ -4,7 +4,8 @@ import { glob } from 'astro/loaders';
 import { BLOG_TAGS } from './lib/blog-tags';
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: '../blog' }),
+  // ✅ 카테고리는 tags 가 담당하므로 폴더 중첩 없이 blog 바로 아래 파일만 글로 인식한다
+  loader: glob({ pattern: '*.{md,mdx}', base: '../blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

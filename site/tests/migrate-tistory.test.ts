@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildMigratedMarkdown, convertTistoryHtmlToMarkdown, extractContentsStyle, mapTistoryCategory, parseRssItems, parseTistoryPage } from '../scripts/migrate-tistory-posts.mjs';
+import { buildMigratedMarkdown, convertTistoryHtmlToMarkdown, extractContentsStyle, mapTistoryCategory, parseRssItems, parseTistoryPage, slugByTistoryId } from '../scripts/migrate-tistory-posts.mjs';
 
 describe('Tistory tech post migration', () => {
   it('maps only the approved technical categories', () => {
@@ -48,5 +48,18 @@ describe('Tistory tech post migration', () => {
     const markdown = convertTistoryHtmlToMarkdown(html);
     // Then
     expect(markdown).toContain('```java\nint x;\n```');
+  });
+
+  it('Given_UnmappedTistoryId_When_PathResolved_Then_WritesTemporaryDraft', () => {
+    // Given
+    const markdown = buildMigratedMarkdown({ title: '제목', description: '설명', pubDate: '2026-11-04', category: 'dotnet', originalUrl: 'https://ibocon.tistory.com/9999', bodyMarkdown: '본문', draft: true });
+
+    // When
+    const draftLine = markdown.split('\n').find((line) => line.startsWith('draft:'));
+
+    // Then
+    expect(draftLine).toBe('draft: true');
+    expect(slugByTistoryId('9999')).toBeUndefined();
+    expect(slugByTistoryId('169')).toBe('spring-security-architecture');
   });
 });

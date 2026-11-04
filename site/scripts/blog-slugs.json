@@ -1,0 +1,520 @@
+[
+  {
+    "tistoryId": "33",
+    "legacyPath": "/architecture/2018-01-05-tistory-33/",
+    "slug": "refactoring-ch1-first-example"
+  },
+  {
+    "tistoryId": "36",
+    "legacyPath": "/architecture/2018-01-08-tistory-36/",
+    "slug": "refactoring-ch2-introduction"
+  },
+  {
+    "tistoryId": "50",
+    "legacyPath": "/architecture/2018-02-17-tistory-50/",
+    "slug": "refactoring-ch3-code-smells"
+  },
+  {
+    "tistoryId": "51",
+    "legacyPath": "/architecture/2018-02-18-tistory-51/",
+    "slug": "refactoring-ch6-composing-methods"
+  },
+  {
+    "tistoryId": "81",
+    "legacyPath": "/architecture/2019-08-15-tistory-81/",
+    "slug": "solid-principles-overview"
+  },
+  {
+    "tistoryId": "82",
+    "legacyPath": "/architecture/2019-08-16-tistory-82/",
+    "slug": "solid-single-responsibility"
+  },
+  {
+    "tistoryId": "84",
+    "legacyPath": "/architecture/2019-08-27-tistory-84/",
+    "slug": "solid-open-closed"
+  },
+  {
+    "tistoryId": "85",
+    "legacyPath": "/architecture/2019-08-29-tistory-85/",
+    "slug": "solid-liskov-substitution"
+  },
+  {
+    "tistoryId": "86",
+    "legacyPath": "/architecture/2019-08-29-tistory-86/",
+    "slug": "solid-interface-segregation"
+  },
+  {
+    "tistoryId": "87",
+    "legacyPath": "/architecture/2019-08-30-tistory-87/",
+    "slug": "solid-dependency-inversion"
+  },
+  {
+    "legacyPath": "/architecture/2026-10-27-postfix-open-relay-incident/",
+    "slug": "kubernetes-alertmanager-postfix-open-relay"
+  },
+  {
+    "tistoryId": "122",
+    "legacyPath": "/backend/2020-02-23-tistory-122/",
+    "slug": "spring-container"
+  },
+  {
+    "tistoryId": "123",
+    "legacyPath": "/backend/2020-02-23-tistory-123/",
+    "slug": "spring-bean"
+  },
+  {
+    "tistoryId": "168",
+    "legacyPath": "/backend/2020-04-07-tistory-168/",
+    "slug": "spring-vscode-devtools-livereload"
+  },
+  {
+    "tistoryId": "169",
+    "legacyPath": "/backend/2020-04-12-tistory-169/",
+    "slug": "spring-security-architecture"
+  },
+  {
+    "tistoryId": "170",
+    "legacyPath": "/backend/2020-05-19-tistory-170/",
+    "slug": "spring-notnull-notempty-notblank"
+  },
+  {
+    "tistoryId": "171",
+    "legacyPath": "/backend/2020-05-20-tistory-171/",
+    "slug": "spring-jpa-mapping"
+  },
+  {
+    "tistoryId": "172",
+    "legacyPath": "/backend/2020-05-23-tistory-172/",
+    "slug": "spring-jpa-mapping-one-to-one"
+  },
+  {
+    "tistoryId": "173",
+    "legacyPath": "/backend/2020-05-23-tistory-173/",
+    "slug": "spring-jpa-mapping-one-to-many-many-to-one"
+  },
+  {
+    "tistoryId": "174",
+    "legacyPath": "/backend/2020-05-23-tistory-174/",
+    "slug": "spring-jpa-mapping-many-to-many"
+  },
+  {
+    "tistoryId": "203",
+    "legacyPath": "/backend/2020-09-28-tistory-203/",
+    "slug": "spring-rdb-hierarchy-adjacency-list"
+  },
+  {
+    "tistoryId": "204",
+    "legacyPath": "/backend/2020-09-28-tistory-204/",
+    "slug": "spring-rdb-hierarchy-closure-table"
+  },
+  {
+    "tistoryId": "205",
+    "legacyPath": "/backend/2020-09-28-tistory-205/",
+    "slug": "spring-rdb-hierarchy-path-enumeration"
+  },
+  {
+    "tistoryId": "206",
+    "legacyPath": "/backend/2020-09-28-tistory-206/",
+    "slug": "spring-rdb-hierarchy-nested-set"
+  },
+  {
+    "tistoryId": "208",
+    "legacyPath": "/backend/2020-11-15-tistory-208/",
+    "slug": "spring-dispatcher-servlet-request-handling"
+  },
+  {
+    "tistoryId": "80",
+    "legacyPath": "/dotnet/2019-06-11-tistory-80/",
+    "slug": "csharp-code-documentation"
+  },
+  {
+    "tistoryId": "89",
+    "legacyPath": "/dotnet/2019-08-31-tistory-89/",
+    "slug": "csharp-async-programming"
+  },
+  {
+    "tistoryId": "90",
+    "legacyPath": "/dotnet/2019-09-07-tistory-90/",
+    "slug": "csharp-delegates"
+  },
+  {
+    "tistoryId": "91",
+    "legacyPath": "/dotnet/2019-09-13-tistory-91/",
+    "slug": "csharp-covariance-contravariance"
+  },
+  {
+    "tistoryId": "92",
+    "legacyPath": "/dotnet/2019-11-23-tistory-92/",
+    "slug": "csharp-events"
+  },
+  {
+    "tistoryId": "93",
+    "legacyPath": "/dotnet/2019-11-29-tistory-93/",
+    "slug": "csharp-delegates-vs-events"
+  },
+  {
+    "tistoryId": "94",
+    "legacyPath": "/dotnet/2019-11-29-tistory-94/",
+    "slug": "csharp-attributes"
+  },
+  {
+    "tistoryId": "96",
+    "legacyPath": "/dotnet/2019-12-03-tistory-96/",
+    "slug": "csharp-linq-where"
+  },
+  {
+    "tistoryId": "97",
+    "legacyPath": "/dotnet/2019-12-03-tistory-97/",
+    "slug": "csharp-linq-select"
+  },
+  {
+    "tistoryId": "100",
+    "legacyPath": "/dotnet/2020-02-01-tistory-100/",
+    "slug": "csharp-linq-ordering-operators"
+  },
+  {
+    "tistoryId": "99",
+    "legacyPath": "/dotnet/2020-02-01-tistory-99/",
+    "slug": "csharp-linq-partitioning-operators"
+  },
+  {
+    "tistoryId": "101",
+    "legacyPath": "/dotnet/2020-02-02-tistory-101/",
+    "slug": "csharp-linq-group-by"
+  },
+  {
+    "tistoryId": "102",
+    "legacyPath": "/dotnet/2020-02-02-tistory-102/",
+    "slug": "csharp-linq-set-operators"
+  },
+  {
+    "tistoryId": "103",
+    "legacyPath": "/dotnet/2020-02-02-tistory-103/",
+    "slug": "csharp-linq-conversion-operators"
+  },
+  {
+    "tistoryId": "104",
+    "legacyPath": "/dotnet/2020-02-02-tistory-104/",
+    "slug": "csharp-linq-element-operators"
+  },
+  {
+    "tistoryId": "105",
+    "legacyPath": "/dotnet/2020-02-02-tistory-105/",
+    "slug": "csharp-linq-range-repeat"
+  },
+  {
+    "tistoryId": "106",
+    "legacyPath": "/dotnet/2020-02-02-tistory-106/",
+    "slug": "csharp-linq-quantifiers-any-all"
+  },
+  {
+    "tistoryId": "108",
+    "legacyPath": "/dotnet/2020-02-02-tistory-108/",
+    "slug": "csharp-linq-count"
+  },
+  {
+    "tistoryId": "109",
+    "legacyPath": "/dotnet/2020-02-02-tistory-109/",
+    "slug": "csharp-linq-sum"
+  },
+  {
+    "tistoryId": "110",
+    "legacyPath": "/dotnet/2020-02-02-tistory-110/",
+    "slug": "csharp-linq-min"
+  },
+  {
+    "tistoryId": "111",
+    "legacyPath": "/dotnet/2020-02-02-tistory-111/",
+    "slug": "csharp-linq-max"
+  },
+  {
+    "tistoryId": "112",
+    "legacyPath": "/dotnet/2020-02-02-tistory-112/",
+    "slug": "csharp-linq-average"
+  },
+  {
+    "tistoryId": "113",
+    "legacyPath": "/dotnet/2020-02-02-tistory-113/",
+    "slug": "csharp-linq-aggregate"
+  },
+  {
+    "tistoryId": "114",
+    "legacyPath": "/dotnet/2020-02-02-tistory-114/",
+    "slug": "csharp-linq-sequence-operators"
+  },
+  {
+    "tistoryId": "115",
+    "legacyPath": "/dotnet/2020-02-02-tistory-115/",
+    "slug": "csharp-linq-join-group-join"
+  },
+  {
+    "tistoryId": "118",
+    "legacyPath": "/dotnet/2020-02-05-tistory-118/",
+    "slug": "csharp-parallel-programming-data-parallelism"
+  },
+  {
+    "tistoryId": "119",
+    "legacyPath": "/dotnet/2020-02-08-tistory-119/",
+    "slug": "csharp-parallel-programming-task-parallelism"
+  },
+  {
+    "tistoryId": "120",
+    "legacyPath": "/dotnet/2020-02-10-tistory-120/",
+    "slug": "csharp-parallel-programming-dataflow"
+  },
+  {
+    "tistoryId": "121",
+    "legacyPath": "/dotnet/2020-02-16-tistory-121/",
+    "slug": "csharp-parallel-programming-dataflow-example"
+  },
+  {
+    "tistoryId": "184",
+    "legacyPath": "/dotnet/2020-06-18-tistory-184/",
+    "slug": "csharp-reflection-why-it-matters"
+  },
+  {
+    "tistoryId": "185",
+    "legacyPath": "/dotnet/2020-06-21-tistory-185/",
+    "slug": "csharp-reflection-create-objects-by-type"
+  },
+  {
+    "tistoryId": "186",
+    "legacyPath": "/dotnet/2020-06-21-tistory-186/",
+    "slug": "csharp-reflection-typeconverter-setvalue"
+  },
+  {
+    "tistoryId": "187",
+    "legacyPath": "/dotnet/2020-06-24-tistory-187/",
+    "slug": "csharp-reflection-replace-if-with-factory-call"
+  },
+  {
+    "tistoryId": "202",
+    "legacyPath": "/dotnet/2020-09-28-tistory-202/",
+    "slug": "csharp-exception-handling-best-practices"
+  },
+  {
+    "tistoryId": "278",
+    "legacyPath": "/dotnet/2022-11-17-tistory-278/",
+    "slug": "dotnet-reference-projects"
+  },
+  {
+    "legacyPath": "/dotnet/2026-10-15-clean-architecture-rich-domain/",
+    "slug": "clean-architecture-rich-domain"
+  },
+  {
+    "tistoryId": "189",
+    "legacyPath": "/frontend/2020-07-12-tistory-189/",
+    "slug": "react-stateless-over-stateful-components"
+  },
+  {
+    "tistoryId": "190",
+    "legacyPath": "/frontend/2020-07-12-tistory-190/",
+    "slug": "react-lifecycle-events"
+  },
+  {
+    "tistoryId": "192",
+    "legacyPath": "/frontend/2020-07-15-tistory-192/",
+    "slug": "react-events"
+  },
+  {
+    "tistoryId": "217",
+    "legacyPath": "/frontend/2021-01-10-tistory-217/",
+    "slug": "react-conditional-rendering-patterns"
+  },
+  {
+    "tistoryId": "239",
+    "legacyPath": "/frontend/2021-03-25-tistory-239/",
+    "slug": "browser-rendering-introduction"
+  },
+  {
+    "tistoryId": "241",
+    "legacyPath": "/frontend/2021-03-26-tistory-241/",
+    "slug": "browser-rendering-parse"
+  },
+  {
+    "tistoryId": "242",
+    "legacyPath": "/frontend/2021-03-26-tistory-242/",
+    "slug": "browser-rendering-style"
+  },
+  {
+    "tistoryId": "243",
+    "legacyPath": "/frontend/2021-03-26-tistory-243/",
+    "slug": "browser-rendering-layout"
+  },
+  {
+    "tistoryId": "250",
+    "legacyPath": "/frontend/2021-03-30-tistory-250/",
+    "slug": "browser-rendering-paint"
+  },
+  {
+    "tistoryId": "251",
+    "legacyPath": "/frontend/2021-03-31-tistory-251/",
+    "slug": "browser-rendering-change"
+  },
+  {
+    "tistoryId": "252",
+    "legacyPath": "/frontend/2021-04-02-tistory-252/",
+    "slug": "ecmascript-reading-guide-part-1"
+  },
+  {
+    "tistoryId": "253",
+    "legacyPath": "/frontend/2021-04-03-tistory-253/",
+    "slug": "ecmascript-reading-guide-part-2"
+  },
+  {
+    "tistoryId": "257",
+    "legacyPath": "/frontend/2021-04-13-tistory-257/",
+    "slug": "http2-in-depth"
+  },
+  {
+    "tistoryId": "261",
+    "legacyPath": "/frontend/2021-05-05-tistory-261/",
+    "slug": "typescript-type-guard"
+  },
+  {
+    "tistoryId": "263",
+    "legacyPath": "/frontend/2021-05-09-tistory-263/",
+    "slug": "web-api-cookies"
+  },
+  {
+    "tistoryId": "264",
+    "legacyPath": "/frontend/2021-05-09-tistory-264/",
+    "slug": "web-api-localstorage-sessionstorage"
+  },
+  {
+    "tistoryId": "265",
+    "legacyPath": "/frontend/2021-05-12-tistory-265/",
+    "slug": "web-api-indexeddb"
+  },
+  {
+    "tistoryId": "267",
+    "legacyPath": "/frontend/2021-05-27-tistory-267/",
+    "slug": "web-api-service-worker-cache"
+  },
+  {
+    "tistoryId": "268",
+    "legacyPath": "/frontend/2021-05-30-tistory-268/",
+    "slug": "web-api-websocket"
+  },
+  {
+    "tistoryId": "269",
+    "legacyPath": "/frontend/2021-05-30-tistory-269/",
+    "slug": "webpack-source-map-internals"
+  },
+  {
+    "tistoryId": "270",
+    "legacyPath": "/frontend/2021-06-13-tistory-270/",
+    "slug": "blazor-apply-sass"
+  },
+  {
+    "tistoryId": "271",
+    "legacyPath": "/frontend/2021-12-16-tistory-271/",
+    "slug": "blazor-webassembly-webpack-typescript-sass-setup"
+  },
+  {
+    "tistoryId": "178",
+    "legacyPath": "/maui/2020-06-07-tistory-178/",
+    "slug": "xamarin-platform-specific-code"
+  },
+  {
+    "tistoryId": "180",
+    "legacyPath": "/maui/2020-06-13-tistory-180/",
+    "slug": "xamarin-resourcedictionary-management"
+  },
+  {
+    "tistoryId": "181",
+    "legacyPath": "/maui/2020-06-13-tistory-181/",
+    "slug": "xamarin-mvvmcross-introduction"
+  },
+  {
+    "tistoryId": "182",
+    "legacyPath": "/maui/2020-06-13-tistory-182/",
+    "slug": "xamarin-using-mvvmcross"
+  },
+  {
+    "tistoryId": "183",
+    "legacyPath": "/maui/2020-06-17-tistory-183/",
+    "slug": "xamarin-mvvmcross-data-binding"
+  },
+  {
+    "tistoryId": "194",
+    "legacyPath": "/maui/2020-08-05-tistory-194/",
+    "slug": "xamarin-typed-data-template-selector"
+  },
+  {
+    "tistoryId": "195",
+    "legacyPath": "/maui/2020-08-05-tistory-195/",
+    "slug": "xamarin-performance-xaml-compilation"
+  },
+  {
+    "tistoryId": "196",
+    "legacyPath": "/maui/2020-08-05-tistory-196/",
+    "slug": "xamarin-performance-compiled-binding"
+  },
+  {
+    "tistoryId": "197",
+    "legacyPath": "/maui/2020-08-05-tistory-197/",
+    "slug": "xamarin-resourcedictionary-organization"
+  },
+  {
+    "tistoryId": "198",
+    "legacyPath": "/maui/2020-08-05-tistory-198/",
+    "slug": "dotnet-unification-and-maui"
+  },
+  {
+    "tistoryId": "199",
+    "legacyPath": "/maui/2020-08-14-tistory-199/",
+    "slug": "xamarin-performance-onetime-binding"
+  },
+  {
+    "tistoryId": "200",
+    "legacyPath": "/maui/2020-08-21-tistory-200/",
+    "slug": "xamarin-device-independent-units"
+  },
+  {
+    "tistoryId": "207",
+    "legacyPath": "/maui/2020-09-29-tistory-207/",
+    "slug": "xamarin-custom-renderer-platform-specific"
+  },
+  {
+    "tistoryId": "209",
+    "legacyPath": "/maui/2020-11-16-tistory-209/",
+    "slug": "xamarin-effects-platform-specific"
+  },
+  {
+    "tistoryId": "212",
+    "legacyPath": "/maui/2020-12-17-tistory-212/",
+    "slug": "xamarin-bindableproperty-implementation"
+  },
+  {
+    "tistoryId": "213",
+    "legacyPath": "/maui/2020-12-23-tistory-213/",
+    "slug": "xamarin-responsive-layout"
+  },
+  {
+    "tistoryId": "214",
+    "legacyPath": "/maui/2020-12-23-tistory-214/",
+    "slug": "xamarin-auto-arranged-layout-items"
+  },
+  {
+    "tistoryId": "215",
+    "legacyPath": "/maui/2020-12-24-tistory-215/",
+    "slug": "xamarin-bindableproperty-override"
+  },
+  {
+    "tistoryId": "216",
+    "legacyPath": "/maui/2020-12-24-tistory-216/",
+    "slug": "xamarin-view-injection-view"
+  },
+  {
+    "tistoryId": "238",
+    "legacyPath": "/maui/2021-03-25-tistory-238/",
+    "slug": "xamarin-renderer-backgroundcolor-fix"
+  },
+  {
+    "tistoryId": "240",
+    "legacyPath": "/maui/2021-03-26-tistory-240/",
+    "slug": "xamarin-ios-safearea-custom-effect"
+  }
+]

@@ -42,9 +42,9 @@ describe('Blog locale surface', () => {
 
   it('Given_BuiltKoreanPostsAndRss_When_InspectingEnglishRoutes_Then_DoesNotClaimUntranslatedPosts', () => {
     // Given
-    const koreanPost = readBuiltPage('frontend', '2021-05-30-tistory-268');
+    const koreanPost = readBuiltPage('web-api-websocket');
     const rss = readFileSync(resolve(dist, 'rss.xml'), 'utf8');
-    const untranslatedEnglishPost = resolve(dist, 'en', 'frontend', '2021-05-30-tistory-268', 'index.html');
+    const untranslatedEnglishPost = resolve(dist, 'en', 'web-api-websocket', 'index.html');
 
     // When
     const hasEnglishPost = existsSync(untranslatedEnglishPost);

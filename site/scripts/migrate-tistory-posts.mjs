@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -101,9 +102,15 @@ export async function localizeImages(markdown, { identifier, imageDirectory, fet
   return result;
 }
 
-export function buildMigratedMarkdown({ title, description, pubDate, category, originalUrl, bodyMarkdown }) {
+// ✅ 글별 최종 슬러그는 blog-slugs.json 단일 원본에서만 찾는다.
+export function slugByTistoryId(tistoryId, manifestPath = resolve(dirname(fileURLToPath(import.meta.url)), 'blog-slugs.json')) {
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  return manifest.find((entry) => entry.tistoryId === String(tistoryId))?.slug;
+}
+
+export function buildMigratedMarkdown({ title, description, pubDate, category, originalUrl, bodyMarkdown, draft = false }) {
   const quote = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-  return ['---', `title: "${quote(title)}"`, `description: "${quote(description)}"`, `pubDate: ${pubDate}`, `tags: ["${category}"]`, 'source: "tistory"', `originalUrl: "${originalUrl}"`, 'draft: false', '---', '', bodyMarkdown, ''].join('\n');
+  return ['---', `title: "${quote(title)}"`, `description: "${quote(description)}"`, `pubDate: ${pubDate}`, `tags: ["${category}"]`, 'source: "tistory"', `originalUrl: "${originalUrl}"`, `draft: ${draft}`, '---', '', bodyMarkdown, ''].join('\n');
 }
 
 export function parseRssItems(xml) {
@@ -158,10 +165,13 @@ export async function migrateTistoryPosts({ rssUrl = 'https://ibocon.tistory.com
   for (const post of posts) {
     const date = new Date(post.pubDate).toISOString().slice(0, 10);
     const identifier = post.link.match(/\/(\d+)\/?$/)?.[1] ?? 'post';
-    const path = resolve(destination, post.category, `${date}-tistory-${identifier}.md`);
+    // ✅ 매니페스트에 슬러그가 있으면 최종 파일명, 없으면 임시 초안(draft)으로만 쓴다
+    const slug = slugByTistoryId(identifier);
+    const path = resolve(destination, `${slug ?? `tistory-${identifier}`}.md`);
+    const draft = slug === undefined;
     let bodyMarkdown = convertTistoryHtmlToMarkdown(post.body || post.description);
     if (!dryRun) bodyMarkdown = await localizeImages(bodyMarkdown, { identifier, imageDirectory });
-    const markdown = buildMigratedMarkdown({ title: post.title, description: stripTags(post.description).slice(0, 160) || post.title, pubDate: date, category: post.category, originalUrl: post.link, bodyMarkdown });
+    const markdown = buildMigratedMarkdown({ title: post.title, description: stripTags(post.description).slice(0, 160) || post.title, pubDate: date, category: post.category, originalUrl: post.link, bodyMarkdown, draft });
     if (!dryRun) { await mkdir(dirname(path), { recursive: true }); await writeFile(path, markdown, 'utf8'); }
     written.push(path);
   }
