@@ -6,6 +6,9 @@ const localePaths: Record<Locale, Record<LocalizedPage, string>> = {
   en: { home: '/en/', about: '/en/about/', resume: '/en/resume/', editorial: '/en/editorial-policy/' },
 };
 
-export const alternatePath = (locale: Locale, page: LocalizedPage): string => localePaths[locale][page];
+export const locales: readonly Locale[] = ['ko', 'en'];
+export const localeNames: Record<Locale, string> = { ko: '한국어', en: 'English' };
+
+export const alternatePath =(locale: Locale, page: LocalizedPage): string => localePaths[locale][page];
 export const alternateLocale = (locale: Locale): Locale => locale === 'ko' ? 'en' : 'ko';
 export const absoluteLocaleUrl = (locale: Locale, page: LocalizedPage): string => new URL(alternatePath(locale, page), 'https://blog.botanicsoft.com').toString();

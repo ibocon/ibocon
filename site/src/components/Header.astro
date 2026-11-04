@@ -1,11 +1,16 @@
 ---
-import { alternateLocale, alternatePath, type Locale, type LocalizedPage } from '../lib/locale';
+import { alternatePath, localeNames, locales, type Locale, type LocalizedPage } from '../lib/locale';
 import { siteCopy } from '../lib/site-copy';
 
 interface Props { locale?: Locale; page?: LocalizedPage; }
 const { locale = 'ko', page = 'home' } = Astro.props;
 const copy = siteCopy[locale];
-const otherLocale = alternateLocale(locale);
+const localeOptions = locales.map((target) => ({
+  locale: target,
+  name: localeNames[target],
+  href: alternatePath(target, page),
+  current: target === locale,
+}));
 
 const deploymentId = [
   import.meta.env.GITHUB_SHA,
@@ -27,7 +32,27 @@ const deploymentId = [
         <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
         <a href="/rss.xml">{copy.rssLabel}</a>
       </div>
-      <a href={alternatePath(otherLocale, page)} lang={otherLocale}>{copy.localeSwitchLabel}</a>
+      <details class="locale-menu" data-locale-menu>
+        <summary class="locale-menu-trigger" aria-label={`${copy.localeMenuLabel}: ${localeNames[locale]}`}>
+          <svg class="locale-menu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+          </svg>
+          <span>{localeNames[locale]}</span>
+          <svg class="locale-menu-chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <ul class="locale-menu-list">
+          {localeOptions.map((option) => (
+            <li>
+              <a href={option.href} lang={option.locale} aria-current={option.current ? 'true' : undefined}>
+                {option.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
       <button
         class="theme-toggle"
         id="theme-toggle"
@@ -46,6 +71,34 @@ const deploymentId = [
 
 <script is:inline>
   (() => {
+    const localeMenu = document.querySelector('[data-locale-menu]');
+    const localeTrigger = localeMenu?.querySelector('summary');
+    if (localeMenu && localeTrigger) {
+      const closeLocaleMenu = (restoreFocus) => {
+        localeMenu.open = false;
+        if (restoreFocus) {
+          localeTrigger.focus();
+        }
+      };
+
+      document.addEventListener('pointerdown', (event) => {
+        if (localeMenu.open && !localeMenu.contains(event.target)) {
+          closeLocaleMenu(false);
+        }
+      });
+      localeMenu.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && localeMenu.open) {
+          event.preventDefault();
+          closeLocaleMenu(true);
+        }
+      });
+      localeMenu.addEventListener('focusout', (event) => {
+        if (localeMenu.open && event.relatedTarget && !localeMenu.contains(event.relatedTarget)) {
+          closeLocaleMenu(false);
+        }
+      });
+    }
+
     const deploymentId = document.querySelector('.site-header')?.dataset.deploymentId;
     const root = document.documentElement;
     const darkLabel = document.querySelector('.site-header')?.dataset.themeDarkLabel ?? 'Switch to dark theme';
