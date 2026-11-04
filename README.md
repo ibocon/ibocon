@@ -63,7 +63,7 @@
 
 ## 📝 최근 기술 블로그 포스트 (Recent Blog Posts)
 <!-- BLOG-POST-LIST:START -->
-- [[.NET] Clean Architecture와 Rich Domain Model 실전 설계 원칙](https://blog.botanicsoft.com/dotnet/2026-10-15-clean-architecture-rich-domain/)
+- [[.NET] Clean Architecture와 Rich Domain Model 실전 설계 원칙](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
 - [[.NET] 레퍼런스 프로젝트 리스트](https://blog.botanicsoft.com/dotnet-reference-projects/)
 - [[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
 - [[Blazor] Sass 를 적용하는 방법](https://blog.botanicsoft.com/blazor-apply-sass/)
