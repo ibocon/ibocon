@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - 그룹 연산자 Group by into"
+title: "LINQ GroupBy로 데이터를 묶는 방법: C#"
 description: "그룹연산자 Grouping Operators 그룹연산자는 group by 와 into 키워드를 사용합니다. 그룹 연산자는 입력 시퀀스를 주어진 키에 맞춰 바구니에 나눠 담습니다. 바구니에 나눠담기 numbers 배열 원소를 5로 나누었을 때 나머지 값을 기준으로 나누어 담습니다. int"
 pubDate: 2020-02-02
 tags: ["dotnet"]

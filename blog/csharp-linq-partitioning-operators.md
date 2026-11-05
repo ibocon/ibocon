@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - 분할 연산자 Take, Skip, TakeWhile, SkipWhile"
+title: "LINQ로 데이터를 나누어 읽는 방법: Take와 Skip"
 description: "분할 연산자 Partition Operator LINQ 에서 제공하는 확장 메서드 중 Take, Skip, TakeWhile, SkipWhile 을 분할 연산자라 합니다. 왜냐하면 분할 연산자는 출력 시퀀스를 분할시켜 반환하기 때문입니다. Take 분할 연산자 Take 메서드로 numb"
 pubDate: 2020-02-01
 tags: ["dotnet"]

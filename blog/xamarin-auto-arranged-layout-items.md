@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] Item 이 Layout 에 따라 자동으로 배치되도록 해보자"
+title: "Xamarin 레이아웃 항목을 자동 배치하는 방법: Items"
 description: "Item 이 Layout 에 따라 자동으로 배치되도록 해보자 ItemsView 개발 배경 ListView 나 CollectionView 는 Xamarin 팀에서 제공하는 Layout 만 사용해야 하는 단점이 있습니다. 저는 이를 극복해보고자 CollectionView.ItemsLayou"
 pubDate: 2020-12-23
 tags: ["maui"]

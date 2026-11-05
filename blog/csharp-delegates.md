@@ -1,5 +1,5 @@
 ---
-title: "[C#] Delegates 대리자"
+title: "함수를 값처럼 전달하는 방법: C# Delegates"
 description: "Delegate (대리자)를 왜 사용해야 하는지, 그리고 어떤 상황에 사용되는지 살펴보자. 설계 목적 마이크로소프트 공식 문서에 따르면 Delegate (대리자) 기능은 아래와 같은 목적으로 설계되었습니다. Late Binding 동적 바인딩을 지원하는 언어 구문을 만들어, 개발자가 여"
 pubDate: 2019-09-07
 tags: ["dotnet"]

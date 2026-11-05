@@ -29,8 +29,17 @@ const deploymentId = [
         <a href={alternatePath(locale, 'editorial')}>{copy.editorialLabel}</a>
       </div>
       <div class="header-nav-utility">
-        <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
-        <a href="/rss.xml">{copy.rssLabel}</a>
+        <a class="icon-button" href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer" aria-label={copy.githubLabel} title={copy.githubLabel}>
+          <svg class="icon-button-glyph" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+          </svg>
+        </a>
+        <a class="icon-button" href="/rss.xml" aria-label={copy.rssLabel} title={copy.rssLabel}>
+          <svg class="icon-button-glyph" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 11a8 8 0 0 1 8 8M5 4a15 15 0 0 1 15 15" />
+            <circle cx="6" cy="18" r="1.5" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
       </div>
       <details class="locale-menu" data-locale-menu>
         <summary class="locale-menu-trigger" aria-label={`${copy.localeMenuLabel}: ${localeNames[locale]}`}>

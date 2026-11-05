@@ -67,6 +67,18 @@ describe('Astro Blog Static Build Verification', () => {
     expect(route).toContain('로컬 검토용 초안 · 공개 전 검토 중');
   });
 
+  it('Given_DevelopmentHome_When_InspectingDraftContract_Then_IncludesDraftsOnlyLocally', () => {
+    // Given
+    const homePath = resolve(process.cwd(), 'src', 'pages', 'index.astro');
+
+    // When
+    const home = readFileSync(homePath, 'utf-8');
+
+    // Then
+    expect(home).toContain('const includeDrafts = import.meta.env.DEV;');
+    expect(home).toContain('includeDrafts || !post.data.draft');
+  });
+
   it('Given_MermaidCodeBlock_When_InspectingRoute_Then_NormalizesTheDefinitionBeforeRendering', () => {
     // Given
     const routePath = resolve(process.cwd(), 'src', 'pages', '[...slug].astro');

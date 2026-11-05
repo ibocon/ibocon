@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] Xamarin 프로젝트에서 MvvmCross 사용하기"
+title: "Xamarin 프로젝트에 MvvmCross를 적용하는 방법: 구조"
 description: "Xamarin 프로젝트에서 MvvmCross 사용하기 MvvmCross 공식 문서 나름 Xamarin.Forms 에서 사용하는 방법을 알려주고 있지만 부족한 점이 많아 추가로 설명드리도록 하겠습니다. MvvmCross 샘플 중 [MvxForms] 를 참고해보시면 많은 도움이 되실 겁니다"
 pubDate: 2020-06-13
 tags: ["maui"]

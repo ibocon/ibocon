@@ -1,5 +1,5 @@
 ---
-title: "[SOLID] Interface Segregation 원칙"
+title: "SOLID 인터페이스 분리 원칙을 적용하는 방법: ISP"
 description: "목차 Single Responsibility 원칙 Open/Closed 원칙 Liskov Substitution 원칙 Interface Segregation 원칙 Dependency Inversion 원칙 Interface Segregation (인터페이스 분리) 원칙 인터페이스를 구현"
 pubDate: 2019-08-29
 tags: ["architecture"]

@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - 변환 연산자 ToArray, ToList, ToDictionary, OfType"
+title: "LINQ로 컬렉션을 변환하는 방법: ToArray와 ToList"
 description: "변환 연산자 Conversion Operators LINQ 구문은 IEnumerable 인터페이스를 반환합니다. 하지만 코드를 작성하다보면 인터페이스가 아닌 구체화된 클래스가 필요할 때가 있습니다. 그 때 변환 연산자를 활용하여 Array, List, Dictionary 타입으로 변환할"
 pubDate: 2020-02-02
 tags: ["dotnet"]

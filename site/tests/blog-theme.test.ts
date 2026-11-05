@@ -26,8 +26,8 @@ describe('Blog theme and content rendering', () => {
     expect(header).toContain('class="theme-icon"');
     expect(header).toContain('aria-pressed');
     expect(header).not.toContain('>Theme</button>');
-    expect(styles).toContain('.theme-toggle { inline-size: 36px; block-size: 36px;');
-    expect(styles).toContain('.theme-icon { inline-size: 18px; block-size: 18px; }');
+    expect(styles).toContain('.theme-toggle, .icon-button { inline-size: 36px; block-size: 36px;');
+    expect(styles).toContain('.theme-icon, .icon-button-glyph { inline-size: 18px; block-size: 18px; }');
     expect(index).toContain('class="post-card"');
     expect(index).not.toContain('data-category');
     expect(post).toContain('class="container post-layout"');

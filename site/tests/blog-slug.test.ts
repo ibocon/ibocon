@@ -7,6 +7,8 @@ import { findSlugViolation } from '../src/lib/blog-slug';
 const blogRoot = resolve(__dirname, '..', '..', 'blog');
 const manifest: { tistoryId?: string; legacyPath: string; slug: string }[] =
   JSON.parse(readFileSync(resolve(__dirname, '..', 'scripts', 'blog-slugs.json'), 'utf8'));
+const titleManifest: { file: string; title: string }[] =
+  JSON.parse(readFileSync(resolve(__dirname, '..', 'scripts', 'blog-title-migration.json'), 'utf8'));
 
 describe('blog slug surface', () => {
   it('Given_SlugCandidates_When_Checked_Then_RejectsTemporaryReservedAndMalformed', () => {
@@ -68,5 +70,19 @@ describe('blog slug surface', () => {
     // Then
     expect(redirects).toContain('/backend/2020-04-12-tistory-169/ /spring-security-architecture/ 301');
     expect(redirects).toContain('/backend/2020-04-12-tistory-169 /spring-security-architecture/ 301');
+  });
+
+  it('Given_TitleOnlyMigration_When_Compared_Then_FilenamesAndLegacyRedirectInputsStayUnchanged', () => {
+    // Given
+    const blogFiles = readdirSync(blogRoot).filter((name) => name.endsWith('.md')).sort();
+    const titleFiles = titleManifest.map((entry) => entry.file).sort();
+
+    // When
+    const mappedSlugFiles = manifest.map((entry) => `${entry.slug}.md`);
+
+    // Then
+    expect(titleFiles).toEqual(blogFiles);
+    expect(new Set(titleFiles).size).toBe(titleFiles.length);
+    expect(mappedSlugFiles.filter((file) => !blogFiles.includes(file))).toEqual([]);
   });
 });

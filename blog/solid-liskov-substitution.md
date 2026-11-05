@@ -1,5 +1,5 @@
 ---
-title: "[SOLID] Liskov Substitution 원칙"
+title: "SOLID 리스코프 치환 원칙을 적용하는 방법: LSP"
 description: "목차 Single Responsibility 원칙 Open/Closed 원칙 Liskov Substitution 원칙 Interface Segregation 원칙 Dependency Inversion 원칙 Liskov Substitution (리스코프 치환) 원칙 자식 클래스를 부모 클"
 pubDate: 2019-08-29
 tags: ["architecture"]

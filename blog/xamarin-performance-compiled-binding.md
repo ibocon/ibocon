@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] 성능 개선 - Compiled Binding"
+title: "Xamarin 바인딩 성능을 높이는 방법: Compiled Binding"
 description: "성능 개선 - Compiled Binding Xamarin 의 핵심 아키텍처는 Model-View-ViewModel 패턴입니다. 따라서 View 와 ViewModel 을 연결할 때 Data Binding을 집중적으로 사용하게 됩니다. 그리고 Data Binding은 View의 속성과 V"
 pubDate: 2020-08-05
 tags: ["maui"]

@@ -1,5 +1,5 @@
 ---
-title: "[C#] 병렬 프로그래밍 Parallel Programming (4) - 데이터 흐름 예제"
+title: "병렬 프로그래밍 4: 데이터 흐름을 적용하는 예제"
 description: "데이터 흐름 예제 기초 예제 아래 예제는 비동기로 BufferBlock 데이터 흐름 블록에 데이터를 입력했다가 출력하는 예제입니다. var bufferBlock = new BufferBlock(); // bufferBlock 에 비동기로 데이터 넣기 for (int i = 0; i < "
 pubDate: 2020-02-16
 tags: ["dotnet"]

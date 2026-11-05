@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] ResourceDictionary 관리"
+title: "Xamarin ResourceDictionary를 관리하는 방법: 리소스 공유"
 description: "ResourceDictionary Xamarin 개발에서 Resource Dictionary는 반드시 사용하게 되는 클래스입니다. 특히 XAML 에서 Style 이나 IValueConverter, ContentTemplate, DataTemplate 등을 사용할 때 Resource Di"
 pubDate: 2020-06-13
 tags: ["maui"]

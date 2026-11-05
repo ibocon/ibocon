@@ -13,7 +13,7 @@
     { "name": "네모닉", "summary": "Windows 메모 편집·인쇄와 USB 프린터 연동", "url": "https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25" },
     { "name": "파인큐브", "summary": "모바일 라벨 편집기와 프린터 연동", "url": "https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a" },
     { "name": "네모닉 커넥트", "summary": "클라우드 프린팅 모노레포와 API Gateway", "url": "https://app.notion.com/p/3dd4752186758105801dea0310df86f5" },
-    { "name": "On-Prem 서버 구축", "summary": "이중 사이트 GitOps 배포와 재해복구", "url": "https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433" }
+    { "name": "On-Prem 서버 구축", "summary": "On-Premise Kubernetes 클러스터 구축과 GitOps 운영", "url": "https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433" }
   ],
   "domains": [
     { "name": "01. 소프트웨어 아키텍처", "url": "https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4" },

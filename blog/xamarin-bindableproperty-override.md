@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] BindableProperty 를 Override 해보자"
+title: "Xamarin BindableProperty 동작을 바꾸는 방법: Override"
 description: "BindableProperty 를 Override 해보자 Xamarin 으로 View 를 개발하다보면 재활용성을 높이기 위해 기존의 View 를 상속받아서 개발하게 됩니다. 특히 특정 스타일의 View 를 반복적으로 사용할 때 아래와 같이 작성하게 됩니다. public class MyF"
 pubDate: 2020-12-24
 tags: ["maui"]

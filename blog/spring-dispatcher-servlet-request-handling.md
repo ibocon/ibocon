@@ -1,5 +1,5 @@
 ---
-title: "[Spring] HTTP Request 를 처리하는 과정 - DispatcherServlet 원리"
+title: "Spring 요청 처리 흐름을 이해하는 방법: DispatcherServlet"
 description: "먼저 이 글은 Spring Web MVC 에 해당되며, Spring WebFlux 는 다른 글을 참고하시길 바랍니다. HTTP Request 를 처리하는 과정 - DispatcherServlet 원리 Spring Web MVC 에서 HTTP Request 를 처리하는 핵심 클래스가 Di"
 pubDate: 2020-11-15
 tags: ["backend"]

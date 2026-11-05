@@ -1,5 +1,5 @@
 ---
-title: "[.NET] .NET 통합과 MAUI 란?"
+title: ".NET 통합 플랫폼을 이해하는 방법: MAUI"
 description: ".NET MAUI 란? .NET MAUI 에 앞서, 마이크로소프트가 .NET 5 에 왜 이렇게 공을 들이는지를 이해하셔야 합니다. .NET 5 는 현재 플랫폼 별로 파편화되어 있는 프레임워크들을 통합하기 위한 노력의 산물입니다. 현재 프레임워크는 크게 플랫폼 별로 아래와 같이 나뉘어 있"
 pubDate: 2020-08-05
 tags: ["maui"]

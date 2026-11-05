@@ -1,5 +1,5 @@
 ---
-title: "[Spring] JPA Mapping - @ManyToMany"
+title: "JPA 다대다 매핑의 한계와 대안: ManyToMany"
 description: "@ManyToMany @ManyToMany 관계는 두 Entity 가 서로를 Collection 으로 가지게 되는 관계입니다. @Entity class Student { @ManyToMany(targetEntity=Course.class) Set selectedCources; } @En"
 pubDate: 2020-05-23
 tags: ["backend"]

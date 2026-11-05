@@ -1,5 +1,5 @@
 ---
-title: "[FE] webpack 에서 Source Map 이 동작하는 원리"
+title: "Source Map으로 디버깅 위치를 찾는 원리: Webpack"
 description: "Webpack 에서 Source Map 이 동작하는 원리 Visual Studio Code 에서 디버깅하려고 break point 를 잡으면 break point 가 활성화가 되지 않거나 엉뚱한 코드에서 break 가 되는 경우을 종종 겪게 됩니다. 개발을 하다보면 이게 꽤 거슬립니다."
 pubDate: 2021-05-30
 tags: ["frontend"]

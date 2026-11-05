@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] TypedDataTemplateSelector"
+title: "Xamarin 템플릿을 타입별로 고르는 방법: DataTemplateSelector"
 description: "TypedDataTempalteSelector WPF 프로그램을 개발하면 ItemsControl.ItemTemplate 에 DataTemplate 을 등록해서 ItemsControl.ItemSource 에 ViewModel 이 추가될 때마다 ViewModel 타입에 맞는 View가 추가"
 pubDate: 2020-08-05
 tags: ["maui"]

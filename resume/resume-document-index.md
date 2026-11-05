@@ -27,7 +27,7 @@
 </tr>
 <tr>
 <td>On-Prem 서버 구축</td>
-<td>[듀얼 사이트 GitOps 배포 및 재해복구 자동화](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+<td>[On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
 </tr>
 </table>
 
@@ -38,7 +38,7 @@
   - [클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)
 - [클라우드 및 온프레미스 인프라](https://app.notion.com/p/3fa475218675819995bfeab3391da08b)
 - [DevOps 엔지니어링](https://app.notion.com/p/3f9475218675819baf65f8976281b85d)
-  - [듀얼 사이트 GitOps 배포 및 재해복구 자동화](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)
+  - [On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)
 - [개발자 경험](https://app.notion.com/p/3f947521867581e69559d6fbaa56760f)
 - [하네스 엔지니어링](https://app.notion.com/p/3fa475218675818fbd9cea22db77bce4)
 - [웹 디자인 시스템](https://app.notion.com/p/3fa47521867581be8577cd764904163d)

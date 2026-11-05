@@ -1,5 +1,5 @@
 ---
-title: "[FE] 브라우저 렌더링 Browser rendering - 0단계 소개"
+title: "브라우저 렌더링의 전체 흐름: 다섯 단계 개요"
 description: "브라우저 렌더링 Browser rendering Rendering (렌더링) 은 여러 데이터를 모아 시각적인 이미지로 만드는 과정입니다. 브라우저는 HTML 과 CSS 같은 데이터를 '렌더링' 해서 픽셀로 구성된 화면을 완성합니다. 이를 브라우저 렌더링 (Browser rendering"
 pubDate: 2021-03-25
 tags: ["frontend"]

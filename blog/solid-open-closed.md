@@ -1,5 +1,5 @@
 ---
-title: "[SOLID] Open/Closed 원칙"
+title: "SOLID 개방 폐쇄 원칙을 적용하는 방법: OCP"
 description: "목차 Single Responsibility 원칙 Open/Closed 원칙 Liskov Substitution 원칙 Interface Segregation 원칙 Dependency Inversion 원칙 Open/Closed (개방-폐쇄) 원칙 기능의 확장 가능성은 열려 있는 반면, "
 pubDate: 2019-08-27
 tags: ["architecture"]

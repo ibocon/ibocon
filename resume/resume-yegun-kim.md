@@ -15,9 +15,9 @@
 
 ## 대표 역량
 
-1. **제품 엔지니어링** — Windows, 모바일, 웹 서비스의 기능 개발과 유지보수
-2. **플랫폼·인프라** — .NET 서비스와 On-Premise Kubernetes·GitOps 운영
-3. **개발 생산성** — 디자인 시스템, 공용 라이브러리, AI 코딩 에이전트 하네스
+1. **제품 엔지니어링** — 하드웨어 연동 Windows·모바일·웹 제품을 설계부터 배포·유지보수까지 책임집니다.
+2. **플랫폼·인프라** — On-Premise Kubernetes와 GitOps로 선언적 배포·관측 체계를 구축·운영합니다.
+3. **개발 생산성** — 디자인 시스템, 정적 분석, AI 코딩 에이전트 하네스로 팀의 개발 표준과 전달 속도를 높입니다.
 
 ---
 📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
@@ -65,8 +65,8 @@
 </tr>
 <tr>
 <td>On-Prem 서버 구축</td>
-<td>이중 사이트 GitOps 배포와 재해복구</td>
-<td>[04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+<td>On-Premise Kubernetes 클러스터 구축과 GitOps 운영</td>
+<td>[04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
 </tr>
 </table>
 
@@ -103,8 +103,8 @@
 </tr>
 <tr>
 <td>**04. DevOps 엔지니어링**</td>
-<td>• 04.01. 듀얼 사이트 GitOps 배포 및 재해복구 자동화</td>
-<td>`Flux v2` 멀티 클러스터 선언적 배포, Active/Fenced Standby 사이트 전환 계약 및 `Pester` 정적 가드 118개 운영 (`Argon`)</td>
+<td>• 04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영</td>
+<td>`Flux v2`와 `Kustomize` 기반 선언적 배포, 플랫폼 구성 관리 및 `Pester` 정적 가드 운영 (`Argon`)</td>
 </tr>
 <tr>
 <td>**05. 개발자 경험 (DevEx)**</td>

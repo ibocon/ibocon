@@ -1,5 +1,5 @@
 ---
-title: "[FE] Web API - Client-side storage : 로컬 스토리지 localStorage 와 세션 스토리지 sessionStorage"
+title: "브라우저 저장소를 구분하는 방법: localStorage와 sessionStorage"
 description: "Web API - Client-side storage 브라우저 환경에서 데이터를 저장하는 방법을 시리즈 글로 소개하고 있습니다. 로컬 스토리지 localStorage 와 세션 스토리지 sessionStorage 로컬 스토리지 localStorage 와 세션 스토리지 sessionStor"
 pubDate: 2021-05-09
 tags: ["frontend"]

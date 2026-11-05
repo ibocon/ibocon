@@ -1,5 +1,5 @@
 ---
-title: "[Spring] 컨테이너 Container"
+title: "Spring 컨테이너를 이해하는 방법: 의존성 관리"
 description: "컨테이너 Container Container 는 Spring 의 핵심입니다. Container 는 개발자를 대신하여, Bean 을 생성 / 관리 / 제거합니다. Container 가 Bean 을 관리해주기 때문에, 개발자는 모듈 간에 의존 및 결합으로 인해 발생하는 문제로부터 자유로워 "
 pubDate: 2020-02-23
 tags: ["backend"]

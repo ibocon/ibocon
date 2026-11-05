@@ -1,5 +1,5 @@
 ---
-title: "[.NET] Clean Architecture와 Rich Domain Model 실전 설계 원칙"
+title: "Rich Domain Model로 불변식을 지키는 설계 원칙: .NET"
 description: "빈혈 도메인 모델을 탈피하고 불변식 캡슐화와 Result 패턴으로 테스트 가능한 .NET 백엔드를 구축하는 방법"
 pubDate: 2026-10-15
 tags: ["dotnet", "csharp", "clean-architecture", "ddd"]

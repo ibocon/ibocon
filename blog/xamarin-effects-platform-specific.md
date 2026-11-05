@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] Effects 로 Platform-Specific 하게 구현하기"
+title: "Xamarin Effects로 플랫폼 기능을 적용하는 방법: 효과"
 description: "Effects 로 Platform-Specific 하게 구현하기 Xamarin 에서 UI 를 플랫폼 별로 커스터마징할 때는 Effect 와 Custom Renderer 을 사용합니다. 이 글에서는 Effect 를 사용하는 방법을 설명하겠습니다. Effect Effect 는 Custom "
 pubDate: 2020-11-16
 tags: ["maui"]

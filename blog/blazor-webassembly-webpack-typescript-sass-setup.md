@@ -1,5 +1,5 @@
 ---
-title: "[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축"
+title: "Blazor 개발 환경을 구성하는 방법: Webpack과 TypeScript"
 description: "Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축 Blazor 를 다른 환경과 통합하여 사용하는 예제를 찾을 수 없어, 직접 연구하여 공유합니다. Blazor 와 관련된 자료는 공식 문서 외에 Awesome Blazor 에서 다양하게"
 pubDate: 2021-12-16
 tags: ["frontend"]

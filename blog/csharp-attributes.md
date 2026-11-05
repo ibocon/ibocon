@@ -1,5 +1,5 @@
 ---
-title: "[C#] Attributes 특성"
+title: "메타데이터를 코드에 연결하는 방법: C# Attributes"
 description: "Attributes 특성 Attributes 특성의 대표적인 특징은 소스 코드에 메타데이터를 추가하여, 런타임 환경에서 소스 코드의 메타데이터에 접근할 수 있다는 점입니다. 특성은 개발자가 자신의 필요에 따라 유연하게 사용하기 보다는 필요한 상황에 .NET 이 제공하는 클래스를 활용하는"
 pubDate: 2019-11-29
 tags: ["dotnet"]

@@ -1,5 +1,5 @@
 ---
-title: "[FE] JavaScript 완벽 가이드, ECMAScript 를 읽는 방법 (2/2)"
+title: "ECMAScript를 읽는 방법 2: 명세와 동작 원리"
 description: "JavaScript 완벽 가이드, ECMAScript 을 읽는 방법 저번 글 에서는 ECMAScript 를 읽기 위해 알아야 할 개념들을 소개했고, 이번 글에서는 ECMAScript 문서에서 자바스크립트 동작 원리를 파악하는 과정을 소개하도록 하겠습니다. const o1 = { foo:"
 pubDate: 2021-04-03
 tags: ["frontend"]

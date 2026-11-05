@@ -1,5 +1,5 @@
 ---
-title: "[Spring] 빈 Bean"
+title: "Spring Bean의 역할을 이해하는 방법: 객체 관리"
 description: "빈 Bean Bean 은 Spring framework 에서 앱을 구성하는 기본적인 객체입니다. 개발자는 Bean 을 정의하고 활용하고, Container 는 개발자가 정의한 Bean 을 객체로 만들어 관리하고 개발자가 필요로 할 때 제공합니다. 따라서 개발자는 Bean 을 어떻게 정의"
 pubDate: 2020-02-23
 tags: ["backend"]

@@ -1,5 +1,5 @@
 ---
-title: "[FE] HTTP/2 - HyperText Transfer Protocol (Version 2) 을 자세히 알아보자"
+title: "HTTP 2의 성능을 이해하는 방법: 전송 구조와 변화"
 description: "HTTP/2 - HyperText Transfer Protocol (Version 2) 을 자세히 알아보자 HTTP/2 는 HTTP/1.1 보다 성능을 개선한 프로토콜입니다. HTTP/2 는 성능 개선에 집중하여 개발되었으며, 성능을 개선시킬 수 있는 기능들이 추가되었습니다. 기능이 추"
 pubDate: 2021-04-13
 tags: ["frontend"]

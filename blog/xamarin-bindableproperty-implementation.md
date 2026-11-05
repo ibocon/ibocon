@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] BindableProperty 구현하고 관리하는 방법"
+title: "Xamarin BindableProperty를 구현하는 방법: 상태 관리"
 description: "BindableProperty 구현하고 관리하는 방법 마이크로소프트 공식 문서 에서 BindableProperty 를 구현하는 방법을 소개하고 있습니다. 다만 아쉽게도 공식문서엔 BindalbeProperty 코드를 재사용하거나 관리하는 측면에 대한 디테일한 설명이 없어서 글을 작성하게"
 pubDate: 2020-12-17
 tags: ["maui"]

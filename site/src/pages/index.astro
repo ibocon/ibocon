@@ -12,8 +12,9 @@ import '../styles/global.css';
 const locale = 'ko';
 const copy = siteCopy[locale];
 
+const includeDrafts = import.meta.env.DEV;
 const posts = (await getCollection('blog'))
-  .filter((post) => !post.data.draft)
+  .filter((post) => includeDrafts || !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 ---

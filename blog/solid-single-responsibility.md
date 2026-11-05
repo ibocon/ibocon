@@ -1,5 +1,5 @@
 ---
-title: "[SOLID] Single Responsibility 원칙"
+title: "SOLID 단일 책임 원칙을 적용하는 방법: SRP"
 description: "목차 Single Responsibility 원칙 Open/Closed 원칙 Liskov Substitution 원칙 Interface Segregation 원칙 Dependency Inversion 원칙 Single Responsibility (단일 책임) 원칙 모든 클래스는 하나의 "
 pubDate: 2019-08-16
 tags: ["architecture"]

@@ -1,5 +1,5 @@
 ---
-title: "[C#] 리플렉션 Reflection (3) : PropertyDescriptor.SetValue에 TypeConverter 로 데이터 형변환하기"
+title: "리플렉션 3: TypeConverter로 값을 변환하는 방법"
 description: "PropertyDescriptor.SetValue에 TypeConverter 활용하기 리플렉션 Reflection (2) : 타입에 따라 동적으로 객체 생성하기 글에서 TagFactory를 통해 Tag 클래스에 속성 값을 입력할 때, XML 파일의 string을 읽어 string으로 객"
 pubDate: 2020-06-21
 tags: ["dotnet"]

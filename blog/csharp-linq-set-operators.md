@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - 집합 연산자 Distinct, Union, Intersect, Except"
+title: "LINQ로 집합을 비교하는 방법: Distinct와 Union"
 description: "집합 연산자 Set Operators 집합 연산자는 두 집합 간에 관계를 활용하는 연산자합니다. LINQ 메서드 중 Distinct, Union, Intersect, Except 가 집합 연산자에 해당합니다. 집합 내에 중복 요소 제거하기 Distinct 메서드로 factorsOf300"
 pubDate: 2020-02-02
 tags: ["dotnet"]

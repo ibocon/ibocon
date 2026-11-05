@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] iOS SafeArea 자연스럽게 반영해주는 CustomEffect"
+title: "Xamarin iOS SafeArea를 반영하는 방법: CustomEffect"
 description: "iOS SafeArea 자연스럽게 반영해주는 CustomEffect Android 기기와 달리 iOS 기기는 화면 상단에 위치하는 Status bar 가 Application 화면 크기에 포함되어 있어서 UI 를 만들 때 최상단에 위치한 View 의 Padding 에 20 을 추가해야 "
 pubDate: 2021-03-26
 tags: ["maui"]

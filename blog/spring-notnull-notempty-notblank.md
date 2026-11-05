@@ -1,5 +1,5 @@
 ---
-title: "[Spring] @NotNull, @NotEmpty, @NotBlank 차이"
+title: "유효성 제약을 선택하는 방법: NotNull과 NotBlank"
 description: "결론 String text 값에 따라 @Notnull / @NotEmpty / @NotBlank 결과가 어떻게 달라지는지 표로 정리했습니다. String text = null; AnnotationBoolean@NotNullfalse@NotEmptyfalse@NotBlankfalse St"
 pubDate: 2020-05-19
 tags: ["backend"]

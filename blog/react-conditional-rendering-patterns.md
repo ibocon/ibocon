@@ -1,5 +1,5 @@
 ---
-title: "[React] 조건부 렌더링 패턴 Conditional Rendering Pattern"
+title: "React에서 조건부 화면을 설계하는 방법: 렌더링 패턴"
 description: "조건부 렌더링 패턴 Conditional Rendering Pattern 리액트의 조건부 렌더링 문서에서 조건에 따라 랜더링할 컴포넌트를 선택하는 방법을 소개하고 있지만 추가적으로 알아두면 유용한 best practices 패턴이 몇 가지 더 있어서, 하나씩 소개드리도록 하겠습니다. 소"
 pubDate: 2021-01-10
 tags: ["frontend"]

@@ -1,5 +1,5 @@
 ---
-title: "[FE] 브라우저 렌더링 Browser rendering - 4단계 페인팅 'paint'"
+title: "브라우저 렌더링 4: 화면을 칠하는 과정"
 description: "브라우저 렌더링 Browser rendering 브라우저는 'content (콘텐츠)' 를 'rendering (렌더링)' 해서 'pixel image(픽셀 이미지)' 즉 화면을 만듭니다. 브라우저 렌더링 Browser rendering - 0단계 소개 브라우저 렌더링 Browser r"
 pubDate: 2021-03-30
 tags: ["frontend"]

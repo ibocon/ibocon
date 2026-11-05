@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] ResourceDictionary 깔끔하게 정리"
+title: "Xamarin ResourceDictionary를 정리하는 방법: 구조화"
 description: "ResourceDictionary 깔끔하게 정리 아래처럼 View 마다 ResourceDictionary가 있을 경우, 중복되는 XAML 코드도 발생하게 되고 같은 객체를 중복하여 생성하게 되므로, 비효율적입니다. ContentViewA.xaml #FFFFFF 따라서 먼저 아래처럼 Re"
 pubDate: 2020-08-05
 tags: ["maui"]

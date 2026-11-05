@@ -1,5 +1,5 @@
 ---
-title: "[Spring] JPA Mapping - @OneToOne"
+title: "JPA 일대일 매핑을 설계하는 방법: OneToOne"
 description: "@OneToOne @OneToOne 관계를 정의하는 방법은 여러가지가 있습니다. Foreign Key 를 등록하는 방법 // Customer class @OneToOne // Foreign Key 를 참조할 곳을 지정합니다. @JoinColumn(name=\"record_id\") publ"
 pubDate: 2020-05-23
 tags: ["backend"]

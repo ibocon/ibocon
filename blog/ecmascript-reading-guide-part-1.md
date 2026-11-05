@@ -1,5 +1,5 @@
 ---
-title: "[FE] JavaScript 완벽 가이드, ECMAScript 를 읽는 방법 (1/2)"
+title: "ECMAScript를 읽는 방법 1: 언어의 핵심 개념"
 description: "JavaScript 완벽 가이드, ECMAScript 을 읽는 방법 ECMAScript 는 완벽한 자바스크립트 가이드입니다. ECMAScript 가 자바스크립트 언어를 정의한 문서이며 표준이기 때문입니다. 모든 자바스크립트 엔진은 표준인 ECMAScript 에서 요구하는 사항은 반드시 "
 pubDate: 2021-04-02
 tags: ["frontend"]

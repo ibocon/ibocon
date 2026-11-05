@@ -1,5 +1,5 @@
 ---
-title: "[FE] Web API - Client-side storage : 쿠키 Cookie"
+title: "브라우저 쿠키를 저장소로 사용하는 방법: Web API"
 description: "Web API - Client-side storage 브라우저 환경에서 데이터를 저장하는 방법을 시리즈 글로 소개하고 있습니다. 쿠키 Cookie 과거부터 지금까지 사랑받고 있는 방법은 쿠키 Cookie 입니다. 원래 HTTP 프로토콜은 Stateless 한 프로토콜로 과거 통신 상태를"
 pubDate: 2021-05-09
 tags: ["frontend"]

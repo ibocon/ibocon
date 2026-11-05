@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] Custom Renderer 로 Platform-Specific 하게 구현하기"
+title: "Xamarin 플랫폼별 화면을 구현하는 방법: Custom Renderer"
 description: "Custom Renderer 사용자 지정 렌더러 Renderer 는 Xamarin Forms 로 정의된 뷰를 플랫폼이 제공해주는 컨드롤과 연결하는 역할을 합니다. 예를 들어 Xamarin Forms 의 Entry 는 프레임워크가 기본으로 제공해주는 플랫폼 별 EntryRenderer 를"
 pubDate: 2020-09-29
 tags: ["maui"]

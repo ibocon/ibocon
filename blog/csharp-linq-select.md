@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - Select"
+title: "LINQ Select로 데이터를 변환하는 방법: C#"
 description: "Select Select 절은 입력 시퀀스를 원하는 출력 시퀀스로 변환합니다. Select 절 입력 시퀸스에 1을 더하여 출력 시퀀스를 만듭니다. int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 }; var numsPlusOne = from n in "
 pubDate: 2019-12-03
 tags: ["dotnet"]

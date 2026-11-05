@@ -1,5 +1,5 @@
 ---
-title: "[Kubernetes] Alertmanager용 Postfix가 오픈 릴레이가 된 날"
+title: "Postfix 오픈 릴레이를 막는 4가지 경계: Kubernetes 사례"
 description: "Kubernetes에서 SMTP relay의 외부 노출과 넓은 신뢰 경계가 결합될 때 생기는 오픈 릴레이 위험, 긴급 차단, 재발 방지 원칙을 사례로 정리합니다."
 pubDate: 2026-10-27
 tags: ["architecture", "kubernetes", "postfix", "observability", "security"]

@@ -1,5 +1,5 @@
 ---
-title: "[Spring] JPA Mapping"
+title: "JPA 엔터티 관계를 매핑하는 방법: 기본 개념"
 description: "JPA Mapping JPA Mapping 은 관계형 데이터베이스에서 테이블 간의 관계를 Java 언어로 표현하는 방법입니다. 관계형 데이터베이스라는 이름에서도 알 수 있듯이, 관계를 어떻게 표현하느냐에 따라 데이터베이스 전체 구조가 결정될 정도로 중요한 기능입니다. 데이터베이스에서 사"
 pubDate: 2020-05-20
 tags: ["backend"]

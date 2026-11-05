@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - 집계 작업 Sum"
+title: "LINQ Sum으로 합계를 구하는 방법: C#"
 description: "집계 작업 Aggregators 집계 작업은 집합 모든 요소를 계산하여 하나의 값으로 반환하는 작업입니다. 집계 작업에 해당하는 LINQ 메서드로는 Count, Sum, Min, Max, Average, Aggregate 가 있습니다. Sum 집합 내 모든 원소 더하기 int[] num"
 pubDate: 2020-02-02
 tags: ["dotnet"]

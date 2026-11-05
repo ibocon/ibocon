@@ -1,5 +1,5 @@
 ---
-title: "[React] Stateful 컴포넌트보다 Stateless 컴포넌트로 작성하자"
+title: "React 컴포넌트를 단순하게 유지하는 방법: Stateless"
 description: "React에서 컴포넌트(Component) 란? React는 아래와 같이 컴포넌트(Component)를 만들고, 컴포넌트를 조합해서 UI를 구현합니다. class Welcome extends React.Component { render() { return Hello, {this.prop"
 pubDate: 2020-07-12
 tags: ["frontend"]

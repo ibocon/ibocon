@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] 픽셀 및 기기 독립 Unit (Device-Independent Units)"
+title: "Xamarin 화면 크기를 맞추는 방법: Device Independent Units"
 description: "픽셀 및 기기 독립 Unit Xamarin 은 크로스 플랫폼, 더 나아가 모든 플랫폼을 지원하려는 야망을 가진 프레임워크입니다. 따라서 기기마다 다른 Unit 기준을 충족시켜야만 합니다. 개발자에게는 이게 무슨 소린지 감이 잡히질 않습니다. 왜냐하면 개발자는 디지털 단위인 픽셀 에 익숙"
 pubDate: 2020-08-21
 tags: ["maui"]

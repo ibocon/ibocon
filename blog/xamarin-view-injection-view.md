@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] View 안에 View 를 주입할 수 있는 View 를 작성해보자"
+title: "Xamarin View를 주입하는 방법: 화면 구성"
 description: "View 안에 View 를 주입할 수 있는 View 를 작성해보자 View 안에 여러 View 를 주입하고 속성에 따라 교체하는 ContainerView 를 구현하거나, NavigationBar 의 크기와 모양만 잡아두고 Button 을 추가하는 등 활용하는 방법이 많으니 알아두시면 유"
 pubDate: 2020-12-24
 tags: ["maui"]

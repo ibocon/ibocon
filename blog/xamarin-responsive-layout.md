@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] 화면 크기에 따라 변화하는 ResponsiveLayout 을 만들어 보자"
+title: "Xamarin 반응형 레이아웃을 만드는 방법: 화면 크기 대응"
 description: "화면 크기에 따라 변화하는 ResponsiveLayout 을 만들어 보자 먼저 이 글의 목적은 두 가지입니다. 먼저 공식 문서의 엉성한 번역으로 고생하시는 개발자 분들에게 친절한 설명을 제공하는게 목적입니다. 그리고 추가적으로 이 글 이후에 작성할 ItemsView 에 대한 글을 이해하"
 pubDate: 2020-12-23
 tags: ["maui"]

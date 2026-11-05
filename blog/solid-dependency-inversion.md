@@ -1,5 +1,5 @@
 ---
-title: "[SOLID] Dependency Inversion 원칙"
+title: "SOLID 의존성 역전 원칙을 적용하는 방법: DIP"
 description: "목차 Single Responsibility 원칙 Open/Closed 원칙 Liskov Substitution 원칙 Interface Segregation 원칙 Dependency Inversion 원칙 Dependency Inversion (의존관계 역전) 원칙 상위 모듈과 하위 모"
 pubDate: 2019-08-30
 tags: ["architecture"]

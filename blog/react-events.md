@@ -1,5 +1,5 @@
 ---
-title: "[React] 이벤트"
+title: "React 이벤트를 처리하는 방법: 사용자 상호작용"
 description: "이벤트 합성 이벤트 (SyntheticEvent) 브라우저마다 이벤트 이름부터 시작해서 이벤트 종류나 이벤트가 처리되는 방식이 다릅니다. 이를 동일하게 처리하기 위해 React 는 Synthetic 이벤트로 브라우저마다 다른 Native 이벤트를 묶어서 처리합니다. 따라서 React 개"
 pubDate: 2020-07-15
 tags: ["frontend"]

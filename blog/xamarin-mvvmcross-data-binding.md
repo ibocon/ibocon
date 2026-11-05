@@ -1,5 +1,5 @@
 ---
-title: "[Xamarin] MvvmCross 데이터 바인딩"
+title: "MvvmCross 데이터 바인딩을 구성하는 방법: Xamarin"
 description: "MvvmCross 데이터 바인딩 데이터 바인딩은 MVVM 패턴에서 제일 핵심적인 기능입니다. 데이터 바인딩을 통해 View와 ViewModel 이 서로의 참조 변수를 가지지 않는 형태로 느슨한 결합을 유지할 수 있습니다. MVVM 패턴을 의도했지만 데이터 바인딩을 사용하지 않는다면 MV"
 pubDate: 2020-06-17
 tags: ["maui"]

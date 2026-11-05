@@ -1,5 +1,5 @@
 ---
-title: "[C#] Delegates 대리자와 Events 이벤트 중 선택하기"
+title: "Delegates와 Events를 구분하는 기준: C#"
 description: "Delegates 대리자와 Events 이벤트 중 선택하기 C# 의 언어 기능 중 Delegates 대리자와 Events 이벤트는 매우 유사합니다. 심지어 이벤트는 대리자 기능에 기반을 두고 있죠. 대리자와 이벤트 둘 다 런타임에 구현 코드가 바인딩되는 시나리오로 구성되어 있습니다. 또"
 pubDate: 2019-11-29
 tags: ["dotnet"]

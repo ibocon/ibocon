@@ -1,5 +1,5 @@
 ---
-title: "[C#] LINQ 사용방법 - Quantifiers Any, All"
+title: "LINQ Any와 All로 조건을 확인하는 방법: C#"
 description: "수량자(?) Quantifiers 이상하게도 마이크로소프트 공식 번역은 '수량자'지만 수량과는 전혀 상관이 없습니다. Any 메서드는 집합 안에 조건에 맞는 요소가 하나라도 있는지 확인하는 메서드이고, All 메서드는 집합 안에 모든 요소가 조건에 맞는지 확인하는 메서드입니다. 하나라도"
 pubDate: 2020-02-02
 tags: ["dotnet"]

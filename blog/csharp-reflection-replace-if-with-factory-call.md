@@ -1,5 +1,5 @@
 ---
-title: "[C#] 리플렉션 Reflection (4) : 복잡한 if 문 대신 리플렉션으로 생성 함수 호출하기"
+title: "리플렉션 4: 조건문을 팩토리 호출로 바꾸는 방법"
 description: "복잡한 if 문 대신 리플렉션으로 객체 생성하기 프로젝트를 진행하면서 아래 예제 코드와 같이 형타입에 따라 다른 객체를 생성해야 하는 경우가 있었습니다. if( data is DataTypeA a) { var model = new DataModelA(a); list.Add(model);"
 pubDate: 2020-06-24
 tags: ["dotnet"]

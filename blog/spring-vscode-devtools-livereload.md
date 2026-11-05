@@ -1,5 +1,5 @@
 ---
-title: "[Spring] VSCode에서 DevTools & LiveReload 사용하기"
+title: "Spring 개발 반영 속도를 높이는 방법: DevTools와 LiveReload"
 description: "1. VScode Extension 설치 Spring Boot Extension Pack 2. DevTools dependency 추가 Maven org.springframework.boot spring-boot-devtools true Gradle compileOnly \"org.spr"
 pubDate: 2020-04-07
 tags: ["backend"]

@@ -1,5 +1,5 @@
 ---
-title: "[FE] Web API - WebSocket API"
+title: "WebSocket으로 양방향 통신을 만드는 방법: Web API"
 description: "Web API - WebSocket API HTTP/1.1 프로토콜은 클라이언트가 TCP 프로토콜로 서버와 연결한 뒤에 요청을 보내고 서버로부터 응답을 받고 나면 연결을 해제하는 프로토콜입니다. 클라이언트가 요청을 보내지 않으면 서버와 연결되지 않기 때문에 서버가 주도적으로 클라이언트와"
 pubDate: 2021-05-30
 tags: ["frontend"]
