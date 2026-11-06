@@ -38,3 +38,34 @@ export const resumeSkillGroups = [
   ['관측성', 'OpenTelemetry, Prometheus, Loki, Tempo, Seq, Sentry, Serilog'],
   ['DevEx · 하네스 엔지니어링', 'Garden.Harness, Roslyn 애널라이저, GitHub Actions'],
 ] as const;
+
+export const resumeCareer = {
+  employer: '망고슬래브 주식회사',
+  team: 'SW개발팀',
+  role: '소프트웨어 엔지니어',
+  period: '2017.07 – 현재',
+  tenure: '9년 차',
+  items: [
+    ['네모닉', 'Windows 클라이언트의 WYSIWYG 편집·인쇄와 USB 프린터 연동, 레거시 .NET 현대화 및 배포 유지보수'],
+    ['파인큐브', 'iOS·Android 라벨 편집기와 프린터 연동 기능 유지보수, Android SDK 대응과 스토어 릴리스 관리'],
+    ['네모닉 커넥트', '.NET 모노레포 기반 프린팅·연동 서비스, 공통 SDK·API Gateway·빌드·배포 구조 정비'],
+    ['On-Prem 서버 구축', 'Kubernetes 클러스터 운영과 Flux GitOps 기반 서비스 배포 자동화 설계·관리'],
+  ],
+} as const;
+
+export const resumeEducation = [
+  ['2020.02', '국가평생교육진흥원 독학학위제 · 컴퓨터과학 · 공학사'],
+  ['2014.01 – 2016.05', "University of Wisconsin–Milwaukee · Computer Science, GPA 3.95 / 4.0, Dean's Honor List 3학기"],
+  ['2013.02', '불곡고등학교 · 졸업'],
+] as const;
+
+export const splitSkillValues = (values: string): string[] => values.split(',').map((value) => value.trim()).filter((value) => value.length > 0);
+
+export const splitDomainName = (name: string): { number: string; title: string } => {
+  const match = /^(\d{2})\.\s*(.+)$/.exec(name);
+  if (match === null) {
+    return { number: '', title: name };
+  }
+
+  return { number: match[1], title: match[2] };
+};
