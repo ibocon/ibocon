@@ -63,11 +63,11 @@
 
 ## 📝 최근 기술 블로그 포스트 (Recent Blog Posts)
 <!-- BLOG-POST-LIST:START -->
-- [[.NET] Clean Architecture와 Rich Domain Model 실전 설계 원칙](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
-- [[.NET] 레퍼런스 프로젝트 리스트](https://blog.botanicsoft.com/dotnet-reference-projects/)
-- [[Blazor] Blazor WebAssembly + Webpack + TypeScript + Sass 개발 환경 구축](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
-- [[Blazor] Sass 를 적용하는 방법](https://blog.botanicsoft.com/blazor-apply-sass/)
-- [[FE] Web API - WebSocket API](https://blog.botanicsoft.com/web-api-websocket/)
+- [Rich Domain Model로 불변식을 지키는 설계 원칙: .NET](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
+- [.NET 레퍼런스 프로젝트를 찾는 방법: 설계와 학습](https://blog.botanicsoft.com/dotnet-reference-projects/)
+- [Blazor 개발 환경을 구성하는 방법: Webpack과 TypeScript](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
+- [Sass를 Blazor에 적용하는 방법: 스타일 빌드](https://blog.botanicsoft.com/blazor-apply-sass/)
+- [Source Map으로 디버깅 위치를 찾는 원리: Webpack](https://blog.botanicsoft.com/webpack-source-map-internals/)
 <!-- BLOG-POST-LIST:END -->
 
 ---
