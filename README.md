@@ -67,7 +67,7 @@
 - [.NET 레퍼런스 프로젝트를 찾는 방법: 설계와 학습](https://blog.botanicsoft.com/dotnet-reference-projects/)
 - [Blazor 개발 환경을 구성하는 방법: Webpack과 TypeScript](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
 - [Sass를 Blazor에 적용하는 방법: 스타일 빌드](https://blog.botanicsoft.com/blazor-apply-sass/)
-- [Source Map으로 디버깅 위치를 찾는 원리: Webpack](https://blog.botanicsoft.com/webpack-source-map-internals/)
+- [WebSocket으로 양방향 통신을 만드는 방법: Web API](https://blog.botanicsoft.com/web-api-websocket/)
 <!-- BLOG-POST-LIST:END -->
 
 ---
