@@ -15,9 +15,13 @@
 
 ## 대표 역량
 
-1. **제품 엔지니어링** — 하드웨어 연동 Windows·모바일·웹 제품을 설계부터 배포·유지보수까지 책임집니다.
-2. **플랫폼·인프라** — On-Premise Kubernetes와 GitOps로 선언적 배포·관측 체계를 구축·운영합니다.
-3. **개발 생산성** — 디자인 시스템, 정적 분석, AI 코딩 에이전트 하네스로 팀의 개발 표준과 전달 속도를 높입니다.
+1. **데스크톱 · Windows · macOS** — `.NET Framework 4.8` 앱을 `.NET 9`으로 현대화하고, 네모닉 커넥트를 한 코드베이스(`MAUI Blazor Hybrid`)로 Windows와 Mac App Store에 함께 배포합니다.
+2. **모바일 · Android · iOS** — `.NET MAUI Blazor Hybrid` 앱과 `SkiaSharp` 렌더링, Android SDK 대응과 스토어 릴리스를 맡습니다.
+3. **USB · BLE 하드웨어** — `WinUSB`, `libusb`, `WebUSB`, BLE를 하나의 프로토콜 계층으로 추상화하고, Mac 샌드박스의 USB·Bluetooth 권한까지 다룹니다.
+4. **.NET 서비스 · Kubernetes** — `ASP.NET Core` API Gateway부터 On-Premise Kubernetes와 `Flux` GitOps 배포까지 이어갑니다.
+5. **디자인 시스템 · 라이브러리** — `Penpot` 디자인 토큰을 코드로 동기화하고, `Material 3` 기반 Blazor 컴포넌트(`Garden.Razor`)와 내부 `NuGet` 피드로 공통 라이브러리를 만들어 팀 제품에 적용합니다.
+6. **AI 활용 개발** — `Claude`, `Codex`, `OpenCode`, `Gemini CLI`가 공통 하네스와 정적 가드 아래에서 일하게 만들어, AI가 쓴 코드도 팀 표준을 지키게 합니다.
+
 
 ---
 📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)

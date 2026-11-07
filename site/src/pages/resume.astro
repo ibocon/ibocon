@@ -43,11 +43,8 @@ const copy = siteCopy[locale];
         <div class="resume-main">
           <section id="competencies" class="resume-section">
             <h2>대표 역량</h2>
-            <ul class="resume-cards">
-              {resumeCompetencies.map((competency) => {
-                const [title, detail] = competency.split(' — ');
-                return <li class="resume-card"><strong>{title}</strong><span>{detail}</span></li>;
-              })}
+            <ul class="resume-cards resume-cards-2">
+              {resumeCompetencies.map(([title, detail]) => <li class="resume-card"><strong>{title}</strong><span>{detail}</span></li>)}
             </ul>
           </section>
           <section id="career" class="resume-section">

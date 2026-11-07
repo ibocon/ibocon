@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { resumeEducation, resumeSkillGroups, splitDomainName, splitSkillValues } from '../src/data/resume';
+import { resumeCompetencies, resumeEducation, resumeSkillGroups, splitDomainName, splitSkillValues } from '../src/data/resume';
 
 const readPage = (...segments: string[]): string => readFileSync(resolve(process.cwd(), 'dist', ...segments, 'index.html'), 'utf8');
 
@@ -62,6 +62,21 @@ describe('Resume two-column layout', () => {
     expect(hasHero).toBe(true);
     expect(page).toContain('resume-layout-single');
     expect(page).not.toContain('class="resume-side"');
+  });
+
+  it('Given_BuiltKoreanResume_When_InspectingCompetencies_Then_RendersEveryAreaCardWithTitleAndDetail', () => {
+    // Given
+    const page = readPage('resume');
+
+    // When
+    const section = page.slice(page.indexOf('id="competencies"'), page.indexOf('id="career"'));
+
+    // Then
+    expect(resumeCompetencies).toHaveLength(6);
+    for (const [title, detail] of resumeCompetencies) {
+      expect(section).toContain(`<strong>${title}</strong>`);
+      expect(section).toContain(detail);
+    }
   });
 
   it('Given_DomainNames_When_Split_Then_SeparatesNumberAndTitle', () => {

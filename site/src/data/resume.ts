@@ -9,10 +9,13 @@ export const resumeProfile = {
 };
 
 export const resumeCompetencies = [
-  '제품 엔지니어링 — Windows·모바일·웹 서비스를 제품 단위로 설계·개발·운영합니다.',
-  '플랫폼·인프라 — On-Premise Kubernetes와 GitOps 기반의 배포·운영 체계를 구축합니다.',
-  '개발 생산성 — 디자인 시스템과 AI 코딩 에이전트 하네스로 팀의 개발 흐름을 개선합니다.',
-];
+  ['데스크톱 · Windows · macOS', '.NET Framework 4.8 앱을 .NET 9으로 현대화하고, 네모닉 커넥트를 한 코드베이스(MAUI Blazor Hybrid)로 Windows와 Mac App Store에 함께 배포합니다.'],
+  ['모바일 · Android · iOS', '.NET MAUI Blazor Hybrid 앱과 SkiaSharp 렌더링, Android SDK 대응과 스토어 릴리스를 맡습니다.'],
+  ['USB · BLE 하드웨어', 'WinUSB, libusb, WebUSB, BLE를 하나의 프로토콜 계층으로 추상화하고, Mac 샌드박스의 USB·Bluetooth 권한까지 다룹니다.'],
+  ['.NET 서비스 · Kubernetes', 'ASP.NET Core API Gateway부터 On-Premise Kubernetes와 Flux GitOps 배포까지 이어갑니다.'],
+  ['디자인 시스템 · 라이브러리', 'Penpot 디자인 토큰을 코드로 동기화하고, Material 3 기반 Blazor 컴포넌트(Garden.Razor)와 내부 NuGet 피드로 공통 라이브러리를 만들어 팀 제품에 적용합니다.'],
+  ['AI 활용 개발', 'Claude, Codex, OpenCode, Gemini CLI가 공통 하네스와 정적 가드 아래에서 일하게 만들어, AI가 쓴 코드도 팀 표준을 지키게 합니다.'],
+] as const;
 
 export const resumeDomains = [
   ['소프트웨어 아키텍처', '계층 분리, 도메인 모델, 이벤트 기반 분산 설계와 다층 테스트 아키텍처'],
