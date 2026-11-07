@@ -66,7 +66,7 @@ a { color: var(--accent-color); }
 .static-page { max-width: var(--prose-measure); }
 :root { --resume-side-bg: #0f172a; --resume-side-text: #e2e8f0; --resume-side-muted: #94a3b8; --resume-side-chip: #1e293b; --resume-side-accent: #93c5fd; }
 :root[data-theme='dark'] { --resume-side-bg: #111827; --resume-side-chip: #1f2937; }
-.resume-page { line-height: 1.7; }
+.resume-page { line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; text-wrap: pretty; }
 .resume-hero { display: flex; align-items: center; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
 .resume-avatar { flex: none; inline-size: 96px; block-size: 96px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background: var(--bg-secondary); }
 .resume-hero-body { flex: 1; min-width: 0; }
