@@ -10,7 +10,7 @@ export const resumeProfile = {
 
 export const resumeCompetencies = [
   ['데스크톱 · Windows · macOS', '.NET Framework 4.8 앱을 .NET 9으로 현대화하고, 네모닉 커넥트를 한 코드베이스(MAUI Blazor Hybrid)로 Microsoft Store와 Mac App Store에 배포합니다.'],
-  ['모바일 · Android · iOS', '.NET MAUI Blazor Hybrid 앱과 SkiaSharp 렌더링, Android SDK 대응과 스토어 릴리스를 맡습니다.'],
+  ['모바일 · Android · iOS', '상용 라벨 프린터 FINECUBE의 Android·iOS 앱을 유지보수하고 스토어에 릴리스해 왔습니다. SkiaSharp 터치 캔버스 편집기를 코어 라이브러리로 분리해 개발하고, Android targetSdk를 34로 올렸습니다. 개인 프로젝트로 .NET MAUI Blazor Hybrid 가계부 앱(Peony Mobile)도 직접 개발합니다.'],
   ['USB · BLE 하드웨어', 'WinUSB, libusb, WebUSB, BLE를 하나의 프로토콜 계층으로 추상화하고, Mac 샌드박스의 USB·Bluetooth 권한까지 다룹니다.'],
   ['.NET 서비스 · Kubernetes', 'ASP.NET Core API Gateway부터 On-Premise Kubernetes와 Flux GitOps 배포까지 이어갑니다.'],
   ['디자인 시스템 · 라이브러리', 'Penpot 디자인 토큰을 코드로 동기화하고, Material 3 기반 Blazor 컴포넌트(Garden.Razor)와 내부 NuGet 피드로 공통 라이브러리를 만들어 팀 제품에 적용합니다.'],
