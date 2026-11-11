@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/lib/Garden.Harness/src/agents/scripts/Invoke-HookCommand.ps1\" -Target lib/Garden.Harness/src/dotnet/guards/Test-PlaywrightArtifactPath.ps1",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/lib/Garden.Harness/src/agents/scripts/Invoke-HookCommand.ps1\" -Target lib/Garden.Harness/src/playwright/guards/Test-PlaywrightArtifactPath.ps1",
             "timeout": 5
           }
         ]
