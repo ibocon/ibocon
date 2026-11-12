@@ -6,6 +6,7 @@ import AdSenseSlot from '../components/AdSenseSlot.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { koSiteCopy } from '../lib/site-copy';
+import { getPostPresentation } from '../lib/post-presentation';
 import '../styles/global.css';
 
 export async function getStaticPaths() {
@@ -19,6 +20,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
+const presentation = getPostPresentation(post.data, post.body ?? '');
 ---
 
 <!doctype html>
@@ -44,10 +46,13 @@ const { Content, headings } = await render(post);
           <time datetime={post.data.pubDate.toISOString()}>
             {post.data.pubDate.toISOString().slice(0, 10)}
           </time>
-          <p class="post-provenance">
-            <span>최초 게시: {post.data.pubDate.toISOString().slice(0, 10)}</span>
-            {post.data.updatedDate && <span>최종 갱신: {post.data.updatedDate.toISOString().slice(0, 10)}</span>}
-          </p>
+          <span class="reading-time">약 {presentation.readingMinutes}분 읽기</span>
+          {post.data.updatedDate && (
+            <p class="post-provenance">
+              <span>최종 갱신: {post.data.updatedDate.toISOString().slice(0, 10)}</span>
+            </p>
+          )}
+          <img class="post-cover" src={presentation.coverImage} alt={`${post.data.title} 대표 이미지`} decoding="async" />
         </header>
         <Content />
         <AdSenseSlot slotId="blog-post-bottom" />

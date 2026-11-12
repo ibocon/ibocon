@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Kubernetes Postfix relay security boundary</title>
+  <desc id="description">A protected mail relay inside a Kubernetes boundary blocks unsafe external traffic.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#102a43" />
+      <stop offset="1" stop-color="#0b7285" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)" />
+  <rect x="130" y="135" width="940" height="360" rx="32" fill="none" stroke="#74c0fc" stroke-width="16" />
+  <path d="M380 245h260l80 72 80-72h20v162H380V245Z" fill="#d0ebff" />
+  <path d="m380 245 210 170a20 20 0 0 0 25 0l205-170" fill="none" stroke="#1971c2" stroke-width="18" stroke-linejoin="round" />
+  <path d="M895 235l88 35v75c0 60-38 105-88 125-50-20-88-65-88-125v-75l88-35Z" fill="#51cf66" />
+  <path d="m858 345 26 26 50-58" fill="none" stroke="#102a43" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M80 510h1040" stroke="#74c0fc" stroke-opacity=".4" stroke-width="4" />
+</svg>

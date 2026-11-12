@@ -79,6 +79,19 @@ describe('Astro Blog Static Build Verification', () => {
     expect(home).toContain('includeDrafts || !post.data.draft');
   });
 
+  it('Given_AuthoringVersionOne_When_InspectingTheContentSchema_Then_AcceptsItsMetadata', () => {
+    // Given
+    const schemaPath = resolve(process.cwd(), 'src', 'content.config.ts');
+
+    // When
+    const schema = readFileSync(schemaPath, 'utf-8');
+
+    // Then
+    expect(schema).toContain('authoringVersion: z.literal(1).optional()');
+    expect(schema).toContain("audience: z.enum(['topic-new-developer']).optional()");
+    expect(schema).toContain("articleType: z.enum(['concept', 'tutorial', 'incident', 'design']).optional()");
+  });
+
   it('Given_MermaidCodeBlock_When_InspectingRoute_Then_NormalizesTheDefinitionBeforeRendering', () => {
     // Given
     const routePath = resolve(process.cwd(), 'src', 'pages', '[...slug].astro');

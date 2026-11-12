@@ -42,15 +42,33 @@ describe('Blog trust surface', () => {
     });
   });
 
-  it('Given_MigratedPost_When_Built_Then_KeepsPublicationMetadataWithoutSourceLabel', () => {
+  it('Given_MigratedPost_When_Built_Then_ShowsItsPublicationDateOnceWithoutSourceLabel', () => {
     // Given
     const postHtml = readBuiltPage('web-api-websocket');
 
     // When
     const sourceLabel = '원문 출처';
+    const publicationDateTextOccurrences = postHtml.match(/>\s*2021-05-30\s*</g) ?? [];
 
     // Then
-    expect(postHtml).toContain('최초 게시: 2021-05-30');
+    expect(publicationDateTextOccurrences).toHaveLength(1);
+    expect(postHtml).not.toContain('최초 게시:');
     expect(postHtml).not.toContain(sourceLabel);
+  });
+
+  it('Given_DevelopmentDraft_When_Presented_Then_ExposesItsCoverAndReadingTime', () => {
+    // Given
+    const route = readFileSync(resolve(process.cwd(), 'src', 'pages', '[...slug].astro'), 'utf8');
+    const home = readFileSync(resolve(process.cwd(), 'src', 'pages', 'index.astro'), 'utf8');
+
+    // When
+    const draft = readFileSync(resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md'), 'utf8');
+
+    // Then
+    expect(route).toContain('post-cover');
+    expect(route).toContain('readingMinutes');
+    expect(home).toContain('post-card-cover');
+    expect(home).toContain('readingMinutes');
+    expect(draft).toContain('coverImage: "/post-covers/kubernetes-alertmanager-postfix-open-relay.svg"');
   });
 });

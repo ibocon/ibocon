@@ -28,12 +28,14 @@ jobs:
         working-directory: site
         run: npm ci
 
-      - name: Run build and verification tests
+      - name: Run authoring and build verification
         working-directory: site
         env:
           PUBLIC_ADSENSE_CLIENT_ID: ${{ vars.PUBLIC_ADSENSE_CLIENT_ID }}
           PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
         run: |
+          pwsh -NoProfile -File scripts/Test-BlogTitleConvention.ps1
+          pwsh -NoProfile -File scripts/Test-BlogAuthoringConvention.ps1
           npm run build
           npm test
 

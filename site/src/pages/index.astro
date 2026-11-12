@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { absoluteLocaleUrl } from '../lib/locale';
 import { siteCopy } from '../lib/site-copy';
+import { getPostPresentation } from '../lib/post-presentation';
 import '../styles/global.css';
 
 const locale = 'ko';
@@ -66,13 +67,19 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
         <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
         <div class="post-list">
           {posts.map((post) => (
-            <a class="post-card" data-title={post.data.title} data-description={post.data.description} data-tags={post.data.tags.join(' ')} href={`/${post.id}/`}>
-              <div class="post-meta"><span class="badge">{post.data.tags[0]}</span><time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toISOString().slice(0, 10)}
-              </time></div>
-              <h2>{post.data.title}</h2>
-              <p>{post.data.description}</p>
-            </a>
+            (() => {
+              const presentation = getPostPresentation(post.data, post.body ?? '');
+              return <a class="post-card" data-title={post.data.title} data-description={post.data.description} data-tags={post.data.tags.join(' ')} href={`/${post.id}/`}>
+                <img class="post-card-cover" src={presentation.coverImage} alt="" loading="lazy" decoding="async" />
+                <div class="post-card-body">
+                  <div class="post-meta"><span class="badge">{post.data.tags[0]}</span><time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toISOString().slice(0, 10)}
+                  </time><span>{presentation.readingMinutes}분 읽기</span></div>
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                </div>
+              </a>;
+            })()
           ))}
         </div>
       </section>
