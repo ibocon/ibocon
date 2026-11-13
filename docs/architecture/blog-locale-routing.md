@@ -2,7 +2,7 @@
 
 | 상태 | 최종 수정 | 관련 계획 | 구현 상태 |
 | --- | --- | --- | --- |
-| 승인 | 2026-10-30 | [블로그 이력서 및 탐색](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md) | `site/src/lib/locale.ts`와 각 정적 페이지에 구현됨 |
+| 승인 | 2026-10-30 | [블로그 이력서 및 탐색](../../lib/Garden.Harness/plans/ibocon/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md) | `site/src/lib/locale.ts`와 각 정적 페이지에 구현됨 |
 
 ## 문서 목적
 
@@ -12,7 +12,7 @@
 
 목표 설계는 한국어를 사이트 기본 언어로 두고 루트 경로에서 제공하며, 영어로 번역된 정적 신뢰 페이지에만 `/en/` 접두사를 두는 것이다. 영어 콘텐츠를 기본 경로로 승격하거나 모든 URL에 국가 코드를 부여하지 않는다.
 
-현재 구현은 `site/src/lib/locale.ts`가 `home`·`about`·`resume`·`editorial`의 두 로캘 경로를 단일 소스로 제공하고, 각 쌍 페이지가 canonical 및 상호 `hreflang`을 출력한다. 이 설계의 도입과 검증은 [블로그 이력서 및 탐색 계획](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md)에서 완료되었다.
+현재 구현은 `site/src/lib/locale.ts`가 `home`·`about`·`resume`·`editorial`의 두 로캘 경로를 단일 소스로 제공하고, 각 쌍 페이지가 canonical 및 상호 `hreflang`을 출력한다. 이 설계의 도입과 검증은 [블로그 이력서 및 탐색 계획](../../lib/Garden.Harness/plans/ibocon/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md)에서 완료되었다.
 
 ## 설계 목표
 
@@ -97,7 +97,7 @@ sequenceDiagram
 
 ## 관련 문서
 
-- [블로그 이력서 및 탐색 계획](../../lib/Garden.Harness/plans/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md)
+- [블로그 이력서 및 탐색 계획](../../lib/Garden.Harness/plans/ibocon/ibocon/history/2610/W5/261030/261030_feat_blog-resume-navigation.md)
 - [MDN Accept-Language 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language)
 - [MDN rel alternate와 hreflang](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel)
 - [Microsoft Learn .NET 영어 경로](https://learn.microsoft.com/en-us/dotnet/)
