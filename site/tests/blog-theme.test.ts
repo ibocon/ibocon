@@ -103,4 +103,49 @@ describe('Blog theme and content rendering', () => {
     // Then
     expect(bare).toEqual([]);
   });
+
+  it('Given_GlobalStyles_When_SpacingTokensInspected_Then_DefinesRemScaleAndFlowTokens', () => {
+    // Given
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When
+    const scale = ['--space-1: 0.25rem', '--space-4: 1rem', '--space-7: 3rem', '--space-8: 4rem'];
+
+    // Then
+    for (const token of scale) {
+      expect(styles).toContain(token);
+    }
+    expect(styles).toContain('--flow-paragraph: 1.25em');
+    expect(styles).toContain('--flow-heading: var(--space-7)');
+  });
+
+  it('Given_ProseStyles_When_VerticalRhythmInspected_Then_ElementsOwnTheirMargins', () => {
+    // Given
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When
+    const hasHeadingRule = styles.includes('.prose :where(h2) { margin-block: var(--flow-heading)');
+    const hasListRule = styles.includes('.prose :where(li + li)');
+
+    // Then
+    expect(hasHeadingRule).toBe(true);
+    expect(hasListRule).toBe(true);
+    expect(styles).toContain('.prose :where(pre:not(.mermaid), table, figure) { margin-block: var(--flow-block); }');
+    expect(styles).toContain('.prose > :first-child { margin-block-start: 0; }');
+  });
+
+  it('Given_PostHeaderStyles_When_Inspected_Then_UsesSpacingTokensInsteadOfLiteralPixels', () => {
+    // Given
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When
+    const headerRule = styles.split('\n').find((line) => line.startsWith('.post-header {')) ?? '';
+    const coverRule = styles.split('\n').find((line) => line.startsWith('.post-cover {')) ?? '';
+
+    // Then
+    expect(headerRule).toContain('var(--space-7)');
+    expect(coverRule).toContain('margin-top: var(--space-6)');
+    expect(styles).toContain('.post-layout { display: grid;');
+    expect(styles).toContain('gap: var(--space-8)');
+  });
 });
