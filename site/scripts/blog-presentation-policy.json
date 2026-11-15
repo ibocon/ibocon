@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "stylesheet": {
+    "path": "src/styles/global.css",
+    "requiredTokens": ["--space-1", "--space-2", "--space-3", "--space-4", "--space-5", "--space-6", "--space-7", "--space-8", "--flow-paragraph", "--flow-block", "--flow-heading"],
+    "requiredRules": [".prose :where(h2)", ".prose :where(li + li)", ".prose > :first-child", ".prose :where(pre:not(.mermaid), table, figure)"]
+  },
+  "diagrams": {
+    "maxNodes": 8,
+    "maxLabelLineLength": 24,
+    "maxHorizontalChain": 3,
+    "optIn": { "frontMatterKey": "authoringVersion", "value": 1 }
+  },
+  "covers": {
+    "directory": "public/post-covers",
+    "viewBox": "0 0 1200 630",
+    "minSafeMarginPercent": 10,
+    "cssSelector": ".post-cover",
+    "requiredCssDeclarations": ["object-fit: contain", "aspect-ratio: 1200 / 630"]
+  }
+}
