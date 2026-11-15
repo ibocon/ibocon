@@ -136,7 +136,7 @@ a { color: var(--accent-color); }
 .post-layout { display: grid; grid-template-columns: minmax(0, var(--prose-measure)) minmax(12rem, var(--toc-measure)); justify-content: center; gap: 56px; }
 .prose { min-width: 0; font-size: 1.0625rem; line-height: 1.8; }
 .post-header { margin-bottom: 32px; }
-.post-cover { display: block; inline-size: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-top: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--accent-subtle); }
+.post-cover { display: block; inline-size: 100%; max-block-size: 320px; aspect-ratio: 16 / 9; object-fit: cover; margin-top: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--accent-subtle); }
 .draft-review-banner { border-left: 4px solid var(--accent-color); background: var(--accent-subtle); color: var(--text-primary); font-size: .9rem; font-weight: 700; line-height: 1.5; margin: 0 0 12px; padding: 8px 12px; }
 .post-header .badge { margin-bottom: 12px; }
 .adsense-container { max-width: 100%; min-width: 0; overflow-x: clip; }
@@ -144,6 +144,8 @@ a { color: var(--accent-color); }
 .prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
 .prose pre, .prose code, .prose .astro-code { font-family: var(--font-code); font-variant-ligatures: contextual; font-size: .9em; }
+.prose pre.mermaid { display: flex; justify-content: center; margin: 24px 0; padding: 24px 20px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); font-family: inherit; font-size: 1rem; text-align: center; white-space: normal !important; }
+.prose pre.mermaid svg { display: block; margin: 0 auto; max-inline-size: 100%; block-size: auto; }
 .prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .prose th, .prose td { border: 1px solid var(--border-color); padding: 8px 12px; }

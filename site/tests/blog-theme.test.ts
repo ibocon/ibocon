@@ -20,6 +20,8 @@ describe('Blog theme and content rendering', () => {
     expect(styles).toContain('white-space: pre !important');
     expect(styles).toContain('overflow-wrap: normal');
     expect(styles).toContain('word-break: normal');
+    expect(styles).toContain('.prose pre.mermaid');
+    expect(styles).toContain('background: var(--bg-secondary)');
     expect(styles).toContain('.adsense-container { max-width: 100%; min-width: 0; overflow-x: clip; }');
     expect(styles).toContain('.adsense-container .adsbygoogle { display: block; max-width: 100%; min-width: 0; }');
     expect(header).toContain('id="theme-toggle"');

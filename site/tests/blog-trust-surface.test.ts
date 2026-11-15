@@ -65,10 +65,14 @@ describe('Blog trust surface', () => {
     const draft = readFileSync(resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md'), 'utf8');
 
     // Then
+    const coverSvg = readFileSync(resolve(process.cwd(), 'public', 'post-covers', 'kubernetes-alertmanager-postfix-open-relay.svg'), 'utf8');
     expect(route).toContain('post-cover');
     expect(route).toContain('readingMinutes');
     expect(home).toContain('post-card-cover');
     expect(home).toContain('readingMinutes');
     expect(draft).toContain('coverImage: "/post-covers/kubernetes-alertmanager-postfix-open-relay.svg"');
+    expect(draft).toContain('subgraph 클러스터 내부 신뢰 경계');
+    expect(draft).toContain('subgraph 외부 유입과 경계 변환');
+    expect(coverSvg).toContain('Kubernetes Postfix relay four defense boundaries');
   });
 });

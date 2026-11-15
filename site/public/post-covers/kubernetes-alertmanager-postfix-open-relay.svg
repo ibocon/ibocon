@@ -1,17 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">Kubernetes Postfix relay security boundary</title>
-  <desc id="description">A protected mail relay inside a Kubernetes boundary blocks unsafe external traffic.</desc>
+  <title id="title">Kubernetes Postfix relay four defense boundaries</title>
+  <desc id="description">Architecture blueprint showing four defense layers protecting an internal Kubernetes Postfix SMTP relay: external exposure block, workload NetworkPolicy, Postfix relay restriction, and long-term observability.</desc>
   <defs>
-    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
-      <stop stop-color="#102a43" />
-      <stop offset="1" stop-color="#0b7285" />
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e293b" stroke-width="1" />
+    </pattern>
   </defs>
-  <rect width="1200" height="630" fill="url(#background)" />
-  <rect x="130" y="135" width="940" height="360" rx="32" fill="none" stroke="#74c0fc" stroke-width="16" />
-  <path d="M380 245h260l80 72 80-72h20v162H380V245Z" fill="#d0ebff" />
-  <path d="m380 245 210 170a20 20 0 0 0 25 0l205-170" fill="none" stroke="#1971c2" stroke-width="18" stroke-linejoin="round" />
-  <path d="M895 235l88 35v75c0 60-38 105-88 125-50-20-88-65-88-125v-75l88-35Z" fill="#51cf66" />
-  <path d="m858 345 26 26 50-58" fill="none" stroke="#102a43" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M80 510h1040" stroke="#74c0fc" stroke-opacity=".4" stroke-width="4" />
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Outer Kubernetes Cluster Trust Boundary -->
+  <rect x="280" y="72" width="640" height="486" rx="20" fill="#111827" fill-opacity="0.85" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 6" />
+  <rect x="304" y="56" width="224" height="32" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
+  <circle cx="324" cy="72" r="5" fill="#60a5fa" />
+  <rect x="338" y="68" width="170" height="8" rx="4" fill="#93c5fd" />
+
+  <!-- Boundary 1: External Exposure Gate (Left) -->
+  <rect x="64" y="216" width="152" height="198" rx="14" fill="#1e293b" stroke="#f87171" stroke-width="2" />
+  <circle cx="140" cy="276" r="24" fill="#7f1d1d" stroke="#f87171" stroke-width="2" />
+  <path d="M130 266l20 20M150 266l-20 20" stroke="#fecaca" stroke-width="3.5" stroke-linecap="round" />
+  <rect x="92" y="324" width="96" height="10" rx="5" fill="#fca5a5" />
+  <rect x="104" y="344" width="72" height="8" rx="4" fill="#64748b" />
+  <path d="M216 315h48" stroke="#f87171" stroke-width="3" stroke-dasharray="6 6" />
+  <path d="M264 295v40" stroke="#f87171" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Boundary 2: Workload NetworkPolicy (Left-Center inside Cluster) -->
+  <!-- Allowed Alertmanager Node -->
+  <rect x="328" y="136" width="208" height="128" rx="14" fill="#064e3b" fill-opacity="0.55" stroke="#34d399" stroke-width="2" />
+  <circle cx="364" cy="176" r="14" fill="#059669" />
+  <path d="M358 176l4 4 8-9" fill="none" stroke="#ecfdf5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="390" y="168" width="116" height="10" rx="5" fill="#a7f3d0" />
+  <rect x="390" y="186" width="84" height="8" rx="4" fill="#6ee7b7" fill-opacity="0.7" />
+  <rect x="352" y="220" width="160" height="20" rx="6" fill="#065f46" />
+
+  <!-- Blocked Other Workload Node -->
+  <rect x="328" y="304" width="208" height="112" rx="14" fill="#1e293b" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4" />
+  <circle cx="364" cy="344" r="14" fill="#334155" stroke="#94a3b8" stroke-width="1.5" />
+  <path d="M359 339l10 10M369 339l-10 10" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+  <rect x="390" y="336" width="110" height="10" rx="5" fill="#94a3b8" />
+  <rect x="390" y="354" width="76" height="8" rx="4" fill="#64748b" />
+
+  <!-- Boundary 3: Postfix Relay Policy Core (Right-Center inside Cluster) -->
+  <rect x="616" y="168" width="256" height="224" rx="16" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5" />
+  <rect x="640" y="192" width="208" height="36" rx="8" fill="#0c4a6e" />
+  <circle cx="662" cy="210" r="7" fill="#38bdf8" />
+  <rect x="680" y="206" width="140" height="8" rx="4" fill="#bae6fd" />
+  <!-- Envelope / Relay symbol with clean symmetric geometry -->
+  <rect x="664" y="252" width="160" height="96" rx="10" fill="#1e293b" stroke="#7dd3fc" stroke-width="2" />
+  <path d="M668 258l76 52 76-52" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round" />
+  <circle cx="816" cy="340" r="20" fill="#10b981" stroke="#0f172a" stroke-width="3" />
+  <path d="M808 340l5 5 11-11" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Allowed Flow Arrow: Alertmanager -> Relay -->
+  <path d="M536 200h40v64h32" fill="none" stroke="#34d399" stroke-width="3" stroke-linejoin="round" />
+  <path d="M602 258l8 6-8 6" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Blocked Flow Arrow: Other Workload -x Relay -->
+  <path d="M536 360h56" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="6 4" />
+  <path d="M586 352l12 16M598 352l-12 16" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Boundary 4: Long-term Observability Telemetry Bar (Bottom inside Cluster) -->
+  <rect x="328" y="448" width="544" height="80" rx="12" fill="#0f172a" stroke="#818cf8" stroke-width="1.5" />
+  <circle cx="360" cy="488" r="12" fill="#312e81" stroke="#818cf8" stroke-width="2" />
+  <path d="M396 504l28-12 24 6 28-28 24 18 28-8 24 12 28-20 24 14 32-6" fill="none" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="672" y="472" width="176" height="12" rx="6" fill="#4f46e5" fill-opacity="0.4" />
+  <rect x="672" y="494" width="128" height="8" rx="4" fill="#6366f1" fill-opacity="0.3" />
+
+  <!-- Outbound Verified Delivery (Right) -->
+  <path d="M872 280h88" fill="none" stroke="#38bdf8" stroke-width="3" />
+  <path d="M954 274l8 6-8 6" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="976" y="216" width="160" height="128" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+  <rect x="1008" y="248" width="96" height="12" rx="6" fill="#bae6fd" />
+  <rect x="1008" y="272" width="72" height="8" rx="4" fill="#64748b" />
+  <rect x="1008" y="296" width="96" height="20" rx="6" fill="#0284c7" fill-opacity="0.35" />
 </svg>

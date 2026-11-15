@@ -50,9 +50,14 @@ Kubernetes Service는 Pod 집합을 네트워크에서 사용할 수 있게 만�
 
 ```mermaid
 flowchart LR
-    A[Alertmanager<br/>허용된 발신 주체 ✅] -->|내부 SMTP 요청| B[내부 전용 relay]
-    B -->|외부 수신자에게 전달| C[외부 메일 서버]
-    D[그 밖의 workload] -.->|relay 사용 불가| B
+    subgraph 클러스터 내부 신뢰 경계
+        A[Alertmanager<br/>허용된 발신 주체 ✅] -->|내부 SMTP 요청| B[내부 전용 relay]
+        D[그 밖의 workload] -.->|NetworkPolicy 차단| B
+    end
+    subgraph 외부 메일 수신 경계
+        C[외부 메일 서버]
+    end
+    B -->|외부 수신자에게 전달| C
 
     style A fill:#2b8a3e,stroke:#1b7a2e,color:#fff
     style B fill:#1864ab,stroke:#0c5296,color:#fff
@@ -67,11 +72,15 @@ flowchart LR
 그림 2는 하나의 Service 유형이 아니라 여러 조건이 겹칠 때만 성립하는 위험 경로를 보여 준다.
 
 ```mermaid
-flowchart LR
-    A[외부 SMTP 클라이언트] -->|SMTP 연결| B[인터넷 노출 표면<br/>load balancer node port ingress gateway]
-    B --> C[source NAT 또는 경계 프록시]
-    C -->|관찰 주소가 신뢰 대역과 일치| D[relay 허용 판단 ⚠️]
-    D --> E[임의 목적지 중계 위험 ❌]
+flowchart TB
+    subgraph 외부 유입과 경계 변환
+        A[외부 SMTP 클라이언트] -->|외부 연결 도달| B[인터넷 노출 표면<br/>load balancer node port ingress gateway]
+        B -->|경계 통과 시 주소 변환| C[source NAT 또는 경계 프록시]
+    end
+    subgraph 신뢰 오판과 중계 위험
+        C -->|관찰 주소가 신뢰 대역과 일치| D[relay 허용 판단 ⚠️]
+        D -->|외부 도메인 발송 승인| E[임의 목적지 중계 위험 ❌]
+    end
 
     style B fill:#e67700,stroke:#d06600,color:#fff
     style C fill:#e67700,stroke:#d06600,color:#fff
@@ -79,7 +88,7 @@ flowchart LR
     style E fill:#c92a2a,stroke:#a51111,color:#fff
 ```
 
-따라서 점검은 왼쪽에서 오른쪽 순서로 한다. 인터넷 노출 표면이 있는지, 경계에서 원래 접속자 주소가 바뀌는지, relay 허용 규칙이 그 관찰 주소를 신뢰하는지, 그 조합이 임의 목적지로의 중계를 허용하는지를 각각 확인한다.
+따라서 점검은 위에서 아래 순서로 한다. 인터넷 노출 표면이 있는지, 경계에서 원래 접속자 주소가 바뀌는지, relay 허용 규칙이 그 관찰 주소를 신뢰하는지, 그 조합이 임의 목적지로의 중계를 허용하는지를 각각 확인한다.
 
 ### source NAT가 주소 기반 허용을 흐리는 조건
 

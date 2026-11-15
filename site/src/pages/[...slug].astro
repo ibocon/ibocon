@@ -71,7 +71,13 @@ const presentation = getPostPresentation(post.data, post.body ?? '');
           }
         });
         const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
-        mermaid.initialize({ startOnLoad: false, theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default' });
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default',
+          // 본문 글자(17px)와 비슷한 크기를 유지하려고 SVG를 컨테이너 폭에 맞춰 축소하지 않는다.
+          flowchart: { useMaxWidth: false, htmlLabels: true, nodeSpacing: 40, rankSpacing: 56, padding: 16, wrappingWidth: 220 },
+          themeVariables: { fontSize: '17px', fontFamily: 'Pretendard, system-ui, sans-serif' }
+        });
         await mermaid.run({ nodes: mermaidBlocks });
       }
     </script>
