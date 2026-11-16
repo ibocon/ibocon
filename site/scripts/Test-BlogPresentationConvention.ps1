@@ -3,7 +3,7 @@ param(
     [string] $SiteRoot = (Join-Path $PSScriptRoot '..'),
     [string] $ContentRoot = (Join-Path $PSScriptRoot '../../blog'),
     [string] $PolicyPath = (Join-Path $PSScriptRoot 'blog-presentation-policy.json'),
-    [string] $GuardPath = (Join-Path $PSScriptRoot '../../lib/Garden.Harness/src/markdown/guards/Test-TechnicalBlogPresentationGuard.ps1')
+    [string] $GuardPath = (Join-Path $PSScriptRoot 'Test-TechnicalBlogPresentationGuard.ps1')
 )
 
 Set-StrictMode -Version Latest
