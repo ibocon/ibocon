@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    { "key": "layer", "label": "레이어" },
+    { "key": "domain", "label": "도메인 설계" }
+  ],
+  "terms": [
+    {
+      "id": "domain-layer",
+      "term": "Domain 레이어",
+      "category": "layer",
+      "definition": "비즈니스 규칙과 엔티티를 담는 가장 안쪽 레이어다. 데이터베이스나 프레임워크 같은 외부 기술에 의존하지 않는다.",
+      "forbidden": ["도메인 레이어", "도메인 Layer", "Domain Layer", "Domain layer", "Domain 계층", "도메인 계층"]
+    },
+    {
+      "id": "application-layer",
+      "term": "Application 레이어",
+      "category": "layer",
+      "definition": "유스케이스를 순서대로 조율하는 레이어다. 규칙 판정은 Domain 레이어에 맡기고 서비스와 핸들러는 로드, 위임, 저장을 맡는다.",
+      "forbidden": ["어플리케이션 레이어", "애플리케이션 레이어", "어플리케이션 Layer", "애플리케이션 Layer", "Application Layer", "Application layer", "App 레이어", "App Layer", "앱 레이어", "어플리케이션 계층", "애플리케이션 계층", "Application 계층"]
+    },
+    {
+      "id": "infrastructure-layer",
+      "term": "Infrastructure 레이어",
+      "category": "layer",
+      "definition": "데이터베이스, 외부 서비스, 파일 시스템처럼 바깥 기술과 연결하는 구현을 담는 레이어다.",
+      "forbidden": ["인프라 레이어", "인프라스트럭처 레이어", "Infra 레이어", "Infrastructure Layer", "Infrastructure layer", "인프라 계층"]
+    },
+    {
+      "id": "presentation-layer",
+      "term": "Presentation 레이어",
+      "category": "layer",
+      "definition": "사용자나 다른 시스템과 만나는 입력과 출력의 경계를 담는 레이어다. 화면과 API 엔드포인트가 여기에 속한다.",
+      "forbidden": ["프레젠테이션 레이어", "표현 레이어", "Presentation Layer", "Presentation layer", "프레젠테이션 계층"]
+    },
+    {
+      "id": "invariant",
+      "term": "불변식",
+      "category": "domain",
+      "definition": "엔티티가 어떤 상태에서도 지켜야 하는 규칙이다. 삭제된 항목은 즐겨찾기에 고정될 수 없다는 규칙이 한 예다.",
+      "forbidden": ["불변조건", "불변 조건", "불변 규칙"]
+    },
+    {
+      "id": "anemic-domain-model",
+      "term": "빈혈 도메인 모델",
+      "category": "domain",
+      "definition": "엔티티를 공개 setter만 가진 데이터 덩어리로 두고 규칙을 서비스에 두는 설계다. 규칙이 흩어져 불변식 검증을 빠뜨리기 쉽다.",
+      "forbidden": ["빈혈 모델", "Anemic Domain Model", "빈약한 도메인 모델"]
+    },
+    {
+      "id": "rich-domain-model",
+      "term": "Rich Domain Model",
+      "category": "domain",
+      "definition": "불변식을 엔티티 안에서 지키도록 규칙과 상태 변경을 엔티티에 두는 설계다.",
+      "forbidden": ["리치 도메인 모델", "Rich 도메인 모델", "풍부한 도메인 모델"]
+    },
+    {
+      "id": "always-valid-entity",
+      "term": "항상 유효한 엔티티",
+      "category": "domain",
+      "definition": "생성자를 숨기고 팩토리 메서드가 규칙을 검증한 뒤에만 객체를 돌려주는 방식이다. 객체 참조만 있으면 유효성을 믿을 수 있다.",
+      "forbidden": ["Always Valid Entity", "언제나 유효한 엔티티"]
+    },
+    {
+      "id": "result-pattern",
+      "term": "Result 패턴",
+      "category": "domain",
+      "definition": "규칙 위반을 예외로 던지지 않고 성공 또는 실패를 담은 반환값으로 돌려주는 방식이다.",
+      "forbidden": ["결과 패턴", "Result Pattern", "Result pattern"]
+    },
+    {
+      "id": "aggregate",
+      "term": "애그리게이트",
+      "category": "domain",
+      "definition": "함께 저장되고 하나의 규칙으로 묶이는 엔티티 묶음이다. 루트 엔티티를 통해서만 접근한다.",
+      "forbidden": ["애그리거트", "어그리게이트", "어그리거트"]
+    },
+    {
+      "id": "value-object",
+      "term": "값 객체",
+      "category": "domain",
+      "definition": "식별자 없이 값 자체로 동등성을 판단하는 불변 객체다.",
+      "forbidden": ["밸류 오브젝트", "밸류 객체", "값객체"]
+    }
+  ]
+}

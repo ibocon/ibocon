@@ -31,7 +31,8 @@ draft: true
 기억할 판단 기준과 다음 행동 하나를 남긴다.
 
 <!-- 문체: 본문·제목·각주는 한다체(-다)로 쓴다. 존댓말 종결은 Test-BlogAuthoringConvention.ps1이 blog-authoring-tone-polite-ending으로 실패시킨다: docs/convention/blog-authoring.md 문체 -->
-<!-- 용어 설명: 본문에는 이름만 쓰고 `용어[^이름]`처럼 참조한 뒤, 글 끝에 `[^이름]: 한 문장 설명.`으로 정의한다. 문장 안 설명 괄호는 쓰지 않는다: docs/convention/blog-authoring.md 용어와 문단 -->
+<!-- 용어집 용어: 등록된 용어는 표준 표기로 쓰고 글마다 첫 등장을 [용어](/glossary/#id)로 연결한다: docs/convention/blog-terminology.md -->
+<!-- 용어 설명: 용어집에 없는 보조 용어는 본문에 이름만 쓰고 `용어[^이름]`처럼 참조한 뒤, 글 끝에 `[^이름]: 한 문장 설명.`으로 정의한다. 문장 안 설명 괄호는 쓰지 않는다: docs/convention/blog-authoring.md 용어와 문단 -->
 <!-- 분량: 본문 공백 제외 4,000자(10분) 이하(코드 블록·mermaid 제외). 넘기면 독자의 질문 단위로 글을 나눈다: docs/convention/blog-authoring.md -->
 <!-- 그림·커버를 넣을 때: docs/convention/blog-presentation.md, docs/guide/blog-presentation-guide.md -->
 <!-- 저장 후: pwsh -NoProfile -File site/scripts/Test-BlogAuthoringConvention.ps1, Test-BlogTitleConvention.ps1, Test-BlogPresentationConvention.ps1 -->

@@ -14,6 +14,7 @@ const copy = siteCopy[locale];
       <a href={alternatePath(locale, 'about')}>{copy.aboutLabel}</a>
       <a href={alternatePath(locale, 'resume')}>{copy.resumeLabel}</a>
       <a href={alternatePath(locale, 'editorial')}>{copy.editorialLabel}</a>
+      {locale === 'ko' && <a href="/glossary/">{copy.glossaryLabel}</a>}
       <a href="https://github.com/ibocon" target="_blank" rel="noopener noreferrer">{copy.githubLabel}</a>
     </nav>
   </div>

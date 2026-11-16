@@ -1,0 +1,60 @@
+---
+import Analytics from '../components/Analytics.astro';
+import Favicon from '../components/Favicon.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import glossary from '../data/glossary.json';
+import { siteCopy } from '../lib/site-copy';
+import '../styles/global.css';
+
+const copy = siteCopy.ko;
+const canonical = new URL('/glossary/', 'https://blog.botanicsoft.com').toString();
+const groups = glossary.categories.map((category) => ({
+  label: category.label,
+  terms: glossary.terms.filter((term) => term.category === category.key),
+}));
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.glossaryTitle} | {copy.brandName}</title>
+    <meta name="description" content={copy.glossaryDescription} />
+    <link rel="canonical" href={canonical} />
+    <Favicon />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale="ko" page="home" />
+    <main class="container prose static-page">
+      <h1>{copy.glossaryTitle}</h1>
+      <p>글에서 같은 뜻으로 쓰는 표준 표기와 정의를 모았다. 본문의 용어는 첫 등장에서 이 페이지로 연결된다.</p>
+      {groups.map((group) => (
+        <>
+          <h2>{group.label}</h2>
+          {group.terms.map((term) => (
+            <section id={term.id} class="glossary-term">
+              <h3>{term.term}</h3>
+              <p>{term.definition}</p>
+              <p class="glossary-variants">같은 뜻으로 쓰지 않는 표기: {term.forbidden.join(', ')}</p>
+            </section>
+          ))}
+        </>
+      ))}
+    </main>
+    <Footer locale="ko" />
+  </body>
+</html>
+
+<style>
+  .glossary-term {
+    scroll-margin-block-start: var(--space-8);
+  }
+
+  .glossary-variants {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+  }
+</style>
