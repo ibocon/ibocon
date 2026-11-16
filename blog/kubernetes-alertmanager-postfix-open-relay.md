@@ -123,7 +123,7 @@ flowchart TB
 
 [Kubernetes NetworkPolicy 문서](https://kubernetes.io/docs/concepts/services-networking/network-policies/)는 NetworkPolicy를 시행하는 네트워크 플러그인이 필요하다고 설명한다. Flannel처럼 시행하지 않는 환경에서는 선언만으로 방어층이 되지 않으므로 시행 여부를 검증해야 한다.
 
-로그도 같은 한계가 있었다. 컨테이너 로그는 시작점을 보여 주지 못했고, 이 글을 쓰려고 다시 조회했을 때는 Loki 보존 기간이 지나 10월 로그 원문이 남아 있지 않았다. 그래서 외부 수신 서버가 보낸 DMARC 보고서를 근거로 삼았다. 보존 범위 앞의 시간은 관측하지 못했다는 한계를 함께 기록해야 한다.
+로그도 같은 한계가 있었다. 컨테이너 로그는 시작점을 보여 주지 못했고, Loki 보존 기간이 지나 10월 로그 원문도 남아 있지 않았다. 그래서 외부 수신 서버가 보낸 DMARC 보고서를 근거로 삼았다. 보존 범위 앞의 시간은 관측하지 못했다는 한계를 함께 기록해야 한다.
 
 - relay가 외부에 노출되는 Service나 ingress 경로를 갖고 있지 않은가?
 - relay 허용 규칙이 실제 연결 주체를 구별하는가? (source NAT 포함)

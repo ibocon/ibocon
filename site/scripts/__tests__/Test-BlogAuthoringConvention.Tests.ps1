@@ -125,6 +125,14 @@ $Body
         $result.ExitCode | Should -Be 0
     }
 
+    It 'Given_ACrlfBodyWithinTheReadingBudgetPlusLargeCodeBlock_When_Guarded_Then_Passes' {
+        $log = 'status=sent ' * 1000
+        $body = "## 핵심 요약`n``````xml`n$log`n```````n## 알아야 할 최소 개념`n## 동작 원리`n## 적용할 때 확인할 점`n## 마무리" -replace "`n", "`r`n"
+        $result = Invoke-GuardFixture -Body $body
+
+        $result.ExitCode | Should -Be 0
+    }
+
     It 'Given_AnImageWithEmptyAltText_When_Guarded_Then_Fails' {
         $result = Invoke-GuardFixture -Body "## 핵심 요약: 어떤 위험을 막고 무엇을 확인하나`n## 알아야 할 최소 개념`n## 동작 원리`n## 적용할 때 확인할 점`n![](/diagram.png)`n## 마무리: 다음 점검에서 확인할 한 가지"
 
