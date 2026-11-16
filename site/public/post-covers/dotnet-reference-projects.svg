@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Active Microsoft .NET reference repositories</title>
+  <desc id="description">Left: app and integration repositories to learn design from, dotnet/eShop and aspire-samples. Right: framework sample repositories to look up features in, dotnet/aspnetcore, dotnet/maui, blazor-samples and dotnet/samples.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b1120" /><stop offset="100%" stop-color="#0f172a" /></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e293b" stroke-width="1" /></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <g transform="translate(84 44.1) scale(0.86)">
+    <text x="60" y="100" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="40" font-weight="700" fill="#f8fafc">Microsoft .NET 레퍼런스 저장소</text>
+    <rect x="60" y="140" width="510" height="350" rx="18" fill="#064e3b" fill-opacity="0.45" stroke="#34d399" stroke-width="2.5" />
+    <text x="86" y="182" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="26" font-weight="700" fill="#6ee7b7">설계를 배운다 · 앱 단위</text>
+    <rect x="86" y="206" width="458" height="56" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+    <text x="110" y="242" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">dotnet/eShop</text>
+    <rect x="86" y="274" width="458" height="56" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+    <text x="110" y="310" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">aspire-samples</text>
+    <rect x="620" y="140" width="510" height="350" rx="18" fill="#1e3a8a" fill-opacity="0.35" stroke="#60a5fa" stroke-width="2.5" />
+    <text x="646" y="182" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="26" font-weight="700" fill="#93c5fd">기능을 찾는다 · 프레임워크별</text>
+    <rect x="646" y="206" width="458" height="56" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.6" />
+    <text x="670" y="242" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">dotnet/aspnetcore</text>
+    <rect x="646" y="274" width="458" height="56" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.6" />
+    <text x="670" y="310" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">dotnet/maui</text>
+    <rect x="646" y="342" width="458" height="56" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.6" />
+    <text x="670" y="378" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">blazor-samples</text>
+    <rect x="646" y="410" width="458" height="56" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.6" />
+    <text x="670" y="446" font-family="'Cascadia Code', Consolas, monospace" font-size="22" fill="#e2e8f0">dotnet/samples</text>
+    <text x="60" y="540" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="24" fill="#cbd5e1">모두 지금 유지되는 저장소다</text>
+  </g>
+</svg>
