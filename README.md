@@ -76,8 +76,6 @@
 
 <div align="center">
   <img alt="주요 사용 언어 비율" src="https://raw.githubusercontent.com/ibocon/ibocon/stats-output/github-language-stats.svg" width="60%" />
-  <br />
-  <sub>집계 범위: 개인 계정과 BotanicSoft 조직, 내 커밋 비율 가중. 그 밖의 조직 저장소는 포함하지 않는다.</sub>
 </div>
 
 <div align="center">
