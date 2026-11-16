@@ -1,0 +1,22 @@
+---
+import PostListLayout from '../../../components/PostListLayout.astro';
+import { getPublishedPosts } from '../../../lib/blog-posts';
+import { HOME_PAGE_SIZE, paginate } from '../../../lib/blog-pagination';
+import { BLOG_TAGS } from '../../../lib/blog-tags';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return BLOG_TAGS.flatMap((tag) => {
+    const tagged = posts.filter((post) => post.data.tags.includes(tag));
+    if (tagged.length === 0) {
+      return [];
+    }
+    const [first] = paginate(tagged, HOME_PAGE_SIZE, `/tags/${tag}/`);
+    return [{ params: { tag }, props: { slice: first, tag } }];
+  });
+}
+
+const { slice, tag } = Astro.props;
+---
+
+<PostListLayout slice={slice} basePath={`/tags/${tag}/`} variant="row" activeTag={tag} />

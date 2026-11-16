@@ -1,6 +1,7 @@
 // ✅ 글 슬러그 규약: 소문자 영숫자와 하이픈, 예약 경로·임시 패턴 금지
 export const RESERVED_SLUGS: ReadonlySet<string> = new Set([
   'about', 'resume', 'en', 'editorial-policy', 'rss.xml', 'blog-images', 'sitemap-index', '404',
+  'page', 'tags', 'search-index.json',
 ]);
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

@@ -69,7 +69,7 @@ describe('Astro Blog Static Build Verification', () => {
 
   it('Given_DevelopmentHome_When_InspectingDraftContract_Then_IncludesDraftsOnlyLocally', () => {
     // Given
-    const homePath = resolve(process.cwd(), 'src', 'pages', 'index.astro');
+    const homePath = resolve(process.cwd(), 'src', 'lib', 'blog-posts.ts');
 
     // When
     const home = readFileSync(homePath, 'utf-8');

@@ -59,7 +59,8 @@ describe('Blog trust surface', () => {
   it('Given_DevelopmentDraft_When_Presented_Then_ExposesItsCoverAndReadingTime', () => {
     // Given
     const route = readFileSync(resolve(process.cwd(), 'src', 'pages', '[...slug].astro'), 'utf8');
-    const home = readFileSync(resolve(process.cwd(), 'src', 'pages', 'index.astro'), 'utf8');
+    const home = readFileSync(resolve(process.cwd(), 'src', 'components', 'PostCard.astro'), 'utf8');
+    const row = readFileSync(resolve(process.cwd(), 'src', 'components', 'PostRow.astro'), 'utf8');
 
     // When
     const draft = readFileSync(resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md'), 'utf8');
@@ -70,6 +71,7 @@ describe('Blog trust surface', () => {
     expect(route).toContain('readingMinutes');
     expect(home).toContain('post-card-cover');
     expect(home).toContain('readingMinutes');
+    expect(row).not.toContain('post-card-cover');
     expect(draft).toContain('coverImage: "/post-covers/kubernetes-alertmanager-postfix-open-relay.svg"');
     expect(draft).toContain('subgraph 클러스터 내부 신뢰 경계');
     expect(draft).toContain('subgraph 외부 유입과 경계 변환');

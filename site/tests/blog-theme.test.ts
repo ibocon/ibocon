@@ -6,7 +6,7 @@ describe('Blog theme and content rendering', () => {
   it('Given_PostTemplateAndStyles_When_Inspected_Then_UsesBoundedProseAndAccessibleToc', () => {
     // Given
     const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
-    const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
+    const card = readFileSync(resolve(process.cwd(), 'src/components/PostCard.astro'), 'utf8');
     const post = readFileSync(resolve(process.cwd(), 'src/pages/[...slug].astro'), 'utf8');
     const header = readFileSync(resolve(process.cwd(), 'src/components/Header.astro'), 'utf8');
 
@@ -30,16 +30,16 @@ describe('Blog theme and content rendering', () => {
     expect(header).not.toContain('>Theme</button>');
     expect(styles).toContain('.theme-toggle, .icon-button { inline-size: 36px; block-size: 36px;');
     expect(styles).toContain('.theme-icon, .icon-button-glyph { inline-size: 18px; block-size: 18px; }');
-    expect(index).toContain('class="post-card"');
-    expect(index).not.toContain('data-category');
+    expect(card).toContain('class="post-card"');
+    expect(card).not.toContain('data-category');
     expect(post).toContain('class="container post-layout"');
     expect(post).toContain('aria-labelledby="post-title"');
     expect(post).toContain('aria-label="Table of Contents"');
   });
 
-  it('Given_HomePageMarkup_When_Inspected_Then_RendersProgressiveTagFilterWithPressedState', () => {
+  it('Given_ListLayoutMarkup_When_Inspected_Then_RendersTagLinksWithCurrentState', () => {
     // Given
-    const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
+    const index = readFileSync(resolve(process.cwd(), 'src/components/PostListLayout.astro'), 'utf8');
 
     // When
     const hasTagFilter = index.includes('id="tag-filter"') && index.includes('aria-label="Post tags"');
@@ -48,9 +48,8 @@ describe('Blog theme and content rendering', () => {
     expect(hasTagFilter).toBe(true);
     expect(index).toContain('태그로 좁히기');
     expect(index).toContain('전체 태그');
-    expect(index).toContain('data-tag="all"');
-    expect(index).toContain('data-tag={tag}');
-    expect(index).toContain('isPostVisible(entry, query, activeTag)');
+    expect(index).toContain('href={`/tags/${tag}/`}');
+    expect(index).toContain("aria-current={tag === activeTag ? 'page' : undefined}");
   });
 
   it('Given_GlobalStyles_When_Inspected_Then_HiddenAttributeOverridesComponentDisplay', () => {

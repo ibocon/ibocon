@@ -139,6 +139,17 @@ a { color: var(--accent-color); }
 .filter-chip, .badge { display: inline-block; border: 0; border-radius: 999px; background: var(--accent-subtle); color: var(--accent-color); font-size: .8rem; font-weight: 700; padding: 3px 10px; }
 .filter-chip { cursor: pointer; }
 [hidden] { display: none !important; }
+a.filter-chip { text-decoration: none; }
+.filter-chip[aria-current='page'] { background: var(--accent-color); color: #ffffff; }
+.search-results { display: grid; margin-block-start: var(--space-4); }
+.post-row { display: grid; gap: var(--space-1); padding-block: var(--space-3); border-block-end: 1px solid var(--border-color); color: inherit; text-decoration: none; }
+.post-row h2 { margin: 0; font-size: 1.125rem; }
+.post-row p { margin: 0; color: var(--text-secondary); }
+.post-row:hover h2 { color: var(--accent-color); }
+.pagination { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; margin-block-start: var(--space-6); }
+.pagination a, .pagination-disabled { min-inline-size: 2.25rem; padding: var(--space-1) var(--space-3); border: 1px solid var(--border-color); border-radius: 8px; color: inherit; text-align: center; text-decoration: none; }
+.pagination a[aria-current='page'] { background: var(--accent-color); border-color: var(--accent-color); color: #ffffff; }
+.pagination-disabled { color: var(--text-secondary); opacity: .5; }
 .post-list { display: grid; gap: 16px; margin-block-start: 24px; }
 .post-card { display: grid; grid-template-columns: minmax(11rem, 16rem) minmax(0, 1fr); overflow: hidden; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); color: inherit; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
 .post-card-media { display: grid; place-items: center; min-inline-size: 0; background: var(--accent-subtle); }
@@ -162,6 +173,15 @@ a { color: var(--accent-color); }
 .prose :where(hr) { margin-block: var(--space-7); border: 0; border-block-start: 1px solid var(--border-color); }
 .prose :where(pre:not(.mermaid), table, figure) { margin-block: var(--flow-block); }
 .prose > :first-child { margin-block-start: 0; }
+.sr-only { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* 각주: 본문 흐름을 끊지 않도록 글 끝에 작게 모은다. 제목은 스크린 리더용으로만 둔다. */
+.prose .footnotes { margin-block-start: var(--space-7); padding-block-start: var(--space-4); border-block-start: 1px solid var(--border-color); color: var(--text-secondary); font-size: .9rem; line-height: 1.7; }
+.prose .footnotes :where(ol) { margin-block: 0; }
+.prose .footnotes :where(p) { margin-block: 0; }
+.prose :where(sup) a[data-footnote-ref] { padding-inline: .1em; text-decoration: none; }
+.prose .data-footnote-backref { margin-inline-start: .25em; text-decoration: none; }
+.prose :where([id^="user-content-fn"]) { scroll-margin-top: 5rem; }
+.prose .footnotes li:target { background: var(--accent-subtle); }
 .post-header { margin-bottom: var(--space-7); }
 .post-cover { display: block; inline-size: 100%; block-size: auto; aspect-ratio: var(--cover-aspect); object-fit: contain; margin-top: var(--space-6); border: 1px solid var(--border-color); border-radius: 12px; background: var(--accent-subtle); }
 .draft-review-banner { border-left: 4px solid var(--accent-color); background: var(--accent-subtle); color: var(--text-primary); font-size: .9rem; font-weight: 700; line-height: 1.5; margin: 0 0 var(--space-5); padding: var(--space-3) var(--space-4); }
@@ -173,15 +193,6 @@ a { color: var(--accent-color); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
 .prose pre, .prose code, .prose .astro-code { font-family: var(--font-code); font-variant-ligatures: contextual; font-size: .9em; }
 .prose pre.mermaid { display: flex; justify-content: center; margin: var(--flow-block) 0; padding: var(--space-5); border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); font-family: inherit; font-size: 1rem; text-align: center; white-space: normal !important; }
-.sr-only { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-/* 각주: 본문 흐름을 끊지 않도록 글 끝에 작게 모은다. 제목은 스크린 리더용으로만 둔다. */
-.prose .footnotes { margin-block-start: var(--space-7); padding-block-start: var(--space-4); border-block-start: 1px solid var(--border-color); color: var(--text-secondary); font-size: .9rem; line-height: 1.7; }
-.prose .footnotes :where(ol) { margin-block: 0; }
-.prose .footnotes :where(p) { margin-block: 0; }
-.prose :where(sup) a[data-footnote-ref] { padding-inline: .1em; text-decoration: none; }
-.prose .data-footnote-backref { margin-inline-start: .25em; text-decoration: none; }
-.prose :where([id^="user-content-fn"]) { scroll-margin-top: 5rem; }
-.prose .footnotes li:target { background: var(--accent-subtle); }
 .prose pre.mermaid svg { display: block; margin: 0 auto; max-inline-size: 100%; block-size: auto; }
 .prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }

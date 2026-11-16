@@ -94,9 +94,9 @@ describe('Blog post search filter', () => {
 });
 
 describe('Blog search markup', () => {
-  it('Given_IndexPage_When_Inspected_Then_ExposesSearchInputStatusAndCardData', () => {
+  it('Given_ListLayout_When_Inspected_Then_ExposesSearchInputStatusAndIndexFetch', () => {
     // Given
-    const index = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
+    const index = readFileSync(resolve(process.cwd(), 'src/components/PostListLayout.astro'), 'utf8');
 
     // When
     // Then
@@ -110,9 +110,8 @@ describe('Blog search markup', () => {
     expect(index).toContain('id="search-status"');
     expect(index).toContain('role="status"');
     expect(index).toContain('id="search-empty"');
-    expect(index).toContain('data-title');
-    expect(index).toContain('data-description');
-    expect(index).toContain('data-tags');
+    expect(index).toContain('id="search-results"');
+    expect(index).toContain("fetch('/search-index.json')");
     expect(index).not.toContain('data-category');
     expect(index).toContain('compareSearchRelevance');
     expect(index).toContain("../lib/blog-filter'");

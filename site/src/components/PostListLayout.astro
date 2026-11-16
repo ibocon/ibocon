@@ -1,0 +1,200 @@
+---
+import Analytics from './Analytics.astro';
+import Favicon from './Favicon.astro';
+import AdSenseSlot from './AdSenseSlot.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import PostCard from './PostCard.astro';
+import PostRow from './PostRow.astro';
+import Pagination from './Pagination.astro';
+import { absoluteLocaleUrl } from '../lib/locale';
+import { siteCopy } from '../lib/site-copy';
+import { getPublishedPosts } from '../lib/blog-posts';
+import { pagePath } from '../lib/blog-pagination';
+import '../styles/global.css';
+
+const { slice, basePath, variant, activeTag } = Astro.props;
+const locale = 'ko';
+const copy = siteCopy[locale];
+const allTags = [...new Set((await getPublishedPosts()).flatMap((post) => post.data.tags))].sort();
+const isHome = basePath === '/';
+const suffix = slice.page > 1 ? ` - ${slice.page}페이지` : '';
+const heading = activeTag ? `태그: ${activeTag}` : copy.brandName;
+const title = isHome && slice.page === 1 ? `${copy.brandName} | BotanicSoft` : `${heading}${suffix} | ${copy.brandName}`;
+const canonical = isHome && slice.page === 1
+  ? absoluteLocaleUrl(locale, 'home')
+  : new URL(pagePath(basePath, slice.page), 'https://blog.botanicsoft.com').toString();
+const toAbsolute = (href: string) => new URL(href, 'https://blog.botanicsoft.com').toString();
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={copy.technicalScope} />
+    <link rel="canonical" href={canonical} />
+    {slice.prevHref && <link rel="prev" href={toAbsolute(slice.prevHref)} />}
+    {slice.nextHref && <link rel="next" href={toAbsolute(slice.nextHref)} />}
+    {isHome && slice.page === 1 && (
+      <>
+        <link rel="alternate" hreflang="ko" href={absoluteLocaleUrl('ko', 'home')} />
+        <link rel="alternate" hreflang="en" href={absoluteLocaleUrl('en', 'home')} />
+        <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('ko', 'home')} />
+      </>
+    )}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <Favicon />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} page="home" />
+    <main class="container">
+      <header class="hero">
+        <h1>{heading}</h1>
+        <p>{copy.technicalScope}</p>
+      </header>
+      <section>
+        <section class="post-discovery" aria-labelledby="post-search-label">
+          <form class="search-form" role="search">
+            <label id="post-search-label" class="search-label" for="post-search">게시물 검색</label>
+            <div class="search-control">
+              <input id="post-search" class="search-input" type="search" placeholder="예: clean architecture, JPA" autocomplete="off" />
+              <button id="clear-post-search" class="clear-search" type="button" hidden>검색 지우기</button>
+            </div>
+          </form>
+          <p class="search-status" id="search-status" role="status"></p>
+          <details class="tag-filter" id="tag-filter" open={activeTag ? true : undefined}>
+            <summary>태그로 좁히기</summary>
+            <ul class="filter-list" aria-label="Post tags">
+              <li><a class="filter-chip" href="/" aria-current={!activeTag && isHome ? 'page' : undefined}>전체 태그</a></li>
+              {allTags.map((tag) => <li><a class="filter-chip" href={`/tags/${tag}/`} aria-current={tag === activeTag ? 'page' : undefined}>{tag}</a></li>)}
+            </ul>
+          </details>
+        </section>
+        <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
+        <div class="search-results" id="search-results" hidden></div>
+        <div class="post-list" id="post-list">
+          {slice.items.map((post) => (variant === 'card' ? <PostCard post={post} /> : <PostRow post={post} />))}
+        </div>
+        <Pagination page={slice.page} totalPages={slice.totalPages} basePath={basePath} prevHref={slice.prevHref} nextHref={slice.nextHref} />
+      </section>
+      <AdSenseSlot slotId="blog-home-bottom" />
+    </main>
+    <Footer locale={locale} />
+    <script>
+      import { compareSearchRelevance, matchesSearch, normalizeForSearch } from '../lib/blog-filter';
+      import type { SearchEntry } from '../lib/blog-search-index';
+
+      const searchInput = document.querySelector<HTMLInputElement>('#post-search');
+      const clearSearchButton = document.querySelector<HTMLButtonElement>('#clear-post-search');
+      const statusRegion = document.querySelector<HTMLElement>('#search-status');
+      const emptyMessage = document.querySelector<HTMLElement>('#search-empty');
+      const results = document.querySelector<HTMLElement>('#search-results');
+      const browseList = document.querySelector<HTMLElement>('#post-list');
+      const pagination = document.querySelector<HTMLElement>('.pagination');
+
+      let entriesPromise: Promise<SearchEntry[]> | null = null;
+      const loadEntries = () => (entriesPromise ??= fetch('/search-index.json').then((response) => {
+        if (!response.ok) {
+          throw new Error(`search-index ${response.status}`);
+        }
+        return response.json() as Promise<SearchEntry[]>;
+      }));
+
+      const setBrowseVisible = (visible: boolean) => {
+        if (browseList) {
+          browseList.hidden = !visible;
+        }
+        if (pagination) {
+          pagination.hidden = !visible;
+        }
+        if (results) {
+          results.hidden = visible;
+        }
+      };
+
+      const showBrowseList = () => {
+        setBrowseVisible(true);
+        if (statusRegion) {
+          statusRegion.textContent = '';
+        }
+        if (emptyMessage) {
+          emptyMessage.hidden = true;
+        }
+        if (clearSearchButton) {
+          clearSearchButton.hidden = true;
+        }
+      };
+
+      const renderResults = (hits: SearchEntry[], query: string) => {
+        if (!results) {
+          return;
+        }
+        results.replaceChildren(...hits.map((entry) => {
+          const row = document.createElement('a');
+          row.className = 'post-row';
+          row.href = entry.href;
+          const meta = document.createElement('div');
+          meta.className = 'post-meta';
+          const badge = document.createElement('span');
+          badge.className = 'badge';
+          badge.textContent = entry.tags[0] ?? '';
+          const time = document.createElement('time');
+          time.textContent = entry.date;
+          meta.append(badge, time);
+          const title = document.createElement('h2');
+          title.textContent = entry.title;
+          const description = document.createElement('p');
+          description.textContent = entry.description;
+          row.append(meta, title, description);
+          return row;
+        }));
+        setBrowseVisible(false);
+        if (statusRegion) {
+          statusRegion.textContent = `“${query.trim()}” 검색 결과 ${hits.length}건`;
+        }
+        if (emptyMessage) {
+          emptyMessage.hidden = hits.length > 0;
+        }
+        if (clearSearchButton) {
+          clearSearchButton.hidden = false;
+        }
+      };
+
+      let latestQuery = '';
+      searchInput?.addEventListener('input', async () => {
+        const query = searchInput.value;
+        latestQuery = query;
+        if (normalizeForSearch(query).length === 0) {
+          showBrowseList();
+          return;
+        }
+        try {
+          const entries = await loadEntries();
+          if (latestQuery !== query) {
+            return;
+          }
+          const hits = entries
+            .filter((entry) => matchesSearch(entry, query))
+            .sort((left, right) => compareSearchRelevance(left, right, query));
+          renderResults(hits, query);
+        } catch {
+          if (statusRegion) {
+            statusRegion.textContent = '검색 인덱스를 불러오지 못했습니다. 목록에서 직접 찾아 주세요.';
+          }
+        }
+      });
+
+      clearSearchButton?.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+        }
+        latestQuery = '';
+        showBrowseList();
+        searchInput?.focus();
+      });
+    </script>
+  </body>
+</html>

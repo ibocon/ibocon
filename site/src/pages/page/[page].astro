@@ -1,0 +1,16 @@
+---
+import PostListLayout from '../../components/PostListLayout.astro';
+import { getPublishedPosts } from '../../lib/blog-posts';
+import { HOME_PAGE_SIZE, paginate } from '../../lib/blog-pagination';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return paginate(posts, HOME_PAGE_SIZE, '/')
+    .filter((slice) => slice.page > 1)
+    .map((slice) => ({ params: { page: String(slice.page) }, props: { slice } }));
+}
+
+const { slice } = Astro.props;
+---
+
+<PostListLayout slice={slice} basePath="/" variant="row" />

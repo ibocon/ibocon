@@ -1,0 +1,16 @@
+---
+import { pagePath } from '../lib/blog-pagination';
+
+const { page, totalPages, basePath, prevHref, nextHref } = Astro.props;
+const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+---
+
+{totalPages > 1 && (
+  <nav class="pagination" aria-label="글 목록 페이지">
+    {prevHref ? <a href={prevHref} rel="prev">이전</a> : <span class="pagination-disabled" aria-hidden="true">이전</span>}
+    {pages.map((number) => (
+      <a href={pagePath(basePath, number)} aria-current={number === page ? 'page' : undefined}>{number}</a>
+    ))}
+    {nextHref ? <a href={nextHref} rel="next">다음</a> : <span class="pagination-disabled" aria-hidden="true">다음</span>}
+  </nav>
+)}
