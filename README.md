@@ -91,7 +91,6 @@
 
 ## 📫 연락처 및 채널 (Contact & Links)
 [![Engineering Notes](https://img.shields.io/badge/Notes-blog.botanicsoft.com-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://blog.botanicsoft.com/)
-[![Tistory](https://img.shields.io/badge/Tistory-ibocon-EB5757?style=flat-square&logo=tistory&logoColor=white)](https://ibocon.tistory.com/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com)
 [![Email](https://img.shields.io/badge/Email-wlfka102@gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:wlfka102@gmail.com)
 [![X](https://img.shields.io/badge/X-@wlfka102-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/wlfka102)
