@@ -48,6 +48,7 @@
   { "file": "ecmascript-reading-guide-part-2.md", "title": "ECMAScript를 읽는 방법 2: 명세와 동작 원리" },
   { "file": "http2-in-depth.md", "title": "HTTP 2의 성능을 이해하는 방법: 전송 구조와 변화" },
   { "file": "kubernetes-alertmanager-postfix-open-relay.md", "title": "Postfix 오픈 릴레이를 막는 4가지 경계: Kubernetes 사례" },
+  { "file": "peony-monorepo-split-fifteen-services.md", "title": "서비스 15개를 하루에 독립 저장소로 옮긴 기록: Peony 분리" },
   { "file": "react-conditional-rendering-patterns.md", "title": "React에서 조건부 화면을 설계하는 방법: 렌더링 패턴" },
   { "file": "react-events.md", "title": "React 이벤트를 처리하는 방법: 사용자 상호작용" },
   { "file": "react-lifecycle-events.md", "title": "React 생명주기를 이해하는 방법: 컴포넌트 이벤트" },
