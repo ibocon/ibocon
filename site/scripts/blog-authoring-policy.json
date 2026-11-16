@@ -11,6 +11,16 @@
   "tone": {
     "style": "plain-written"
   },
+  "forbiddenPhrases": [
+    {
+      "code": "process-document-reference",
+      "pattern": "설계 문서|설계서|계획서|커밋 기록|커밋 메시지|이전 계획"
+    },
+    {
+      "code": "process-evidence-report",
+      "pattern": "문서(에|로|에서)는?\\s?[^.]{0,20}(적혀|남아|확인|찾지)"
+    }
+  ],
   "commonSections": [
     "summary",
     "closing"

@@ -249,6 +249,76 @@ $Body
         $result.ExitCode | Should -Be 0
     }
 
+    It 'Given_AProseThatNamesItsSourceDocument_When_Guarded_Then_FailsWithTheCodeOnly' {
+        $result = Invoke-GuardFixture -Body @'
+## 핵심 요약
+설계 문서가 서비스별 저장소를 제안했고 이관했다.
+
+## 알아야 할 최소 개념
+용어를 설명한다.
+
+## 동작 원리
+원인과 결과를 연결한다.
+
+## 적용할 때 확인할 점
+점검 행동을 제시한다.
+
+## 마무리
+핵심 판단을 정리한다.
+'@
+
+        $result.ExitCode | Should -Be 1
+        $result.Output | Should -Match 'blog-authoring-forbidden-phrase: sample-post.md#process-document-reference'
+        $result.Output | Should -Not -Match '제안했고'
+    }
+
+    It 'Given_AProseThatReportsMissingEvidence_When_Guarded_Then_FailsWithTheEvidenceCode' {
+        $result = Invoke-GuardFixture -Body @'
+## 핵심 요약
+이유를 정리한다.
+
+## 알아야 할 최소 개념
+이 이유는 문서로 확인되지는 않는다.
+
+## 동작 원리
+원인과 결과를 연결한다.
+
+## 적용할 때 확인할 점
+점검 행동을 제시한다.
+
+## 마무리
+핵심 판단을 정리한다.
+'@
+
+        $result.ExitCode | Should -Be 1
+        $result.Output | Should -Match 'blog-authoring-forbidden-phrase: sample-post.md#process-evidence-report'
+    }
+
+    It 'Given_AForbiddenPhraseOnlyInsideACodeFence_When_Guarded_Then_Passes' {
+        $result = Invoke-GuardFixture -Body @'
+## 핵심 요약
+결과를 먼저 쓴다.
+
+## 알아야 할 최소 개념
+다음은 문서 형식의 예다.
+
+```text
+설계 문서 예시
+```
+
+## 동작 원리
+원인과 결과를 연결한다.
+
+## 적용할 때 확인할 점
+점검 행동을 제시한다.
+
+## 마무리
+핵심 판단을 정리한다.
+'@
+
+        $result.ExitCode | Should -Be 0
+    }
+
     It 'Given_APolicyWithoutTone_When_PoliteBodyIsGuarded_Then_Passes' {
         $policy = Get-Content -Raw -LiteralPath $script:PolicyPath | ConvertFrom-Json
         $policy.PSObject.Properties.Remove('tone')

@@ -155,6 +155,16 @@ foreach ($post in Get-ChildItem -LiteralPath $resolvedBlogRoot -File -Filter '*.
         }
     }
 
+    if ($null -ne $policy.PSObject.Properties['forbiddenPhrases']) {
+        # 조사 경로와 문서 이력은 독자의 판단에 쓰이지 않는다. 코드 블록은 참고 자료라서 뺀다. 문장은 출력하지 않고 code만 보고한다.
+        $proseForPhrases = [regex]::Replace($parts.Body, '(?ms)^[ 	]*(?<fence>`{3,}|~{3,}).*?^[ 	]*\k<fence>[ 	]*$', '')
+        foreach ($phrase in @($policy.forbiddenPhrases)) {
+            if ([regex]::IsMatch($proseForPhrases, [string] $phrase.pattern)) {
+                Add-Violation -Violations $violations -Code 'blog-authoring-forbidden-phrase' -Path "$($post.Name)#$($phrase.code)"
+            }
+        }
+    }
+
     if ($null -ne $policy.PSObject.Properties['tone'] -and [string] $policy.tone.style -eq 'plain-written') {
         # front matter의 description은 검색 결과 문장이라 검사하지 않고 본문만 본다.
         $bodyStartLine = @($parts.FrontMatter -split "`r?`n").Count + 2
