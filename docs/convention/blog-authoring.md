@@ -2,6 +2,8 @@
 
 ## 적용 방법
 
+기존 이관 글을 실질 개정할 때는 `authoringVersion: 1`을 선언하고 이 문서와 [제목 컨벤션](blog-title.md), [표시 품질 컨벤션](blog-presentation.md)을 모두 적용한다. 선언 없이 내용만 덧붙이면 검사가 적용되지 않아 기준 밖의 글이 된다. 작성·개정은 `author-technical-blog-post` 스킬로 시작한다.
+
 새 글은 [블로그 작성 기준선](blog-authoring-baseline.md)과 [글 템플릿](../templates/blog-post.md)을 함께 사용한다. 사고·운영 사례(`incident`)는 [사고 글 템플릿](../templates/blog-post-incident.md)을 쓴다. `authoringVersion: 1`을 선언하면 `site/scripts/Test-BlogAuthoringConvention.ps1`이 이 문서의 기계 검증 가능한 최소 규칙을 검사한다.
 
 ## Front matter
@@ -32,6 +34,15 @@ articleType: "concept"
 - 첫 `## 핵심 요약`에는 문제, 독자 효용, 범위를 2~4문장으로 쓴다.
 - 배경 설명이나 역사보다 결론과 위험 또는 효과를 먼저 제시한다.
 - 제목과 `description`은 태그를 나열하지 않고 독자가 얻는 판단 또는 결과를 표현한다.
+
+## 문체
+
+- 본문, H2·H3 제목, 목록, 표, 각주는 한다체(문어체)로 쓴다. 문장은 `-다`로 끝낸다. 예: `확인했다`, `막는다`, `필요하다`, `아니다`.
+- `-합니다`, `-입니다`, `-했습니다`, `-해요`, `-세요`, `-예요`, `-죠`, `-네요`, `-까요` 같은 존댓말 종결은 쓰지 않는다. 독자에게 말을 거는 `~해 보세요`도 쓰지 않고 `~하면 된다`, `~를 확인한다`로 쓴다.
+- 기준 글은 `kubernetes-alertmanager-postfix-open-relay`다. 어조가 흔들리면 이 글의 문장 길이와 종결을 따른다.
+- 코드 블록과 인라인 코드, 따옴표 안의 인용은 원문 그대로 둔다.
+- front matter의 `description`은 검색 결과와 RSS 문장이라 이 규칙의 검사 대상이 아니다. 기존 글처럼 `-합니다`로 써도 된다.
+- 정책 `tone.style`이 `plain-written`이면 `Test-BlogAuthoringConvention.ps1`이 존댓말 종결을 `blog-authoring-tone-polite-ending`으로 보고한다. 보고는 문장이 아니라 줄 번호를 알려 주며, 문장 중간의 용언은 검사하지 않는다.
 
 ## 용어와 문단
 
@@ -86,6 +97,7 @@ articleType: "concept"
 - 10분 안에 읽히는가? 나눈 글이면 각각 앞뒤 글 없이도 결과를 얻을 수 있는가?
 - 마지막 section에 독자가 적용할 수 있는 판단 또는 행동이 남아 있는가?
 - 사고·운영 글에서 각 주장 앞에 작성자가 실제로 본 신호가 있는가?
+- 본문과 제목, 각주가 모두 `-다`로 끝나는가? 존댓말이 섞이지 않았는가?
 - 처음 한 해석과 바뀐 판단, 그 계기가 드러나는가?
 - "~해야 한다" 문장을 지워도 근거 문단이 남는가? (남아야 정상이다)
 - 서술한 신호와 해석이 작성자의 기록에 있는 내용인가?

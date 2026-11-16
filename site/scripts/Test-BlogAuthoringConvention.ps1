@@ -55,6 +55,45 @@ function Test-RoleHeading {
     return @($aliases | Where-Object { Test-Heading -Body $Body -Heading ([string] $_) }).Count -gt 0
 }
 
+function Get-PoliteEndingLine {
+    param([string] $Body)
+
+    # 문장 끝(마침표 직전 또는 줄 끝)에 오는 존댓말 종결만 찾는다. 코드 블록, 인라인 코드, 링크 주소, HTML 주석은 원문 그대로 두므로 검사하지 않는다.
+    # PowerShell은 곡선 작은따옴표(U+2019)를 따옴표로 해석하므로 문자 코드로 조립한다.
+    $closers = '"' + "'" + [char] 0x201D + [char] 0x2019 + ')\]*_~'
+    $terminator = '(?=[' + $closers + ']*(?:[.!?' + [char] 0x2026 + ']|\s*$))'
+    $formal = [regex]::new("(?<syllable>[가-힣])니다$terminator")
+    $informal = [regex]::new("(?:해요|세요|예요|에요|네요|군요|까요|어요|아요|죠)$terminator")
+    $found = [Collections.Generic.List[int]]::new()
+    $inFence = $false
+    $lines = $Body -split "`r?`n"
+    for ($index = 0; $index -lt $lines.Count; $index++) {
+        if ($lines[$index] -match '^[ 	]*(`{3,}|~{3,})') {
+            $inFence = -not $inFence
+            continue
+        }
+
+        if ($inFence) {
+            continue
+        }
+
+        $text = $lines[$index] -replace '`[^`]*`', '' -replace '<!--.*?-->', '' -replace '\]\([^)]*\)', ']'
+        $isPolite = $informal.IsMatch($text)
+        foreach ($match in $formal.Matches($text)) {
+            # 받침 ㅂ(종성 17)이 붙은 음절 뒤의 "니다"만 존댓말이다. "아니다"는 한다체라서 제외한다.
+            if ((([int][char] $match.Groups['syllable'].Value) - 0xAC00) % 28 -eq 17) {
+                $isPolite = $true
+            }
+        }
+
+        if ($isPolite) {
+            $found.Add($index + 1)
+        }
+    }
+
+    return $found.ToArray()
+}
+
 $resolvedBlogRoot = [IO.Path]::GetFullPath($BlogRoot)
 $resolvedPolicyPath = [IO.Path]::GetFullPath($PolicyPath)
 $policy = Get-Content -Raw -LiteralPath $resolvedPolicyPath | ConvertFrom-Json
@@ -113,6 +152,14 @@ foreach ($post in Get-ChildItem -LiteralPath $resolvedBlogRoot -File -Filter '*.
     foreach ($image in [regex]::Matches($parts.Body, '!\[(?<alt>[^\]]*)\]\([^\)]*\)')) {
         if ([string]::IsNullOrWhiteSpace($image.Groups['alt'].Value)) {
             Add-Violation -Violations $violations -Code 'blog-authoring-image-alt-missing' -Path $post.Name
+        }
+    }
+
+    if ($null -ne $policy.PSObject.Properties['tone'] -and [string] $policy.tone.style -eq 'plain-written') {
+        # front matter의 description은 검색 결과 문장이라 검사하지 않고 본문만 본다.
+        $bodyStartLine = @($parts.FrontMatter -split "`r?`n").Count + 2
+        foreach ($lineNumber in Get-PoliteEndingLine -Body $parts.Body) {
+            Add-Violation -Violations $violations -Code 'blog-authoring-tone-polite-ending' -Path "$($post.Name):$($bodyStartLine + $lineNumber)"
         }
     }
 }

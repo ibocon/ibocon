@@ -8,6 +8,9 @@
     "maxMinutes": 10,
     "charsPerMinute": 400
   },
+  "tone": {
+    "style": "plain-written"
+  },
   "commonSections": [
     "summary",
     "closing"
