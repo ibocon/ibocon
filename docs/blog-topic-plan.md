@@ -6,8 +6,8 @@
 
 | # | 제목 후보 | 유형 | 질문 | 근거 |
 | --- | --- | --- | --- | --- |
-| 1 | 서비스 15개를 하루에 독립 저장소로 옮긴 기록 | design | 하루에 무엇을 옮기고 무엇이 남았나 | `blog/peony-monorepo-split-fifteen-services.md` (초안 작성됨) |
-| 2 | 공유 계약을 서비스로 돌려보낸 과정 | design | 계약 타입은 누가 소유해야 하나 | Contract `shed ... contract folder` 7건, Product·User의 소유 커밋과 Revert |
+| 1 | Peony를 모노레포에서 서비스별 저장소로 나눈 이유 | design | 모노레포는 무엇을 주었고 왜 나눴나 | `blog/peony-monorepo-split-fifteen-services.md` (초안), Peony.Aspire `repository-distribution.md`, 이전 순서 계획 |
+| 2 | 공유 계약을 서비스로 돌려보낸 과정 | design | 계약 타입은 누가 소유해야 하나 | Product csproj diff(소스→패키지→소스), NU1108 순환, Contract `shed ... folder` 7건, 계약 분해 계획의 '공유 릴리스 열차' |
 | 3 | 사내 NuGet 피드 복원 실패를 막는 점검표 | tutorial | pack과 restore가 CI에서 깨지는 이유는 | `restore client packages from the hanul feed`, `create the empty local package source`, LICENSE·icon·README 누락 |
 
 ## B. Garden.Cluster GitOps 승격

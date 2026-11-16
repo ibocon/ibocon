@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">Peony monorepo split into fifteen service repositories</title>
-  <desc id="description">Left: one monorepo holding fifteen services. Right: fifteen separate service repositories created on November 1 between 11:52 and 18:36, plus the Contract and Aspire repositories added afterwards.</desc>
+  <title id="title">Peony monorepo split into per-service repositories</title>
+  <desc id="description">Left: one monorepo holding thirteen services, three product apps, an AppHost and a shared Contract. Right: per-service repositories that own their Client packages, product app repositories that consume them from a registry, and a composition repository.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b1120" /><stop offset="100%" stop-color="#0f172a" /></linearGradient>
     <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e293b" stroke-width="1" /></pattern>
@@ -8,49 +8,33 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect width="1200" height="630" fill="url(#grid)" />
-  <text x="130" y="112" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="38" font-weight="700" fill="#f8fafc">서비스 15개, 저장소 1개에서 15개로</text>
-  <!-- 왼쪽: 서비스 15개가 들어 있는 모노레포 하나 -->
+  <text x="130" y="112" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="38" font-weight="700" fill="#f8fafc">한 저장소에서 서비스별 저장소로</text>
   <rect x="130" y="160" width="300" height="320" rx="18" fill="#111827" stroke="#3b82f6" stroke-width="2.5" />
   <text x="152" y="192" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" font-weight="700" fill="#93c5fd">Peony 모노레포</text>
-  <rect x="172" y="215" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="252" y="215" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="332" y="215" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="172" y="265" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="252" y="265" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="332" y="265" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="172" y="315" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="252" y="315" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="332" y="315" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="172" y="365" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="252" y="365" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="332" y="365" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="172" y="415" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="252" y="415" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <rect x="332" y="415" width="56" height="36" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
-  <!-- 가운데: 11월 1일 하루 -->
+  <rect x="152" y="214" width="256" height="50" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.8" />
+  <text x="280" y="246" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">서비스 13개</text>
+  <rect x="152" y="278" width="256" height="50" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.8" />
+  <text x="280" y="310" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">제품 앱 3개</text>
+  <rect x="152" y="342" width="256" height="50" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.8" />
+  <text x="280" y="374" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">AppHost</text>
+  <rect x="152" y="406" width="256" height="50" rx="8" fill="#7c2d12" stroke="#fb923c" stroke-width="1.8" />
+  <text x="280" y="438" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">공용 Contract</text>
   <path d="M452 320H556" stroke="#93c5fd" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)" />
-  <text x="504" y="288" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">11/01</text>
-  <text x="504" y="362" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="18" fill="#94a3b8" text-anchor="middle">11:52~18:36</text>
-  <!-- 오른쪽: 서비스마다 독립 저장소 15개 -->
-  <rect x="582" y="190" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="684" y="190" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="786" y="190" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="888" y="190" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="990" y="190" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="582" y="272" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="684" y="272" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="786" y="272" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="888" y="272" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="990" y="272" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="582" y="354" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="684" y="354" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="786" y="354" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="888" y="354" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <rect x="990" y="354" width="80" height="60" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#34d399" stroke-width="2" />
-  <text x="582" y="170" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" font-weight="700" fill="#6ee7b7">서비스별 독립 저장소 15개</text>
-  <!-- 이틀째 이후: Contract, Aspire -->
-  <rect x="582" y="440" width="80" height="60" rx="8" fill="#451a03" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" />
-  <rect x="684" y="440" width="80" height="60" rx="8" fill="#451a03" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" />
-  <text x="786" y="476" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="20" fill="#fbbf24">+ Contract · Aspire</text>
-  <text x="130" y="548" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#cbd5e1">하루에 소스를 옮기고, 계약 소유권은 이틀째에 정리했다</text>
+  <text x="504" y="290" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="20" font-weight="700" fill="#e2e8f0" text-anchor="middle">분리</text>
+  <rect x="582" y="160" width="488" height="126" rx="14" fill="#064e3b" fill-opacity="0.55" stroke="#34d399" stroke-width="2" />
+  <text x="602" y="192" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" font-weight="700" fill="#6ee7b7">Peony.서비스: 서비스와 Client를 함께 소유</text>
+  <rect x="602" y="214" width="76" height="52" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+  <rect x="694" y="214" width="76" height="52" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+  <rect x="786" y="214" width="76" height="52" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+  <rect x="878" y="214" width="76" height="52" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+  <rect x="970" y="214" width="76" height="52" rx="8" fill="#065f46" stroke="#34d399" stroke-width="1.6" />
+  <rect x="582" y="312" width="488" height="52" rx="12" fill="#451a03" fill-opacity="0.6" stroke="#f59e0b" stroke-width="2" />
+  <text x="826" y="346" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#fbbf24" text-anchor="middle">패키지 레지스트리: Client 패키지 전달</text>
+  <rect x="582" y="390" width="236" height="90" rx="12" fill="#1e3a8a" fill-opacity="0.7" stroke="#60a5fa" stroke-width="2" />
+  <text x="700" y="428" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="20" fill="#e2e8f0" text-anchor="middle">제품 앱 저장소</text>
+  <text x="700" y="456" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="18" fill="#93c5fd" text-anchor="middle">패키지만 소비</text>
+  <rect x="834" y="390" width="236" height="90" rx="12" fill="#14532d" fill-opacity="0.7" stroke="#4ade80" stroke-width="2" />
+  <text x="952" y="428" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="20" fill="#e2e8f0" text-anchor="middle">Peony 조합 저장소</text>
+  <text x="952" y="456" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="18" fill="#86efac" text-anchor="middle">AppHost · 시스템 검증</text>
+  <text x="130" y="540" font-family="Pretendard, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="22" fill="#cbd5e1">나눈 근거: 작업 범위 · 변경 소유권 · 릴리스 단위</text>
 </svg>

@@ -1,6 +1,6 @@
 ---
-title: "서비스 15개를 하루에 독립 저장소로 옮긴 기록"
-description: "Peony 모노레포의 서비스 15개를 11월 1일 하루 동안 독립 저장소로 옮겼습니다. Product 서비스의 csproj 변경을 따라 계약 타입이 소스에서 패키지로, 다시 소스로 돌아온 과정을 정리합니다."
+title: "Peony를 모노레포에서 서비스별 저장소로 나눈 이유"
+description: "Peony 모노레포가 한 저장소에서 주던 것과 한계, 서비스별 저장소로 나누기로 한 근거와 검토한 대안, 감수한 트레이드오프를 설계 문서와 계획서 기록으로 정리합니다."
 pubDate: 2026-11-16
 tags: ["architecture", "dotnet"]
 authoringVersion: 1
@@ -10,107 +10,70 @@ coverImage: "/post-covers/peony-monorepo-split-fifteen-services.svg"
 draft: true
 ---
 
-## 핵심 요약: 하루 만에 옮긴 것과 옮기지 못한 것은 무엇인가
+## 핵심 요약: 모노레포는 무엇을 주었고 무엇 때문에 나눴나
 
-2026년 11월 1일, Peony 모노레포(여러 서비스를 한 저장소에 두는 구조)의 서비스 15개를 각각 독립 저장소로 옮겼다. 첫 이관 커밋은 11시 52분, 마지막 서비스는 18시 36분이다. 이 글은 Product 서비스의 커밋 diff를 따라, 서비스끼리 공유하던 계약 타입(서비스가 서로 호출할 때 쓰는 요청·응답 모델)이 어떻게 바뀌었는지 적는다.
+Peony는 서비스 13개, 제품 앱 3개(Mobile, Management, Frontdoor), 로컬 통합 실행용 AppHost를 한 저장소(모노레포)에 두고 있었다. 2026년 10월 30일 설계 문서가 이를 서비스별 저장소로 나누는 구조를 제안했고, 11월 1일에 이관했다.
 
-이 글은 시리즈의 첫 글이다. 사내 NuGet 피드 문제는 다음 글에서 따로 다룬다. 이관을 결정한 이유는 커밋에 남아 있지 않아 쓰지 않는다.
+처음 한 저장소를 택한 이유는 서비스 경계가 아직 정해지지 않았고, 소규모라 저장소마다 운영 설정을 두는 부담을 피하고 싶었고, 통합 실행과 검증을 단순하게 하고 싶어서였다. 나눈 근거는 문서에 세 가지로 남아 있다. 작업 범위가 서비스 하나로 닫히지 않았고, 서비스 변경과 소비자의 경계가 흐려졌고, 서비스가 자기 계약과 릴리스의 책임을 지지 못했다. 이 글은 두 쪽의 근거와 검토한 대안, 감수한 비용을 기록한다. 코드 변경 자체는 다음 글에서 다룬다.
 
-## 문제: 서비스만 옮기면 빌드가 끝나는가
+## 문제: 한 저장소를 택한 이유와 한계가 된 것
 
-이관 직후(13시 24분) Product.Client는 계약 타입을 자기 `Client/src/Contract` 아래에 소스 파일로 갖고 있었다. 15시 23분 커밋은 이 파일들을 지우고 공용 패키지 `Peony.Contract`를 참조하게 바꿨다. 이 커밋은 77개 파일에서 1,355줄을 지우고 7줄을 더했다.
+한 저장소를 택한 이유는 세 가지였다. 이 이유는 당시 문서가 아니라 작성자의 설명이다. 문서에서 확인되는 것은 구조뿐이어서, 확인 여부를 함께 적는다.
+
+1. **서비스 경계가 정해지지 않았다**: 서비스를 나누고 합치는 일이 잦은 시기라, 경계를 옮길 때 한 솔루션 안에서 옮기는 편이 쌌다. 2026년 5월 계획서에는 Monolith가 실행 서비스의 하나로 나온다. 경계가 굳기 전이었다는 정황이다.
+2. **소규모 운영 부담을 피하려 했다**: 저장소, CI, 배포 설정을 서비스마다 두면 관리할 곳이 늘어난다. 문서로 확인되지는 않는다.
+3. **통합 실행과 검증을 단순하게 하려 했다**: AppHost(로컬에서 서비스를 한꺼번에 띄우는 프로젝트)가 서비스 프로젝트를 직접 참조해, 저장소 하나로 통합 실행이 됐다. 설계 문서가 이 구조를 확인해 준다.
+
+그 구조가 시간이 지나며 한계가 됐다.
+
+1. **작업 범위**: 서비스, 제품 앱, AppHost가 한 저장소에 있어 Codex Worktree(AI 작업용 작업 사본)가 작업 범위를 넘는 파일까지 체크아웃한다.
+2. **변경과 소비자의 경계**: 서비스별 Client와 공용 Contract(타입 465개)가 한 저장소에 있어 서비스 변경과 소비자 작업의 경계가 흐려진다.
+3. **릴리스 책임**: 설계 목표는 서비스의 공개 계약과 Client 패키지를 해당 서비스의 배포·버전 책임에 두는 것이다. 모노레포에서는 이 책임이 저장소 전체에 걸려 있었다는 뜻으로 읽힌다.
+
+## 선택지: 무엇을 어떻게 나눌 것인가
+
+설계 문서는 두 질문에 대해 각각 대안 세 가지를 비교했다고 적는다.
+
+| 질문 | 검토한 대안 |
+| --- | --- |
+| 서비스와 계약을 어떻게 나누나 | 모든 Client를 공용 Contract 저장소에 모으기 / Git submodule로 소스 연결 / 서비스와 Client를 함께 분리 |
+| 통합 실행은 어디서 하나 | AppHost를 서비스마다 복제 / 별도 Integration 저장소 / 기존 Peony를 조합 저장소로 축소 |
+
+문서에는 대안별 탈락 이유가 따로 적혀 있지 않다. 다만 설계 목표에서 두 가지가 읽힌다. 계약을 서비스 소유로 점진 분해한다는 목표는 모든 Client를 공용 저장소에 모으는 안과 방향이 반대다. 문서는 Git submodule을 저장소 간 의존 수단으로 쓰지 않는다고도 못 박았다.
+
+## 결정: 서비스가 Client까지 소유하고, Peony는 조합만 맡는다
+
+결정은 둘이다. 각 `Peony.{Service}`가 서비스(`src`)와 Client(`Client/src`)를 함께 소유하고 Client 패키지를 발행한다. 기존 Peony는 AppHost와 시스템 검증을 맡는 조합 저장소로 줄이고, 별도 Integration 저장소는 만들지 않는다. 아래 그림은 이 구조에서 의존이 흐르는 방향이다.
+
+```mermaid
+flowchart TB
+    S[Peony.서비스<br/>서비스와 Client] -->|Client 패키지 발행| R[패키지 레지스트리]
+    R -->|호환 버전 복원| A[제품 앱 저장소<br/>Mobile 외 2개]
+    H[Peony 조합 저장소<br/>AppHost·시스템 검증] -->|서비스 조합| S
+
+    style S fill:#1864ab,stroke:#0c5296,color:#fff
+    style R fill:#e67700,stroke:#d06600,color:#fff
+    style A fill:#2b8a3e,stroke:#1b7a2e,color:#fff
+    style H fill:#2b8a3e,stroke:#1b7a2e,color:#fff
+```
+
+그림의 확인점은 서비스끼리 소스나 Git submodule로 이어지지 않고, 레지스트리를 거치는 패키지만 오간다는 것이다. 이관 순서도 이 방향을 따랐다. 의존이 없는 FeatureFlag, Counterparty, Product, User를 먼저 옮기고, 이들을 소비하는 앱 저장소를 뒤에, 조합 저장소를 마지막에 옮겼다. 11월 1일 17개 이전 계획이 모두 완료됐고, 예를 들어 Ledger 815건, Management 983건의 테스트가 이관 뒤 저장소에서 통과했다.
+
+## 트레이드오프: 감수한 비용과 실제로 나온 비용
+
+설계 문서가 미리 적은 비용은 패키지 버전 관리와 호환성 검증이다. 호환성 검증이 실패하면 소비자 업데이트를 막고 이전 호환 패키지를 유지한다고 정했다.
+
+- **사실**: 이관 직후 계약은 여전히 하나의 `Peony.Contract` 0.1.0 패키지에 서비스 대부분의 계약을 담았고, 9개 Client가 직접 의존했다. 한 서비스의 계약 변경이 패키지 전체 재발행과 9개 Client 버전 조율을 낳는 구조였다.
+- **사실**: Ledger 이전 중 두 Client가 같은 타입을 각자 가져 컴파일 오류(CS0433, 같은 타입이 두 어셈블리에 있을 때 나는 오류)가 났다.
+- **해석**: 저장소를 나눈 것만으로는 계약 소유권이 풀리지 않았다. 계약을 서비스 소유로 분해하는 작업이 이관의 일부로 당겨졌다.
 
 ```diff
- <!-- Client/src/Peony.Product.Client.csproj -->
-     <PackageReference Include="Garden.Share" />
-+    <PackageReference Include="Peony.Contract" />
-
- <!-- Directory.Packages.props -->
+ <!-- Directory.Packages.props (Product) -->
 +    <PackageVersion Include="Peony.Contract" Version="0.1.0" />
 ```
 
-이 변경에서 확인할 것은 두 가지다. 계약 타입이 소스 파일에서 버전이 붙은 패키지로 바뀌었다는 점, 그리고 이제 패키지를 어디선가 복원(restore, 의존 패키지를 내려받는 단계)해야 한다는 점이다. 같은 날 오후의 후속 커밋들이 이 복원 경로를 세웠다.
+이 한 줄이 비용이 눈에 보이는 지점이다. 소스로 공유하던 계약이 버전 있는 패키지가 됐고, 버전을 올리는 일이 소비자마다 따로 생겼다. 그다음 계약을 서비스 쪽으로 옮겨 해소한 과정은 다음 글에서 다룬다.
 
-- 16시 34분: Product의 `NuGet.config`에서 임시 로컬 패키지 소스를 걷어내고 `Peony.*` 패키지를 사내 피드에서 받도록 매핑을 옮겼다.
-- 22시 00분: 네 저장소에서 피드 주소를 secret 대신 코드에 고정했다.
+## 마무리: 나누기 전에 확인할 세 가지
 
-```diff
- <!-- NuGet.config (핵심 줄만 발췌) -->
--    <add key="local" value="artifacts/packages" />
-   <packageSource key="hanul">
-     <package pattern="Garden.*" />
-+    <package pattern="Peony.*" />   <!-- 이전에는 local 소스 아래에 있었다 -->
-```
-
-복원 경로가 틀리면 계약 패키지를 받지 못해 Client부터 빌드되지 않는다. 아래 그림이 이 변화를 보여 준다.
-
-```mermaid
-flowchart TB
-    subgraph before["13:24 이관 직후"]
-        P1[Product.Client] -->|소스로 포함| C1[Client/src/Contract<br/>계약 타입 소스 파일]
-    end
-    subgraph after["15:23 이후"]
-        P2[Product.Client] -->|PackageReference| C2[Peony.Contract 0.1.0]
-        C2 -->|복원| F[사내 피드]
-    end
-    C1 ~~~ P2
-
-    style P1 fill:#1864ab,stroke:#0c5296,color:#fff
-    style P2 fill:#1864ab,stroke:#0c5296,color:#fff
-    style C2 fill:#e67700,stroke:#d06600,color:#fff
-    style F fill:#c92a2a,stroke:#a51111,color:#fff
-```
-
-## 선택지: 공유하던 계약을 어디에 둘 것인가
-
-기록에는 세 가지 방식이 나온다.
-
-1. **계약을 서비스 클라이언트 안에 두기**: 11월 1일 13시 12분 FeatureFlag에서 `Peony.Contract` 참조를 지우고 계약을 클라이언트에 넣었다.
-2. **공용 Peony.Contract 패키지를 소비하기**: 같은 날 FeatureFlag와 Counterparty가 이 방식으로 되돌렸고, Product와 User도 이 방식을 택했다.
-3. **서비스 클라이언트가 자기 계약 타입을 소유하기**: 11월 2일에 다시 시도했다.
-
-## 결정: 이틀째에 계약을 서비스로 돌려보냈다
-
-Product는 11월 2일 11시 20분에 계약 타입을 공용 패키지에서 클라이언트로 옮겼다. 커밋 메시지에는 공용 패키지 0.1.3이 발행되기 전까지 클라이언트 테스트가 실패한다고 적혀 있다. 12시 39분에 이 커밋을 되돌렸고(revert), 16시 32분에 다시 같은 방향으로 확정했다.
-
-```diff
- <!-- Client/src/Peony.Product.Client.csproj -->
-     <PackageReference Include="Garden.Share" />
--    <PackageReference Include="Peony.Contract" />
-     <PackageReference Include="Peony.Counterparty.Client" />
-```
-
-이 커밋은 75개 파일에서 1,237줄을 더해 계약 타입을 Client로 되돌려 놓았다. 커밋 메시지는 이유를 이렇게 적는다. Product 계약이 한 어셈블리(패키지가 담는 단위)에서만 풀리도록 하고, Contract에서 Client를 거쳐 다시 Contract로 돌아오는 순환 의존(NU1108)을 막는다. 확인할 신호는 `Peony.Contract` 참조가 사라진 것이다. 이 방식에서는 Client 패키지 하나만 받으면 계약이 같이 온다.
-
-같은 날 자정 직후에는 Product에서 공용 패키지와 충돌한 직렬화 옵션 사본 파일(21줄)도 지웠다. Peony.Contract 쪽에서는 이후 7개 커밋으로 계약 폴더를 소유 서비스의 클라이언트로 옮겼고, 마지막 커밋은 11월 3일 00시 45분 Retailer다.
-
-```mermaid
-flowchart TB
-    A[이전: Peony.Contract<br/>서비스 계약을 전부 보유] -->|계약 폴더 이동| C1[Product Client<br/>Product 계약 소유]
-    A -->|계약 폴더 이동| C2[Ledger Client<br/>Ledger 계약 소유]
-    A -->|계약 폴더 이동| C3[User Client<br/>User 계약 소유]
-    A -->|남은 것| D[이후: Peony.Contract<br/>공용 최소 타입만 보유]
-
-    style A fill:#e67700,stroke:#d06600,color:#fff
-    style C1 fill:#2b8a3e,stroke:#1b7a2e,color:#fff
-    style C2 fill:#2b8a3e,stroke:#1b7a2e,color:#fff
-    style C3 fill:#2b8a3e,stroke:#1b7a2e,color:#fff
-    style D fill:#1864ab,stroke:#0c5296,color:#fff
-```
-
-나머지 서비스(Autofill, Billing, Provisioning, WeatherForecast, Retailer, FeatureFlag)도 같은 방식으로 옮겼다.
-
-## 트레이드오프: 무엇을 얻고 무엇을 떠안았나
-
-기록으로 확인되는 사실과 그에 대한 내 해석을 나눠 적는다.
-
-- **사실**: Product의 Client 패키지는 계약 타입을 직접 갖고, 공용 커널과 Notifier가 소유한 연동 타입도 사본으로 흡수했다. 버전은 0.1.3으로 올랐다.
-- **해석**: 소비자는 패키지 하나만 받으면 되지만, 같은 타입의 사본이 여러 저장소에 생겼다. 공용 타입이 바뀌면 사본을 각각 갱신해야 한다.
-- **사실**: 11월 8일부터 서비스마다 staging, production용 GitOps 설정이 각 저장소에 생겼고, 11월 9일에는 운영 이미지가 서비스별로 고정됐다.
-- **해석**: 배포 단위가 저장소 단위가 되어 서비스별로 배포 시점을 따로 정할 수 있게 됐다.
-
-관측 한계도 있다. 커밋 메시지와 diff만 근거라서, 선택지를 놓고 얼마나 고민했는지와 11시 20분 커밋을 되돌린 이유는 알 수 없다.
-
-## 마무리: 이관 전에 확인할 한 가지
-
-서비스 소스를 옮기는 데는 하루가 걸렸지만, 계약 타입이 소스에서 패키지로, 다시 소스로 돌아오는 데는 이틀이 걸렸다. 저장소를 나누기 전에 서비스끼리 공유하는 타입이 어느 저장소에 속하는지, 그 타입을 받는 경로가 어디인지부터 목록으로 만들어 보길 권한다. 다음 글에서는 이 글에서 짧게 지나간 사내 NuGet 피드 복원 문제를 다룬다.
+저장소를 나눌지 판단하는 기준으로 이 사례에서 남는 것은 세 가지다. 작업 범위가 서비스 하나로 닫히는지, 변경을 소유한 쪽과 소비하는 쪽의 경계가 코드 위치와 같은지, 릴리스 단위가 서비스 경계와 일치하는지다. 이 셋이 어긋날 때 모노레포의 이점(경계 변경 비용, 운영의 단순함, 통합 실행)을 패키지 버전 관리라는 비용과 바꿀 수 있다. 내 해석으로는 서비스 경계가 굳은 뒤에 앞의 이점이 줄고 한계가 커졌다. 다음 글에서는 계약 타입이 소스에서 패키지로, 다시 서비스 소유의 소스로 돌아온 과정을 diff로 따라간다.
