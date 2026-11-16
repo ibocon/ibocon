@@ -2,7 +2,8 @@
   "schemaVersion": 1,
   "categories": [
     { "key": "layer", "label": "레이어" },
-    { "key": "domain", "label": "도메인 설계" }
+    { "key": "domain", "label": "도메인 설계" },
+    { "key": "tooling", "label": "저장과 도구" }
   ],
   "terms": [
     {
@@ -81,6 +82,41 @@
       "category": "domain",
       "definition": "식별자 없이 값 자체로 동등성을 판단하는 불변 객체다.",
       "forbidden": ["밸류 오브젝트", "밸류 객체", "값객체"]
+    },
+    {
+      "id": "entity",
+      "term": "엔티티",
+      "category": "domain",
+      "definition": "고유한 식별자를 가지며 상태가 바뀌어도 같은 객체로 취급하는 도메인 객체다.",
+      "forbidden": ["엔터티"]
+    },
+    {
+      "id": "factory-method",
+      "term": "팩토리 메서드",
+      "category": "domain",
+      "definition": "생성자를 대신해 객체를 만드는 정적 메서드다. 객체를 만들기 전에 규칙을 검증할 수 있다.",
+      "forbidden": ["팩터리 메서드", "팩토리메서드", "팩토리 함수"]
+    },
+    {
+      "id": "orm",
+      "term": "ORM",
+      "category": "tooling",
+      "definition": "객체와 데이터베이스 테이블 사이의 변환을 맡는 라이브러리다.",
+      "forbidden": ["오알엠", "O/R 매퍼", "객체 관계 매퍼"]
+    },
+    {
+      "id": "backing-field",
+      "term": "backing field",
+      "category": "tooling",
+      "definition": "속성 뒤에서 값을 실제로 담는 필드다.",
+      "forbidden": ["백킹 필드", "백킹필드", "backing-field"]
+    },
+    {
+      "id": "permalink",
+      "term": "permalink",
+      "category": "tooling",
+      "definition": "특정 커밋에 고정되어 코드가 바뀌어도 같은 내용을 가리키는 주소다.",
+      "forbidden": ["퍼머링크", "퍼머 링크", "고정 링크"]
     }
   ]
 }

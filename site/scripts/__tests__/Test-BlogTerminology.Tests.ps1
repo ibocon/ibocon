@@ -118,4 +118,19 @@ App 레이어
 
         $result.ExitCode | Should -Be 0
     }
+
+    It 'Given_AnAsciiTermInsideAnotherEnglishWord_When_Guarded_Then_DoesNotMatchIt' {
+        $glossary = '{ "schemaVersion": 1, "categories": [], "terms": [ { "id": "orm", "term": "ORM", "category": "x", "definition": "d", "forbidden": [] } ] }'
+        $result = Invoke-TerminologyFixture -Body "platform과 information은 영어 단어다. [ORM](/glossary/#orm)은 용어다.`n" -Glossary $glossary
+
+        $result.ExitCode | Should -Be 0
+    }
+
+    It 'Given_AnAsciiTermWithDifferentCase_When_Guarded_Then_StillFailsWithCaseVariant' {
+        $glossary = '{ "schemaVersion": 1, "categories": [], "terms": [ { "id": "orm", "term": "ORM", "category": "x", "definition": "d", "forbidden": [] } ] }'
+        $result = Invoke-TerminologyFixture -Body "[ORM](/glossary/#orm)과 orm을 섞어 쓴다.`n" -Glossary $glossary
+
+        $result.ExitCode | Should -Be 1
+        $result.Output | Should -Match 'blog-terminology-case-variant: sample-post.md:\d+ \[orm\]'
+    }
 }

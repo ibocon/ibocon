@@ -13,14 +13,14 @@ draft: false
 
 ## 핵심 요약
 
-비즈니스 규칙이 [Application 레이어](/glossary/#application-layer)의 서비스와 핸들러에 흩어진 [빈혈 도메인 모델](/glossary/#anemic-domain-model)은 시스템이 커질수록 [불변식](/glossary/#invariant) 검증을 빠뜨리게 만든다. 이 글은 엔티티를 생성 시점부터 항상 유효하게 만들고 상태 변경을 도메인 메서드로 한정하는 설계를 Orchid.Core의 실제 코드로 확인한다. [값 객체](/glossary/#value-object)와 실패 표현은 처음부터 원칙대로였지만 엔티티는 SQLite ORM[^orm] 때문에 원칙을 어기고 있었고, 이를 고친 결과까지 다룬다. 저장 기술별 매핑 세부는 범위 밖이다.
+비즈니스 규칙이 [Application 레이어](/glossary/#application-layer)의 서비스와 핸들러에 흩어진 [빈혈 도메인 모델](/glossary/#anemic-domain-model)은 시스템이 커질수록 [불변식](/glossary/#invariant) 검증을 빠뜨리게 만든다. 이 글은 [엔티티](/glossary/#entity)를 생성 시점부터 항상 유효하게 만들고 상태 변경을 도메인 메서드로 한정하는 설계를 Orchid.Core의 실제 코드로 확인한다. [값 객체](/glossary/#value-object)와 실패 표현은 처음부터 원칙대로였지만 엔티티는 SQLite [ORM](/glossary/#orm) 때문에 원칙을 어기고 있었고, 이를 고친 결과까지 다룬다. 저장 기술별 매핑 세부는 범위 밖이다.
 
 ## 알아야 할 최소 개념
 
 빈혈 도메인 모델은 엔티티를 공개 setter만 가진 데이터 덩어리로 두고 규칙을 서비스에 두는 구조다. 규칙이 여러 서비스에 나뉘어 있으면 새 호출 경로가 생길 때마다 검증 하나가 빠질 수 있다. 이 구조를 고치자고 하면 "ORM이 공개 setter와 공개 기본 생성자를 요구하니 어쩔 수 없다"는 반론이 따라온다. 이 글은 세 가지 개념으로 그 반론에 답한다.
 
 - **불변식**: 엔티티가 어떤 상태에서도 지켜야 하는 규칙이다. 삭제된 항목은 즐겨찾기에 고정될 수 없다는 규칙이 한 예다.
-- **[항상 유효한 엔티티](/glossary/#always-valid-entity)(Always-Valid Entity)**: 생성자를 숨기고 팩토리 메서드가 규칙을 검증한 뒤에만 객체를 돌려주는 방식이다. 객체 참조를 들고 있다는 사실만으로 유효성을 믿을 수 있다.
+- **[항상 유효한 엔티티](/glossary/#always-valid-entity)(Always-Valid Entity)**: 생성자를 숨기고 [팩토리 메서드](/glossary/#factory-method)가 규칙을 검증한 뒤에만 객체를 돌려주는 방식이다. 객체 참조를 들고 있다는 사실만으로 유효성을 믿을 수 있다.
 - **[Result 패턴](/glossary/#result-pattern)**: 규칙 위반을 예외로 던지지 않고 성공 또는 실패를 담은 반환값으로 돌려주는 방식이다. 반환값의 성공 여부를 확인하지 않고 값에 접근하면 예외가 난다.
 
 ## 동작 원리
@@ -57,11 +57,11 @@ public sealed class Order : AggregateRoot<OrderId>
 
 `Create`는 고객 식별자가 비어 있으면 예외 대신 `Result.Failure`를 돌려준다. 호출부는 성공 여부를 확인한 뒤에야 `Order`를 쓸 수 있다.
 
-ORM이 공개 setter를 강제한다는 반론에는 Milan Jovanović의 [Persisting a Rich Domain Model With EF Core](https://milanjovanovic.tech/blog/persisting-a-rich-domain-model-with-ef-core)가 답한다. 2026년 8월 8일 글에 따르면 EF Core는 `private` 생성자와 backing field[^backingfield]로 엔티티를 만들고 상태를 읽고 쓰므로, 완전히 캡슐화한 [애그리게이트](/glossary/#aggregate)도 저장할 수 있다. 매핑 선언은 도메인 밖의 설정 클래스로 옮긴다. 저장소에서 읽어 객체를 복원할 때는 팩토리 검증을 다시 실행하지 않는다. 규칙이 바뀐 뒤에는 과거 행을 읽지 못하게 되기 때문이다.
+ORM이 공개 setter를 강제한다는 반론에는 Milan Jovanović의 [Persisting a Rich Domain Model With EF Core](https://milanjovanovic.tech/blog/persisting-a-rich-domain-model-with-ef-core)가 답한다. 2026년 8월 8일 글에 따르면 EF Core는 `private` 생성자와 [backing field](/glossary/#backing-field)로 엔티티를 만들고 상태를 읽고 쓰므로, 완전히 캡슐화한 [애그리게이트](/glossary/#aggregate)도 저장할 수 있다. 매핑 선언은 도메인 밖의 설정 클래스로 옮긴다. 저장소에서 읽어 객체를 복원할 때는 팩토리 검증을 다시 실행하지 않는다. 규칙이 바뀐 뒤에는 과거 행을 읽지 못하게 되기 때문이다.
 
 ## 적용할 때 확인할 점
 
-위 원칙이 실제 코드에서 어디까지 지켜지는지 [Orchid.Core](https://github.com/ibocon/Orchid.Core)에서 발췌해 확인했다. 각 블록 첫 줄의 주석이 해당 코드의 permalink[^permalink]다. Orchid.Core는 EF Core가 아니라 SQLite ORM으로 저장한다. 처음 네 블록은 커밋 `78bd7bb` 기준이고, 마지막 블록은 개선한 뒤의 커밋 `b932549` 기준이다.
+위 원칙이 실제 코드에서 어디까지 지켜지는지 [Orchid.Core](https://github.com/ibocon/Orchid.Core)에서 발췌해 확인했다. 각 블록 첫 줄의 주석이 해당 코드의 [permalink](/glossary/#permalink)다. Orchid.Core는 EF Core가 아니라 SQLite ORM으로 저장한다. 처음 네 블록은 커밋 `78bd7bb` 기준이고, 마지막 블록은 개선한 뒤의 커밋 `b932549` 기준이다.
 
 ### 잘못된 조합은 생성자에서 거부한다
 
@@ -213,7 +213,3 @@ SQLite 매핑은 저장소 레이어의 `internal` Row 타입으로 옮겼다. R
 
 - Milan Jovanović, [Persisting a Rich Domain Model With EF Core](https://milanjovanovic.tech/blog/persisting-a-rich-domain-model-with-ef-core), 2026년 8월 8일.
 - [ibocon/Orchid.Core](https://github.com/ibocon/Orchid.Core) 커밋 [`78bd7bb`](https://github.com/ibocon/Orchid.Core/tree/78bd7bbf05baaa74877b9f270d077cc7ed5683db)와 [`b932549`](https://github.com/ibocon/Orchid.Core/tree/b9325498ad5c78d6ba5d48b3b317fc90488d7989).
-
-[^orm]: 객체와 데이터베이스 테이블 사이의 변환을 맡는 라이브러리다.
-[^backingfield]: 속성 뒤에서 값을 실제로 담는 필드다.
-[^permalink]: 특정 커밋에 고정되어 코드가 바뀌어도 같은 내용을 가리키는 주소다.

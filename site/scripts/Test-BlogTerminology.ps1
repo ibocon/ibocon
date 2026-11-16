@@ -112,6 +112,15 @@ foreach ($post in Get-ChildItem -LiteralPath ([IO.Path]::GetFullPath($BlogRoot))
 
         # 표준 표기와 대소문자·띄어쓰기만 다른 변종을 찾는다.
         $pattern = [regex]::Escape([string] $term.term) -replace '\\ ', '\s*'
+        # 영문 약어는 다른 영어 단어 안(platform의 orm 등)에서 찾지 않도록 영숫자 경계를 요구한다.
+        if ($term.term -match '^[A-Za-z0-9]') {
+            $pattern = '(?<![A-Za-z0-9])' + $pattern
+        }
+
+        if ($term.term -match '[A-Za-z0-9]$') {
+            $pattern = $pattern + '(?![A-Za-z0-9])'
+        }
+
         $occurrences = @([regex]::Matches($scan, $pattern, 'IgnoreCase'))
         foreach ($occurrence in $occurrences) {
             if ($occurrence.Value -cne $term.term) {
