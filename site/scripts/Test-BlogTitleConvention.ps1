@@ -63,7 +63,7 @@ foreach ($post in $posts) {
         Add-Violation -Violations $violations -Code 'blog-title-prefix-forbidden' -Path $post.Name
     }
 
-    if (@($title.ToCharArray() | Where-Object { $_ -eq ':' }).Count -ne 1) {
+    if (@($title.ToCharArray() | Where-Object { $_ -eq ':' }).Count -gt 1) {
         Add-Violation -Violations $violations -Code 'blog-title-context-separator-invalid' -Path $post.Name
     }
 

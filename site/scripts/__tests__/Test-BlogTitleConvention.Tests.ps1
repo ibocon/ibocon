@@ -28,15 +28,22 @@ tags: ["dotnet"]
 Describe 'Test-BlogTitleConvention' {
     BeforeEach {
         function Invoke-GuardFixture {
-            param([string] $Title)
+            param([string] $Title, [switch] $SyncManifest)
 
+            if ($SyncManifest) {
+                Set-Content -LiteralPath $script:ManifestPath -Encoding utf8 -Value (ConvertTo-Json -InputObject @(@{ file = 'sample-post.md'; title = $Title }))
+            }
+
+            # A script that completes successfully does not always create
+            # LASTEXITCODE in a fresh Pester worker.
+            $global:LASTEXITCODE = 0
             $postPath = Join-Path $script:FixtureRoot 'sample-post.md'
             $content = Get-Content -Raw -LiteralPath $postPath
             $updated = [regex]::Replace($content, '(?m)^title:.*$', "title: `"$Title`"")
             Set-Content -LiteralPath $postPath -Encoding utf8 -Value $updated
 
             $output = & $script:GuardPath -BlogRoot $script:FixtureRoot -ManifestPath $script:ManifestPath -SlugManifestPath $script:SlugManifestPath 2>&1
-            [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output -join "`n" }
+            [pscustomobject]@{ ExitCode = $global:LASTEXITCODE; Output = $output -join "`n" }
         }
     }
 
@@ -61,8 +68,21 @@ Describe 'Test-BlogTitleConvention' {
         $result.Output | Should -Match 'blog-title-recommendation-ending-forbidden'
     }
 
-    It 'Given_ASeparatorWithoutContext_When_Guarded_Then_Fails' {
+    It 'Given_ATitleWithoutAContextSuffix_When_Guarded_Then_Passes' {
+        $result = Invoke-GuardFixture -Title '서비스 15개를 하루에 독립 저장소로 옮긴 기록' -SyncManifest
+
+        $result.ExitCode | Should -Be 0
+    }
+
+    It 'Given_AMixedSeparator_When_Guarded_Then_Fails' {
         $result = Invoke-GuardFixture -Title '도메인 모델을 설계하는 방법 - C#'
+
+        $result.ExitCode | Should -Be 1
+        $result.Output | Should -Match 'blog-title-separator-mixed'
+    }
+
+    It 'Given_TwoColons_When_Guarded_Then_Fails' {
+        $result = Invoke-GuardFixture -Title '도메인 모델의 불변식을 지키는 방법: C#: 설계'
 
         $result.ExitCode | Should -Be 1
         $result.Output | Should -Match 'blog-title-context-separator-invalid'

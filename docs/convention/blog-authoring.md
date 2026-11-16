@@ -17,7 +17,7 @@ articleType: "concept"
 - `audience`는 현재 기본 독자 토큰 `topic-new-developer`만 사용한다.
 - `articleType`은 `concept`, `tutorial`, `incident`, `design` 중 하나다.
 - `description`은 본문 발췌가 아니라 검색 결과와 RSS에서 독자가 얻을 문제·결과를 설명한다. 80자 이상 180자 이하로 쓴다.
-- 제목은 [블로그 제목 컨벤션](blog-title.md)의 결과와 기술 맥락 형식을 따른다.
+- 제목은 [블로그 제목 컨벤션](blog-title.md)의 결과 중심 형식을 따른다. 기술 맥락 꼬리표(`: 제품명`)는 꼭 필요한 경우에만 붙인다.
 
 ## 읽기 시간 상한
 
