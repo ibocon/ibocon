@@ -46,6 +46,24 @@ Describe 'Test-BlogPresentationConvention' {
         $Result.Output | Should -Match 'technical-blog-presentation-diagram-horizontal-chain-too-long'
     }
 
+    # 목록 카드 커버가 object-fit: cover로 잘리던 회귀를 실제 policy와 실제 CSS로 재현한다.
+    It 'Given_CardCoverCroppedWithObjectFitCover_When_WrapperRuns_Then_ReportsSurfaceCrop' {
+        # Given
+        $SiteRoot = Join-Path $TestDrive 'site'
+        $Styles = Join-Path $SiteRoot 'src/styles'
+        New-Item -ItemType Directory -Path $Styles -Force | Out-Null
+        $RealCss = Get-Content -LiteralPath (Join-Path $PSScriptRoot '../../src/styles/global.css') -Raw -Encoding utf8
+        $Cropped = $RealCss -replace '(\.post-card-cover \{[^}]*?)object-fit: contain', '$1object-fit: cover'
+        Set-Content -LiteralPath (Join-Path $Styles 'global.css') -Value $Cropped -Encoding utf8
+
+        # When
+        $Result = Invoke-Wrapper -Arguments @('-SiteRoot', $SiteRoot)
+
+        # Then
+        $Result.ExitCode | Should -Be 1
+        $Result.Output | Should -Match 'technical-blog-presentation-cover-surface-crop'
+    }
+
     It 'Given_MissingGuardPath_When_WrapperRuns_Then_ThrowsGuardMissing' {
         # Given
         $MissingGuard = Join-Path $TestDrive 'missing.ps1'

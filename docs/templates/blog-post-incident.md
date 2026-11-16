@@ -5,6 +5,7 @@ pubDate: 2026-11-11
 tags: ["architecture"]
 authoringVersion: 1
 audience: "topic-new-developer"
+# coverImage: "/post-covers/<slug>.svg"  # 본문 첫 이미지가 1.4~2.4:1이 아니면 1200x630 SVG 커버를 지정한다
 articleType: "incident"
 draft: true
 ---
