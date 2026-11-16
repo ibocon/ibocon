@@ -75,8 +75,9 @@
 ## 📊 깃허브 활동 및 잔디 통계 (Activity & Grass)
 
 <div align="center">
-  <img src="https://github-readme-stats-fast.vercel.app/api?username=ibocon&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" width="48%" />
-  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=ibocon&layout=compact&theme=tokyonight&hide=html" width="48%" />
+  <img alt="주요 사용 언어 비율" src="https://raw.githubusercontent.com/ibocon/ibocon/stats-output/github-language-stats.svg" width="60%" />
+  <br />
+  <sub>집계 범위: 개인 계정과 BotanicSoft 조직, 내 커밋 비율 가중. 그 밖의 조직 저장소는 포함하지 않는다.</sub>
 </div>
 
 <div align="center">
