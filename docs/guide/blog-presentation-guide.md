@@ -30,7 +30,7 @@
 
 ## 커버가 잘려 보일 때
 
-1. 먼저 목록과 상세 중 어느 면에서 잘리는지 본다. 목록 카드는 `.post-card-cover`, 상세는 `.post-cover`다. 두 면 모두 `object-fit: contain`과 `aspect-ratio: var(--cover-aspect)`여야 한다.
+1. 먼저 목록과 상세 중 어느 면에서 잘리는지 본다. 목록 카드는 `.post-card-cover`, 상세는 `.post-cover`다. 두 면 모두 `object-fit: contain`이어야 하고, 상세는 `aspect-ratio: var(--cover-aspect)`도 유지한다.
 2. 이미지가 작게 보이거나 위아래가 비면 CSS 문제가 아니라 원본 비율 문제다. 커버 출처는 front matter `coverImage`, 없으면 본문 첫 로컬 이미지다.
 3. 출처 비율이 1.4~2.4:1이 아니면 `public/post-covers`에 1200×630 SVG를 만들고 `coverImage: "/post-covers/<slug>.svg"`로 지정한다.
 4. 검사에서 `cover-source-aspect-mismatch`가 나오면 3번을 한다. 기존 글이면 고친 뒤 `site/scripts/blog-cover-baseline.json`에서 해당 항목을 지운다.

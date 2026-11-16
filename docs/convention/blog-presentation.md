@@ -19,7 +19,7 @@
 ## 커버 이미지
 
 - 커버는 `viewBox="0 0 1200 630"`이다.
-- 커버를 보여 주는 모든 면(상세 `.post-cover`, 목록 `.post-card-cover`)은 `--cover-aspect: 1200 / 630` 토큰 하나를 `aspect-ratio: var(--cover-aspect)`로 쓰고 `object-fit: contain`을 유지한다. 새 커버 표시 면을 추가하면 policy `covers.surfaces`에 먼저 등록한다.
+- 커버를 보여 주는 모든 면은 `object-fit: contain`을 유지한다. 상세 `.post-cover`는 `--cover-aspect: 1200 / 630` 토큰을 `aspect-ratio: var(--cover-aspect)`로 쓴다. 목록 `.post-card-cover`는 비율을 강제하지 않고 원본 비율대로 `max-block-size: 12rem` 안에 보여 정사각형 이미지에 여백이 생기지 않게 한다. 새 커버 표시 면을 추가하면 policy `covers.surfaces`에 먼저 등록한다.
 - 이름에 `cover`가 들어간 CSS 규칙에는 `object-fit: cover`와 `object-fit: fill`을 쓰지 않는다. 커버는 자르거나 늘리지 않는다.
 - 글의 커버 출처(front matter `coverImage`, 없으면 본문 첫 로컬 이미지)가 래스터나 SVG이면 가로세로 비율이 1.4 이상 2.4 이하여야 한다. 그 범위가 아닌 이미지는 `coverImage`로 `public/post-covers`의 SVG를 지정한다.
 - 기존 글의 위반은 `site/scripts/blog-cover-baseline.json`이 허용한다. 새 항목을 추가하지 않고, 커버를 고치면 항목을 지운다. 지우지 않으면 `cover-baseline-stale`로 실패한다.

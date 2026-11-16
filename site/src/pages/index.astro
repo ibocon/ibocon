@@ -7,4 +7,4 @@ const posts = await getPublishedPosts();
 const slice = paginate(posts, HOME_PAGE_SIZE, '/')[0];
 ---
 
-<PostListLayout slice={slice} basePath="/" variant="card" />
+<PostListLayout slice={slice} basePath="/" />

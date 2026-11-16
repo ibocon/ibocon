@@ -19,7 +19,7 @@
     "requiredCssDeclarations": ["object-fit: contain", "aspect-ratio: var(--cover-aspect)"],
     "aspectToken": { "name": "--cover-aspect", "value": "1200 / 630" },
     "surfaces": [
-      { "selector": ".post-card-cover", "requiredCssDeclarations": ["object-fit: contain", "aspect-ratio: var(--cover-aspect)"] }
+      { "selector": ".post-card-cover", "requiredCssDeclarations": ["object-fit: contain", "max-block-size: 12rem"] }
     ],
     "forbiddenCssDeclarations": ["object-fit: cover", "object-fit: fill"],
     "raster": { "minAspect": 1.4, "maxAspect": 2.4, "baseline": "scripts/blog-cover-baseline.json" }

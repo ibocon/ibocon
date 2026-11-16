@@ -5,7 +5,6 @@ import AdSenseSlot from './AdSenseSlot.astro';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
 import PostCard from './PostCard.astro';
-import PostRow from './PostRow.astro';
 import Pagination from './Pagination.astro';
 import { absoluteLocaleUrl } from '../lib/locale';
 import { siteCopy } from '../lib/site-copy';
@@ -13,7 +12,7 @@ import { getPublishedPosts } from '../lib/blog-posts';
 import { pagePath } from '../lib/blog-pagination';
 import '../styles/global.css';
 
-const { slice, basePath, variant, activeTag } = Astro.props;
+const { slice, basePath, activeTag } = Astro.props;
 const locale = 'ko';
 const copy = siteCopy[locale];
 const allTags = [...new Set((await getPublishedPosts()).flatMap((post) => post.data.tags))].sort();
@@ -76,7 +75,7 @@ const toAbsolute = (href: string) => new URL(href, 'https://blog.botanicsoft.com
         <p class="search-empty" id="search-empty" hidden>일치하는 게시물이 없습니다.</p>
         <div class="search-results" id="search-results" hidden></div>
         <div class="post-list" id="post-list">
-          {slice.items.map((post) => (variant === 'card' ? <PostCard post={post} /> : <PostRow post={post} />))}
+          {slice.items.map((post) => <PostCard post={post} />)}
         </div>
         <Pagination page={slice.page} totalPages={slice.totalPages} basePath={basePath} prevHref={slice.prevHref} nextHref={slice.nextHref} />
       </section>
