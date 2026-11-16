@@ -196,7 +196,7 @@ a.filter-chip { text-decoration: none; }
 .prose pre.mermaid svg { display: block; margin: 0 auto; max-inline-size: 100%; block-size: auto; }
 .prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
-.prose th, .prose td { border: 1px solid var(--border-color); padding: var(--space-3) var(--space-4); }
+.prose th, .prose td { border: 1px solid var(--border-color); padding: var(--space-3) var(--space-4); word-break: keep-all; overflow-wrap: break-word; }
 .toc { align-self: start; position: sticky; top: 88px; border-left: 2px solid var(--border-color); font-size: .9rem; padding-left: 16px; }
 .toc ul { list-style: none; margin: var(--space-3) 0; padding: 0; }.toc li { margin: var(--space-3) 0; line-height: 1.5; }.toc .toc-depth-3 { padding-left: var(--space-4); }.toc a { color: var(--text-secondary); text-decoration: none; }
 .prose a:focus-visible, .toc a:focus-visible, .theme-toggle:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 3px; }
