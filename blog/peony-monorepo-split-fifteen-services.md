@@ -7,7 +7,7 @@ authoringVersion: 1
 audience: "topic-new-developer"
 articleType: "design"
 coverImage: "/post-covers/peony-monorepo-split-fifteen-services.svg"
-draft: true
+draft: false
 ---
 
 ## 핵심 요약: 모노레포는 무엇을 주었고 무엇 때문에 나눴나

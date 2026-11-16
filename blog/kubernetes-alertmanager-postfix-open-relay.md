@@ -8,7 +8,7 @@ authoringVersion: 1
 audience: "topic-new-developer"
 articleType: "incident"
 coverImage: "/post-covers/kubernetes-alertmanager-postfix-open-relay.svg"
-draft: true
+draft: false
 ---
 
 ## 핵심 요약
