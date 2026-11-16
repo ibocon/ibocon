@@ -63,11 +63,11 @@
 
 ## 📝 최근 엔지니어링 노트 (Recent Notes)
 <!-- BLOG-POST-LIST:START -->
+- [Peony를 모노레포에서 서비스별 저장소로 나눈 이유](https://blog.botanicsoft.com/peony-monorepo-split-fifteen-services/)
+- [Postfix 오픈 릴레이를 막는 4가지 경계](https://blog.botanicsoft.com/kubernetes-alertmanager-postfix-open-relay/)
 - [Rich Domain Model로 불변식을 지키는 설계 원칙](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
 - [Microsoft .NET 레퍼런스 저장소 한눈에 보기](https://blog.botanicsoft.com/dotnet-reference-projects/)
 - [Blazor 개발 환경을 구성하는 방법: Webpack과 TypeScript](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
-- [Sass를 Blazor에 적용하는 방법: 스타일 빌드](https://blog.botanicsoft.com/blazor-apply-sass/)
-- [WebSocket으로 양방향 통신을 만드는 방법: Web API](https://blog.botanicsoft.com/web-api-websocket/)
 <!-- BLOG-POST-LIST:END -->
 
 ---
