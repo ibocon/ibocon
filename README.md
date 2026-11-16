@@ -75,8 +75,8 @@
 ## 📊 깃허브 활동 및 잔디 통계 (Activity & Grass)
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ibocon&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ibocon&layout=compact&theme=tokyonight&hide=html" width="48%" />
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=ibocon&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" width="48%" />
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=ibocon&layout=compact&theme=tokyonight&hide=html" width="48%" />
 </div>
 
 <div align="center">
