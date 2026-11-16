@@ -16,7 +16,7 @@ draft: true
 
 ## 알아야 할 최소 개념
 
-처음 나오는 전문 용어를 역할 중심의 쉬운 말로 설명하고, 필요한 경우 원어를 함께 쓴다.
+글 전체를 이해하는 데 필요한 핵심 용어 2~3개를 역할 중심의 쉬운 말로 설명한다. 한 번만 나오는 보조 용어는 본문에 풀지 않고 각주로 둔다.
 
 ## 동작 원리
 
@@ -30,6 +30,7 @@ draft: true
 
 기억할 판단 기준과 다음 행동 하나를 남긴다.
 
+<!-- 용어 설명: 본문에는 이름만 쓰고 `용어[^이름]`처럼 참조한 뒤, 글 끝에 `[^이름]: 한 문장 설명.`으로 정의한다. 문장 안 설명 괄호는 쓰지 않는다: docs/convention/blog-authoring.md 용어와 문단 -->
 <!-- 분량: 본문 공백 제외 4,000자(10분) 이하(코드 블록·mermaid 제외). 넘기면 독자의 질문 단위로 글을 나눈다: docs/convention/blog-authoring.md -->
 <!-- 그림·커버를 넣을 때: docs/convention/blog-presentation.md, docs/guide/blog-presentation-guide.md -->
 <!-- 저장 후: pwsh -NoProfile -File site/scripts/Test-BlogPresentationConvention.ps1 -->
