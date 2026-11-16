@@ -37,21 +37,21 @@ describe('Astro Blog Static Build Verification', () => {
     expect(readFileSync(rssXmlPath, 'utf-8')).toContain('https://blog.botanicsoft.com');
   });
 
-  it('Given_DraftIncidentCaseStudy_When_Built_Then_KeepsItOutOfPublicHtmlAndRss', () => {
+  it('Given_PublishedIncidentCaseStudy_When_Built_Then_IncludesItInPublicHtmlAndRss', () => {
     // Given
     const distDir = resolve(process.cwd(), 'dist');
-    const draftPath = resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md');
+    const postPath = resolve(process.cwd(), '..', 'blog', 'kubernetes-alertmanager-postfix-open-relay.md');
     const postHtmlPath = resolve(distDir, 'kubernetes-alertmanager-postfix-open-relay', 'index.html');
     const rssXmlPath = resolve(distDir, 'rss.xml');
 
     // When
-    const draft = readFileSync(draftPath, 'utf-8');
+    const post = readFileSync(postPath, 'utf-8');
     const rssXml = readFileSync(rssXmlPath, 'utf-8');
 
     // Then
-    expect(draft).toContain('draft: true');
-    expect(existsSync(postHtmlPath)).toBe(false);
-    expect(rssXml).not.toContain('kubernetes-alertmanager-postfix-open-relay');
+    expect(post).toContain('draft: false');
+    expect(existsSync(postHtmlPath)).toBe(true);
+    expect(rssXml).toContain('kubernetes-alertmanager-postfix-open-relay');
   });
 
   it('Given_DevelopmentRoute_When_InspectingDraftContract_Then_IncludesDraftsAndShowsReviewBanner', () => {
