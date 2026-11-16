@@ -1,0 +1,33 @@
+name: Generate Profile Language Stats
+on:
+  schedule:
+    - cron: "30 15 * * *" # 매일 00:30 (KST), snake.yml(00:00)과 겹치지 않는다
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-stats
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 언어 통계 SVG 생성
+        shell: pwsh
+        env:
+          TOKEN_IBOCON: ${{ secrets.GH_CI_PROFILE_STATS_IBOCON_TOKEN }}
+          TOKEN_BOTANICSOFT: ${{ secrets.GH_CI_PROFILE_STATS_BOTANICSOFT_TOKEN }}
+        run: ./site/scripts/Get-ProfileLanguageStats.ps1 -User ibocon -OutputPath dist/github-language-stats.svg
+
+      - uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: stats-output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
