@@ -1,0 +1,31 @@
+{
+  "ipv4": {
+    "allowedCidrs": [
+      "0.0.0.0/32",
+      "127.0.0.0/8",
+      "192.0.2.0/24",
+      "198.51.100.0/24",
+      "203.0.113.0/24"
+    ]
+  },
+  "hostnames": {
+    "forbiddenSuffixes": ["botanicsoft.com"],
+    "allowed": ["botanicsoft.com", "blog.botanicsoft.com"],
+    "forbiddenPatterns": ["\\.svc\\.cluster\\.local\\b", "\\.internal\\b"]
+  },
+  "email": {
+    "allowedDomains": ["example.com", "example.org", "example.net"]
+  },
+  "secretPatterns": [
+    { "id": "openbao-token", "pattern": "\\bhv[sbr]\\.[A-Za-z0-9_-]{16,}" },
+    { "id": "grafana-service-account-token", "pattern": "\\bglsa_[A-Za-z0-9_]{16,}" },
+    { "id": "github-token", "pattern": "\\bgh[pousr]_[A-Za-z0-9]{20,}" },
+    { "id": "aws-access-key", "pattern": "\\bAKIA[0-9A-Z]{16}\\b" },
+    { "id": "slack-token", "pattern": "\\bxox[baprs]-[A-Za-z0-9-]{10,}" },
+    { "id": "bearer-token", "pattern": "(?i)\\bBearer\\s+[A-Za-z0-9._~+/=-]{20,}" },
+    { "id": "private-key-block", "pattern": "-----BEGIN [A-Z ]*PRIVATE KEY-----" }
+  ],
+  "evidence": {
+    "allowedTokens": ["botanicsoft.com", "blog.botanicsoft.com"]
+  }
+}
