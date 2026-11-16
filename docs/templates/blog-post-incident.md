@@ -42,6 +42,6 @@ draft: true
 
 <!-- 기록에서 사실을 가져온다: 사건 기록, 로그, 대화. 기록에 없는 신호나 해석은 지어 쓰지 않는다: docs/convention/blog-authoring.md 경험 근거 -->
 <!-- 공개 금지: 내부 식별자, 공인 IP, 키·토큰 등 민감한 값 -->
-<!-- 분량: 본문 공백 제외 4,000자(10분) 이하. 넘기면 독자의 질문 단위로 글을 나눈다: docs/convention/blog-authoring.md -->
+<!-- 분량: 본문 공백 제외 4,000자(10분) 이하(코드 블록·mermaid 제외). 넘기면 독자의 질문 단위로 글을 나눈다: docs/convention/blog-authoring.md -->
 <!-- 그림·커버를 넣을 때: docs/convention/blog-presentation.md, docs/guide/blog-presentation-guide.md -->
 <!-- 저장 후: pwsh -NoProfile -File site/scripts/Test-BlogAuthoringConvention.ps1 -->

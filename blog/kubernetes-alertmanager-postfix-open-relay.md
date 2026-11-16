@@ -17,42 +17,56 @@ draft: true
 
 ## 영향
 
-10월 27일, 관리자 메일함에 DMARC 집계 보고서가 한꺼번에 도착했다. 알림 메일은 이런 보고서를 만들지 않는다. 열어 보니 보고서마다 같은 발신 IP가 찍혀 있었고, 외부 메일 서버들이 그 IP를 스팸 발신자 블랙리스트(RBL)에 올려 거부하기 시작한 상태였다.
+10월 27일, 관리자 메일함에 DMARC 집계 보고서가 한꺼번에 도착했다. 알림 메일은 이런 보고서를 만들지 않는다. 열어 보니 보고서마다 같은 발신 IP가 찍혀 있었고, 외부 메일 서버들이 그 IP를 스팸 발신자 블랙리스트(RBL)에 올려 거부하기 시작한 상태였다. 아래는 수신 서버 한 곳의 보고서에서 필요한 줄만 옮긴 것이다. 서버 이름은 빼고 IP는 예시 주소로 바꿨다.
 
-처음에는 해킹당했다고 생각했다. 그런데 Postfix 로그에 보인 것은 서버 안에서 벌어진 일의 흔적이 아니라, 무작위 외부 수신자와 임의의 우리 도메인 발신자 주소로 가는 메일 제출이 고속으로 반복되는 모습이었다. relay는 이 메일을 그대로 받아 우리 도메인의 DKIM 서명[^dkim]까지 붙이고 있었다. 이어서 relay Service가 LoadBalancer와 NodePort로 외부에 열려 있다는 것을 확인했고, 그제야 침입이 아니라 오픈 릴레이 악용으로 판단을 바꿨다.
+```xml
+<date_range><begin>1792972804</begin><end>1793059883</end></date_range>
+<source_ip>203.0.113.10</source_ip>
+<count>1</count>
+<policy_evaluated><disposition>none</disposition><dkim>pass</dkim><spf>pass</spf></policy_evaluated>
+```
 
-막힌 곳은 시작 시점이었다. 컨테이너 로그에는 그날 오전 기록밖에 없었다. 중앙 로그 저장소(Loki)에서 처음 확인한 지표는 그날 새벽 3시대였고, 그래서 당일에 시작된 일이라고 적었다. 다음 날 보존 구간 전체를 다시 집계하니 이 판정이 틀렸다. 외부에서 성공한 첫 릴레이는 10월 20일, 대량 발송의 시작은 10월 25일이었다. 첫 성공 뒤 일주일 동안 알아채지 못한 것이다.
+기간은 10월 26일 09:00부터 27일 09:11(KST)까지다. 다른 수신 서버의 보고서도 같은 IP였다.
 
-영향은 전송량 증가에 그치지 않았다. 차단 직전 메일 큐에는 스팸 1만 4천여 건이 쌓여 있었다. 발신 IP가 여러 RBL에 올라가서 정상 알림 메일까지 거부당했고, 목록이 풀리기를 기다리는 동안 경보는 Alertmanager 화면에서 직접 확인해야 했다. 스팸에 우리 DKIM 서명이 붙었기 때문에 서명 키 교체도 계획해야 했다. 점검할 때는 어느 알림이 실제로 손실됐는지와 현재도 외부 요청이 relay에 도달하는지를 별도로 확인한다.
+처음에는 해킹당했다고 생각했다. 그런데 Postfix 로그에는 침입 흔적이 아니라, 무작위 외부 수신자와 임의의 우리 도메인 발신자 주소로 가는 메일 제출이 고속으로 반복되고 있었다. relay는 이를 받아 DKIM 서명[^dkim]까지 붙였다. relay Service가 LoadBalancer와 NodePort로 외부에 열려 있다는 것을 확인하고서야 침입이 아니라 오픈 릴레이 악용으로 판단을 바꿨다. 같은 보고서의 인증 결과도 이 판단과 맞았다.
+
+```xml
+<policy_published><domain>botanicsoft.com</domain><p>none</p></policy_published>
+<dkim><domain>botanicsoft.com</domain><selector>mail</selector><result>pass</result></dkim>
+<spf><domain>botanicsoft.com</domain><result>pass</result></spf>
+```
+
+SPF와 DKIM이 모두 우리 도메인으로 통과했으므로 외부에서 도메인을 사칭한 메일이 아니라 우리 서버가 서명해 내보낸 메일이다. 정책이 `p=none`, 즉 관찰만 하는 설정이어서 DMARC로는 걸러지지 않았다.
+
+막힌 곳은 시작 시점이었다. 컨테이너 로그에는 그날 오전 기록뿐이었고, 중앙 로그 저장소(Loki)에서 처음 확인한 그날 새벽 3시대를 시작으로 적었다. 다음 날 보존 구간 전체를 다시 집계하니 틀린 판정이었다. 외부에서 성공한 첫 릴레이는 10월 20일, 대량 발송 시작은 10월 25일이었다. 첫 성공 뒤 일주일 동안 알아채지 못한 것이다.
+
+피해는 전송량 증가에 그치지 않았다. 차단 직전 메일 큐에는 스팸 1만 4천여 건이 쌓여 있었다. 발신 IP가 여러 RBL에 올라 정상 알림 메일까지 거부당했고, 목록이 풀릴 때까지 경보는 Alertmanager[^am] 화면에서 직접 확인해야 했다. 스팸에 우리 서명이 붙어 서명 키 교체도 계획해야 했다. 11월 13일 구글의 보고서에는 정책이 `reject`로, 서명 selector가 `mail2610`으로 바뀐 것이 보인다.
+
+```xml
+<policy_published><domain>botanicsoft.com</domain><p>reject</p></policy_published>
+<dkim><domain>botanicsoft.com</domain><selector>mail2610</selector><result>pass</result></dkim>
+```
+
+점검할 때는 어느 알림이 실제로 손실됐는지와 현재도 외부 요청이 relay에 도달하는지를 별도로 확인한다.
 
 ## 즉시 차단
 
-사고 대응의 첫 목표는 원인을 완전히 설명하는 것이 아니라 추가 발송을 멈추면서 정상 알림 경로를 보존하는 것이다. 그날 실제로 한 순서는 다음과 같다.
+첫 목표는 원인 설명이 아니라 추가 발송을 멈추면서 정상 알림 경로를 보존하는 것이었다. 그날 실제로 한 순서는 다음과 같다.
 
 | 조치 | 그날의 결과 |
 | --- | --- |
-| 1. Kubernetes Service[^service]를 내부 전용으로 바꿔 외부에서 relay로 들어오는 경로를 닫는다 | 외부 노출은 사라졌지만, 공인 주소로 접속하던 Alertmanager의 알림 메일이 전부 실패 |
-| 2. NetworkPolicy[^netpol]로 필요한 Alertmanager만 relay에 연결하게 한다 | Flannel이 NetworkPolicy를 시행하지 않아 접근을 막지 못함 |
+| 1. Kubernetes Service[^service]를 내부 전용으로 바꿔 외부 경로를 닫는다 | 외부 노출은 사라졌지만, 공인 주소로 접속하던 Alertmanager의 알림 메일이 전부 실패 |
+| 2. NetworkPolicy[^netpol]로 Alertmanager만 relay에 연결하게 한다 | Flannel이 NetworkPolicy를 시행하지 않아 접근을 막지 못함 |
 | 3. 비정상 메시지를 승인된 런북에 따라 격리·정리하고 정상 알림 경로를 확인한다 | 큐가 비어 있는 것을 재확인 |
-| 4. 같은 변경을 선언형 설정에 반영해 다음 동기화에서 노출이 되돌아오지 않게 한다 | GitOps에 게시 |
+| 4. 같은 변경을 선언형 설정에 반영한다 | GitOps에 게시 |
 
-표의 1번과 2번에 틈이 있었고, 다음 날 재조사에서 알았다. 그래서 relay 허용 범위를 로컬로 줄이고 SMTP 인증을 켰으며, Alertmanager는 클러스터 내부 주소에 TLS와 인증으로 접속하도록 바꿨다. 무인증 요청, TLS 없는 인증, 틀린 비밀번호는 모두 거부되고 인증된 client만 통과하는 것을 임시 Pod로 확인했다.
-
-메일 큐 정리는 별도의 운영 절차라서 이 글에서는 다루지 않았다. 큐를 건드리기 전에는 정상 알림이 같이 지워지지 않는지 먼저 확인했다.
+1번과 2번의 틈은 다음 날 재조사에서 알았다. 그래서 relay 허용 범위를 로컬로 줄이고 SMTP 인증을 켰으며, Alertmanager는 클러스터 내부 주소에 TLS와 인증으로 접속하게 바꿨다. 무인증 요청, TLS 없는 인증, 틀린 비밀번호는 모두 거부되고 인증된 client만 통과하는 것을 임시 Pod로 확인했다. 큐 정리는 별도의 운영 절차라 다루지 않는다.
 
 ## 원인
 
-### 최소 용어
-
-Alertmanager는 경보를 받아 여러 알림 채널로 전달하는 구성 요소다. SMTP relay는 메일을 대신 전달하는 중계 서버다. source NAT는 경계를 지나는 연결에서 원래 접속자 주소가 노드나 다른 경계 구성 요소의 주소로 바뀌어 보일 수 있는 처리다.
-
-Kubernetes Service는 Pod 집합을 네트워크에서 사용할 수 있게 만드는 추상화이며, 어떤 접근 경로를 만들지는 Service와 주변 네트워크 구성이 함께 결정한다. [Kubernetes Service 문서](https://kubernetes.io/docs/concepts/services-networking/service/)는 Service가 Pod 집합을 네트워크에 노출하는 방식을 설명한다.
-
 ### 의도한 경로와 실제로 열린 경로
 
-정상적인 구조에서는 Alertmanager만 내부 SMTP relay에 연결하고, relay가 외부 메일 서버로 전달한다. relay는 모든 클라이언트의 발송 대행자가 아니라 지정된 내부 workload의 제한된 의존성이다.
-
-그림 1은 허용된 발신 주체와 relay의 역할을 구분한다. 외부 메일 서버로의 송신은 정상 경로이며, relay에 SMTP 요청을 보낼 수 있는 주체는 Alertmanager 하나여야 한다.
+정상 구조에서는 Alertmanager만 내부 relay에 연결하고, relay가 외부 메일 서버로 전달한다. 그림 1에서 relay에 요청을 보낼 수 있는 주체는 Alertmanager 하나여야 한다.
 
 ```mermaid
 flowchart TB
@@ -71,11 +85,9 @@ flowchart TB
     style D fill:#c92a2a,stroke:#a51111,color:#fff
 ```
 
-이 그림의 확인점은 두 가지다. Alertmanager 외 workload의 연결 근거가 문서화되어 있는지, relay가 인터넷에서 SMTP 요청을 받는 진입점이 없는지 확인한다.
+확인점은 두 가지다. Alertmanager 외 workload의 연결 근거가 문서화되어 있는지, relay가 인터넷에서 SMTP 요청을 받는 진입점이 없는지 확인한다.
 
-문제의 핵심은 Postfix 자체가 아니라 노출과 신뢰 설정의 조합이었다. 외부에서 도달 가능한 submission endpoint가 있고 relay 허용 범위가 내부 통신에 쓰이는 넓은 주소 대역을 신뢰하면, 외부 요청이 내부에서 온 것처럼 보일 여지가 생긴다.
-
-그림 2는 하나의 Service 유형이 아니라 여러 조건이 겹칠 때만 성립하는 위험 경로를 보여 준다.
+문제의 핵심은 Postfix 자체가 아니라 노출과 신뢰 설정의 조합이었다. 외부에서 닿는 submission endpoint가 있고 relay 허용 범위가 내부 통신용 넓은 주소 대역을 신뢰하면, 외부 요청이 내부에서 온 것처럼 보인다. 그림 2는 여러 조건이 겹칠 때만 성립하는 이 경로다.
 
 ```mermaid
 flowchart TB
@@ -98,32 +110,28 @@ flowchart TB
 
 ### source NAT가 주소 기반 허용을 흐리는 조건
 
-클러스터 내부 통신을 쉽게 만들기 위해 넓은 사설 대역을 허용하는 설정은 흔하다. 그러나 외부 연결이 경계를 지날 때 source NAT가 적용되면 relay가 원래 접속자 대신 노드나 클러스터 경계의 주소를 볼 수 있다. 이 조건에서는 "내부 대역만 허용한다"는 주소 규칙이 실제 클라이언트를 충분히 구분하지 못할 수 있다.
-
-따라서 SMTP 신뢰 경계는 네트워크 주소 하나에만 기대면 안 된다. 외부 노출 여부, Service 접근 경로, Postfix relay restriction, workload 단위 접근 제어를 함께 검토해야 한다. [Postfix relay access control 문서](https://www.postfix.org/SMTPD_ACCESS_README.html)는 trusted network와 인증된 client, 허용된 relay destination을 구분하는 기본 relay 정책을 설명한다.
+넓은 사설 대역을 허용하는 설정은 흔하다. 그러나 외부 연결이 경계를 지날 때 source NAT[^nat]가 적용되면 relay는 원래 접속자 대신 노드나 경계의 주소를 본다. 그러면 "내부 대역만 허용한다"는 규칙이 실제 클라이언트를 구분하지 못한다. 그래서 신뢰 경계는 주소 하나에 기대지 말고 노출 여부, Service 접근 경로, workload 단위 접근 제어를 함께 봐야 한다. [Postfix relay access control 문서](https://www.postfix.org/SMTPD_ACCESS_README.html)는 trusted network, 인증된 client, 허용된 relay destination을 구분하는 기본 정책을 설명한다.
 
 ## 재발 방지
 
-한 계층의 설정이 느슨해져도 곧바로 대량 발송으로 이어지지 않게 네 가지 경계를 겹친다.
+한 계층이 느슨해져도 곧바로 대량 발송으로 이어지지 않게 네 가지 경계를 겹친다.
 
 | 경계 | 확인 대상 | 막으려는 실패 |
 | --- | --- | --- |
-| 외부 노출 | Service, load balancer, node port, ingress와 gateway 경로 | 인터넷에서 relay에 직접 도달 |
-| workload 연결 | Alertmanager와 relay의 label 기반 NetworkPolicy | 불필요한 내부 workload의 relay 사용 |
-| relay 정책 | Postfix relay restriction과 허용 범위 | 네트워크 정책 실패 시 임의 목적지 중계 |
-| 장기 관측 | 중앙 로그 보존과 발송량 이상 탐지 | 짧은 컨테이너 로그만으로 사건 범위를 오판 |
+| 외부 노출 | Service, load balancer, node port, ingress 경로 | 인터넷에서 relay에 직접 도달 |
+| workload 연결 | Alertmanager와 relay의 NetworkPolicy | 불필요한 내부 workload의 relay 사용 |
+| relay 정책 | Postfix relay restriction | 네트워크 정책 실패 시 임의 목적지 중계 |
+| 장기 관측 | 중앙 로그 보존과 발송량 이상 탐지 | 짧은 로그만으로 사건 범위를 오판 |
 
-[Kubernetes NetworkPolicy 문서](https://kubernetes.io/docs/concepts/services-networking/network-policies/)는 Pod에 적용되는 트래픽 허용 규칙과 이를 지원하는 네트워크 플러그인이 필요하다는 조건을 설명한다. 따라서 NetworkPolicy를 방어층으로 쓸 때는 선언만 확인하지 말고, 사용 중인 플러그인이 이를 실제로 시행하는지도 검증해야 한다.
+[Kubernetes NetworkPolicy 문서](https://kubernetes.io/docs/concepts/services-networking/network-policies/)는 NetworkPolicy를 시행하는 네트워크 플러그인이 필요하다고 설명한다. Flannel처럼 시행하지 않는 환경에서는 선언만으로 방어층이 되지 않으므로 시행 여부를 검증해야 한다.
 
-컨테이너 로그는 빠른 대응에 유용하지만 회전 주기가 짧으면 사건의 시작점을 보여 주지 못한다. 현재 남은 가장 이른 로그 행은 "그 이후에도 외부의 악용이 지속되었다"는 하한일 뿐, 최초 발생 시각의 증거는 아니다. 중앙 로그 저장소는 이 공백을 줄이지만, 보존 범위 앞의 시간은 관측하지 못했다는 한계를 함께 기록해야 한다.
+로그도 같은 한계가 있었다. 컨테이너 로그는 시작점을 보여 주지 못했고, 이 글을 쓰려고 다시 조회했을 때는 Loki 보존 기간이 지나 10월 로그 원문이 남아 있지 않았다. 그래서 외부 수신 서버가 보낸 DMARC 보고서를 근거로 삼았다. 보존 범위 앞의 시간은 관측하지 못했다는 한계를 함께 기록해야 한다.
 
-다음에 같은 구성을 볼 때 확인할 것만 남긴다.
-
-- relay가 외부에 노출되는 Service 유형이나 ingress 경로를 갖고 있지 않은가?
-- relay 허용 규칙이 실제 연결 주체를 구별하는가? (source NAT 영향 포함)
-- 필요한 workload만 NetworkPolicy로 relay에 연결되는가?
+- relay가 외부에 노출되는 Service나 ingress 경로를 갖고 있지 않은가?
+- relay 허용 규칙이 실제 연결 주체를 구별하는가? (source NAT 포함)
+- 필요한 workload만 NetworkPolicy로 relay에 연결되고, 플러그인이 이를 시행하는가?
 - Postfix relay restriction이 네트워크 정책과 독립적으로 외부 중계를 거부하는가?
-- 컨테이너 로그보다 긴 보존의 중앙 로그와 발송량 이상 탐지가 있는가?
+- 컨테이너 로그보다 길게 보존되는 중앙 로그와 발송량 이상 탐지가 있는가?
 - 악용 기간에 relay를 통과한 메일의 서명 키와 DNS 레코드를 교체해야 하는지 확인했는가?
 
 ## 마무리
@@ -134,5 +142,7 @@ flowchart TB
 
 [^dmarc]: 우리 도메인 이름으로 온 메일을 받은 서버들이 처리 결과를 요약해 보내 주는 자동 메일이다.
 [^dkim]: 메일이 우리 도메인에서 나갔다는 것을 증명하는 전자 서명이다.
+[^am]: 경보를 받아 메일 같은 알림 채널로 전달하는 구성 요소다.
 [^service]: Pod 집합을 네트워크에서 쓸 수 있게 만드는 Kubernetes 구성 요소다.
 [^netpol]: Pod 사이에서 어떤 통신을 허용할지 정하는 Kubernetes 규칙이다.
+[^nat]: 경계를 지나는 연결의 원래 접속자 주소를 노드나 경계 장비의 주소로 바꾸는 처리다.

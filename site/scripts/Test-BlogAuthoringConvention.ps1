@@ -101,7 +101,8 @@ foreach ($post in Get-ChildItem -LiteralPath $resolvedBlogRoot -File -Filter '*.
     }
 
     if ($null -ne $policy.PSObject.Properties['readingTime']) {
-        $prose = [regex]::Replace($parts.Body, '(?s)```mermaid.*?```', '')
+        # 코드 블록(mermaid 포함)은 읽는 글이 아니라 참고 자료라서 분량에서 뺀다.
+        $prose = [regex]::Replace($parts.Body, '(?ms)^[ 	]*(?<fence>`{3,}|~{3,}).*?^[ 	]*\k<fence>[ 	]*$', '')
         $charCount = ($prose -replace '\s', '').Length
         $charLimit = [int] $policy.readingTime.maxMinutes * [int] $policy.readingTime.charsPerMinute
         if ($charCount -gt $charLimit) {
