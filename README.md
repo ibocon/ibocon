@@ -6,7 +6,7 @@
 <!-- 2. Typing Intro -->
 <div align="center">
   <a href="https://readme-typing-svg.demolab.com">
-    <img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&weight=600&size=19&duration=3000&pause=1000&color=2E90FA&center=true&vCenter=true&width=700&lines=%EA%B2%AC%EA%B3%A0%ED%95%9C+.NET+%EB%B0%B1%EC%97%94%EB%93%9C+%EC%8B%9C%EC%8A%A4%ED%85%9C+%EA%B5%AC%EC%B6%95;Clean+Architecture+%7C+Rich+Domain+Model;%EC%97%B0%EA%B0%84+10%2C000%2B+%EC%BB%A4%EB%B0%8B%EC%9D%98+%EC%A7%80%EC%86%8D%EC%84%B1%EA%B3%BC+%EC%83%9D%EC%82%B0%EC%84%B1;%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC+%EA%B8%B0%EC%88%A0+%EB%B8%94%EB%A1%9C%EA%B7%B8+%EC%9A%B4%EC%98%81+(ibocon.tistory.com)" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&weight=600&size=19&duration=3000&pause=1000&color=2E90FA&center=true&vCenter=true&width=700&lines=%EA%B2%AC%EA%B3%A0%ED%95%9C+.NET+%EB%B0%B1%EC%97%94%EB%93%9C+%EC%8B%9C%EC%8A%A4%ED%85%9C+%EA%B5%AC%EC%B6%95;Clean+Architecture+%7C+Rich+Domain+Model;%EC%97%B0%EA%B0%84+10%2C000%2B+%EC%BB%A4%EB%B0%8B%EC%9D%98+%EC%A7%80%EC%86%8D%EC%84%B1%EA%B3%BC+%EC%83%9D%EC%82%B0%EC%84%B1;%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81+%EB%85%B8%ED%8A%B8+%EA%B8%B0%EB%A1%9D+(blog.botanicsoft.com)" alt="Typing SVG" />
   </a>
 </div>
 
@@ -19,7 +19,7 @@
 | **🏢 제품 엔지니어링** | 스마트 프린터 디바이스 연동 클라이언트와 클라우드 백엔드 개발 |
 | **🧱 아키텍처 철학** | **Clean Architecture**, **CQRS**, **도메인 주도 설계(DDD)** 기반으로 변경에 유연하고 테스트 가능한 시스템 구축 |
 | **⚡ 실적 및 생산성** | 최근 1년간 **10,000+ Contributions** 달성 — 매일 지속적인 코드 개선과 TDD 기반 검증 사이클 유지 |
-| **✍️ 지식 공유** | 기술적 시행착오와 시스템 아키텍처 설계 고민을 [티스토리 블로그](https://ibocon.tistory.com)에 기록하고 공유 |
+| **✍️ 지식 공유** | 기술적 시행착오와 시스템 아키텍처 설계 고민을 [엔지니어링 노트](https://blog.botanicsoft.com)에 기록하고 공유 |
 
 ---
 
@@ -61,7 +61,7 @@
 
 ---
 
-## 📝 최근 기술 블로그 포스트 (Recent Blog Posts)
+## 📝 최근 엔지니어링 노트 (Recent Notes)
 <!-- BLOG-POST-LIST:START -->
 - [Rich Domain Model로 불변식을 지키는 설계 원칙](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
 - [.NET 레퍼런스 프로젝트를 찾는 방법: 설계와 학습](https://blog.botanicsoft.com/dotnet-reference-projects/)
@@ -90,7 +90,7 @@
 ---
 
 ## 📫 연락처 및 채널 (Contact & Links)
-[![Tech Blog](https://img.shields.io/badge/Blog-blog.botanicsoft.com-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://blog.botanicsoft.com/)
+[![Engineering Notes](https://img.shields.io/badge/Notes-blog.botanicsoft.com-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://blog.botanicsoft.com/)
 [![Tistory](https://img.shields.io/badge/Tistory-ibocon-EB5757?style=flat-square&logo=tistory&logoColor=white)](https://ibocon.tistory.com/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com)
 [![Email](https://img.shields.io/badge/Email-wlfka102@gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:wlfka102@gmail.com)
