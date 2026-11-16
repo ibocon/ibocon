@@ -64,7 +64,7 @@
 ## 📝 최근 엔지니어링 노트 (Recent Notes)
 <!-- BLOG-POST-LIST:START -->
 - [Rich Domain Model로 불변식을 지키는 설계 원칙](https://blog.botanicsoft.com/clean-architecture-rich-domain/)
-- [.NET 레퍼런스 프로젝트를 찾는 방법: 설계와 학습](https://blog.botanicsoft.com/dotnet-reference-projects/)
+- [Microsoft .NET 레퍼런스 저장소 한눈에 보기](https://blog.botanicsoft.com/dotnet-reference-projects/)
 - [Blazor 개발 환경을 구성하는 방법: Webpack과 TypeScript](https://blog.botanicsoft.com/blazor-webassembly-webpack-typescript-sass-setup/)
 - [Sass를 Blazor에 적용하는 방법: 스타일 빌드](https://blog.botanicsoft.com/blazor-apply-sass/)
 - [WebSocket으로 양방향 통신을 만드는 방법: Web API](https://blog.botanicsoft.com/web-api-websocket/)
