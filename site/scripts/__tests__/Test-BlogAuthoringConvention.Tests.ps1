@@ -103,6 +103,21 @@ $Body
         $result.Output | Should -Match 'blog-authoring-required-section-missing'
     }
 
+    It 'Given_ABodyOverTheTenMinuteReadingBudget_When_Guarded_Then_FailsWithSplitDiagnostic' {
+        $filler = '가' * 4100
+        $result = Invoke-GuardFixture -Body "## 핵심 요약: 어떤 위험을 막고 무엇을 확인하나`n$filler`n## 알아야 할 최소 개념`n## 동작 원리`n## 적용할 때 확인할 점`n## 마무리: 다음 점검에서 확인할 한 가지"
+
+        $result.ExitCode | Should -Be 1
+        $result.Output | Should -Match 'blog-authoring-reading-time-exceeded: sample-post.md'
+    }
+
+    It 'Given_ABodyWithinTheReadingBudgetPlusLargeMermaid_When_Guarded_Then_Passes' {
+        $diagram = 'A-->B;' * 1000
+        $result = Invoke-GuardFixture -Body "## 핵심 요약`n``````mermaid`nflowchart TB`n$diagram`n```````n## 알아야 할 최소 개념`n## 동작 원리`n## 적용할 때 확인할 점`n## 마무리"
+
+        $result.ExitCode | Should -Be 0
+    }
+
     It 'Given_AnImageWithEmptyAltText_When_Guarded_Then_Fails' {
         $result = Invoke-GuardFixture -Body "## 핵심 요약: 어떤 위험을 막고 무엇을 확인하나`n## 알아야 할 최소 개념`n## 동작 원리`n## 적용할 때 확인할 점`n![](/diagram.png)`n## 마무리: 다음 점검에서 확인할 한 가지"
 

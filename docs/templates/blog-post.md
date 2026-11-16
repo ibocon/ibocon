@@ -29,5 +29,6 @@ draft: true
 
 기억할 판단 기준과 다음 행동 하나를 남긴다.
 
+<!-- 분량: 본문 공백 제외 4,000자(10분) 이하. 넘기면 독자의 질문 단위로 글을 나눈다: docs/convention/blog-authoring.md -->
 <!-- 그림·커버를 넣을 때: docs/convention/blog-presentation.md, docs/guide/blog-presentation-guide.md -->
 <!-- 저장 후: pwsh -NoProfile -File site/scripts/Test-BlogPresentationConvention.ps1 -->

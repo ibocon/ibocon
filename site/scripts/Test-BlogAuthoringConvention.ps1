@@ -41,7 +41,7 @@ function Get-FrontMatterValue {
 function Test-Heading {
     param([string] $Body, [string] $Heading)
 
-    return [regex]::IsMatch($Body, "(?m)^##\s+$([regex]::Escape($Heading))\s*$")
+    return [regex]::IsMatch($Body, "(?m)^##\s+$([regex]::Escape($Heading))(\s*:.*)?\s*$")
 }
 
 function Test-RoleHeading {
@@ -97,6 +97,15 @@ foreach ($post in Get-ChildItem -LiteralPath $resolvedBlogRoot -File -Filter '*.
     foreach ($role in $requiredRoles) {
         if (-not (Test-RoleHeading -Body $parts.Body -Policy $policy -Role ([string] $role))) {
             Add-Violation -Violations $violations -Code 'blog-authoring-required-section-missing' -Path "$($post.Name)#$role"
+        }
+    }
+
+    if ($null -ne $policy.PSObject.Properties['readingTime']) {
+        $prose = [regex]::Replace($parts.Body, '(?s)```mermaid.*?```', '')
+        $charCount = ($prose -replace '\s', '').Length
+        $charLimit = [int] $policy.readingTime.maxMinutes * [int] $policy.readingTime.charsPerMinute
+        if ($charCount -gt $charLimit) {
+            Add-Violation -Violations $violations -Code 'blog-authoring-reading-time-exceeded' -Path $post.Name
         }
     }
 
