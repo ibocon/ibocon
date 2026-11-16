@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { koSiteCopy } from '../lib/site-copy';
 import { getPostPresentation } from '../lib/post-presentation';
+import { getTocHeadings } from '../lib/toc';
 import '../styles/global.css';
 
 export async function getStaticPaths() {
@@ -21,6 +22,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const presentation = getPostPresentation(post.data, post.body ?? '');
+const tocHeadings = getTocHeadings(headings);
 ---
 
 <!doctype html>
@@ -57,7 +59,7 @@ const presentation = getPostPresentation(post.data, post.body ?? '');
         <Content />
         <AdSenseSlot slotId="blog-post-bottom" />
       </article>
-      {headings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{headings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
+      {tocHeadings.length > 0 && <nav class="toc" aria-label="Table of Contents"><strong>목차</strong><ul>{tocHeadings.map((heading) => <li class={`toc-depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>}
     </main>
     <Footer locale="ko" />
     <script>
