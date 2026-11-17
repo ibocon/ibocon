@@ -51,4 +51,59 @@ describe('Blog glossary', () => {
     // ✅ 끊어진 앵커가 있으면 글 slug와 앵커 id가 실패 메시지에 나타난다
     expect(broken).toEqual([]);
   });
+
+  it('Given_BuiltGlossaryPage_When_Inspected_Then_RendersOneEntryPerTermInADefinitionList', () => {
+    // Given
+    const html = readBuiltPage('glossary');
+
+    // When
+    const entries = [...html.matchAll(/<div id="([a-z0-9-]+)" class="glossary-entry[^"]*"/g)].map((match) => match[1]);
+
+    // Then
+    expect(html).toContain('<dl');
+    expect(entries).toEqual(glossary.terms.map((term) => term.id));
+  });
+
+  it('Given_BuiltGlossaryPage_When_Inspected_Then_IndexLinksEveryTerm', () => {
+    // Given
+    const html = readBuiltPage('glossary');
+    const index = html.match(/<nav class="toc glossary-index[^"]*"[\s\S]*?<\/nav>/)?.[0] ?? '';
+
+    // When
+    const missing = glossary.terms.filter((term) => !index.includes(`href="#${term.id}"`));
+
+    // Then
+    expect(missing.map((term) => term.id)).toEqual([]);
+  });
+
+  it('Given_ATermLinkedByAPost_When_Inspected_Then_ItsEntryListsThatPost', () => {
+    // Given
+    const html = readBuiltPage('glossary');
+
+    // When
+    const entry = html.match(/<div id="application-layer"[\s\S]*?<\/div>/)?.[0] ?? '';
+
+    // Then
+    expect(entry).toContain('href="/clean-architecture-rich-domain/"');
+  });
+
+  it('Given_TermsWithForbiddenVariants_When_Inspected_Then_VariantsAreFoldedWithTheirCount', () => {
+    // Given
+    const html = readBuiltPage('glossary');
+
+    // When
+    const missing = glossary.terms.filter((term) => !html.includes(`쓰지 않는 표기 ${term.forbidden.length}개`));
+
+    // Then
+    expect(html).toContain('<details');
+    expect(missing.map((term) => term.id)).toEqual([]);
+  });
+
+  it('Given_GlobalStyles_When_Inspected_Then_GlossaryLinksInPostsHaveADottedUnderline', () => {
+    // Given
+    const css = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When & Then
+    expect(css).toMatch(/\.prose a\[href\^="\/glossary\/#"\][^}]*dotted/);
+  });
 });

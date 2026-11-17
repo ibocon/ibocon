@@ -4,12 +4,20 @@ import Favicon from '../components/Favicon.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import glossary from '../data/glossary.json';
+import { getPublishedPosts } from '../lib/blog-posts';
+import { collectGlossaryUsage } from '../lib/glossary-usage';
 import { siteCopy } from '../lib/site-copy';
 import '../styles/global.css';
 
 const copy = siteCopy.ko;
 const canonical = new URL('/glossary/', 'https://blog.botanicsoft.com').toString();
+const posts = await getPublishedPosts();
+const usage = collectGlossaryUsage(
+  posts.map((post) => ({ id: post.id, title: post.data.title, body: post.body ?? '' })),
+  glossary.terms.map((term) => term.id),
+);
 const groups = glossary.categories.map((category) => ({
+  key: category.key,
   label: category.label,
   terms: glossary.terms.filter((term) => term.category === category.key),
 }));
@@ -28,33 +36,137 @@ const groups = glossary.categories.map((category) => ({
   </head>
   <body>
     <Header locale="ko" page="home" />
-    <main class="container prose static-page">
-      <h1>{copy.glossaryTitle}</h1>
-      <p>글에서 같은 뜻으로 쓰는 표준 표기와 정의를 모았다. 본문의 용어는 첫 등장에서 이 페이지로 연결된다.</p>
-      {groups.map((group) => (
-        <>
-          <h2>{group.label}</h2>
-          {group.terms.map((term) => (
-            <section id={term.id} class="glossary-term">
-              <h3>{term.term}</h3>
-              <p>{term.definition}</p>
-              <p class="glossary-variants">같은 뜻으로 쓰지 않는 표기: {term.forbidden.join(', ')}</p>
+    <main class="container glossary-page">
+      <header class="glossary-header">
+        <h1>{copy.glossaryTitle}</h1>
+        <p>글에서 같은 뜻으로 쓰는 표준 표기와 정의다. 본문의 용어는 첫 등장에서 이 페이지로 연결된다.</p>
+        <p class="glossary-count">용어 {glossary.terms.length}개 · 분류 {groups.length}개</p>
+      </header>
+      <div class="post-layout">
+        <div class="glossary-body">
+          {groups.map((group) => (
+            <section aria-labelledby={`category-${group.key}`}>
+              <h2 id={`category-${group.key}`}>{group.label}</h2>
+              <dl class="glossary-list">
+                {group.terms.map((term) => (
+                  <div id={term.id} class="glossary-entry">
+                    <dt>{term.term}</dt>
+                    <dd class="glossary-definition">{term.definition}</dd>
+                    {(usage.get(term.id) ?? []).length > 0 && (
+                      <dd class="glossary-used">
+                        <span>쓰인 글</span>
+                        {(usage.get(term.id) ?? []).map((link) => <a href={`/${link.id}/`}>{link.title}</a>)}
+                      </dd>
+                    )}
+                    {term.forbidden.length > 0 && (
+                      <dd class="glossary-variants">
+                        <details>
+                          <summary>쓰지 않는 표기 {term.forbidden.length}개</summary>
+                          <ul class="glossary-variant-list">
+                            {term.forbidden.map((variant) => <li>{variant}</li>)}
+                          </ul>
+                        </details>
+                      </dd>
+                    )}
+                  </div>
+                ))}
+              </dl>
             </section>
           ))}
-        </>
-      ))}
+        </div>
+        <nav class="toc glossary-index" aria-label="용어 색인">
+          {groups.map((group) => (
+            <div>
+              <p class="glossary-index-label">{group.label}</p>
+              <ul>
+                {group.terms.map((term) => <li><a href={`#${term.id}`}>{term.term}</a></li>)}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </div>
     </main>
     <Footer locale="ko" />
   </body>
 </html>
 
 <style>
-  .glossary-term {
-    scroll-margin-block-start: var(--space-8);
+  .glossary-header { margin-block-end: var(--space-7); }
+
+  .glossary-header h1 { margin: 0 0 var(--space-3); line-height: 1.3; letter-spacing: -.03em; }
+
+  .glossary-header p { margin: 0 0 var(--space-2); color: var(--text-secondary); }
+
+  .glossary-count { font-size: .875rem; font-weight: 700; }
+
+  .glossary-body h2 {
+    margin: var(--space-7) 0 var(--space-2);
+    padding-block-end: var(--space-2);
+    border-block-end: 2px solid var(--text-primary);
+    font-size: 1.125rem;
   }
 
-  .glossary-variants {
+  .glossary-body section:first-child h2 { margin-block-start: 0; }
+
+  .glossary-list { margin: 0; }
+
+  .glossary-entry {
+    display: grid;
+    grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+    gap: var(--space-1) var(--space-5);
+    padding: var(--space-4) var(--space-3);
+    border-block-end: 1px solid var(--border-color);
+    scroll-margin-block-start: 6rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* 글의 용어 링크로 도착한 항목을 알아보게 한다. */
+  .glossary-entry:target { border-radius: 8px; background: var(--accent-subtle); }
+
+  .glossary-entry dt { grid-column: 1; font-weight: 700; line-height: 1.5; }
+
+  .glossary-entry dd { grid-column: 2; margin: 0; }
+
+  .glossary-definition { line-height: 1.75; }
+
+  .glossary-used {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin-block-start: var(--space-2);
     color: var(--text-secondary);
-    font-size: 0.9em;
+    font-size: .875rem;
+  }
+
+  .glossary-used span { font-weight: 700; }
+
+  .glossary-variants { margin-block-start: var(--space-2); color: var(--text-secondary); font-size: .875rem; }
+
+  .glossary-variants summary { cursor: pointer; inline-size: fit-content; }
+
+  .glossary-variants summary:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 3px; }
+
+  .glossary-variant-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; padding: 0; list-style: none; }
+
+  .glossary-variant-list li {
+    padding: 2px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: .8rem;
+    text-decoration: line-through;
+  }
+
+  .glossary-index { max-block-size: calc(100vh - 7rem); overflow-y: auto; }
+
+  .glossary-index-label { margin: var(--space-4) 0 0; font-size: .8rem; font-weight: 700; }
+
+  .glossary-index div:first-child .glossary-index-label { margin-block-start: 0; }
+
+  @media (max-width: 760px) {
+    .glossary-entry { grid-template-columns: minmax(0, 1fr); scroll-margin-block-start: 10rem; }
+    .glossary-entry dt, .glossary-entry dd { grid-column: 1; }
+    .glossary-index { max-block-size: none; overflow: visible; }
+    .glossary-index ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
   }
 </style>
