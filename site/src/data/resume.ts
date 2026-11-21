@@ -43,7 +43,7 @@ export const resumeSkillGroups = [
 ] as const;
 
 export const resumeCareer = {
-  employer: '망고슬래브 주식회사',
+  employer: '망고슬래브',
   team: 'SW개발팀',
   role: '소프트웨어 엔지니어',
   period: '2017.07 – 현재',

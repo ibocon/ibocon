@@ -26,9 +26,9 @@
 ## 🛠 기술 스택 (Tech Stack)
 
 ### 언어 (Languages)
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge)
 
 ### 백엔드 (Backend)
 ![.NET 9](https://img.shields.io/badge/.NET_9-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
@@ -58,7 +58,7 @@
 ![Kustomize](https://img.shields.io/badge/Kustomize-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Proxmox VE](https://img.shields.io/badge/Proxmox_VE-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
-![Azure AKS](https://img.shields.io/badge/Azure_AKS-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Azure AKS](https://img.shields.io/badge/Azure_AKS-0078D4?style=for-the-badge)
 ![OpenTofu](https://img.shields.io/badge/OpenTofu-FFDA18?style=for-the-badge&logo=opentofu&logoColor=white)
 ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white)
 
@@ -76,8 +76,8 @@
 ![NSubstitute](https://img.shields.io/badge/NSubstitute-3B7D3B?style=for-the-badge)
 ![bUnit](https://img.shields.io/badge/bUnit-512BD4?style=for-the-badge&logo=blazor&logoColor=white)
 ![Testcontainers](https://img.shields.io/badge/Testcontainers-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Pester](https://img.shields.io/badge/Pester-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![Pester](https://img.shields.io/badge/Pester-5391FE?style=for-the-badge)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge)
 
 ### 관측성 (Observability)
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-425CC7?style=for-the-badge&logo=opentelemetry&logoColor=white)
@@ -92,7 +92,7 @@
 ![Roslyn Analyzers](https://img.shields.io/badge/Roslyn_Analyzers-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=claude&logoColor=white)
-![Codex](https://img.shields.io/badge/Codex-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-412991?style=for-the-badge)
 ![OpenCode](https://img.shields.io/badge/OpenCode-211E1E?style=for-the-badge)
 ![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
 

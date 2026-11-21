@@ -15,144 +15,117 @@
 
 ## 대표 역량
 
-1. **데스크톱 · Windows · macOS** — `.NET Framework 4.8` 앱을 `.NET 9`으로 현대화하고, 네모닉 커넥트를 한 코드베이스(`MAUI Blazor Hybrid`)로 Microsoft Store와 Mac App Store에 배포합니다.
-2. **모바일 · Android · iOS** — 상용 라벨 프린터 FINECUBE의 Android·iOS 앱을 유지보수하고 스토어에 릴리스해 왔습니다. `SkiaSharp` 터치 캔버스 편집기를 코어 라이브러리로 분리해 개발하고, Android `targetSdk`를 34로 올렸습니다. 개인 프로젝트로 `.NET MAUI Blazor Hybrid` 가계부 앱(Peony Mobile)도 직접 개발합니다.
-3. **USB · BLE 하드웨어** — `WinUSB`, `libusb`, `WebUSB`, BLE를 하나의 프로토콜 계층으로 추상화하고, Mac 샌드박스의 USB·Bluetooth 권한까지 다룹니다.
-4. **.NET 서비스 · Kubernetes** — `ASP.NET Core` API Gateway부터 On-Premise Kubernetes와 `Flux` GitOps 배포까지 이어갑니다.
-5. **디자인 시스템 · 라이브러리** — `Penpot` 디자인 토큰을 코드로 동기화하고, `Material 3` 기반 Blazor 컴포넌트(`Garden.Razor`)와 내부 `NuGet` 피드로 공통 라이브러리를 만들어 팀 제품에 적용합니다.
-6. **AI 활용 개발** — `Claude`, `Codex`, `OpenCode`, `Gemini CLI`가 공통 하네스와 정적 가드 아래에서 일하게 만들어, AI가 쓴 코드도 팀 표준을 지키게 합니다.
+**크로스플랫폼 제품 개발**
+
+- Windows · macOS · Android · iOS 앱 개발
+- .NET 기반 공통 코드베이스
+- 프린터 · USB · BLE 하드웨어 연동
+
+**백엔드와 플랫폼 운영**
+
+- API Gateway · 마이크로서비스 설계
+- 메시징 · 공통 라이브러리 구축
+- 온프레미스 Kubernetes · GitOps 운영
+
+**재사용 가능한 개발 기반**
+
+- 디자인 토큰과 UI 컴포넌트 표준화
+- 공통 라이브러리 · 내부 패키지 피드 운영
+- 제품 간 코드와 UI 재사용
+
+**개발 품질 자동화**
+
+- AI 코딩 에이전트 공통 규약 설계
+- 정적 가드 · 코드 분석 자동화
+- 계획 · 구현 · 검증 워크플로 표준화
 
 
 ---
 📞 010-7503-5266 · ✉️ [wlfka102@gmail.com](mailto:wlfka102@gmail.com) · 🐙 [github.com/ibocon](https://github.com/ibocon) · ✍️ [ibocon.tistory.com](https://ibocon.tistory.com/)
 
 ---
-## 경력
+## 경력 및 주요 프로젝트
 
-### 망고슬래브 주식회사 · SW개발팀 · 소프트웨어 엔지니어
+### 망고슬래브
 
-**2017.07 – 현재 · 9년 차**
-
-- **네모닉 (nemonic Desktop)** — Windows 클라이언트의 WYSIWYG 편집·인쇄와 USB 프린터 연동, 레거시 .NET 현대화 및 배포 유지보수를 담당.
-- **파인큐브 (FINECUBE Mobile (Lithium))** — iOS·Android 라벨 편집기와 프린터 연동 기능을 유지보수하고 Android SDK 대응과 스토어 릴리스를 관리.
-- **네모닉 커넥트 (Monolith & Services)** — .NET 모노레포 기반 프린팅·연동 서비스를 개발하며 공통 SDK, API Gateway, 빌드·배포 구조를 정비.
-- **On-Prem 서버 구축 (Argon Kubernetes & GitOps)** — On-Premise Kubernetes 클러스터를 구축·운영하고 Flux GitOps 기반 서비스 배포 자동화를 설계·관리.
-
----
-## 주요 프로젝트 바로가기
+2017.07 – 현재 · SW개발팀 · 소프트웨어 엔지니어
 
 <table fit-page-width="true" header-row="true">
 <colgroup>
-<col width="140" />
-<col width="300" />
+<col width="520" />
 <col width="260" />
 </colgroup>
 <tr>
-<td>프로젝트</td>
-<td>한 줄 역할</td>
+<td>프로젝트 · 역할</td>
 <td>상세 기술서</td>
 </tr>
 <tr>
-<td>네모닉</td>
-<td>Windows 메모 편집·인쇄와 USB 프린터 연동</td>
+<td>**네모닉 데스크톱**<br>Windows 클라이언트 WYSIWYG 편집·인쇄, USB 프린터 연동, .NET 현대화 및 배포 유지보수</td>
 <td>[09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25)</td>
 </tr>
 <tr>
-<td>파인큐브</td>
-<td>모바일 라벨 편집기와 프린터 연동</td>
-<td>[08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a)</td>
-</tr>
-<tr>
-<td>네모닉 커넥트</td>
-<td>클라우드 프린팅 모노레포와 API Gateway</td>
+<td>**네모닉 커넥트**<br>.NET 모노레포 기반 프린팅·연동 서비스, 공통 SDK, API Gateway, 빌드·배포 구조 정비</td>
 <td>[02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)</td>
 </tr>
 <tr>
-<td>On-Prem 서버 구축</td>
-<td>On-Premise Kubernetes 클러스터 구축과 GitOps 운영</td>
-<td>[04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+<td>**온프레미스 서버 구축**<br>온프레미스 Kubernetes 클러스터 구축·운영, Flux GitOps 기반 서비스 배포 자동화</td>
+<td>[04.01. 온프레미스 Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
 </tr>
 </table>
 
 ---
 ## 전체 도메인 지도
 
-10대 단일 책임 엔지니어링 도메인과 상세 포트폴리오의 진입점입니다.
-전체 구조와 핵심 상세 기술서는 [00. 이력서 탐색 목차](https://app.notion.com/p/3fc47521867581faa5c7d619956da617)에서 확인할 수 있습니다.
 <table fit-page-width="true" header-row="true">
 <colgroup>
-<col width="160" />
-<col width="220" />
-<col width="320" />
+<col width="700" />
 </colgroup>
 <tr>
-<td>직무 도메인 (Domain)</td>
-<td>핵심 하위 항목</td>
-<td>주요 작업 및 내용</td>
+<td>핵심 영역</td>
 </tr>
 <tr>
-<td>**01. 소프트웨어 아키텍처**</td>
-<td>• 01.01. 계층 분리와 모듈화 설계<br>• 01.02. 도메인 모델링과 불변식 보호<br>• 01.03. 비동기 이벤트 기반 분산 설계<br>• 01.04. 다층 테스트 아키텍처와 통합 검증</td>
-<td>`Clean Architecture` · `VSA` · `Rich Domain` · `Result<T>` · `CQRS` · `Outbox` · `NetArchTest` · `Testcontainers` (`Monolith` · `Peony` · `nemonic` · `Garden.Share`)</td>
+<td>**01. 소프트웨어 아키텍처**<br>• 계층 분리 · 도메인 모델링 · 비동기 이벤트 · 통합 테스트<br>• `Clean Architecture` · `CQRS` · `Outbox` · `Testcontainers`</td>
 </tr>
 <tr>
-<td>**02. .NET 백엔드 엔지니어링**</td>
-<td>• 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이<br>• 02.02. 가계부 마이크로서비스 백엔드 및 BFF<br>• 02.03. 비동기 OCR 및 AI 요약 파이프라인 백엔드<br>• 02.04. 분산 애플리케이션 호스팅 및 관측성 표준화<br>• 02.05. 웹 API 공통 미들웨어 및 부트스트랩 계층</td>
-<td>`.NET 9` · `.NET Aspire` · `YARP` · `PostgreSQL` · `RabbitMQ` · `FastAPI/Celery` (`Monolith` · `Peony` · `NemonicStudy` · `Garden.Aspire` · `Garden.AspNetCore`)</td>
+<td>**02. .NET 백엔드 엔지니어링**<br>• 프린팅 서비스 · 가계부 BFF · 분산 애플리케이션 호스팅 · API 공통화<br>• `.NET` · `.NET Aspire` · `YARP` · `PostgreSQL` · `RabbitMQ`</td>
 </tr>
 <tr>
-<td>**03. 클라우드 및 온프레미스 인프라**</td>
-<td>• 03.01. 하이브리드 Kubernetes 클러스터 구축 및 운영</td>
-<td>`Proxmox VE` 베어메탈 및 `Azure AKS` 클러스터 프로비저닝, `Rook-Ceph` 스토리지·`CloudNativePG`·`OpenBao` 시크릿 제어면 운영 (`Garden.Cluster`)</td>
+<td>**03. 온프레미스**<br>• Kubernetes 클러스터 구축·운영<br>• `Proxmox VE` · `Rook-Ceph` · `CloudNativePG` · `OpenBao`</td>
 </tr>
 <tr>
-<td>**04. DevOps 엔지니어링**</td>
-<td>• 04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영</td>
-<td>`Flux v2`와 `Kustomize` 기반 선언적 배포, 플랫폼 구성 관리 및 `Pester` 정적 가드 운영 (`Argon`)</td>
+<td>**04. DevOps 엔지니어링**<br>• 온프레미스 Kubernetes · GitOps 기반 선언적 배포<br>• `Flux v2` · `Kustomize` · `Pester` — `Argon`</td>
 </tr>
 <tr>
-<td>**05. 개발자 경험 (DevEx)**</td>
-<td>• 05.01. Roslyn 커스텀 정적 분석기 및 코드픽스</td>
-<td>네임스페이스·DI 명명·`ConfigureAwait`·메서드 체인 줄바꿈 규약을 컴파일 타임에 진단하는 Roslyn 애널라이저 7종 및 내부 NuGet 피드(`BaGetter`) 운영 (`Garden.Analyzers`)</td>
+<td>**05. 개발자 경험**<br>• Roslyn 분석기·코드픽스와 내부 패키지 피드 운영<br>• 명명 · DI · `ConfigureAwait` 규약을 컴파일 타임에 검증</td>
 </tr>
 <tr>
-<td>**06. 하네스 엔지니어링**</td>
-<td>• 06.01. 멀티 코딩 에이전트 공통 규약 및 정적 가드</td>
-<td>`Claude Code`·`Codex`·`OpenCode`·`Gemini CLI` 4대 에이전트 단일 하네스(스킬 38종·스크립트 80개), 계획서 워크플로 및 정적 가드 구축 (`Garden.Harness`)</td>
+<td>**06. 하네스 엔지니어링**<br>• 멀티 코딩 에이전트 공통 규약 · 계획서 워크플로 · 정적 가드<br>• `Claude Code` · `Codex` · `OpenCode` · `Gemini CLI` — `Garden.Harness`</td>
 </tr>
 <tr>
-<td>**07. 웹 디자인 시스템**</td>
-<td>• 07.01. 디자인 토큰 동기화 및 자체 Blazor 컴포넌트<br>• 07.02. 인터랙티브 웹 컴포넌트 갤러리</td>
-<td>`Penpot` 디자인 토큰 1:1 동기화, `Material 3` 기반 자체 Blazor 컴포넌트 44종(`bUnit` 45개) 및 Blazor WASM 갤러리 배포 (`Garden.Razor` · `Garden.Razor.Gallery`)</td>
+<td>**07. 웹 디자인 시스템**<br>• 디자인 토큰 동기화 · Blazor 컴포넌트 · 웹 갤러리<br>• `Penpot` · `Material 3` · `Garden.Razor`</td>
 </tr>
 <tr>
-<td>**08. 모바일 애플리케이션**</td>
-<td>• 08.01. Blazor Hybrid 크로스플랫폼 가계부 모바일 앱<br>• 08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화<br>• 08.03. 모바일 네이티브 인증·네비게이션·화면 인셋 추상화</td>
-<td>`.NET MAUI Blazor Hybrid` 단일 UI 코드베이스, `SkiaSharp` 터치 캔버스 편집기 모듈화, Android `targetSdk 34` 상향 (`Peony Mobile` · `Lithium` · `Garden.Maui`)</td>
+<td>**08. 모바일 애플리케이션**<br>• 크로스플랫폼 가계부 · 라벨 편집기 · 네이티브 플랫폼 추상화<br>• `.NET MAUI Blazor Hybrid` · `SkiaSharp` · `Garden.Maui`</td>
 </tr>
 <tr>
-<td>**09. Windows 데스크톱 애플리케이션**</td>
-<td>• 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화</td>
-<td>8년 수명주기 레거시(`.NET Framework 4.8`)의 `.NET 9` 전환, `WinForms`/`WPF` MVVM 리팩토링 및 다국어 MSI/EXE 설치 패키지 배포 (`nemonic Desktop`)</td>
+<td>**09. Windows 데스크톱 애플리케이션**<br>• WYSIWYG 메모 인쇄 · 레거시 .NET 현대화 · 설치 패키지 배포<br>• `WinForms` · `WPF`</td>
 </tr>
 <tr>
-<td>**10. 시스템 프로그래밍**</td>
-<td>• 10.01. 크로스플랫폼 프린터 하드웨어 제어 통합 SDK<br>• 10.02. 5계층 크로스플랫폼 BLE 프로토콜 스택<br>• 10.03. 멀티 플랫폼 USB 드라이버 추상화 라이브러리</td>
-<td>`WinUSB`/P-Invoke·`libusb`·`WebUSB` 및 5계층 `BLE(GAP/GATT/L2CAP)` 추상화 SDK 설계, Win32 GDI 프린터 DC 핸들 누수 해결 (`Mango` · `Garden.Bluetooth` · `Garden.Usb`)</td>
+<td>**10. 시스템 프로그래밍**<br>• 크로스플랫폼 프린터 SDK · BLE 프로토콜 · USB 드라이버 추상화<br>• `WinUSB` · `libusb` · `WebUSB` · `BLE`</td>
 </tr>
 </table>
 ---
-## 📂 상세 포트폴리오 (Domain Hub)
+## 📂 상세 포트폴리오
 <span color="gray">각 도메인 폴더를 클릭하시면 해당 기술 영역의 상세 작업 내역을 확인하실 수 있습니다.</span>
 <page url="https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4">01. 소프트웨어 아키텍처</page>
 
 <page url="https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6">02. .NET 백엔드 엔지니어링</page>
 
-<page url="https://app.notion.com/p/3fa475218675819995bfeab3391da08b">03. 클라우드 및 온프레미스 인프라</page>
+<page url="https://app.notion.com/p/3fa475218675819995bfeab3391da08b">03. 온프레미스</page>
 
 <page url="https://app.notion.com/p/3f9475218675819baf65f8976281b85d">04. DevOps 엔지니어링</page>
 
-<page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">05. 개발자 경험 (DevEx)</page>
+<page url="https://app.notion.com/p/3f947521867581e69559d6fbaa56760f">05. 개발자 경험</page>
 
 <page url="https://app.notion.com/p/3fa475218675818fbd9cea22db77bce4">06. 하네스 엔지니어링</page>
 
@@ -168,41 +141,36 @@
 ---
 ## 기술 스택
 
-### 언어
-
-`C#` · `Python` · `PowerShell`
-
-### 백엔드
-
-`ASP.NET Core` · `.NET 9` · `.NET Aspire` · `EF Core` · `YARP` · `SignalR`
-
-### 데이터 · 메시징
-
-`PostgreSQL` · `Redis` · `RabbitMQ` · `Elasticsearch`
-
-### 클라이언트 · 디자인 시스템
-
-`.NET MAUI Blazor Hybrid` · `Blazor` · `Garden.Razor (Material 3)` · `Penpot` · `WPF` · `WinForms` · `Xamarin.Forms`
-
-### 테스트
-
-`xUnit` · `NSubstitute` · `bUnit` · `Testcontainers` · `Pester` · `Playwright`
-
-### 인프라 · GitOps
-
-`Kubernetes` · `Flux` · `Kustomize` · `Docker` · `Proxmox VE` · `Azure AKS` · `OpenTofu` · `Ansible`
-
-### 클러스터 플랫폼
-
-`Rook-Ceph` · `CloudNativePG` · `Keycloak` · `OpenBao` · `External Secrets` · `Harbor` · `MetalLB` · `ingress-nginx`
-
-### 관측성
-
-`OpenTelemetry` · `Prometheus` · `Loki` · `Tempo` · `Seq` · `Sentry` · `Serilog`
-
-### DevEx · 하네스 엔지니어링
-
-`Garden.Harness (Claude/Codex/OpenCode/Gemini)` · `Roslyn 애널라이저` · `GitHub Actions`
+<table fit-page-width="true" header-row="true">
+<colgroup>
+<col width="150" />
+<col width="630" />
+</colgroup>
+<tr>
+<td>연관 도메인</td>
+<td>기술</td>
+</tr>
+<tr>
+<td>01–02. 아키텍처 · 백엔드</td>
+<td>`C#` · `PowerShell` · `.NET` · `ASP.NET Core` · `.NET Aspire` · `EF Core` · `YARP` · `SignalR` · `PostgreSQL` · `Redis` · `RabbitMQ` · `Elasticsearch` · `xUnit` · `NSubstitute` · `bUnit` · `Testcontainers`</td>
+</tr>
+<tr>
+<td>03–04. 온프레미스 · DevOps</td>
+<td>`Kubernetes` · `Flux` · `Kustomize` · `Docker` · `Proxmox VE` · `Azure AKS` · `OpenTofu` · `Ansible` · `Rook-Ceph` · `CloudNativePG` · `Keycloak` · `OpenBao` · `External Secrets` · `Harbor` · `MetalLB` · `ingress-nginx` · `OpenTelemetry` · `Prometheus` · `Loki` · `Tempo` · `Seq` · `Sentry` · `Serilog`</td>
+</tr>
+<tr>
+<td>05–06. 개발자 경험 · 하네스</td>
+<td>`Roslyn 애널라이저` · `Garden.Harness` · `GitHub Actions` · `Pester` · `Playwright`</td>
+</tr>
+<tr>
+<td>07–09. 웹 · 모바일 · 데스크톱</td>
+<td>`.NET MAUI Blazor Hybrid` · `Blazor` · `Garden.Razor` · `Penpot` · `WPF` · `WinForms` · `Xamarin.Forms`</td>
+</tr>
+<tr>
+<td>10. 시스템 프로그래밍</td>
+<td>`WinUSB` · `libusb` · `WebUSB` · `BLE`</td>
+</tr>
+</table>
 
 ---
 ## 학력

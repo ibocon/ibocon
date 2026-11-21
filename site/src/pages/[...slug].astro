@@ -63,24 +63,52 @@ const tocHeadings = getTocHeadings(headings);
     </main>
     <Footer locale="ko" />
     <script>
-      const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      const mermaidBlocks = [...document.querySelectorAll('pre[data-language="mermaid"]')]
+        .map((block) => ({ block, definition: block.textContent?.trim() ?? '' }))
+        .filter(({ definition }) => definition.length > 0);
       if (mermaidBlocks.length > 0) {
-        mermaidBlocks.forEach((block) => {
-          const definition = block.textContent?.trim();
-          if (definition) {
-            block.textContent = definition;
-            block.classList.add('mermaid');
-          }
+        mermaidBlocks.forEach(({ block, definition }) => {
+          block.textContent = definition;
+          block.classList.add('mermaid');
         });
         const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
-        mermaid.initialize({
-          startOnLoad: false,
-          theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default',
-          // 본문 글자(17px)와 비슷한 크기를 유지하려고 SVG를 컨테이너 폭에 맞춰 축소하지 않는다.
-          flowchart: { useMaxWidth: false, htmlLabels: true, nodeSpacing: 40, rankSpacing: 56, padding: 16, wrappingWidth: 220 },
-          themeVariables: { fontSize: '17px', fontFamily: 'Pretendard, system-ui, sans-serif' }
-        });
-        await mermaid.run({ nodes: mermaidBlocks });
+        const createMermaidThemeVariables = () => {
+          const styles = getComputedStyle(document.documentElement);
+          const color = (name) => styles.getPropertyValue(name).trim();
+          const darkMode = document.documentElement.dataset.theme === 'dark';
+          const surface = color('--diagram-surface');
+          const text = color('--diagram-text');
+          const line = color('--diagram-line');
+          return {
+            darkMode, background: surface, mainBkg: surface, textColor: text,
+            primaryColor: surface, primaryBorderColor: line, primaryTextColor: text,
+            secondaryColor: surface, secondaryBorderColor: line, secondaryTextColor: text,
+            tertiaryColor: surface, tertiaryBorderColor: line, tertiaryTextColor: text,
+            actorBkg: surface, actorBorder: line, actorTextColor: text,
+            activationBkgColor: surface, activationBorderColor: line,
+            labelBoxBkgColor: surface, labelBoxBorderColor: line, labelTextColor: text,
+            lineColor: line, noteBkgColor: surface, noteBorderColor: line, noteTextColor: text,
+            signalColor: line, signalTextColor: text, sequenceNumberColor: text,
+            fontSize: '17px', fontFamily: 'Pretendard, system-ui, sans-serif'
+          };
+        };
+        const renderMermaid = async () => {
+          mermaidBlocks.forEach(({ block, definition }) => {
+            block.removeAttribute('data-processed');
+            block.textContent = definition;
+          });
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            flowchart: { useMaxWidth: false, htmlLabels: true, nodeSpacing: 16, rankSpacing: 48, padding: 12, wrappingWidth: 160 },
+            sequence: { actorMargin: 18, diagramMarginX: 8, diagramMarginY: 10, messageMargin: 14, width: 136, actorFontSize: 16, messageFontSize: 16, noteFontSize: 16 },
+            themeCSS: `.messageText, .sequenceNumber, .labelText, .loopText, .noteText, text.actor { fill: ${getComputedStyle(document.documentElement).getPropertyValue('--diagram-text').trim()} !important; font-size: 16px !important; }`,
+            themeVariables: createMermaidThemeVariables()
+          });
+          await mermaid.run({ nodes: mermaidBlocks.map(({ block }) => block) });
+        };
+        await renderMermaid();
+        document.addEventListener('site-theme-changed', () => void renderMermaid());
       }
     </script>
   </body>

@@ -11,6 +11,16 @@ BeforeAll {
         return $Blog
     }
 
+    function New-SequenceParticipantBlog {
+        param([Parameter(Mandatory)] [string] $Root)
+
+        $Blog = Join-Path -Path $Root -ChildPath 'blog'
+        New-Item -ItemType Directory -Path $Blog -Force | Out-Null
+        $Post = "---`ntitle: `"`"fixture`"`"`nauthoringVersion: 1`n---`n## 요약`n`n``````mermaid`nsequenceDiagram`n  participant A as A`n  participant B as B`n  participant C as C`n  participant D as D`n  participant E as E`n  A->>B: event`n``````n"
+        Set-Content -LiteralPath (Join-Path $Blog 'fixture.md') -Value $Post -Encoding utf8
+        return $Blog
+    }
+
     function Invoke-Wrapper {
         param([string[]] $Arguments = @())
 
@@ -44,6 +54,18 @@ Describe 'Test-BlogPresentationConvention' {
         # Then
         $Result.ExitCode | Should -Be 1
         $Result.Output | Should -Match 'technical-blog-presentation-diagram-horizontal-chain-too-long'
+    }
+
+    It 'Given_SequenceWithFiveParticipants_When_WrapperRuns_Then_ReportsDiagramParticipantLimit' {
+        # Given
+        $Blog = New-SequenceParticipantBlog -Root $TestDrive
+
+        # When
+        $Result = Invoke-Wrapper -Arguments @('-ContentRoot', $Blog)
+
+        # Then
+        $Result.ExitCode | Should -Be 1
+        $Result.Output | Should -Match 'technical-blog-presentation-diagram-sequence-participant-limit'
     }
 
     # 목록 카드 커버가 object-fit: cover로 잘리던 회귀를 실제 policy와 실제 CSS로 재현한다.

@@ -80,7 +80,7 @@
 - **Nemonic.Server** — 메모 동기화 REST API와 MySQL 스키마(`nemonic.sql`), 컨트롤러 테스트 프로젝트.
 - **설치 프로젝트** — `Nemonic.Installer`/`Nemonic.Installer_En`(.vdproj), WiX `Nemonic.MSI`·`Nemonic.Executable`·`Driver.MSI`.
 ## 주요 작업
-### 초기 개발 · 1.2 → 1.8 (2017.07 – 2018.05, 커밋 176)
+### 초기 개발 · 1.2 → 1.8 · 2017.07–2018.05 · 커밋 176
 - **WYSIWYG 편집·출력 엔진** — 화면과 열전사 출력의 크기·회전 불일치를 해결. 용지 4종(72×72·72×48·96×72·20×72mm) × 점착면 4방향 회전, DPI 대응, 모델 데이터만으로 인쇄 가능하도록 뷰 의존 제거
 - **MVVM 구조 전환** — 한 파일에 몰려 있던 WinForms 코드를 `MemoViewModel`/`LayerViewModel`/`LayerModel` 파생과 이벤트 시스템으로 재구성. 레이어 팩토리·Command 패턴 적용, `.nemo` 리더를 Strategy 패턴(V0/V1)으로 분리해 하위 호환 확보
 - **장치·펌웨어 기능** — USB 직접 통신으로 프린터 템플릿 저장, 펌웨어 업데이트 기능, 카트리지 감지 기반 용지 자동 결정
@@ -89,7 +89,7 @@
 - **운영 안정성** — 로그 시스템 도입, 재시작 복구(`restart.json`) 모듈 분리, 임시 저장 우선 정책, 첫 단위 테스트 프로젝트 도입
 - **배포 체계 수립** — WiX MSI·부트스트래퍼 번들, 드라이버 MSI 전환, 코드 서명 자동화(ClickOnce → 로컬 signtool), Jenkins 빌드 트리거, 한·일 현지화 문자열
 - 2017.11 정부 과제 납품 버전 완료
-### 현대화 · Mango 의존 마이그레이션 (2026.09 –)
+### 현대화 · Mango 의존 마이그레이션 · 2026.09–
 - **.NET Framework 4.8 → .NET 9** — `Nemonic.Application`·`Nemonic.AMPV`·`Nemonic.Test`를 SDK 스타일 csproj + `PackageReference`로 전환(`packages.config`·`app.config` 제거, 2,000여 줄 프로젝트 파일 정리)
 - **로컬 라이브러리 제거·SDK 통합** — `Nemonic.Library`·`Nemonic.Usb.Dll` 프로젝트를 삭제하고 사내 공용 `Mango` 프로젝트 참조로 대체. 남는 이미지 처리 코드는 `LibraryAbsorbed`로 이관
 - **어댑터 계층 도입** — `IPrinterManager` 인터페이스와 `MangoPrinterQueryBridge`(약 800줄)로 프린터 조회를 WMI 직접 질의에서 SDK 탐색으로 일원화, 출력 경로 진단 로깅 보강
@@ -100,7 +100,7 @@
 - 저장소: [github.com/MANGOSLABCoLtd/NemonicBasicWindows](https://github.com/MANGOSLABCoLtd/NemonicBasicWindows) (private)
 - 설계서: `docs/architecture/yegunkim/README.md`
 ---
-## 📂 세부 기여 저장소 및 기술 이력 상세 (11개 저장소 연계)
+## 📂 세부 기여 저장소 및 기술 이력
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="150">

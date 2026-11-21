@@ -11,6 +11,9 @@
   --accent-color: #2563eb;
   --accent-subtle: #eff6ff;
   --code-bg: #0f172a;
+  --diagram-surface: #ffffff;
+  --diagram-text: #0f172a;
+  --diagram-line: #475569;
   --page-measure: 1080px;
   --prose-measure: 46rem;
   --toc-measure: 15rem;
@@ -41,6 +44,9 @@
   --accent-color: #60a5fa;
   --accent-subtle: #1e293b;
   --code-bg: #020617;
+  --diagram-surface: #111827;
+  --diagram-text: #f1f5f9;
+  --diagram-line: #cbd5e1;
 }
 
 * { box-sizing: border-box; }
@@ -194,8 +200,8 @@ a.filter-chip { text-decoration: none; }
 .prose pre { padding: 16px; border-radius: 8px; overflow-x: auto; white-space: pre !important; overflow-wrap: normal; word-break: normal; background: var(--code-bg); }
 .prose :not(pre) > code { background: var(--accent-subtle); border-radius: 4px; padding: 2px 5px; }
 .prose pre, .prose code, .prose .astro-code { font-family: var(--font-code); font-variant-ligatures: contextual; font-size: .9em; }
-.prose pre.mermaid { display: flex; justify-content: center; margin: var(--flow-block) 0; padding: var(--space-5); border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); font-family: inherit; font-size: 1rem; text-align: center; white-space: normal !important; }
-.prose pre.mermaid svg { display: block; margin: 0 auto; max-inline-size: 100%; block-size: auto; }
+.prose pre.mermaid { display: flex; justify-content: center; margin: var(--flow-block) 0; padding: var(--space-5); border: 1px solid var(--diagram-line); border-radius: 12px; background: var(--diagram-surface) !important; color: var(--diagram-text) !important; font-family: inherit; font-size: 1rem; text-align: center; white-space: normal !important; }
+.prose pre.mermaid svg { display: block; margin: 0 auto; inline-size: auto; max-inline-size: 100%; block-size: auto; }
 .prose img { display: block; max-width: 100%; height: auto; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .prose th, .prose td { border: 1px solid var(--border-color); padding: var(--space-3) var(--space-4); word-break: keep-all; overflow-wrap: break-word; }

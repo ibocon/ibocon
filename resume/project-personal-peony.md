@@ -56,7 +56,7 @@
 <td>데이터 스토어 / 프로토콜</td>
 </tr>
 <tr>
-<td>**`Ledger` (원장 코어)**</td>
+<td>**`Ledger` — 원장 코어</td>
 <td>가계부 장부 · 계정과목 · 거래 · 예산</td>
 <td>거래 생성/수정/삭제 불변식 검증, 잔액 집계, 거래 확정 도메인 이벤트 발행</td>
 <td>`PostgreSQL` · `RabbitMQ` · `Redis`</td>
@@ -80,14 +80,14 @@
 <td>`PostgreSQL` · `Keycloak`</td>
 </tr>
 <tr>
-<td>**`Notifier` & `ApiGateway(BFF)`**</td>
+<td>**`Notifier` 및 `ApiGateway` BFF**</td>
 <td>실시간 알림 및 클라이언트 단일 진입점</td>
 <td>`Firebase Cloud Messaging(FCM)` 모바일 푸시 발송, `SignalR` 멀티 디바이스 실시간 동기화, YARP 라우팅</td>
 <td>`SignalR` · `FCM` · `YARP`</td>
 </tr>
 </table>
 ---
-## 3. 대표 백엔드 엔지니어링 문제 해결 사례 (Problem · Action · Result)
+## 3. 대표 백엔드 엔지니어링 문제 해결 사례
 - **[사례 1] 신규 가입 및 거래 입력 시 다중 마이크로서비스 간 동기 결합 제거 (이벤트 기반 사가/프로비저닝)**
 	- **문제(Problem)**: 사용자 가입 직후 기본 장부·카테고리 생성(`Provisioning`, `Ledger`)이나 거래 입력 후 거래처 학습(`Counterparty`)·자동분류(`Autofill`) 갱신을 동기 HTTP 체인으로 묶으면 지연 시간 증가 및 부분 실패 복구 복잡도가 발생함.
 	- **해결(Action)**: 각 마이크로서비스가 자신의 DB 트랜잭션을 커밋한 뒤 `RabbitMQ` 통합 이벤트를 발행하고, 후속 서비스들이 이를 비동기 소비하여 독립적으로 프로젝션과 알림(`Notifier`)을 처리하도록 설계함.

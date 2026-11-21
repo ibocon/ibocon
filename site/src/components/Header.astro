@@ -116,6 +116,7 @@ const deploymentId = [
     const saved = localStorage.getItem('theme');
     const applyTheme = (theme, persist = false) => {
       root.dataset.theme = theme;
+      document.dispatchEvent(new CustomEvent('site-theme-changed', { detail: { theme } }));
       button?.setAttribute('aria-pressed', String(theme === 'dark'));
       button?.setAttribute('aria-label', theme === 'dark' ? lightLabel : darkLabel);
 

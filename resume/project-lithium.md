@@ -40,7 +40,7 @@
 </tr>
 </table>
 ---
-## 1. FINECUBE(`Lithium`) 모바일 앱 및 `SkiaSharp` 캔버스 아키텍처 다이어그램
+## 1. FINECUBE Lithium 모바일 앱 및 `SkiaSharp` 캔버스 아키텍처 다이어그램
 - **1. 2D 캔버스 & UI (`Mangoslab.Drawing`)**: `Xamarin.Forms` + `MvvmCross` 크로스플랫폼 ViewModel · `SkiaSharp` 다중 레이어 편집기 (텍스트·바코드·SVG·핀치/드래그·Undo/Redo)
 - **2. 로컬 데이터 & 프린터 브릿지**: `EF Core` + `SQLite` (별도 Migrations 프로젝트로 스키마 관리) · `Mango.Print.Finecube.*` 배터리·카트리지 상태 폴링 동기화
 - **3. 모바일 플랫폼 호스트 & 스토어 릴리스**: **Android** (`targetSdk 33 → 34` 상향 및 AAB 서명 배포) · **iOS** (App Store 상용 배포 및 5개국어 리소스 지원)
@@ -79,7 +79,7 @@
 </tr>
 </table>
 ---
-## 3. 대표 모바일 엔지니어링 문제 해결 사례 (Problem · Action · Result)
+## 3. 대표 모바일 엔지니어링 문제 해결 사례
 - **[사례 1] Google Play 스토어 정책 변경에 따른 Android 14(`targetSdk 34`) 마이그레이션 및 릴리스**
 	- **문제(Problem)**: Google Play의 `targetSdkVersion 34` 의무화로 인해 기존 SDK 타겟 및 권한 설정 상태로는 신규 버전 AAB 업로드와 최신 Android 기기 설치가 제한됨.
 	- **해결(Action)**: Android 프로젝트의 `targetSdk`를 33에서 34로 단계적으로 상향하고, OS 버전에 따른 런타임 권한 분기 및 릴리스 키스토어 서명·AAB 패키징 파이프라인을 정비함.

@@ -1,4 +1,4 @@
-﻿# 📂 엔지니어 이력서 및 포트폴리오 거버넌스 종합 색인 (Single Source of Truth)
+# 📂 엔지니어 이력서 및 포트폴리오 원본 색인
 
 > **엔지니어**: 김예건 ([@ibocon](https://github.com/ibocon) / `wlfka102@gmail.com`)  
 > **운영 원칙**: **로컬 Markdown 파일이 원천(Single Source of Truth, SoT)**이며, Notion은 웹 배포 및 공유를 위한 뷰어로 운영됩니다.  
@@ -8,7 +8,7 @@
 
 ---
 
-## 🏛️ 1. 노션 페이지별 로컬 마스터 마크다운 (Single Source of Truth)
+## 🏛️ 1. 노션 페이지별 로컬 원본
 
 Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운 원본 파일 목록입니다. 향후 이력서 수정 및 버전 관리는 이 파일들을 기준으로 수행합니다.
 
@@ -17,7 +17,7 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | **메인 이력서** | [`resume-yegun-kim.md`](./resume-yegun-kim.md) | **📄 이력서 — 김예건** (루트 메인 · 10대 도메인 허브 5-Block 아키텍처 포함) | [`3dd47521...`](https://app.notion.com/p/3dd475218675811299b0e3d6b2baa43d) |
 | **이력서 탐색 목차** | [`resume-document-index.md`](./resume-document-index.md) | **00. 이력서 탐색 목차** (메인 이력서의 자식 · 핵심 프로젝트와 10대 도메인 진입점) | [`3fc47521...`](https://app.notion.com/p/3fc47521867581faa5c7d619956da617) |
 | **상세 프로젝트 1** | [`project-monolith.md`](./project-monolith.md) | **🧱 02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이** | [`3dd4752186758105...`](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
-| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ 04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
+| **상세 프로젝트 2** | [`project-argon.md`](./project-argon.md) | **☸️ 04.01. 온프레미스 Kubernetes 클러스터 구축 및 GitOps 운영** | [`3dd4752186758104...`](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
 | **상세 프로젝트 3** | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | **🖨️ 09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화** | [`3dd4752186758193...`](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
 | **상세 프로젝트 4** | [`project-lithium.md`](./project-lithium.md) | **🏷️ 08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화** | [`3dd475218675813a...`](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
 | **상세 프로젝트 5** | [`project-personal-peony.md`](./project-personal-peony.md) | **🌸 02.02. 가계부 마이크로서비스 백엔드 및 BFF** | [`3dd475218675812d...`](https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f) |
@@ -33,7 +33,7 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 | 네모닉 | [`project-nemonic-desktop.md`](./project-nemonic-desktop.md) | [09.01. WYSIWYG 메모 인쇄 엔진 및 .NET 9 현대화](https://app.notion.com/p/3dd4752186758193b90bc453e00b9b25) |
 | 파인큐브 | [`project-lithium.md`](./project-lithium.md) | [08.02. 모바일 라벨 편집기 앱 유지보수 및 SDK 34 현대화](https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a) |
 | 네모닉 커넥트 | [`project-monolith.md`](./project-monolith.md) | [02.01. 클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5) |
-| On-Prem 서버 구축 | [`project-argon.md`](./project-argon.md) | [04.01. On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
+| 온프레미스 서버 구축 | [`project-argon.md`](./project-argon.md) | [04.01. 온프레미스 Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433) |
 
 ---
 
@@ -104,11 +104,11 @@ Notion 각 페이지의 최신 본문과 1:1로 일치하는 로컬 마크다운
 
 ---
 
-## 💡 4. Single Source of Truth(SoT) 거버넌스 원칙
+## 💡 4. 원본 관리 원칙
 
 1. **로컬 원천주의 (Local SoT First)**:
    - 본 `resume/` 폴더 내의 Markdown 파일들이 이력서와 포트폴리오의 최종 권위 있는 원본입니다.
    - Notion API에 일시적인 장애가 발생하거나 변경되더라도, Git에 형상 관리되는 로컬 마크다운 파일만으로 완전한 이력 증명과 PDF/웹 렌더링이 가능합니다.
 2. **동기화 프로토콜**:
    - 로컬 파일(`resume-yegun-kim.md`, `project-*.md`)을 수정한 후 Notion MCP `notion-update-page`를 통해 원격 Notion에 배포하는 **단방향 GitOps 스타일 워크플로**를 유지합니다.
-   - 메인 이력서는 `이름·역할 → 2문장 프로필 → 대표 역량 → 연락처 → 최근 경력 → 전체 도메인 지도` 순서를 Local SoT로 유지합니다. 원격 동기화 뒤에는 이 순서와 10대 도메인 표·상세 링크 보존 여부를 Notion read-back으로 확인합니다.
+   - 메인 이력서는 `이름·역할 → 2문장 프로필 → 대표 역량 → 연락처 → 최근 경력 → 전체 도메인 지도` 순서를 Local SoT로 유지합니다. 원격 동기화 뒤에는 이 순서와 10대 도메인 단일 열 목록·상세 링크 보존 여부를 Notion read-back으로 확인합니다.

@@ -9,6 +9,13 @@
     "maxNodes": 8,
     "maxLabelLineLength": 24,
     "maxHorizontalChain": 3,
+    "maxSequenceParticipants": 4,
+    "visual": {
+      "minRenderedTextPx": 14,
+      "minContrastRatio": 4.5,
+      "maxScaleDownRatio": 0.9,
+      "themes": ["light", "dark"]
+    },
     "optIn": { "frontMatterKey": "authoringVersion", "value": 1 }
   },
   "covers": {

@@ -26,8 +26,8 @@
 <td>[클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)</td>
 </tr>
 <tr>
-<td>On-Prem 서버 구축</td>
-<td>[On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
+<td>온프레미스 서버 구축</td>
+<td>[온프레미스 Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)</td>
 </tr>
 </table>
 
@@ -36,9 +36,9 @@
 - [소프트웨어 아키텍처](https://app.notion.com/p/3fa475218675817b914ac9fa6ff9a9f4)
 - [.NET 백엔드 엔지니어링](https://app.notion.com/p/3f9475218675816e9d0bf75ee6a51ba6)
   - [클라우드 프린팅 모노레포 백엔드 및 API 게이트웨이](https://app.notion.com/p/3dd4752186758105801dea0310df86f5)
-- [클라우드 및 온프레미스 인프라](https://app.notion.com/p/3fa475218675819995bfeab3391da08b)
+- [온프레미스](https://app.notion.com/p/3fa475218675819995bfeab3391da08b)
 - [DevOps 엔지니어링](https://app.notion.com/p/3f9475218675819baf65f8976281b85d)
-  - [On-Premise Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)
+  - [온프레미스 Kubernetes 클러스터 구축 및 GitOps 운영](https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433)
 - [개발자 경험](https://app.notion.com/p/3f947521867581e69559d6fbaa56760f)
 - [하네스 엔지니어링](https://app.notion.com/p/3fa475218675818fbd9cea22db77bce4)
 - [웹 디자인 시스템](https://app.notion.com/p/3fa47521867581be8577cd764904163d)

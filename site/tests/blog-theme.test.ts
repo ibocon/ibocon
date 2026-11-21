@@ -21,13 +21,16 @@ describe('Blog theme and content rendering', () => {
     expect(styles).toContain('overflow-wrap: normal');
     expect(styles).toContain('word-break: normal');
     expect(styles).toContain('.prose pre.mermaid');
-    expect(styles).toContain('background: var(--bg-secondary)');
+    expect(styles).toContain('--diagram-surface');
+    expect(styles).toContain('--diagram-text');
+    expect(styles).toContain('--diagram-line');
     expect(styles).toContain('.adsense-container { max-width: 100%; min-width: 0; overflow-x: clip; }');
     expect(styles).toContain('.adsense-container .adsbygoogle { display: block; max-width: 100%; min-width: 0; }');
     expect(header).toContain('id="theme-toggle"');
     expect(header).toContain('class="theme-icon"');
     expect(header).toContain('aria-pressed');
     expect(header).not.toContain('>Theme</button>');
+    expect(header).toContain('site-theme-changed');
     expect(styles).toContain('.theme-toggle, .icon-button { inline-size: 36px; block-size: 36px;');
     expect(styles).toContain('.theme-icon, .icon-button-glyph { inline-size: 18px; block-size: 18px; }');
     expect(card).toContain('class="post-card"');
@@ -35,6 +38,28 @@ describe('Blog theme and content rendering', () => {
     expect(post).toContain('class="container post-layout"');
     expect(post).toContain('aria-labelledby="post-title"');
     expect(post).toContain('aria-label="Table of Contents"');
+  });
+
+  it('Given_MermaidThemeChange_When_PostTemplateRuns_Then_RecreatesDiagramWithSiteTokens', () => {
+    // Given
+    const post = readFileSync(resolve(process.cwd(), 'src/pages/[...slug].astro'), 'utf8');
+    const styles = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf8');
+
+    // When
+    const reusesDefinitions = post.includes("block.removeAttribute('data-processed')") && post.includes('block.textContent = definition');
+
+    // Then
+    expect(post).toContain('createMermaidThemeVariables');
+    expect(post).toContain("document.addEventListener('site-theme-changed'");
+    expect(post).toContain('darkMode');
+    expect(post).toContain('mainBkg: surface');
+    expect(post).toContain('textColor: text');
+    expect(post).toContain('messageFontSize: 16');
+    expect(post).toContain('actorMargin: 18');
+    expect(post).toContain('themeCSS: `.messageText, .sequenceNumber');
+    expect(styles).toContain('background: var(--diagram-surface) !important');
+    expect(reusesDefinitions).toBe(true);
+    expect(styles).toContain('--diagram-line');
   });
 
   it('Given_ListLayoutMarkup_When_Inspected_Then_RendersTagLinksWithCurrentState', () => {

@@ -42,7 +42,7 @@
 </table>
 ## 개요
 nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소로 통합한 모노레포입니다. 그중 **Oxygen**은 nemonic 프린터를 클라우드에서 연결·인쇄·관리하는 핵심 제품군으로, 마이크로서비스 백엔드와 API 게이트웨이, Slack·Teams·Zapier 커넥터, Blazor 웹·관리 콘솔, Windows 데스크톱(Nemonic Connect)·모바일 앱까지를 하나의 빌드·컨벤션·계획서 체계 안에서 개발합니다.
-## 구성 요소 (모노레포)
+## 모노레포 구성 요소
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="140">
@@ -74,7 +74,7 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 </tr>
 </table>
 ## Oxygen 아키텍처
-### 백엔드 서비스 (`src/Oxygen/Svc`)
+### 백엔드 서비스 — `src/Oxygen/Svc`
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="120">
@@ -236,7 +236,7 @@ nemonic 관련 서비스·앱·펌웨어·클러스터 정의를 한 저장소�
 - 이관된 프로젝트: <mention-page url="https://app.notion.com/p/3dd4752186758104a1e1d8e1f9174433"/> · <mention-page url="https://app.notion.com/p/3dd475218675813aa4cdfa7fca9e534a"/>
 - 하네스·라이브러리 원류: <mention-page url="https://app.notion.com/p/3dd475218675812db4c9cdc9aa23003f"/>
 ---
-## 📂 세부 기여 저장소 및 기술 이력 상세 (14개 저장소 연계)
+## 📂 세부 기여 저장소 및 기술 이력
 <table fit-page-width="true" header-row="true">
 <colgroup>
 <col width="150">
